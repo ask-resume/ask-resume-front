@@ -1,0 +1,23 @@
+{
+  "name": "ask-resume-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "deploy": "turbo run build --scope=app --includeDependencies --no-deps"
+  },
+  "turboConfig": "./turbo.json",
+  "workspace": [
+    "app",
+    "ui"
+  ],
+  "keywords": [],
+  "author": "dev-redo",
+  "license": "ISC",
+  "devDependencies": {
+    "turbo": "^1.8.8",
+    "pnpm": "8.1.0"
+  }
+}
