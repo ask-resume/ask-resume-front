@@ -9,7 +9,7 @@ export default defineConfig({
     lib: {
       entry: './src/index.ts',
       formats: ['cjs', 'es'], // Specify the formats that the library should be built in
-      fileName: (format) => `index.${format}.js`,
+      fileName: format => `index.${format}.js`,
     },
     rollupOptions: {
       external: ['react', 'react-dom'], // Specify the external dependencies that the library relies on

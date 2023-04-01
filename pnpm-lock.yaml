@@ -43,12 +43,12 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      shared-ui:
+        specifier: ^0.0.8
+        version: 0.0.8
       typescript:
         specifier: 5.0.3
         version: 5.0.3
-      ui:
-        specifier: workspace:*
-        version: link:../ui
     devDependencies:
       eslint-config-custom:
         specifier: workspace:*
@@ -96,7 +96,7 @@ importers:
         specifier: ^2.8.7
         version: 2.8.7
 
-  ui:
+  packages/shared-ui:
     dependencies:
       react:
         specifier: ^18.2.0
@@ -119,7 +119,7 @@ importers:
         version: 8.37.0
       eslint-config-custom:
         specifier: workspace:*
-        version: link:../packages/eslint-config-custom
+        version: link:../eslint-config-custom
       typescript:
         specifier: ^4.9.3
         version: 4.9.5
@@ -2652,6 +2652,10 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
+
+  /shared-ui@0.0.8:
+    resolution: {integrity: sha512-PrBFiULw1vETX3yRvDi8ZJ/Y8ZvBPGesS01OBWf8mxq5bNhE2kk6phsfZocn0ZtdfRBBb8r40nf22ZmYdIrXiA==}
+    dev: false
 
   /shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}

@@ -14,7 +14,6 @@
   "turboConfig": "./turbo.json",
   "workspace": [
     "app",
-    "ui",
     "packages"
   ],
   "keywords": [],
@@ -27,7 +26,7 @@
     "turbo": "^1.8.8"
   },
   "lint-staged": {
-    "{app,ui}/**/*.{ts,tsx,js,jsx}": [
+    "{app,packages/shared-ui}/**/*.{ts,tsx,js,jsx}": [
       "prettier --write",
       "eslint --fix"
     ]
