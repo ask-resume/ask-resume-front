@@ -3,21 +3,33 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "pretty": "prettier --write \"src/**/*.(ts|tsx)\"",
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "deploy": "turbo run build --scope=app --includeDependencies --no-deps"
+    "deploy": "turbo run build --scope=app --includeDependencies --no-deps",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky install"
   },
   "turboConfig": "./turbo.json",
   "workspace": [
     "app",
-    "ui"
+    "ui",
+    "packages"
   ],
   "keywords": [],
   "author": "dev-redo",
   "license": "ISC",
   "devDependencies": {
-    "turbo": "^1.8.8",
-    "pnpm": "8.1.0"
+    "husky": "^8.0.3",
+    "pnpm": "8.1.0",
+    "prettier": "^2.8.7",
+    "turbo": "^1.8.8"
+  },
+  "lint-staged": {
+    "{app,ui}/**/*.{ts,tsx,js,jsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }
