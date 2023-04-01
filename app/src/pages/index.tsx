@@ -2,7 +2,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
-import { Button } from 'ui';
+
+import { Button } from 'shared-ui';
+import { getQueryParams } from 'shared-lib/utils/location';
+import { useDebounce } from 'shared-lib/hooks/useDebounce';
 
 const inter = Inter({ subsets: ['latin'] });
 
