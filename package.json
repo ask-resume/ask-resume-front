@@ -26,7 +26,7 @@
     "turbo": "^1.8.8"
   },
   "lint-staged": {
-    "{app,packages/shared-ui}/**/*.{ts,tsx,js,jsx}": [
+    "{app, packages/***}/**/*.{ts,tsx,js,jsx}": [
       "prettier --write",
       "eslint --fix"
     ]

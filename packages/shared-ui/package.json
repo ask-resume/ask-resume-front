@@ -2,28 +2,40 @@
   "name": "shared-ui",
   "private": true,
   "version": "0.0.0",
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.es.js",
-  "types": "./dist/src/index.d.ts",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint"
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "chromatic": "pnpx chromatic --project-token=%SHARED_UI_CHROMATIC_PROJECT_TOKEN%"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "shared-lib": "workspace:^"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-vite": "^0.4.2",
+    "@storybook/cli": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/node-sass": "^4.11.3",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
     "@vitejs/plugin-react-swc": "^3.0.0",
-    "eslint": "8.37.0",
-    "eslint-config-custom": "workspace:*",
-    "shared-lib": "workspace:^",
+    "babel-loader": "^8.3.0",
+    "chromatic": "^6.17.2",
+    "node-sass": "^8.0.0",
+    "sass": "^1.60.0",
     "typescript": "^4.9.3",
-    "vite": "^4.2.0",
-    "vite-plugin-dts": "^2.1.0"
+    "vite": "^4.2.0"
   }
 }
