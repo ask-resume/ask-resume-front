@@ -1,7 +1,9 @@
 {
+  "extends": "./tsconfig.node.json",
+  "include": ["**/*"],
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["es2019", "dom"],
+    "lib": ["ES2015", "ES2019", "dom"],
     "useDefineForClassFields": true,
     "allowJs": false,
     "skipLibCheck": true,
@@ -15,7 +17,5 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react"
-  },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  }
 }

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 const usePrevious = <T,>(value: T) => {
   const ref = React.useRef<T>(value);
