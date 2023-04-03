@@ -1,0 +1,105 @@
+@import '../../index.scss';
+
+._TEXT_ {
+  font-size: $font-size-medium;
+  white-space: pre-wrap;
+  line-height: 1em;
+  &.block {
+    display: block;
+  }
+  &.inline {
+    display: inline;
+  }
+
+  &.font-weight {
+    &-light {
+      font-weight: $font-weight-light;
+    }
+    &-regular {
+      font-weight: $font-weight-regular;
+    }
+    &-medium {
+      font-weight: $font-weight-medium;
+    }
+    &-bold {
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  &.line-height {
+    &-narrow {
+      line-height: 1.5em;
+    }
+    &-wide {
+      line-height: 1.75em;
+    }
+  }
+
+  &.font-size {
+    &-xx-small {
+      font-size: $font-size-xx-small;
+    }
+    &-x-small {
+      font-size: $font-size-x-small;
+    }
+    &-small {
+      font-size: $font-size-small;
+    }
+    &-medium {
+      font-size: $font-size-medium;
+    }
+    &-large {
+      font-size: $font-size-large;
+    }
+    &-x-large {
+      font-size: $font-size-x-large;
+    }
+    &-xx-large {
+      font-size: $font-size-xx-large;
+    }
+    &-xxx-large {
+      font-size: $font-size-xxx-large;
+    }
+    &-xxxx-large {
+      font-size: $font-size-xxxx-large;
+    }
+  }
+
+  &.text-align {
+    &-start {
+      display: block;
+      text-align: start;
+    }
+    &-center {
+      display: block;
+      text-align: center;
+    }
+    &-end {
+      display: block;
+      text-align: end;
+    }
+  }
+}
+h1._TEXT_,
+h2._TEXT_,
+h3._TEXT_,
+h4._TEXT_,
+h5._TEXT_ {
+  display: block;
+  font-weight: $font-weight-medium;
+}
+h1._TEXT_ {
+  font-size: $font-size-xxxx-large;
+}
+h2._TEXT_ {
+  font-size: $font-size-xxx-large;
+}
+h3._TEXT_ {
+  font-size: $font-size-xx-large;
+}
+h4._TEXT_ {
+  font-size: $font-size-x-large;
+}
+h5._TEXT_ {
+  font-size: $font-size-large;
+}
