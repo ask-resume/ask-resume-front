@@ -21,8 +21,8 @@ const Checkbox = ({
   selected,
   disabled,
   label,
-  labelSize,
-  labelWeight,
+  labelSize = 'medium',
+  labelWeight = 'regular',
   size = 16,
   variant,
   ...props

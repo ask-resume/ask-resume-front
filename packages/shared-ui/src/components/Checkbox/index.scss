@@ -44,8 +44,10 @@
       border-radius: 6px;
     }
   }
+
+  // Label
   .label {
-    padding-left: 8px;
+    padding: 8px;
     cursor: pointer;
     user-select: none;
     &.disabled {

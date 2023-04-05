@@ -1,61 +1,102 @@
 @import '../../index.scss';
 
 ._INPUT_SELECT_ {
-  //
-}
+  div.input {
+    position: relative;
+  }
 
-.select-box__input {
-  position: relative;
-}
+  input {
+    padding: 5px 30px 5px 10px;
+    border: 1px solid $gray_4;
+    border-radius: 4px;
+  }
 
-.select-box__input input {
-  padding: 5px 30px 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+  &.icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &.open {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
 
-.select-box__icon {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  font-size: 12px;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-}
+  &.options {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 1px solid $gray_4;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    background-color: $white;
+    z-index: 1;
+    max-height: 200px;
+    overflow-y: auto;
+  }
 
-.select-box__icon--open {
-  transform: translateY(-50%) rotate(180deg);
-}
+  &.option {
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 
-.select-box__options {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  right: 0;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  border: 1px solid #ccc;
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-  background-color: #fff;
-  z-index: 1;
-  max-height: 200px;
-  overflow-y: auto;
-}
+    &:hover {
+      background-color: #eee;
+    }
 
-.select-box__option {
-  padding: 5px 10px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
+    &.selected {
+      background-color: $blue_6;
+      color: $white;
+    }
+  }
 
-.select-box__option:hover {
-  background-color: #eee;
-}
+  // Size
+  &.xs {
+    height: 28px;
+    padding: 0 8px;
+    font-size: $font-size-small;
+  }
 
-.select-box__option--selected {
-  background-color: #007bff;
-  color: #fff;
+  &.sm {
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 8px;
+    font-size: $font-size-small;
+  }
+
+  &.md {
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 8px;
+    font-size: $font-size-small;
+  }
+
+  &.lg {
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 10px;
+    border-width: 2px;
+    font-size: $font-size-medium;
+  }
+
+  &.xl {
+    height: 56px;
+    padding: 0 20px;
+    border-radius: 14px;
+    border-width: 2px;
+    font-size: $font-size-large;
+  }
+
+  // Label
+  .label {
+    padding-left: 8px;
+    cursor: pointer;
+    user-select: none;
+  }
 }
