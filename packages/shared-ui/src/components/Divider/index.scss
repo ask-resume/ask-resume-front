@@ -1,0 +1,12 @@
+@import '../../index.scss';
+
+._DIVIDER_ {
+  display: block;
+  width: 100%;
+  &.vertical {
+    display: inline-block;
+    position: relative;
+    top: -0.06em;
+    vertical-align: middle;
+  }
+}
