@@ -1,13 +1,14 @@
-type TButtonSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-type TFontSize =
-  | 'xx-small'
-  | 'x-small'
+type ButtonSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+type FontSize =
+  | 'xx_small'
+  | 'x_small'
   | 'small'
   | 'medium'
   | 'large'
-  | 'x-large'
-  | 'xx-large'
-  | 'xxx-large'
-  | 'xxxx-large';
+  | 'x_large'
+  | 'xx_large'
+  | 'xxx_large'
+  | 'xxxx_large';
+type SliderSize = 'small' | 'medium' | 'large';
 
-export type { TButtonSize, TFontSize };
+export type { ButtonSize, FontSize, SliderSize };
