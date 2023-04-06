@@ -37,7 +37,7 @@ export const CheckIcon = ({
   );
 };
 
-const getCheckIcon = (valiant?: Valiant, color?: ColorMap) => {
+const getCheckIcon = (valiant?: Valiant, color: ColorMap = ColorMap.green) => {
   switch (valiant) {
     case 'single':
       return (
@@ -69,7 +69,7 @@ const getCheckIcon = (valiant?: Valiant, color?: ColorMap) => {
             fillRule="evenodd"
             clipRule="evenodd"
             d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM16.7986 9.15286C17.1405 8.68804 17.0366 8.03717 16.5664 7.69912C16.0963 7.36106 15.4379 7.46383 15.096 7.92866L10.5574 14.0984L8.79694 12.3579C8.38587 11.9515 7.71938 11.9515 7.30831 12.3579C6.89723 12.7643 6.89723 13.4232 7.30831 13.8296L9.83098 16.3237C10.3455 16.8324 11.1981 16.7663 11.626 16.1845L16.7986 9.15286Z"
-            fill={color || ColorMap.green}
+            fill={color}
           />
         </svg>
       );
@@ -92,14 +92,14 @@ const getCheckIcon = (valiant?: Valiant, color?: ColorMap) => {
             fillRule="evenodd"
             clipRule="evenodd"
             d="M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-            fill={color || ColorMap.green}
+            fill={color}
           />
           <path
             id="icon__fill"
             fillRule="evenodd"
             clipRule="evenodd"
             d="M16.5664 7.6955C17.0366 8.02741 17.1405 8.66644 16.7986 9.12281L11.626 16.0266C11.1981 16.5978 10.3455 16.6627 9.83098 16.1633L7.30831 13.7146C6.89723 13.3155 6.89723 12.6686 7.30831 12.2696C7.71938 11.8705 8.38587 11.8705 8.79694 12.2696L10.5574 13.9785L15.096 7.92086C15.4379 7.46449 16.0963 7.36359 16.5664 7.6955Z"
-            fill={color || ColorMap.green}
+            fill={color}
           />
         </svg>
       );

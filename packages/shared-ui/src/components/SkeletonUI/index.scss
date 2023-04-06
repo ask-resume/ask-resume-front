@@ -1,93 +1,60 @@
 @import '../../index.scss';
 
 ._SKELETON_ {
-  background-color: #f2f2f2;
-  color: #f2f2f2;
-  overflow: hidden;
-  position: relative;
-  box-sizing: border-box;
-  &.text {
-    border-radius: 4px;
-    display: inline-block;
-    line-height: 1;
-  }
-  &.rect {
-    border-radius: 4px;
-  }
+  display: block;
+  background-color: rgba(0, 0, 0, 0.15);
+  height: auto;
+  border-radius: 6px;
+
+  // Variant
   &.circle {
     border-radius: 50%;
   }
-  &.wave {
-    animation: wave 2.5s ease-in-out infinite;
-    position: relative;
-    &:after {
-      background: linear-gradient(to right, #f2f2f2 0%, #d9d9d9 50%, #f2f2f2 100%);
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      top: 0;
-      z-index: 1;
-      transform: translateX(-100%);
-      animation: wave 1.5s infinite linear;
+
+  // Animation
+  &.false {
+    animation: none;
+  }
+
+  &.pulse {
+    animation: pulse 1.5s ease-in-out 0.5s infinite;
+  }
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
     }
   }
-  &.pulse {
-    animation: pulse 2s ease-in-out infinite;
-    &:before {
-      content: '';
-      display: block;
+
+  &.wave {
+    position: relative;
+    overflow: hidden;
+    &::after {
       position: absolute;
-      z-index: 1;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      opacity: 0;
-      background-color: rgba(242, 242, 242, 0.8);
-      animation: pulse-pulse 2s ease-in-out infinite;
+      content: '';
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(90deg, transparent, rgba(#fff, 0.3) 60%, transparent);
+      transform: translateX(-100%);
+      animation: wave 1.6s linear 0.8s infinite;
     }
   }
   @keyframes wave {
     0% {
       transform: translateX(-100%);
     }
-    100% {
+    60% {
       transform: translateX(100%);
     }
-  }
-  @keyframes pulse {
-    0% {
-      transform: scale(0.9);
-      opacity: 0.7;
-    }
-    50% {
-      transform: scale(1);
-      opacity: 1;
-    }
     100% {
-      transform: scale(0.9);
-      opacity: 0.7;
-    }
-  }
-  @keyframes pulse-pulse {
-    0% {
-      width: 0;
-      height: 0;
-      opacity: 0.8;
-    }
-    50% {
-      width: 40px;
-      height: 40px;
-      opacity: 0.2;
-    }
-    100% {
-      width: 0;
-      height: 0;
-      opacity: 0.8;
+      transform: translateX(100%);
     }
   }
 }

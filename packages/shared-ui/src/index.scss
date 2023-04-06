@@ -1,9 +1,8 @@
 /////////////////* Fonts */////////////////
 
 // Font Family
-$font: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-  "Malgun Gothic", sans-serif;
+$font: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
+  'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
 
 // Font Weight
 $font_weight_light: 300;
@@ -104,3 +103,184 @@ $login_container_width: 772px;
 
 // Transition Variables
 $button_hover_transition: ease-out 0.1s;
+
+// Valiant
+// * $bgc: background-color (e.g. #fff)
+// * $fc: font-color (e.g. #111)
+// * $dis-bgc: disabled background-color
+// * $dis-fc: disabled font-color
+@mixin button-color($bgc: $gray_7, $fc: white) {
+  background: $bgc;
+  color: $fc;
+  &:hover {
+    @if $bgc == $gray_1 {
+      color: $gray_8;
+    } @else if $bgc == $gray_7 {
+      background: $gray_8;
+    } @else if $bgc == $blue_5 {
+      background: $blue_6;
+    } @else if $bgc == $red_7 {
+      background: $red_8;
+    } @else {
+      background: darken($bgc, 10%);
+    }
+  }
+  &:active {
+    @if $bgc == $gray_4 {
+      background: $gray_4;
+    } @else if $bgc == $gray_7 {
+      background: $gray_7;
+    } @else if $bgc == $blue_5 {
+      background: $blue_7;
+    } @else if $bgc == $red_7 {
+      background: $red_9;
+    } @else {
+      background: lighten($bgc, 5%);
+    }
+  }
+
+  // Variant
+  &.ghost {
+    background: transparent;
+    border-width: 1px;
+    border-style: solid;
+    color: $bgc;
+    @if $bgc == $gray_1 {
+      border-color: $gray_4;
+      color: $gray_8;
+    } @else if $bgc == $gray_7 {
+      color: $gray_8;
+    }
+    &:hover {
+      @if $bgc == $gray_1 {
+        background-color: $gray_1;
+      } @else {
+        background: $bgc;
+        color: $fc;
+        border-color: $bgc;
+      }
+    }
+    &:active {
+      @if $bgc == $gray_1 {
+        background: $gray_3;
+      } @else if $bgc == $blue_5 {
+        background: $blue_6;
+        border-color: $blue_6;
+      } @else if $bgc == $red_7 {
+        background: $red_9;
+        border-color: $red_9;
+      } @else {
+        background: darken($bgc, 15%);
+        border-color: darken($bgc, 15%);
+      }
+    }
+  }
+
+  &.quiet {
+    background: transparent;
+    @if $bgc == $gray_1 {
+      color: $gray_8;
+    } @else if $bgc == $gray_7 {
+      color: $gray_8;
+    } @else {
+      color: $bgc;
+    }
+    &:hover {
+      @if $bgc == $gray_1 {
+        background: rgba(117, 117, 139, 0.13);
+      } @else {
+        background: $bgc;
+        color: #fff;
+      }
+    }
+    &:active {
+      @if $bgc == $blue_5 {
+        background: $blue_6;
+      } @else if $bgc == $red_7 {
+        background: $red_9;
+      } @else if $bgc == $gray_7 {
+        background: $gray_8;
+      } @else {
+        background: rgba(117, 117, 139, 0.26);
+      }
+    }
+  }
+
+  &.minimal {
+    background: transparent;
+    @if $bgc == $gray_1 {
+      color: $gray_8;
+    } @else if $bgc == $gray_7 {
+      color: $gray_8;
+    } @else {
+      color: $bgc;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &.minimal2 {
+    background: transparent;
+    @if $bgc == $gray_1 {
+      color: $gray_6;
+    } @else if $bgc == $gray_7 {
+      color: $gray_8;
+    } @else {
+      color: $bgc;
+    }
+    &:hover {
+      @if $bgc == $blue_5 {
+        color: $blue_6;
+      } @else if $bgc == $red_7 {
+        color: $red_9;
+      } @else if $bgc == $gray_7 {
+        color: $gray_8;
+      } @else if $bgc == $gray_1 {
+        color: $gray_8;
+      } @else {
+        color: $gray_8;
+      }
+    }
+  }
+}
+
+// Mixin
+// * $WH: Width, height value (e.g. 160px)
+// * $Bsize: border-size value (e.g. 3px)
+// * $Bc0: border-color value (e.g. #fff)
+// * $Bc1: border-background-color value (e.g. #ffffff33)
+@mixin CustomSpin($WH: 16px, $Bsize: 3px, $Bc0: #fff, $Bc1: rgba(255, 255, 255, 0.2)) {
+  width: $WH;
+  height: $WH;
+  border: $Bsize solid $Bc0;
+  margin: 0;
+  content: ' ';
+  display: block;
+  border-radius: 50%;
+  border-color: $Bc0 $Bc1 $Bc1 $Bc1;
+  animation: spin 1.15s cubic-bezier(0.31, 0.63, 0.8, 0.73) infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

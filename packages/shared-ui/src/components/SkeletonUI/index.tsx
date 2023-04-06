@@ -5,12 +5,12 @@ import cn from 'classnames';
 export interface SkeletonBoxProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   variant?: 'rect' | 'circle';
-  animation?: 'pulse' | 'wave';
+  animation?: 'pulse' | 'wave' | 'false';
   width?: number | string;
   height?: number | string;
 }
 
-export const SkeletonBox = ({
+const SkeletonBox = ({
   className,
   variant = 'rect',
   animation = 'wave',
@@ -23,8 +23,8 @@ export const SkeletonBox = ({
     <div
       className={cn('_SKELETON_', className, variant, animation)}
       style={{
-        width: width,
-        height: height,
+        width,
+        height,
       }}
       {...props}
     >
@@ -32,3 +32,5 @@ export const SkeletonBox = ({
     </div>
   );
 };
+
+export default SkeletonBox;

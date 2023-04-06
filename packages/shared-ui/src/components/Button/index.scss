@@ -29,6 +29,7 @@
     line-height: 1em;
   }
 
+  // Default Spacer 8px
   & + & {
     margin-left: 8px;
   }
@@ -190,6 +191,7 @@
     }
   }
 
+  // label With Icon
   ._BUTTON_leading-icon,
   ._BUTTON_tailing-icon {
     display: flex;
@@ -213,6 +215,11 @@
     }
   }
 
+  // Variant
+  &.solid {
+    @include button-color();
+  }
+
   &.minimal {
     padding: 4px;
     height: max-content;
@@ -223,12 +230,7 @@
     height: 28px;
   }
 
-  // Variant
-  &.solid {
-    @include button-color();
-  }
-
-  // buttonColor
+  // buttonColor - Default Style
   &.black {
     svg {
       #icon__stroke {
@@ -255,6 +257,7 @@
       background-color: $gray_8;
     }
   }
+
   &.blue {
     @include button-color($blue_5);
     svg {
@@ -287,6 +290,7 @@
       background-color: $blue_5;
     }
   }
+
   &.red {
     @include button-color($red_7);
     svg {
@@ -320,6 +324,7 @@
       background-color: $red_7;
     }
   }
+
   &.gray {
     @include button-color($gray_1, $gray_8);
     &.solid {
@@ -356,6 +361,7 @@
       }
     }
   }
+
   &.black,
   &.blue,
   &.red {
