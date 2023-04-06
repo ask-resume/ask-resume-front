@@ -1,0 +1,80 @@
+.carousel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel__cards {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.carousel__card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.carousel__card--active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.carousel__dot {
+  width: 8px;
+  height: 8px;
+  margin: 0 8px;
+  border-radius: 50%;
+  background-color: gray;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel__dot--active {
+  background-color: black;
+}
+
+.carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel__arrow:hover {
+  background-color: gray;
+  color: white;
+}
+.carousel__arrow--left {
+  left: 16px;
+}
+.carousel__arrow--right {
+  right: 16px;
+}

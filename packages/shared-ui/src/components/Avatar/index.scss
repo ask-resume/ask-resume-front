@@ -1,7 +1,6 @@
 @import '../../index.scss';
 
 ._AVATAR_CONTAINER_ {
-  // Avatar의 size 속성으로 _AVATAR_의 크기 결정
   display: inline-block;
   vertical-align: middle;
   transition: $button_hover_transition;
