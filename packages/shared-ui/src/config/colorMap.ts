@@ -51,7 +51,7 @@ export const ColorMap = {
   transparent: 'transparent',
 } as const;
 
-export type ColorMap = keyof typeof ColorMap;
+export type ColorMap = keyof typeof ColorMap | (typeof ColorMap)[keyof typeof ColorMap];
 
 export const ShadowMap = {
   one: `0px 0px 1px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.24)`,
@@ -64,4 +64,4 @@ export const ShadowMap = {
   inner: `inset 0px 2px 3px rgba(0, 0, 0, 0.12)`,
 } as const;
 
-export type ShadowMap = keyof typeof ShadowMap;
+export type ShadowMap = keyof typeof ShadowMap | (typeof ShadowMap)[keyof typeof ShadowMap];

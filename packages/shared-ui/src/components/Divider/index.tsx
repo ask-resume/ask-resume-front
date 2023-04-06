@@ -19,15 +19,18 @@ const Divider = ({
   width,
   height,
 }: DividerProps) => {
+  const isVariantDefault = variant === 'default';
+
   return (
     <hr
       className={cn('_DIVIDER_', className, variant)}
       style={{
-        backgroundColor: `${color || ColorMap.gray_2}`,
-        margin: `${variant === 'default' ? `${size}px` : 0} ${
-          variant === 'vertical' ? `${size}px` : 0
-        }`,
-        width: `${width}px`,
+        backgroundColor: `${color ?? ColorMap.gray_2}`,
+        margin: `${isVariantDefault ? `${size}px` : 0} ${!isVariantDefault ? `${size}px` : 0}`,
+        // variant's default Style
+        // - default) width = 100% / height = 1px
+        // - vertical) width = 1px / height = 1rem
+        width: `${variant === 'default' ? `${width}%` : `${width}px`}`,
         height: `${height}px`,
       }}
     />
