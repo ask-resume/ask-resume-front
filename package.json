@@ -28,13 +28,9 @@
     "typescript": "^5.0.3"
   },
   "lint-staged": {
-    "app/src/**/*.{ts,tsx,js,jsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "packages/**/*.{ts,tsx,js,jsx}": [
-      "prettier --write",
-      "eslint --fix"
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "prettier --parser=typescript --write"
     ]
   }
 }

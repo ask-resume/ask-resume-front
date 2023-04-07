@@ -3,58 +3,57 @@ import cn from 'classnames';
 import { ColorMap } from '../../config/colorMap';
 import { FontSize } from '../../config/size';
 
-import { ArrowIcon } from '../Icon/ArrowIcon';
-import './index.scss';
+import Icon from '../Icon';
 import Text from '../Text';
+import './index.scss';
 
-export interface InputSelectOption {
-  [key: string]: any;
-  name?: string;
-}
+export type Option = { [key: string]: any; name: string } | string;
+const HeightOption = {
+  xs: 12,
+  sm: 16,
+  md: 20,
+  lg: 24,
+  xl: 30,
+} as const;
 
 export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   inputValue: string;
   onChangeInputValue: (value: string) => void;
-  options: InputSelectOption[];
+  options: Option[];
+  width?: number;
+  height?: keyof typeof HeightOption;
   className?: string;
   placeholder?: string;
-  inputSize?:
-    | /*24px*/ 'xs'
-    | /*32px*/ 'sm'
-    | /*40px*/ 'md'
-    | /*48px*/ 'lg'
-    | /*60px*/ 'xl'
-    | /*150px*/ 'xxl';
-  color?: ColorMap;
-  label?: string;
+  labelText?: string;
   labelSize?: FontSize;
   labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
 }
 
 // TODO: implement optional label ✅
 // TODO: styling
+//  - Input component ✅
+//  - Dropdown component
 // TODO: Modify Dropdown to select options according to key input (ArrowUp, ArrowDown, Enter)
-// TODO: Implement Dropdown
 const InputSelect = ({
   inputValue,
   onChangeInputValue,
   options,
   className,
   placeholder,
-  inputSize,
-  color,
-  label,
+  labelText,
+  width = 200,
+  height = 'md',
   labelSize = 'medium',
   labelWeight = 'regular',
 }: InputSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<InputSelectOption | null>(null);
+  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChangeInputValue(event.target.value);
   };
 
-  const handleOptionClick = (option: InputSelectOption) => {
+  const handleOptionClick = (option: Option) => {
     setSelectedOption(option);
     onChangeInputValue(option.toString());
     setIsOpen(false);
@@ -69,53 +68,64 @@ const InputSelect = ({
     setIsOpen(isOpen => !isOpen);
   };
 
-  const filteredOptions = options.filter(option =>
-    (option.name?.toString() || option.toString()).toLowerCase().includes(inputValue.toLowerCase()),
-  );
+  const filteredOptions = options.filter(option => {
+    const isNamePropertyExist =
+      typeof option === 'object' && Object.prototype.hasOwnProperty.call(option, 'name');
+
+    return (isNamePropertyExist ? option.name : option.toString())
+      .toLowerCase()
+      .includes(inputValue.toLowerCase());
+  });
 
   return (
     <div
-      className={cn('_INPUT_SELECT_', className, {
-        inputSize,
-      })}
+      className={cn('_INPUT_SELECT_', className)}
+      style={{
+        width: `${width}px`,
+      }}
     >
-      {label && (
-        <Text className={cn('label')} variant="inline" size={labelSize} weight={labelWeight}>
-          {label}
+      {labelText && (
+        <Text
+          className={cn('_label')}
+          style={{ color: ColorMap.blue_gray }}
+          size={labelSize}
+          weight={labelWeight}
+          variant="label"
+          htmlFor="dropdown-input"
+        >
+          {labelText}
         </Text>
       )}
-      <div className="input" onClick={handleInputClick}>
+      <div className={cn('_wrapper', height)} onClick={handleInputClick}>
         <input
           type="text"
           value={inputValue}
           onChange={handleInputChange}
           placeholder={placeholder}
-          style={{ borderColor: color, color }}
+          className={cn('_INPUT_')}
+          id="dropdown-input"
         />
-        <span
-          className={`icon ${isOpen ? 'open' : ''}`}
-          style={{ color }}
-          onClick={handleIconClick}
-        >
-          <ArrowIcon />
-        </span>
+        <button className={cn('_icon', height, { open: isOpen })} onClick={handleIconClick}>
+          <Icon.ArrowIcon size={HeightOption[height]} color={ColorMap.blue_gray} />
+        </button>
       </div>
       {isOpen && (
-        <ul
-          className={cn(className, {
-            inputSize,
-          })}
-          style={{ borderColor: color }}
-        >
-          {filteredOptions.map((option, index) => (
-            <li
-              key={index}
-              className={`option ${selectedOption === option ? 'selected' : ''}`}
-              onClick={() => handleOptionClick(option)}
-            >
-              {option?.name?.toString() ?? option.toString()}
-            </li>
-          ))}
+        <ul>
+          {filteredOptions.length === 0 ? (
+            <li className="option no-content">No Content</li>
+          ) : (
+            filteredOptions.map((option, index) => {
+              return (
+                <li
+                  key={index}
+                  className={`option ${selectedOption === option ? 'selected' : ''}`}
+                  onClick={() => handleOptionClick(option)}
+                >
+                  {option.toString()}
+                </li>
+              );
+            })
+          )}
         </ul>
       )}
     </div>

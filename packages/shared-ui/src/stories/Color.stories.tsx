@@ -75,36 +75,40 @@ interface Palette {
   name: ColorMap;
 }
 
-const Palette = ({ name }: Palette) => (
-  <div
-    style={{
-      display: 'inline-block',
-      width: 150,
-      height: 190,
-      marginTop: 8,
-      marginRight: 10,
-      textAlign: 'center',
-      borderRadius: 4,
-      backgroundColor: '#fff',
-      border: '1px solid #ced4da',
-      overflow: 'hidden',
-      fontSize: 12,
-    }}
-  >
+const Palette = ({ name }: Palette) => {
+  const color = ColorMap[name as keyof typeof ColorMap];
+
+  return (
     <div
       style={{
-        width: '100%',
-        height: 130,
-        backgroundColor: ColorMap[name],
-        marginBottom: 6,
+        display: 'inline-block',
+        width: 150,
+        height: 190,
+        marginTop: 8,
+        marginRight: 10,
+        textAlign: 'center',
+        borderRadius: 4,
+        backgroundColor: '#fff',
+        border: '1px solid #ced4da',
+        overflow: 'hidden',
+        fontSize: 12,
       }}
-    />
+    >
+      <div
+        style={{
+          width: '100%',
+          height: 130,
+          backgroundColor: color,
+          marginBottom: 6,
+        }}
+      />
 
-    <Text size="small" weight="medium" variant="block" style={{ padding: '4px 0' }}>
-      {name}
-    </Text>
-    <Text size="xx-small" weight="regular" color="#8B8B8B">
-      {ColorMap[name]}
-    </Text>
-  </div>
-);
+      <Text size="small" weight="medium" variant="block" style={{ padding: '4px 0' }}>
+        {name}
+      </Text>
+      <Text size="xx-small" weight="regular" color="#8B8B8B">
+        {color}
+      </Text>
+    </div>
+  );
+};

@@ -10,7 +10,7 @@ export default {
 
 export const Default = () => (
   <div style={{ padding: 20 }}>
-    <Button label={{ labelText: '기본 버튼' }} />
+    <Button label={{ labelText: 'Default' }} />
   </div>
 );
 
@@ -254,7 +254,7 @@ export const WithIcon = () => (
           size="xxs"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -263,7 +263,7 @@ export const WithIcon = () => (
           size="xs"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -272,7 +272,7 @@ export const WithIcon = () => (
           size="sm"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -281,7 +281,7 @@ export const WithIcon = () => (
           size="md"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -290,7 +290,7 @@ export const WithIcon = () => (
           size="lg"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -299,7 +299,7 @@ export const WithIcon = () => (
           size="xl"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
       </div>
@@ -364,7 +364,7 @@ export const WithIcon = () => (
           size="xxs"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -373,7 +373,7 @@ export const WithIcon = () => (
           size="xs"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -382,7 +382,7 @@ export const WithIcon = () => (
           size="sm"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -391,7 +391,7 @@ export const WithIcon = () => (
           size="md"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -400,7 +400,7 @@ export const WithIcon = () => (
           size="lg"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -409,7 +409,7 @@ export const WithIcon = () => (
           size="xl"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
       </div>
@@ -472,13 +472,13 @@ export const WithIcon = () => (
           variant="solid"
           buttonColor="gray"
           size="xxs"
-          label={{ labelLeadingIcon: <Icon.SettingIcon />, labelText: '설정' }}
+          label={{ labelLeadingIcon: <Icon.SettingIcon />, labelText: 'Setting' }}
         />
         <Button
           variant="solid"
           buttonColor="gray"
           size="xs"
-          label={{ labelLeadingIcon: <Icon.SettingIcon />, labelText: '설정' }}
+          label={{ labelLeadingIcon: <Icon.SettingIcon />, labelText: 'Setting' }}
         />
         <Button
           variant="solid"
@@ -486,7 +486,7 @@ export const WithIcon = () => (
           size="sm"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -495,7 +495,7 @@ export const WithIcon = () => (
           size="md"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -504,7 +504,7 @@ export const WithIcon = () => (
           size="lg"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -513,7 +513,7 @@ export const WithIcon = () => (
           size="xl"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
       </div>
@@ -577,7 +577,7 @@ export const WithIcon = () => (
           buttonColor="gray"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -585,7 +585,7 @@ export const WithIcon = () => (
           buttonColor="black"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -593,7 +593,7 @@ export const WithIcon = () => (
           buttonColor="blue"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -601,7 +601,7 @@ export const WithIcon = () => (
           buttonColor="red"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
       </div>
@@ -612,7 +612,7 @@ export const WithIcon = () => (
           buttonColor="gray"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -620,7 +620,7 @@ export const WithIcon = () => (
           buttonColor="black"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -628,7 +628,7 @@ export const WithIcon = () => (
           buttonColor="blue"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -636,7 +636,7 @@ export const WithIcon = () => (
           buttonColor="red"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
       </div>
@@ -647,7 +647,7 @@ export const WithIcon = () => (
           buttonColor="gray"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -655,7 +655,7 @@ export const WithIcon = () => (
           buttonColor="black"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -663,7 +663,7 @@ export const WithIcon = () => (
           buttonColor="blue"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -671,7 +671,7 @@ export const WithIcon = () => (
           buttonColor="red"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
       </div>
@@ -682,7 +682,7 @@ export const WithIcon = () => (
           buttonColor="gray"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -690,7 +690,7 @@ export const WithIcon = () => (
           buttonColor="black"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -698,7 +698,7 @@ export const WithIcon = () => (
           buttonColor="blue"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -706,7 +706,7 @@ export const WithIcon = () => (
           buttonColor="red"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
       </div>
@@ -717,7 +717,7 @@ export const WithIcon = () => (
           buttonColor="gray"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -725,7 +725,7 @@ export const WithIcon = () => (
           buttonColor="black"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -733,7 +733,7 @@ export const WithIcon = () => (
           buttonColor="blue"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
         <Button
@@ -741,7 +741,7 @@ export const WithIcon = () => (
           buttonColor="red"
           label={{
             labelLeadingIcon: <Icon.SettingIcon color={ColorMap.gray_7} />,
-            labelText: '설정',
+            labelText: 'Setting',
           }}
         />
       </div>

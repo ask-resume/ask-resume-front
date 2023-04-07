@@ -1,102 +1,161 @@
 @import '../../index.scss';
 
+// InputSelect wrapper
 ._INPUT_SELECT_ {
-  div.input {
-    position: relative;
-  }
+  position: relative;
+  width: 100%;
+  height: max-content;
+}
 
-  input {
-    padding: 5px 30px 5px 10px;
-    border: 1px solid $gray_4;
-    border-radius: 4px;
-  }
+// Label
+._label {
+  padding-left: 8px;
+  cursor: pointer;
+  user-select: none;
+}
 
-  &.icon {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    font-size: 12px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-    &.open {
-      transform: translateY(-50%) rotate(180deg);
-    }
-  }
+._wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid $blue_gray;
+  background-color: #fff;
+  cursor: text;
 
-  &.options {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    right: 0;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    border: 1px solid $gray_4;
-    border-top: none;
-    border-radius: 0 0 4px 4px;
-    background-color: $white;
-    z-index: 1;
-    max-height: 200px;
-    overflow-y: auto;
-  }
+  transition: all 0.2s ease-out;
+  box-sizing: border-box;
 
-  &.option {
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-
-    &:hover {
-      background-color: #eee;
-    }
-
-    &.selected {
-      background-color: $blue_6;
-      color: $white;
-    }
-  }
-
-  // Size
+  // Input Size
   &.xs {
-    height: 28px;
-    padding: 0 8px;
-    font-size: $font-size-small;
+    @extend .size-xs;
   }
 
   &.sm {
-    height: 32px;
-    padding: 0 12px;
+    @extend .size-sm;
     border-radius: 8px;
-    font-size: $font-size-small;
   }
 
   &.md {
-    height: 36px;
-    padding: 0 12px;
+    @extend .size-md;
     border-radius: 8px;
-    font-size: $font-size-small;
   }
 
   &.lg {
-    height: 44px;
-    padding: 0 16px;
+    @extend .size-lg;
     border-radius: 10px;
     border-width: 2px;
-    font-size: $font-size-medium;
   }
 
   &.xl {
-    height: 56px;
-    padding: 0 20px;
+    @extend .size-xl;
     border-radius: 14px;
     border-width: 2px;
-    font-size: $font-size-large;
+  }
+}
+
+// Input
+._INPUT_ {
+  border-radius: 4px;
+  width: 100%;
+  background-color: transparent;
+  box-sizing: border-box;
+  color: $blue_gray;
+
+  &::placeholder {
+    color: $gray_5;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+// Select Icon
+._icon {
+  font-size: 12px;
+  cursor: pointer;
+
+  &.open {
+    transform: rotate(-90deg);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  &:not(.open) {
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+
+// TODO: Styling
+.options {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: 1px solid $gray_4;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  background-color: $white;
+  z-index: 1;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.option {
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #eee;
   }
 
-  // Label
-  .label {
+  &.selected {
+    background-color: $blue_6;
+    color: $white;
+  }
+}
+
+// Size variant for input and dropdown option
+.size-xs {
+  height: 28px;
+  padding: 0 8px;
+  font-size: $font-size-small;
+}
+
+.size-sm {
+  height: 32px;
+  padding: 0 12px;
+  font-size: $font-size-small;
+}
+
+.size-md {
+  height: 36px;
+  padding: 0 12px;
+  font-size: $font-size-small;
+}
+
+.size-lg {
+  height: 44px;
+  padding: 0 16px;
+  font-size: $font-size-medium;
+  ._INPUT_.leading {
     padding-left: 8px;
-    cursor: pointer;
-    user-select: none;
+  }
+  ._INPUT_.tailing {
+    padding-right: 8px;
+  }
+}
+
+.size-xl {
+  height: 56px;
+  padding: 0 20px;
+  font-size: $font-size-large;
+  ._INPUT_.leading {
+    padding-left: 8px;
+  }
+  ._INPUT_.tailing {
+    padding-right: 8px;
   }
 }
