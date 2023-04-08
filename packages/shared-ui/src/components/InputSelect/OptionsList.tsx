@@ -1,6 +1,6 @@
 import React from 'react';
 import { Option } from '.';
-// import './options-list.scss';
+import './options-list.scss';
 
 interface OptionsListProps {
   options: Option[];

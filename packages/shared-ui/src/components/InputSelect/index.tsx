@@ -6,6 +6,9 @@ import { FontSize } from '../../config/size';
 import Icon from '../Icon';
 import Text from '../Text';
 import OptionsList from './OptionsList';
+import { CloseBoxOnOutside } from 'shared-lib/hooks';
+
+import * as Spacer from '../../config/spacer';
 import './index.scss';
 
 export type Option = { [key: string]: any; name: string } | string;
@@ -33,6 +36,7 @@ export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
 //  - Input component ✅
 //  - OptionsList Styling
 // TODO: Modify Dropdown to select options according to key input (ArrowUp, ArrowDown, Enter) ✅
+// TODO: Close OptionList when click outside ✅
 const InputSelect = ({
   inputValue,
   onChangeInputValue,
@@ -40,7 +44,7 @@ const InputSelect = ({
   placeholder,
   className,
   width = 200,
-  height = 'md',
+  height = 'sm',
   labelText,
   labelSize = 'medium',
   labelWeight = 'regular',
@@ -58,9 +62,8 @@ const InputSelect = ({
     setIsOpen(false);
   };
 
-  const handleInputClick = () => {
-    setIsOpen(true);
-  };
+  const handleInputClick = () => setIsOpen(true);
+  const handleOptionListClose = () => setIsOpen(false);
 
   const handleIconClick = (event: React.MouseEvent<HTMLSpanElement>) => {
     event.stopPropagation();
@@ -77,45 +80,49 @@ const InputSelect = ({
   });
 
   return (
-    <div
-      className={cn('_INPUT_SELECT_', className)}
-      style={{
-        width: `${width}px`,
-      }}
-    >
-      {labelText && (
-        <Text
-          className={cn('_label')}
-          style={{ color: ColorMap.blue_gray }}
-          size={labelSize}
-          weight={labelWeight}
-          variant="label"
-          htmlFor="dropdown-input"
-        >
-          {labelText}
-        </Text>
-      )}
-      <div className={cn('_wrapper', height)} onClick={handleInputClick}>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder={placeholder}
-          className={cn('_INPUT_')}
-          id="dropdown-input"
-        />
-        <button className={cn('_icon', height, { open: isOpen })} onClick={handleIconClick}>
-          <Icon.ArrowIcon size={HeightOption[height]} color={ColorMap.blue_gray} />
-        </button>
+    <CloseBoxOnOutside onClose={handleOptionListClose}>
+      <div
+        className={cn('_INPUT_SELECT_', className)}
+        style={{
+          width: `${width}px`,
+        }}
+      >
+        {labelText && (
+          <div style={{ padding: `${Spacer.spacer_medium} 0` }}>
+            <Text
+              className={cn('_label')}
+              style={{ color: ColorMap.blue_gray }}
+              size={labelSize}
+              weight={labelWeight}
+              variant="label"
+              htmlFor="dropdown-input"
+            >
+              {labelText}
+            </Text>
+          </div>
+        )}
+        <div className={cn('_wrapper', height)} onClick={handleInputClick}>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder={placeholder}
+            className={cn('_INPUT_')}
+            id="dropdown-input"
+          />
+          <button className={cn('_icon', height, { open: isOpen })} onClick={handleIconClick}>
+            <Icon.ArrowIcon size={HeightOption[height]} color={ColorMap.blue_gray} />
+          </button>
+        </div>
+        {isOpen && (
+          <OptionsList
+            options={filteredOptions}
+            selectedOption={selectedOption}
+            handleOptionClick={handleOptionClick}
+          />
+        )}
       </div>
-      {isOpen && (
-        <OptionsList
-          options={filteredOptions}
-          selectedOption={selectedOption}
-          handleOptionClick={handleOptionClick}
-        />
-      )}
-    </div>
+    </CloseBoxOnOutside>
   );
 };
 

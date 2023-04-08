@@ -106,7 +106,7 @@ const Palette = ({ name }: Palette) => {
       <Text size="small" weight="medium" variant="block" style={{ padding: '4px 0' }}>
         {name}
       </Text>
-      <Text size="xx-small" weight="regular" color="#8B8B8B">
+      <Text size="xx_small" weight="regular" color="#8B8B8B">
         {color}
       </Text>
     </div>
