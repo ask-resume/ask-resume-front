@@ -31,7 +31,7 @@ export const WithLabel = () => {
     <div style={{ padding: 20 }}>
       <InputSelect
         width={500}
-        height="xl"
+        height="lg"
         inputValue={inputValue}
         onChangeInputValue={currInputValue => setInputValue(currInputValue)}
         options={['Option 1', 'Option 2', 'Option 3']}

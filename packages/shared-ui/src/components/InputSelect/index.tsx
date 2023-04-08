@@ -5,15 +5,14 @@ import { FontSize } from '../../config/size';
 
 import Icon from '../Icon';
 import Text from '../Text';
+import OptionsList from './OptionsList';
 import './index.scss';
 
 export type Option = { [key: string]: any; name: string } | string;
 const HeightOption = {
-  xs: 12,
   sm: 16,
   md: 20,
   lg: 24,
-  xl: 30,
 } as const;
 
 export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -32,17 +31,17 @@ export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
 // TODO: implement optional label ✅
 // TODO: styling
 //  - Input component ✅
-//  - Dropdown component
-// TODO: Modify Dropdown to select options according to key input (ArrowUp, ArrowDown, Enter)
+//  - OptionsList Styling
+// TODO: Modify Dropdown to select options according to key input (ArrowUp, ArrowDown, Enter) ✅
 const InputSelect = ({
   inputValue,
   onChangeInputValue,
   options,
-  className,
   placeholder,
-  labelText,
+  className,
   width = 200,
   height = 'md',
+  labelText,
   labelSize = 'medium',
   labelWeight = 'regular',
 }: InputSelectProps) => {
@@ -110,23 +109,11 @@ const InputSelect = ({
         </button>
       </div>
       {isOpen && (
-        <ul>
-          {filteredOptions.length === 0 ? (
-            <li className="option no-content">No Content</li>
-          ) : (
-            filteredOptions.map((option, index) => {
-              return (
-                <li
-                  key={index}
-                  className={`option ${selectedOption === option ? 'selected' : ''}`}
-                  onClick={() => handleOptionClick(option)}
-                >
-                  {option.toString()}
-                </li>
-              );
-            })
-          )}
-        </ul>
+        <OptionsList
+          options={filteredOptions}
+          selectedOption={selectedOption}
+          handleOptionClick={handleOptionClick}
+        />
       )}
     </div>
   );
