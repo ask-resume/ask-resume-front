@@ -1,14 +1,17 @@
 import React from 'react';
-import { Option } from '.';
-import './options-list.scss';
+import cn from 'classnames';
+import { uid } from 'react-uid';
 
-interface OptionsListProps {
+import { Option, HeightOption } from '.';
+
+interface OptionListProps {
   options: Option[];
+  height?: keyof typeof HeightOption;
   selectedOption: Option | null;
   handleOptionClick: (option: Option) => void;
 }
 
-const OptionsList = ({ options, selectedOption, handleOptionClick }: OptionsListProps) => {
+const OptionList = ({ options, height, selectedOption, handleOptionClick }: OptionListProps) => {
   const listRef = React.useRef<HTMLUListElement>(null);
 
   React.useEffect(() => {
@@ -28,12 +31,14 @@ const OptionsList = ({ options, selectedOption, handleOptionClick }: OptionsList
   }
 
   return (
-    <ul ref={listRef}>
+    <ul className={cn('_options', height)} ref={listRef}>
       {options.map((option, index) => {
         return (
           <li
-            key={index}
-            className={`option ${selectedOption === option ? 'selected' : ''}`}
+            className={cn('option', height, {
+              selected: selectedOption === option,
+            })}
+            key={uid(index)}
             onClick={() => handleOptionClick(option)}
             data-value={option}
             tabIndex={0}
@@ -46,7 +51,7 @@ const OptionsList = ({ options, selectedOption, handleOptionClick }: OptionsList
   );
 };
 
-export default OptionsList;
+export default OptionList;
 
 interface KeyDowmHandlerProps {
   event: KeyboardEvent;
@@ -55,7 +60,7 @@ interface KeyDowmHandlerProps {
 }
 
 const handleKeyDown = ({ event, options, handleOptionClick }: KeyDowmHandlerProps) => {
-  const selectedIndex = Array.from(options).findIndex(option => option === document.activeElement);
+  const selectedIndex = options.findIndex(option => option === document.activeElement);
 
   switch (event.key) {
     case 'ArrowUp':

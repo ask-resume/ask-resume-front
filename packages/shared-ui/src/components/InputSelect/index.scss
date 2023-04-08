@@ -11,19 +11,25 @@
 ._label {
   cursor: pointer;
   user-select: none;
+  color: $gray_6;
 }
 
+// OptionsList
 ._wrapper {
   display: flex;
   align-items: center;
   width: 100%;
-  border-radius: 6px;
-  border: 1px solid $blue_gray;
+  border: 1px solid $gray_3;
   background-color: #fff;
   cursor: text;
 
   transition: all 0.2s ease-out;
   box-sizing: border-box;
+
+  &.open {
+    border: 1px solid $gray_5;
+    box-shadow: $shadow-7;
+  }
 
   // Input Size
   &.xs {
@@ -32,24 +38,18 @@
 
   &.sm {
     @extend .size-sm;
-    border-radius: 8px;
   }
 
   &.md {
     @extend .size-md;
-    border-radius: 8px;
   }
 
   &.lg {
     @extend .size-lg;
-    border-radius: 10px;
-    border-width: 2px;
   }
 
   &.xl {
     @extend .size-xl;
-    border-radius: 14px;
-    border-width: 2px;
   }
 }
 
@@ -58,8 +58,10 @@
   border-radius: 4px;
   width: 100%;
   background-color: transparent;
+
   box-sizing: border-box;
   color: $blue_gray;
+  box-sizing: border-box;
 
   &::placeholder {
     color: $gray_5;
@@ -84,45 +86,141 @@
   }
 }
 
+// OptionList
+._options {
+  position: absolute;
+  width: 100%;
+  min-width: max-content;
+  border: 1px solid $blue_gray;
+  border-radius: 8px;
+  z-index: 10;
+  background-color: #fff;
+  box-shadow: $shadow-7;
+  box-sizing: border-box;
+  width: 100%;
+  top: calc(100% + 4px);
+  padding: 4px;
+  overflow-y: auto;
+
+  cursor: pointer;
+  user-select: none;
+
+  &.xs {
+    @extend .border-xs;
+  }
+  &.sm {
+    @extend .border-sm;
+  }
+  &.md {
+    @extend .border-md;
+  }
+  &.lg {
+    @extend .border-lg;
+  }
+  &.xl {
+    @extend .border-xl;
+  }
+}
+
+.option {
+  height: 28px;
+  border-radius: 6px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: $gray_1;
+  }
+  &:focus {
+    outline: none;
+    background-color: $gray_1;
+  }
+  &.selected {
+    background-color: $gray_3;
+  }
+
+  & > div {
+    padding: 0 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-width: max-content;
+    box-sizing: border-box;
+  }
+
+  &.xs {
+    @extend .size-xs;
+  }
+  &.sm {
+    @extend .size-sm;
+  }
+  &.md {
+    @extend .size-md;
+  }
+  &.lg {
+    @extend .size-lg;
+  }
+  &.xl {
+    @extend .size-xl;
+  }
+}
+
 // Size variant for input and dropdown option
 .size-xs {
   height: 28px;
   padding: 0 8px;
   font-size: $font-size-small;
+  @extend .border-xs;
 }
 
 .size-sm {
   height: 32px;
   padding: 0 12px;
   font-size: $font-size-small;
+  @extend .border-sm;
 }
 
 .size-md {
   height: 36px;
   padding: 0 12px;
   font-size: $font-size-small;
+  @extend .border-md;
 }
 
 .size-lg {
   height: 44px;
   padding: 0 16px;
   font-size: $font-size-medium;
-  ._INPUT_.leading {
-    padding-left: 8px;
-  }
-  ._INPUT_.tailing {
-    padding-right: 8px;
-  }
+  @extend .border-lg;
 }
 
 .size-xl {
   height: 56px;
   padding: 0 20px;
   font-size: $font-size-large;
-  ._INPUT_.leading {
-    padding-left: 8px;
-  }
-  ._INPUT_.tailing {
-    padding-right: 8px;
-  }
+  @extend .border-xl;
+}
+
+// Border radius
+.border-xs {
+  border-radius: 8px;
+}
+.border-sm {
+  border-radius: 8px;
+}
+.border-md {
+  border-radius: 10px;
+  border-width: 2px;
+}
+.border-lg {
+  border-radius: 14px;
+  border-width: 2px;
+}
+.border-xl {
+  border-radius: 14px;
+  border-width: 2px;
 }

@@ -5,14 +5,14 @@ import { FontSize } from '../../config/size';
 
 import Icon from '../Icon';
 import Text from '../Text';
-import OptionsList from './OptionsList';
+import OptionList from './OptionList';
 import { CloseBoxOnOutside } from 'shared-lib/hooks';
 
 import * as Spacer from '../../config/spacer';
 import './index.scss';
 
 export type Option = { [key: string]: any; name: string } | string;
-const HeightOption = {
+export const HeightOption = {
   sm: 16,
   md: 20,
   lg: 24,
@@ -32,8 +32,8 @@ export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // TODO: implement optional label ✅
-// TODO: styling
-//  - Input component ✅
+// TODO: styling ✅
+//  - Input component
 //  - OptionsList Styling
 // TODO: Modify Dropdown to select options according to key input (ArrowUp, ArrowDown, Enter) ✅
 // TODO: Close OptionList when click outside ✅
@@ -88,10 +88,9 @@ const InputSelect = ({
         }}
       >
         {labelText && (
-          <div style={{ padding: `${Spacer.spacer_medium} 0` }}>
+          <div style={{ padding: `${Spacer.spacer_small} 0` }}>
             <Text
               className={cn('_label')}
-              style={{ color: ColorMap.blue_gray }}
               size={labelSize}
               weight={labelWeight}
               variant="label"
@@ -101,7 +100,7 @@ const InputSelect = ({
             </Text>
           </div>
         )}
-        <div className={cn('_wrapper', height)} onClick={handleInputClick}>
+        <div className={cn('_wrapper', height, { open: isOpen })} onClick={handleInputClick}>
           <input
             type="text"
             value={inputValue}
@@ -111,14 +110,18 @@ const InputSelect = ({
             id="dropdown-input"
           />
           <button className={cn('_icon', height, { open: isOpen })} onClick={handleIconClick}>
-            <Icon.ArrowIcon size={HeightOption[height]} color={ColorMap.blue_gray} />
+            <Icon.ArrowIcon
+              size={HeightOption[height]}
+              color={isOpen ? ColorMap.gray_8 : ColorMap.gray_6}
+            />
           </button>
         </div>
         {isOpen && (
-          <OptionsList
+          <OptionList
             options={filteredOptions}
             selectedOption={selectedOption}
             handleOptionClick={handleOptionClick}
+            height={height}
           />
         )}
       </div>
