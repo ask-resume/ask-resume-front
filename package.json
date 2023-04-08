@@ -32,5 +32,8 @@
       "eslint --fix",
       "prettier --parser=typescript --write"
     ]
+  },
+  "dependencies": {
+    "eslint": "8.37.0"
   }
 }

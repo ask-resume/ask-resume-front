@@ -31,12 +31,18 @@ export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
 }
 
+export const getOptionName = (option: Option) => {
+  return typeof option === 'string' ? option : option.name;
+};
+
 // TODO: implement optional label ✅
 // TODO: styling ✅
 //  - Input component
 //  - OptionsList Styling
 // TODO: Modify Dropdown to select options according to key input (ArrowUp, ArrowDown, Enter) ✅
 // TODO: Close OptionList when click outside ✅
+// FIX: fix an issue where an object string was output when an option was an object ✅
+// FIX: Modify to receive selectedOption as props
 const InputSelect = ({
   inputValue,
   onChangeInputValue,
@@ -51,6 +57,7 @@ const InputSelect = ({
 }: InputSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+  console.log('selectedOption :>> ', selectedOption);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChangeInputValue(event.target.value);
@@ -58,7 +65,9 @@ const InputSelect = ({
 
   const handleOptionClick = (option: Option) => {
     setSelectedOption(option);
-    onChangeInputValue(option.toString());
+
+    const optionName = getOptionName(option);
+    onChangeInputValue(optionName);
     setIsOpen(false);
   };
 
@@ -71,12 +80,7 @@ const InputSelect = ({
   };
 
   const filteredOptions = options.filter(option => {
-    const isNamePropertyExist =
-      typeof option === 'object' && Object.prototype.hasOwnProperty.call(option, 'name');
-
-    return (isNamePropertyExist ? option.name : option.toString())
-      .toLowerCase()
-      .includes(inputValue.toLowerCase());
+    return getOptionName(option).toLowerCase().includes(inputValue.toLowerCase());
   });
 
   return (

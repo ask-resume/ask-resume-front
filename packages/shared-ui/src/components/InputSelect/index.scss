@@ -105,6 +105,14 @@
   cursor: pointer;
   user-select: none;
 
+  &.no-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    padding: 0;
+  }
+
   &.xs {
     @extend .border-xs;
   }

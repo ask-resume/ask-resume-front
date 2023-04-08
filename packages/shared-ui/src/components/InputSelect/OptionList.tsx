@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import { uid } from 'react-uid';
 
-import { Option, HeightOption } from '.';
+import { Option, HeightOption, getOptionName } from '.';
 
 interface OptionListProps {
   options: Option[];
@@ -27,12 +27,14 @@ const OptionList = ({ options, height, selectedOption, handleOptionClick }: Opti
   }, [handleOptionClick, listRef]);
 
   if (options.length === 0) {
-    return <li className="option no-content">No Content</li>;
+    return <ul className="_options no-content">No Content</ul>;
   }
 
   return (
     <ul className={cn('_options', height)} ref={listRef}>
       {options.map((option, index) => {
+        const optionName = getOptionName(option);
+
         return (
           <li
             className={cn('option', height, {
@@ -40,10 +42,10 @@ const OptionList = ({ options, height, selectedOption, handleOptionClick }: Opti
             })}
             key={uid(index)}
             onClick={() => handleOptionClick(option)}
-            data-value={option}
+            data-value={JSON.stringify(option)}
             tabIndex={0}
           >
-            {option.toString()}
+            {optionName}
           </li>
         );
       })}
@@ -82,7 +84,8 @@ const handleKeyDown = ({ event, options, handleOptionClick }: KeyDowmHandlerProp
     case 'Enter':
       event.preventDefault();
       if (selectedIndex !== -1) {
-        handleOptionClick(options[selectedIndex].dataset.value!);
+        const selectedOption = JSON.parse(options[selectedIndex].dataset.value!);
+        handleOptionClick(getOptionName(selectedOption));
       }
       break;
   }
