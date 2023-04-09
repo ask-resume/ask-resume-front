@@ -5,32 +5,42 @@ import { FontSize } from '../../config/size';
 
 import Icon from '../Icon';
 import Text from '../Text';
-import OptionList from '../Select/OptionList';
+import OptionList from './OptionList';
 import { CloseBoxOnOutside } from 'shared-lib/hooks';
 
 import * as Spacer from '../../config/spacer';
-import './index.scss';
-import { Option, HeightOption, getOptionName } from '../Select';
 
-export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
+import './index.scss';
+
+export type Option = { [key: string]: any; name: string } | string;
+export const HeightOption = {
+  sm: 16,
+  md: 20,
+  lg: 24,
+} as const;
+
+export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
   selectedOption: Option | null;
-  onChangeSelectedOption: (value: Option | null) => void;
+  onChangeSelectedOption: (value: Option) => void;
   options: Option[];
   width?: number;
   height?: keyof typeof HeightOption;
   className?: string;
-  placeholder?: string;
+  border?: boolean;
   labelText?: string;
   labelSize?: FontSize;
   labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
-  border?: boolean;
 }
 
-const InputSelect = ({
+// when option's default value is null, initialize it with an empty string.
+export const getOptionName = (option: Option) => {
+  return option ? (typeof option === 'string' ? option : option.name) : '';
+};
+
+const Select = ({
   selectedOption,
   onChangeSelectedOption,
   options,
-  placeholder,
   className,
   width = 200,
   height = 'sm',
@@ -38,33 +48,21 @@ const InputSelect = ({
   labelSize = 'medium',
   labelWeight = 'regular',
   border = true,
-}: InputSelectProps) => {
+}: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [inputValue, setInputValue] = useState('');
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
 
   const handleOptionChange = (option: Option) => {
     onChangeSelectedOption(option);
-
-    const optionName = getOptionName(option);
-    setInputValue(optionName);
     setIsOpen(false);
   };
 
-  const handleInputClick = () => setIsOpen(true);
+  const handleOptionListOpen = () => setIsOpen(true);
   const handleOptionListClose = () => setIsOpen(false);
 
   const handleIconClick = (event: React.MouseEvent<HTMLSpanElement>) => {
     event.stopPropagation();
     setIsOpen(isOpen => !isOpen);
   };
-
-  const filteredOptions = options.filter(option => {
-    return getOptionName(option).toLowerCase().includes(inputValue.toLowerCase());
-  });
 
   return (
     <CloseBoxOnOutside onClose={handleOptionListClose}>
@@ -80,8 +78,7 @@ const InputSelect = ({
               className={cn('_label')}
               size={labelSize}
               weight={labelWeight}
-              variant="label"
-              htmlFor="dropdown-input"
+              onClick={handleOptionListOpen}
             >
               {labelText}
             </Text>
@@ -89,16 +86,11 @@ const InputSelect = ({
         )}
         <div
           className={cn('_wrapper', height, { open: isOpen, border })}
-          onClick={handleInputClick}
+          onClick={handleOptionListOpen}
         >
-          <input
-            type="text"
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder={placeholder}
-            className={cn('select', '_INPUT_')}
-            id="dropdown-input"
-          />
+          <div className={cn('select')}>
+            <span>{getOptionName(selectedOption ?? '')}</span>
+          </div>
           <button className={cn('_icon', height, { open: isOpen })} onClick={handleIconClick}>
             <Icon.ArrowIcon
               size={HeightOption[height]}
@@ -108,7 +100,7 @@ const InputSelect = ({
         </div>
         {isOpen && (
           <OptionList
-            options={filteredOptions}
+            options={options}
             selectedOption={selectedOption}
             onChangeOption={handleOptionChange}
             height={height}
@@ -119,4 +111,4 @@ const InputSelect = ({
   );
 };
 
-export default InputSelect;
+export default Select;
