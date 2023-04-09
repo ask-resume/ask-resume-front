@@ -1,58 +1,15 @@
 import React from 'react';
 
-import InputSelect, { Option, getOptionName } from '../components/InputSelect';
+import InputSelect, { Option, getOptionName } from '../components/Select';
 import Divider from '../components/Divider';
 
 import '../reset.scss';
+import { stringTypeOptions, objTypeOptions } from './config';
 
 export default {
   title: 'Component/InputSelect',
   component: InputSelect,
 };
-
-const stringTypeOptions = ['Option 1', 'Option 2', 'Option 3'];
-const objTypeOptions = [
-  {
-    id: 1,
-    name: 'CEO',
-  },
-  {
-    id: 2,
-    name: 'Chief Sustainability Officer',
-  },
-  {
-    id: 3,
-    name: 'General & Operations Manager',
-  },
-  {
-    id: 4,
-    name: 'legislator',
-  },
-  {
-    id: 5,
-    name: 'Ads and Promotions Manager',
-  },
-  {
-    id: 6,
-    name: 'Marketing Manager',
-  },
-  {
-    id: 7,
-    name: 'Sales manager',
-  },
-  {
-    id: 8,
-    name: 'Public Relations Manager',
-  },
-  {
-    id: 9,
-    name: 'Fundraising manager',
-  },
-  {
-    id: 10,
-    name: 'Managed Services Manager',
-  },
-];
 
 export const Default = () => {
   const [selectedOption, setSelectedOption] = React.useState<Option | null>(null);
@@ -62,7 +19,7 @@ export const Default = () => {
       <div style={{ padding: 20 }}>
         <InputSelect
           selectedOption={selectedOption}
-          onChangeInputValue={setSelectedOption}
+          onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
           placeholder="Select Option"
         />
@@ -81,7 +38,7 @@ export const ObjDefault = () => {
       <div style={{ padding: 20 }}>
         <InputSelect
           selectedOption={selectedOption}
-          onChangeInputValue={setSelectedOption}
+          onChangeSelectedOption={setSelectedOption}
           options={objTypeOptions}
           placeholder="Job"
         />
@@ -99,10 +56,8 @@ export const WithLabel = () => {
     <div style={{ marginBottom: 50 }}>
       <div style={{ padding: 20 }}>
         <InputSelect
-          width={500}
-          height="lg"
           selectedOption={selectedOption}
-          onChangeInputValue={setSelectedOption}
+          onChangeSelectedOption={setSelectedOption}
           options={objTypeOptions}
           labelText="Job"
           placeholder="Please select your job (or future aspirations)"
@@ -123,7 +78,7 @@ export const Width = () => {
         <InputSelect
           width={100}
           selectedOption={selectedOption}
-          onChangeInputValue={setSelectedOption}
+          onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
           placeholder="Select Option"
         />
@@ -132,7 +87,7 @@ export const Width = () => {
         <InputSelect
           width={200}
           selectedOption={selectedOption}
-          onChangeInputValue={setSelectedOption}
+          onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
           placeholder="Select Option"
         />
@@ -141,7 +96,7 @@ export const Width = () => {
         <InputSelect
           width={300}
           selectedOption={selectedOption}
-          onChangeInputValue={setSelectedOption}
+          onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
           placeholder="Select Option"
         />
@@ -150,7 +105,7 @@ export const Width = () => {
         <InputSelect
           width={400}
           selectedOption={selectedOption}
-          onChangeInputValue={setSelectedOption}
+          onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
           placeholder="Select Option"
         />
@@ -159,7 +114,7 @@ export const Width = () => {
         <InputSelect
           width={500}
           selectedOption={selectedOption}
-          onChangeInputValue={setSelectedOption}
+          onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
           placeholder="Select Option"
         />
@@ -177,7 +132,7 @@ export const Height = () => {
         <InputSelect
           height="sm"
           selectedOption={selectedOption}
-          onChangeInputValue={setSelectedOption}
+          onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
           placeholder="Select Option"
         />
@@ -186,7 +141,7 @@ export const Height = () => {
         <InputSelect
           height="md"
           selectedOption={selectedOption}
-          onChangeInputValue={setSelectedOption}
+          onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
           placeholder="Select Option"
         />
@@ -195,7 +150,7 @@ export const Height = () => {
         <InputSelect
           height="lg"
           selectedOption={selectedOption}
-          onChangeInputValue={setSelectedOption}
+          onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
           placeholder="Select Option"
         />
@@ -212,10 +167,12 @@ export const NoBorder = () => {
       <InputSelect
         border={false}
         selectedOption={selectedOption}
-        onChangeInputValue={setSelectedOption}
+        onChangeSelectedOption={setSelectedOption}
         options={stringTypeOptions}
         placeholder="Select Option"
       />
+      <Divider />
+      {selectedOption && <div>{getOptionName(selectedOption)}</div>}
     </div>
   );
 };

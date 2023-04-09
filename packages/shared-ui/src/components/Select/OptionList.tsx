@@ -38,7 +38,7 @@ const OptionList = ({ options, height, selectedOption, onChangeOption }: OptionL
         return (
           <li
             className={cn('option', height, {
-              selected: selectedOption === option,
+              selected: getOptionName(selectedOption ?? '') === getOptionName(option),
             })}
             key={uid(index)}
             onClick={() => onChangeOption(option)}
@@ -62,7 +62,13 @@ interface KeyDowmHandlerProps {
 }
 
 const handleKeyDown = ({ event, options, onChangeOption }: KeyDowmHandlerProps) => {
-  const selectedIndex = options.findIndex(option => option === document.activeElement);
+  // When the select box is focused, the index is -1.
+  // When the index is 0, it is the first option,
+  // So when it is -1 changed index to 0 to focus on the first option.
+  const selectedIndex = Math.max(
+    options.findIndex(option => option === document.activeElement),
+    0,
+  );
 
   switch (event.key) {
     case 'ArrowUp':
