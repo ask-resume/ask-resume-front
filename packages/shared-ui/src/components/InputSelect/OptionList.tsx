@@ -8,23 +8,23 @@ interface OptionListProps {
   options: Option[];
   height?: keyof typeof HeightOption;
   selectedOption: Option | null;
-  handleOptionClick: (option: Option) => void;
+  onChangeOption: (option: Option) => void;
 }
 
-const OptionList = ({ options, height, selectedOption, handleOptionClick }: OptionListProps) => {
+const OptionList = ({ options, height, selectedOption, onChangeOption }: OptionListProps) => {
   const listRef = React.useRef<HTMLUListElement>(null);
 
   React.useEffect(() => {
     const options = [...(listRef.current?.querySelectorAll<HTMLLIElement>('.option') ?? [])];
 
     const handleKeyDownEvent = (event: KeyboardEvent) =>
-      handleKeyDown({ event, options, handleOptionClick });
+      handleKeyDown({ event, options, onChangeOption });
 
     document.addEventListener('keydown', handleKeyDownEvent);
     return () => {
       document.removeEventListener('keydown', handleKeyDownEvent);
     };
-  }, [handleOptionClick, listRef]);
+  }, [onChangeOption, listRef]);
 
   if (options.length === 0) {
     return <ul className="_options no-content">No Content</ul>;
@@ -41,7 +41,7 @@ const OptionList = ({ options, height, selectedOption, handleOptionClick }: Opti
               selected: selectedOption === option,
             })}
             key={uid(index)}
-            onClick={() => handleOptionClick(option)}
+            onClick={() => onChangeOption(option)}
             data-value={JSON.stringify(option)}
             tabIndex={0}
           >
@@ -58,10 +58,10 @@ export default OptionList;
 interface KeyDowmHandlerProps {
   event: KeyboardEvent;
   options: HTMLLIElement[];
-  handleOptionClick: (option: Option) => void;
+  onChangeOption: (option: Option) => void;
 }
 
-const handleKeyDown = ({ event, options, handleOptionClick }: KeyDowmHandlerProps) => {
+const handleKeyDown = ({ event, options, onChangeOption }: KeyDowmHandlerProps) => {
   const selectedIndex = options.findIndex(option => option === document.activeElement);
 
   switch (event.key) {
@@ -85,7 +85,7 @@ const handleKeyDown = ({ event, options, handleOptionClick }: KeyDowmHandlerProp
       event.preventDefault();
       if (selectedIndex !== -1) {
         const selectedOption = JSON.parse(options[selectedIndex].dataset.value!);
-        handleOptionClick(getOptionName(selectedOption));
+        onChangeOption(selectedOption);
       }
       break;
   }
