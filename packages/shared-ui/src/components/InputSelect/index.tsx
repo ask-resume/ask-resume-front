@@ -3,122 +3,133 @@ import cn from 'classnames';
 import { ColorMap } from '../../config/colorMap';
 import { FontSize } from '../../config/size';
 
-import { ArrowIcon } from '../Icon/ArrowIcon';
-import './index.scss';
+import Icon from '../Icon';
 import Text from '../Text';
+import OptionList from './OptionList';
+import { CloseBoxOnOutside } from 'shared-lib/hooks';
 
-export interface InputSelectOption {
-  [key: string]: any;
-  name?: string;
-}
+import * as Spacer from '../../config/spacer';
+import './index.scss';
+
+export type Option = { [key: string]: any; name: string } | string;
+export const HeightOption = {
+  sm: 16,
+  md: 20,
+  lg: 24,
+} as const;
 
 export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   inputValue: string;
   onChangeInputValue: (value: string) => void;
-  options: InputSelectOption[];
+  options: Option[];
+  width?: number;
+  height?: keyof typeof HeightOption;
   className?: string;
   placeholder?: string;
-  inputSize?:
-    | /*24px*/ 'xs'
-    | /*32px*/ 'sm'
-    | /*40px*/ 'md'
-    | /*48px*/ 'lg'
-    | /*60px*/ 'xl'
-    | /*150px*/ 'xxl';
-  color?: ColorMap;
-  label?: string;
+  labelText?: string;
   labelSize?: FontSize;
   labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
 }
 
+export const getOptionName = (option: Option) => {
+  return typeof option === 'string' ? option : option.name;
+};
+
 // TODO: implement optional label ✅
-// TODO: styling
-// TODO: Modify Dropdown to select options according to key input (ArrowUp, ArrowDown, Enter)
-// TODO: Implement Dropdown
+// TODO: styling ✅
+//  - Input component
+//  - OptionsList Styling
+// TODO: Modify Dropdown to select options according to key input (ArrowUp, ArrowDown, Enter) ✅
+// TODO: Close OptionList when click outside ✅
+// FIX: fix an issue where an object string was output when an option was an object ✅
+// FIX: Modify to receive selectedOption as props
 const InputSelect = ({
   inputValue,
   onChangeInputValue,
   options,
-  className,
   placeholder,
-  inputSize,
-  color,
-  label,
+  className,
+  width = 200,
+  height = 'sm',
+  labelText,
   labelSize = 'medium',
   labelWeight = 'regular',
 }: InputSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<InputSelectOption | null>(null);
+  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+  console.log('selectedOption :>> ', selectedOption);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChangeInputValue(event.target.value);
   };
 
-  const handleOptionClick = (option: InputSelectOption) => {
+  const handleOptionClick = (option: Option) => {
     setSelectedOption(option);
-    onChangeInputValue(option.toString());
+
+    const optionName = getOptionName(option);
+    onChangeInputValue(optionName);
     setIsOpen(false);
   };
 
-  const handleInputClick = () => {
-    setIsOpen(true);
-  };
+  const handleInputClick = () => setIsOpen(true);
+  const handleOptionListClose = () => setIsOpen(false);
 
   const handleIconClick = (event: React.MouseEvent<HTMLSpanElement>) => {
     event.stopPropagation();
     setIsOpen(isOpen => !isOpen);
   };
 
-  const filteredOptions = options.filter(option =>
-    (option.name?.toString() || option.toString()).toLowerCase().includes(inputValue.toLowerCase()),
-  );
+  const filteredOptions = options.filter(option => {
+    return getOptionName(option).toLowerCase().includes(inputValue.toLowerCase());
+  });
 
   return (
-    <div
-      className={cn('_INPUT_SELECT_', className, {
-        inputSize,
-      })}
-    >
-      {label && (
-        <Text className={cn('label')} variant="inline" size={labelSize} weight={labelWeight}>
-          {label}
-        </Text>
-      )}
-      <div className="input" onClick={handleInputClick}>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder={placeholder}
-          style={{ borderColor: color, color }}
-        />
-        <span
-          className={`icon ${isOpen ? 'open' : ''}`}
-          style={{ color }}
-          onClick={handleIconClick}
-        >
-          <ArrowIcon />
-        </span>
-      </div>
-      {isOpen && (
-        <ul
-          className={cn(className, {
-            inputSize,
-          })}
-          style={{ borderColor: color }}
-        >
-          {filteredOptions.map((option, index) => (
-            <li
-              key={index}
-              className={`option ${selectedOption === option ? 'selected' : ''}`}
-              onClick={() => handleOptionClick(option)}
+    <CloseBoxOnOutside onClose={handleOptionListClose}>
+      <div
+        className={cn('_INPUT_SELECT_', className)}
+        style={{
+          width: `${width}px`,
+        }}
+      >
+        {labelText && (
+          <div style={{ padding: `${Spacer.spacer_small} 0` }}>
+            <Text
+              className={cn('_label')}
+              size={labelSize}
+              weight={labelWeight}
+              variant="label"
+              htmlFor="dropdown-input"
             >
-              {option?.name?.toString() ?? option.toString()}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+              {labelText}
+            </Text>
+          </div>
+        )}
+        <div className={cn('_wrapper', height, { open: isOpen })} onClick={handleInputClick}>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder={placeholder}
+            className={cn('_INPUT_')}
+            id="dropdown-input"
+          />
+          <button className={cn('_icon', height, { open: isOpen })} onClick={handleIconClick}>
+            <Icon.ArrowIcon
+              size={HeightOption[height]}
+              color={isOpen ? ColorMap.gray_8 : ColorMap.gray_6}
+            />
+          </button>
+        </div>
+        {isOpen && (
+          <OptionList
+            options={filteredOptions}
+            selectedOption={selectedOption}
+            handleOptionClick={handleOptionClick}
+            height={height}
+          />
+        )}
+      </div>
+    </CloseBoxOnOutside>
   );
 };
 

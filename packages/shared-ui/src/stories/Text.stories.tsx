@@ -33,10 +33,10 @@ export const Variant = () => {
       <header style={{ color: '#1C7ED6', paddingTop: 48, paddingBottom: 8 }}>
         <Text variant="h4">Font Size</Text>
       </header>
-      <Text variant="block" size="xx-small">
-        xx-small: 12px
+      <Text variant="block" size="xx_small">
+        xx_small: 12px
       </Text>
-      <Text variant="block" size="x-small">
+      <Text variant="block" size="x_small">
         x-small: 13px
       </Text>
       <Text variant="block" size="small">
@@ -48,17 +48,17 @@ export const Variant = () => {
       <Text variant="block" size="large">
         large: 18px
       </Text>
-      <Text variant="block" size="x-large">
-        x-large: 21px
+      <Text variant="block" size="x_large">
+        x_large: 21px
       </Text>
-      <Text variant="block" size="xx-large">
-        xx-large: 24px
+      <Text variant="block" size="xx_large">
+        xx_large: 24px
       </Text>
-      <Text variant="block" size="xxx-large">
-        xxx-large: 36px
+      <Text variant="block" size="xxx_large">
+        xxx_large: 36px
       </Text>
-      <Text variant="block" size="xxxx-large">
-        xxxx-large: 48px
+      <Text variant="block" size="xxxx_large">
+        xxxx_large: 48px
       </Text>
 
       <header style={{ color: '#1C7ED6', paddingTop: 48, paddingBottom: 8 }}>

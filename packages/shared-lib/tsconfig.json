@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.node.json",
   "include": ["**/*"],
+  "exclude": ["node_modules", ".github"],
   "compilerOptions": {
     "target": "ESNext",
     "lib": ["ES2015", "ES2019", "dom"],

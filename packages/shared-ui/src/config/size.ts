@@ -1,13 +1,13 @@
 type ButtonSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type FontSize =
-  | 'xx-small'
-  | 'x-small'
+  | 'xx_small'
+  | 'x_small'
   | 'small'
   | 'medium'
   | 'large'
-  | 'x-large'
-  | 'xx-large'
-  | 'xxx-large'
-  | 'xxxx-large';
+  | 'x_large'
+  | 'xx_large'
+  | 'xxx_large'
+  | 'xxxx_large';
 
 export type { ButtonSize, FontSize };

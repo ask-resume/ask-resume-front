@@ -24,19 +24,23 @@ interface ShadowBox {
   name: ShadowMap;
 }
 
-const ShadowBox = ({ name }: ShadowBox) => (
-  <div
-    style={{
-      boxShadow: ShadowMap[name],
-      padding: '2rem',
-      margin: '1rem',
-      backgroundColor: '#fff',
-      border: '1px solid #ced4da',
-      overflow: 'hidden',
-    }}
-  >
-    <Text size="small" weight="medium" variant="block" style={{ padding: '4px 0' }}>
-      {name}
-    </Text>
-  </div>
-);
+const ShadowBox = ({ name }: ShadowBox) => {
+  const boxShadow = ShadowBox[name as keyof typeof ShadowBox];
+
+  return (
+    <div
+      style={{
+        boxShadow,
+        padding: '2rem',
+        margin: '1rem',
+        backgroundColor: '#fff',
+        border: '1px solid #ced4da',
+        overflow: 'hidden',
+      }}
+    >
+      <Text size="small" weight="medium" variant="block" style={{ padding: '4px 0' }}>
+        {name}
+      </Text>
+    </div>
+  );
+};
