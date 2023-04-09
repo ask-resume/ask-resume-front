@@ -1,11 +1,12 @@
 import React from 'react';
-import InputSelect from '../components/InputSelect';
-import { ColorMap } from '../config/colorMap';
+
+import InputSelect, { Option, getOptionName } from '../components/InputSelect';
+import Divider from '../components/Divider';
 
 import '../reset.scss';
 
 export default {
-  title: 'Component/Dropdown',
+  title: 'Component/InputSelect',
   component: InputSelect,
 };
 
@@ -13,89 +14,207 @@ const stringTypeOptions = ['Option 1', 'Option 2', 'Option 3'];
 const objTypeOptions = [
   {
     id: 1,
-    name: '최고 경영자',
+    name: 'CEO',
   },
   {
     id: 2,
-    name: '최고 지속 가능성 임원',
+    name: 'Chief Sustainability Officer',
   },
   {
     id: 3,
-    name: '일반 및 운영 관리자',
+    name: 'General & Operations Manager',
   },
   {
     id: 4,
-    name: '입법자',
+    name: 'legislator',
   },
   {
     id: 5,
-    name: '광고 및 프로모션 관리자',
+    name: 'Ads and Promotions Manager',
   },
   {
     id: 6,
-    name: '마케팅 관리자',
+    name: 'Marketing Manager',
   },
   {
     id: 7,
-    name: '영업 관리자',
+    name: 'Sales manager',
   },
   {
     id: 8,
-    name: '홍보 관리자',
+    name: 'Public Relations Manager',
   },
   {
     id: 9,
-    name: '모금 관리자',
+    name: 'Fundraising manager',
   },
   {
     id: 10,
-    name: '관리 서비스 관리자',
+    name: 'Managed Services Manager',
   },
 ];
 
 export const Default = () => {
-  const [inputValue, setInputValue] = React.useState('');
+  const [selectedOption, setSelectedOption] = React.useState<Option | null>(null);
 
   return (
-    <div style={{ padding: 20 }}>
-      <InputSelect
-        inputValue={inputValue}
-        onChangeInputValue={currInputValue => setInputValue(currInputValue)}
-        options={stringTypeOptions}
-        placeholder="Job"
-      />
+    <div style={{ marginBottom: 50 }}>
+      <div style={{ padding: 20 }}>
+        <InputSelect
+          selectedOption={selectedOption}
+          onChangeInputValue={setSelectedOption}
+          options={stringTypeOptions}
+          placeholder="Select Option"
+        />
+        <Divider />
+        {selectedOption && <div>{getOptionName(selectedOption)}</div>}
+      </div>
     </div>
   );
 };
 
 export const ObjDefault = () => {
-  const [inputValue, setInputValue] = React.useState('');
+  const [selectedOption, setSelectedOption] = React.useState<Option | null>(null);
 
   return (
-    <div style={{ padding: 20 }}>
-      <InputSelect
-        inputValue={inputValue}
-        onChangeInputValue={currInputValue => setInputValue(currInputValue)}
-        options={objTypeOptions}
-        placeholder="Job"
-      />
+    <div style={{ marginBottom: 50 }}>
+      <div style={{ padding: 20 }}>
+        <InputSelect
+          selectedOption={selectedOption}
+          onChangeInputValue={setSelectedOption}
+          options={objTypeOptions}
+          placeholder="Job"
+        />
+        <Divider />
+        {selectedOption && <div>{getOptionName(selectedOption)}</div>}
+      </div>
     </div>
   );
 };
 
 export const WithLabel = () => {
-  const [inputValue, setInputValue] = React.useState('');
+  const [selectedOption, setSelectedOption] = React.useState<Option | null>(null);
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ marginBottom: 50 }}>
+      <div style={{ padding: 20 }}>
+        <InputSelect
+          width={500}
+          height="lg"
+          selectedOption={selectedOption}
+          onChangeInputValue={setSelectedOption}
+          options={objTypeOptions}
+          labelText="Job"
+          placeholder="Please select your job (or future aspirations)"
+        />
+        <Divider />
+        {selectedOption && <div>{getOptionName(selectedOption)}</div>}
+      </div>
+    </div>
+  );
+};
+
+export const Width = () => {
+  const [selectedOption, setSelectedOption] = React.useState<Option | null>(null);
+
+  return (
+    <div style={{ marginBottom: 50 }}>
+      <div style={{ padding: 20 }}>
+        <InputSelect
+          width={100}
+          selectedOption={selectedOption}
+          onChangeInputValue={setSelectedOption}
+          options={stringTypeOptions}
+          placeholder="Select Option"
+        />
+      </div>
+      <div style={{ padding: 20 }}>
+        <InputSelect
+          width={200}
+          selectedOption={selectedOption}
+          onChangeInputValue={setSelectedOption}
+          options={stringTypeOptions}
+          placeholder="Select Option"
+        />
+      </div>
+      <div style={{ padding: 20 }}>
+        <InputSelect
+          width={300}
+          selectedOption={selectedOption}
+          onChangeInputValue={setSelectedOption}
+          options={stringTypeOptions}
+          placeholder="Select Option"
+        />
+      </div>
+      <div style={{ padding: 20 }}>
+        <InputSelect
+          width={400}
+          selectedOption={selectedOption}
+          onChangeInputValue={setSelectedOption}
+          options={stringTypeOptions}
+          placeholder="Select Option"
+        />
+      </div>
+      <div style={{ padding: 20 }}>
+        <InputSelect
+          width={500}
+          selectedOption={selectedOption}
+          onChangeInputValue={setSelectedOption}
+          options={stringTypeOptions}
+          placeholder="Select Option"
+        />
+      </div>
+    </div>
+  );
+};
+
+export const Height = () => {
+  const [selectedOption, setSelectedOption] = React.useState<Option | null>(null);
+
+  return (
+    <div style={{ marginBottom: 50 }}>
+      <div style={{ padding: 20 }}>
+        <InputSelect
+          height="sm"
+          selectedOption={selectedOption}
+          onChangeInputValue={setSelectedOption}
+          options={stringTypeOptions}
+          placeholder="Select Option"
+        />
+      </div>
+      <div style={{ padding: 20 }}>
+        <InputSelect
+          height="md"
+          selectedOption={selectedOption}
+          onChangeInputValue={setSelectedOption}
+          options={stringTypeOptions}
+          placeholder="Select Option"
+        />
+      </div>
+      <div style={{ padding: 20 }}>
+        <InputSelect
+          height="lg"
+          selectedOption={selectedOption}
+          onChangeInputValue={setSelectedOption}
+          options={stringTypeOptions}
+          placeholder="Select Option"
+        />
+      </div>
+    </div>
+  );
+};
+
+export const NoBorder = () => {
+  const [selectedOption, setSelectedOption] = React.useState<Option | null>(null);
+
+  return (
+    <div style={{ marginBottom: 50 }}>
       <InputSelect
-        width={500}
-        height="lg"
-        inputValue={inputValue}
-        onChangeInputValue={currInputValue => setInputValue(currInputValue)}
-        options={['Option 1', 'Option 2', 'Option 3']}
-        labelText="Job"
-        placeholder="Please select your job (or future aspirations)"
+        border={false}
+        selectedOption={selectedOption}
+        onChangeInputValue={setSelectedOption}
+        options={stringTypeOptions}
+        placeholder="Select Option"
       />
     </div>
   );
