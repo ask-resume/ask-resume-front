@@ -19,8 +19,8 @@ export const HeightOption = {
 } as const;
 
 export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
-  inputValue: string;
-  onChangeInputValue: (value: string) => void;
+  selectedOption: Option | null;
+  onChangeInputValue: (value: Option | null) => void;
   options: Option[];
   width?: number;
   height?: keyof typeof HeightOption;
@@ -29,22 +29,15 @@ export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   labelText?: string;
   labelSize?: FontSize;
   labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
+  border?: boolean;
 }
 
 export const getOptionName = (option: Option) => {
   return typeof option === 'string' ? option : option.name;
 };
 
-// TODO: implement optional label ✅
-// TODO: styling ✅
-//  - Input component
-//  - OptionsList Styling
-// TODO: Modify Dropdown to select options according to key input (ArrowUp, ArrowDown, Enter) ✅
-// TODO: Close OptionList when click outside ✅
-// FIX: fix an issue where an object string was output when an option was an object ✅
-// FIX: Modify to receive selectedOption as props
 const InputSelect = ({
-  inputValue,
+  selectedOption,
   onChangeInputValue,
   options,
   placeholder,
@@ -54,20 +47,20 @@ const InputSelect = ({
   labelText,
   labelSize = 'medium',
   labelWeight = 'regular',
+  border = true,
 }: InputSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
-  console.log('selectedOption :>> ', selectedOption);
+  const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChangeInputValue(event.target.value);
+    setInputValue(event.target.value);
   };
 
-  const handleOptionClick = (option: Option) => {
-    setSelectedOption(option);
+  const handleOptionChange = (option: Option) => {
+    onChangeInputValue(option);
 
     const optionName = getOptionName(option);
-    onChangeInputValue(optionName);
+    setInputValue(optionName);
     setIsOpen(false);
   };
 
@@ -104,7 +97,10 @@ const InputSelect = ({
             </Text>
           </div>
         )}
-        <div className={cn('_wrapper', height, { open: isOpen })} onClick={handleInputClick}>
+        <div
+          className={cn('_wrapper', height, { open: isOpen, border })}
+          onClick={handleInputClick}
+        >
           <input
             type="text"
             value={inputValue}
@@ -124,7 +120,7 @@ const InputSelect = ({
           <OptionList
             options={filteredOptions}
             selectedOption={selectedOption}
-            handleOptionClick={handleOptionClick}
+            onChangeOption={handleOptionChange}
             height={height}
           />
         )}
