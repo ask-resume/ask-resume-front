@@ -5,12 +5,12 @@ import { FontSize } from '../../config/size';
 
 import Icon from '../Icon';
 import Text from '../Text';
+import { Option, HeightOption, getOptionName } from '../Select';
 import OptionList from '../Select/OptionList';
 import { CloseBoxOnOutside } from 'shared-lib/hooks';
 
 import * as Spacer from '../../config/spacer';
 import './index.scss';
-import { Option, HeightOption, getOptionName } from '../Select';
 
 export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   selectedOption: Option | null;
@@ -43,7 +43,8 @@ const InputSelect = ({
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+    const inputValue = event.target.value;
+    setInputValue(inputValue);
   };
 
   const handleOptionChange = (option: Option) => {
@@ -96,7 +97,7 @@ const InputSelect = ({
             value={inputValue}
             onChange={handleInputChange}
             placeholder={placeholder}
-            className={cn('select', '_INPUT_')}
+            className={cn('_INPUT_', 'select')}
             id="dropdown-input"
           />
           <button className={cn('_icon', height, { open: isOpen })} onClick={handleIconClick}>

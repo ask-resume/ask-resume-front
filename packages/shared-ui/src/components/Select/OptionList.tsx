@@ -62,13 +62,7 @@ interface KeyDowmHandlerProps {
 }
 
 const handleKeyDown = ({ event, options, onChangeOption }: KeyDowmHandlerProps) => {
-  // When the select box is focused, the index is -1.
-  // When the index is 0, it is the first option,
-  // So when it is -1 changed index to 0 to focus on the first option.
-  const selectedIndex = Math.max(
-    options.findIndex(option => option === document.activeElement),
-    0,
-  );
+  const selectedIndex = options.findIndex(option => option === document.activeElement);
 
   switch (event.key) {
     case 'ArrowUp':

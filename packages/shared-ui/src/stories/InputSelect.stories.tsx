@@ -1,6 +1,7 @@
 import React from 'react';
 
-import InputSelect, { Option, getOptionName } from '../components/Select';
+import InputSelect from '../components/InputSelect';
+import { Option, getOptionName } from '../components/Select';
 import Divider from '../components/Divider';
 
 import '../reset.scss';
