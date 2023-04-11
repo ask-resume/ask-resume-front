@@ -11,6 +11,7 @@ interface OptionListProps {
   onChangeOption: (option: Option) => void;
 }
 
+// TODO: Render spinner while loading when options are not yet received
 const OptionList = ({ options, height, selectedOption, onChangeOption }: OptionListProps) => {
   const listRef = React.useRef<HTMLUListElement>(null);
 
