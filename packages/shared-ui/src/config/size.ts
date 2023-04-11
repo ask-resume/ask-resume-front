@@ -9,5 +9,6 @@ type FontSize =
   | 'xx_large'
   | 'xxx_large'
   | 'xxxx_large';
+type SliderSize = 'small' | 'medium' | 'large';
 
-export type { ButtonSize, FontSize };
+export type { ButtonSize, FontSize, SliderSize };
