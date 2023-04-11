@@ -4,7 +4,7 @@ import './index.scss';
 
 type Valiant = 'arrow' | 'chevron' | 'chevron-alt' | 'solid';
 
-export interface ArrowIconProps {
+export interface ArrowProps {
   color?: ColorMap;
   className?: string;
   size?: number;
@@ -13,15 +13,15 @@ export interface ArrowIconProps {
   variant?: Valiant;
 }
 
-export const ArrowIcon = ({
+export const Arrow = ({
   color,
   className,
   size = 16,
   rotate,
   flip,
   variant = 'chevron',
-}: ArrowIconProps) => {
-  const ArrowIcon = getArrowIcon(variant, color);
+}: ArrowProps) => {
+  const Arrow = getArrow(variant, color);
 
   return (
     <i
@@ -33,12 +33,12 @@ export const ArrowIcon = ({
         transform: `rotate(${rotate}deg)`,
       }}
     >
-      {ArrowIcon}
+      {Arrow}
     </i>
   );
 };
 
-const getArrowIcon = (valiant?: Valiant, color?: ColorMap) => {
+const getArrow = (valiant?: Valiant, color?: ColorMap) => {
   switch (valiant) {
     case 'arrow':
       return (

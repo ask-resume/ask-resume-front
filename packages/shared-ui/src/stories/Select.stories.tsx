@@ -48,7 +48,7 @@ export const ObjDefault = () => {
 };
 
 export const WithLabel = () => {
-  const [selectedOption, setSelectedOption] = React.useState<Option | null>(objTypeOptions[0]);
+  const [selectedOption, setSelectedOption] = React.useState<Option>(stringTypeOptions[0]);
 
   return (
     <div style={{ marginBottom: 50 }}>
@@ -66,57 +66,8 @@ export const WithLabel = () => {
   );
 };
 
-export const Width = () => {
-  const [selectedOption, setSelectedOption] = React.useState<Option | null>(null);
-
-  return (
-    <div style={{ marginBottom: 50 }}>
-      <div style={{ padding: 20 }}>
-        <Select
-          width={100}
-          selectedOption={selectedOption}
-          onChangeSelectedOption={setSelectedOption}
-          options={stringTypeOptions}
-        />
-      </div>
-      <div style={{ padding: 20 }}>
-        <Select
-          width={200}
-          selectedOption={selectedOption}
-          onChangeSelectedOption={setSelectedOption}
-          options={stringTypeOptions}
-        />
-      </div>
-      <div style={{ padding: 20 }}>
-        <Select
-          width={300}
-          selectedOption={selectedOption}
-          onChangeSelectedOption={setSelectedOption}
-          options={stringTypeOptions}
-        />
-      </div>
-      <div style={{ padding: 20 }}>
-        <Select
-          width={400}
-          selectedOption={selectedOption}
-          onChangeSelectedOption={setSelectedOption}
-          options={stringTypeOptions}
-        />
-      </div>
-      <div style={{ padding: 20 }}>
-        <Select
-          width={500}
-          selectedOption={selectedOption}
-          onChangeSelectedOption={setSelectedOption}
-          options={stringTypeOptions}
-        />
-      </div>
-    </div>
-  );
-};
-
 export const Height = () => {
-  const [selectedOption, setSelectedOption] = React.useState<Option | null>(null);
+  const [selectedOption, setSelectedOption] = React.useState<Option>(stringTypeOptions[0]);
 
   return (
     <div style={{ marginBottom: 50 }}>
@@ -128,6 +79,7 @@ export const Height = () => {
           options={stringTypeOptions}
         />
       </div>
+
       <div style={{ padding: 20 }}>
         <Select
           height="md"
@@ -136,6 +88,7 @@ export const Height = () => {
           options={stringTypeOptions}
         />
       </div>
+
       <div style={{ padding: 20 }}>
         <Select
           height="lg"
@@ -144,12 +97,15 @@ export const Height = () => {
           options={stringTypeOptions}
         />
       </div>
+
+      <Divider />
+      {selectedOption && <div>{getOptionName(selectedOption)}</div>}
     </div>
   );
 };
 
 export const NoBorder = () => {
-  const [selectedOption, setSelectedOption] = React.useState<Option | null>(null);
+  const [selectedOption, setSelectedOption] = React.useState<Option>(stringTypeOptions[0]);
 
   return (
     <div style={{ marginBottom: 50 }}>

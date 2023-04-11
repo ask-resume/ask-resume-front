@@ -4,7 +4,7 @@ import './index.scss';
 
 type Valiant = 'default' | 'box';
 
-export interface EditIconProps {
+export interface EditProps {
   color?: ColorMap;
   className?: string;
   size?: number;
@@ -13,15 +13,15 @@ export interface EditIconProps {
   variant?: 'default' | 'box';
 }
 
-export const EditIcon = ({
+export const Edit = ({
   color = ColorMap.gray_8,
   className,
   size = 16,
   rotate,
   flip,
   variant = 'default',
-}: EditIconProps) => {
-  const EditIcon = getEditIcon(variant, color);
+}: EditProps) => {
+  const Edit = getEdit(variant, color);
   return (
     <i
       className={cn('dds-icon', className, { flip })}
@@ -32,12 +32,12 @@ export const EditIcon = ({
         transform: `rotate(${rotate}deg)`,
       }}
     >
-      {EditIcon}
+      {Edit}
     </i>
   );
 };
 
-export const getEditIcon = (valiant?: Valiant, color: ColorMap = ColorMap.green) => {
+export const getEdit = (valiant?: Valiant, color: ColorMap = ColorMap.green) => {
   switch (valiant) {
     case 'box':
       return (
