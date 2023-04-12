@@ -2,11 +2,11 @@ name: 'Chromatic Deployment'
 
 on:
   push:
-#     branches:
-#       - main
-#       - develop
-#     paths-ignore:
-#       - '**/*.md'
+    branches:
+      - main
+      - develop
+    paths-ignore:
+      - '**/*.md'
 
 jobs:
   deploy_to_chromatic:
