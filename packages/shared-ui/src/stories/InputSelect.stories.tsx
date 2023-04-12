@@ -22,7 +22,7 @@ export const Default = () => {
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
-          placeholder="Select Option"
+          placeholder="Select String Option"
         />
         <Divider />
         {selectedOption && <div>{getOptionName(selectedOption)}</div>}
@@ -41,7 +41,7 @@ export const ObjDefault = () => {
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={objTypeOptions}
-          placeholder="Select Option"
+          placeholder="Select Obj Option"
         />
         <Divider />
         {selectedOption && <div>{getOptionName(selectedOption)}</div>}
@@ -61,7 +61,7 @@ export const WithLabel = () => {
           onChangeSelectedOption={setSelectedOption}
           options={objTypeOptions}
           labelText="Option"
-          placeholder="Select Option"
+          placeholder="Select String Option"
         />
         <Divider />
         {selectedOption && <div>{getOptionName(selectedOption)}</div>}
@@ -81,7 +81,7 @@ export const Height = () => {
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
-          placeholder="Select Option"
+          placeholder="Height: sm"
         />
       </div>
       <div style={{ padding: 20 }}>
@@ -90,7 +90,7 @@ export const Height = () => {
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
-          placeholder="Select Option"
+          placeholder="Height: md"
         />
       </div>
       <div style={{ padding: 20 }}>
@@ -99,7 +99,7 @@ export const Height = () => {
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
-          placeholder="Select Option"
+          placeholder="Height: lg"
         />
       </div>
     </div>
@@ -116,7 +116,7 @@ export const NoBorder = () => {
         selectedOption={selectedOption}
         onChangeSelectedOption={setSelectedOption}
         options={stringTypeOptions}
-        placeholder="Select Option"
+        placeholder="Select String Option"
       />
       <Divider />
       {selectedOption && <div>{getOptionName(selectedOption)}</div>}

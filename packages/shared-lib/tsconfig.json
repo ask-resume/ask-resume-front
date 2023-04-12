@@ -5,6 +5,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "lib": ["ES2015", "ES2019", "dom"],
+    "module": "CommonJS",
     "useDefineForClassFields": true,
     "allowJs": false,
     "skipLibCheck": true,
@@ -12,7 +13,6 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
