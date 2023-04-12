@@ -8,7 +8,11 @@ export default {
 };
 
 export const Default = () => {
-  return <Textarea labelText="Input" />;
+  return (
+    <div style={{ padding: 20 }}>
+      <Textarea height={100} labelText="Input" />
+    </div>
+  );
 };
 
 export const Height = () => {

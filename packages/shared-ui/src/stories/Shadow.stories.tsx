@@ -25,7 +25,7 @@ interface ShadowBox {
 }
 
 const ShadowBox = ({ name }: ShadowBox) => {
-  const boxShadow = ShadowBox[name as keyof typeof ShadowBox];
+  const boxShadow = ShadowMap[name as keyof typeof ShadowMap];
 
   return (
     <div
