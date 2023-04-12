@@ -30,10 +30,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
       - if: steps.pnpm-cache.outputs.cache-hit != 'true'
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Deploy to Chromatic
         working-directory: packages/shared-ui
         run: npx chromatic --exit-zero-on-changes
         env:
-          SHARED_UI_CHROMATIC_PROJECT_TOKEN: ${{ secrets.SHARED_UI_CHROMATIC_PROJECT_TOKEN }}
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
