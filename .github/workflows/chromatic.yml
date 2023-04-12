@@ -36,4 +36,4 @@ jobs:
         working-directory: packages/shared-ui
         run: npx chromatic --exit-zero-on-changes
         env:
-          SHARED_UI_CHROMATIC_PROJECT_TOKEN: ${{ secrets.SHARED_UI_CHROMATIC_PROJECT_TOKEN }}
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
