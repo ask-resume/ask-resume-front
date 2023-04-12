@@ -2,16 +2,19 @@ import React, { HTMLAttributes } from 'react';
 import cn from 'classnames';
 import './index.scss';
 
-import { TFontSize } from '../../config/size';
-import { EColorMap } from '../../config/colorMap';
+import { FontSize } from '../../config/size';
+import { ColorMap } from '../../config/colorMap';
+
+type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'block' | 'inline' | 'label';
 
 interface TextProps extends HTMLAttributes<HTMLDivElement | HTMLSpanElement | HTMLHeadingElement> {
-  textColor?: EColorMap;
+  textColor?: ColorMap;
   className?: string;
-  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'block' | 'inline';
+  variant?: Variant;
+  htmlFor?: string;
   weight?: 'light' | 'regular' | 'medium' | 'bold';
   lineHeight?: 'narrow' | 'wide';
-  size?: TFontSize;
+  size?: FontSize;
   align?: 'start' | 'center' | 'end';
 }
 
@@ -23,12 +26,14 @@ const elementMap = {
   h5: 'h5',
   block: 'div',
   inline: 'span',
+  label: 'label',
 };
 
 const Text = ({
   className,
   children,
   variant = 'block',
+  htmlFor,
   weight,
   lineHeight,
   size,
@@ -45,6 +50,14 @@ const Text = ({
     `line-height-${lineHeight}`,
     `text-align-${align}`,
   );
+
+  if (variant === 'label') {
+    return (
+      <label className={classNames} style={{ color: textColor }} htmlFor={htmlFor} {...props}>
+        {children}
+      </label>
+    );
+  }
 
   return React.createElement(
     element,

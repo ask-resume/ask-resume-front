@@ -1,0 +1,10 @@
+@import '../Select/index.scss';
+
+._INPUT_ {
+  &::placeholder {
+    color: $gray_5;
+  }
+  &:focus {
+    outline: none;
+  }
+}

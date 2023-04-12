@@ -1,0 +1,25 @@
+@import '../../index.scss';
+
+._TEXTAREA_ {
+  textarea {
+    width: 100%;
+    resize: none;
+    padding: $font_size_large $font_size_medium;
+    border: 1px solid $gray_3;
+    border-radius: $font_size_x_small;
+    &:focus {
+      outline: none;
+      border-color: $blue_5;
+    }
+  }
+
+  ._header {
+    display: flex;
+    justify-content: space-between;
+  }
+  ._counter {
+    bottom: 10px;
+    right: 10px;
+    color: $blue_gray;
+  }
+}

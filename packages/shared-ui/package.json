@@ -2,15 +2,18 @@
   "name": "shared-ui",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "pnpx chromatic --project-token=%SHARED_UI_CHROMATIC_PROJECT_TOKEN%"
+    "chromatic": "pnpx chromatic --project-token=%SHARED_UI_CHROMATIC_PROJECT_TOKEN%",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@types/styled-components": "^5.1.26",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-uid": "^2.3.2",
     "shared-lib": "workspace:^",
     "styled-components": "^5.3.9"
   },
@@ -36,11 +39,14 @@
     "babel-loader": "^8.3.0",
     "chromatic": "^6.17.2",
     "classnames": "^2.3.2",
+    "eslint": "8.37.0",
+    "eslint-config-custom": "workspace:*",
     "jest": "^29.5.0",
     "node-sass": "^8.0.0",
     "sass": "^1.60.0",
     "typescript": "^4.9.3",
     "vite": "^4.2.0",
-    "vite-plugin-dts": "^2.1.0"
+    "vite-plugin-dts": "^2.1.0",
+    "vite-plugin-eslint": "^1.8.1"
   }
 }

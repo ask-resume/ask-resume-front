@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  height: 200px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.box1 {
+  background-color: #e6e6e6;
+  height: 100%;
+}
+
+.box2 {
+  background-color: #f2f2f2;
+  height: 100%;
+}
+
+.divider {
+  width: 10px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  cursor: col-resize;
+  z-index: 1;
+  background-color: #cccccc;
+}
