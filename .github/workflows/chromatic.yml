@@ -2,11 +2,11 @@ name: 'Chromatic Deployment'
 
 on:
   push:
-    branches:
-      - main
-      - develop
-    paths-ignore:
-      - '**/*.md'
+#     branches:
+#       - main
+#       - develop
+#     paths-ignore:
+#       - '**/*.md'
 
 jobs:
   deploy_to_chromatic:
@@ -30,7 +30,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
       - if: steps.pnpm-cache.outputs.cache-hit != 'true'
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Deploy to Chromatic
         working-directory: packages/shared-ui
