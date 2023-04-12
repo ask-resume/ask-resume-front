@@ -3,7 +3,7 @@ import cn from 'classnames';
 import './index.scss';
 import { FontSize } from '../../config/size';
 
-import { CheckIcon } from '../Icon/CheckIcon';
+import { Check } from '../Icon/Check';
 import Text from '../Text';
 
 export interface CheckboxProps extends React.HTMLAttributes<HTMLButtonElement> {
@@ -44,7 +44,7 @@ const Checkbox = ({
         })}
         style={{ width: size, minWidth: size, height: size }}
       >
-        <CheckIcon size={size} color={selected ? 'white' : 'transparent'} />
+        <Check size={size} color={selected ? 'white' : 'transparent'} />
       </div>
       {label && (
         <Text

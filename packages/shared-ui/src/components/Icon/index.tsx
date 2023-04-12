@@ -1,11 +1,11 @@
-import { ArrowIcon } from './ArrowIcon';
-import { CheckIcon } from './CheckIcon';
-import { EditIcon } from './EditIcon';
-import { SettingIcon } from './SettingIcon';
+import { Arrow } from './Arrow';
+import { Check } from './Check';
+import { Edit } from './Edit';
+import { Setting } from './Setting';
 
 export default {
-  ArrowIcon,
-  CheckIcon,
-  EditIcon,
-  SettingIcon,
+  Arrow,
+  Check,
+  Edit,
+  Setting,
 };

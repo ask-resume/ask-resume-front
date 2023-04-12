@@ -1,9 +1,10 @@
 @import '../../index.scss';
 
 // InputSelect wrapper
-._INPUT_SELECT_ {
+// If you want to change the width, you must pass the class or style from the parent component.
+._SELECT_ {
+  width: 300px;
   position: relative;
-  width: 100%;
   height: max-content;
 }
 

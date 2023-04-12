@@ -23,7 +23,6 @@ export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
   selectedOption: Option | null;
   onChangeSelectedOption: (value: Option) => void;
   options: Option[];
-  width?: number;
   height?: keyof typeof HeightOption;
   className?: string;
   border?: boolean;
@@ -42,7 +41,6 @@ const Select = ({
   onChangeSelectedOption,
   options,
   className,
-  width = 200,
   height = 'sm',
   labelText,
   labelSize = 'medium',
@@ -66,12 +64,7 @@ const Select = ({
 
   return (
     <CloseBoxOnOutside onClose={handleOptionListClose}>
-      <div
-        className={cn('_INPUT_SELECT_', className)}
-        style={{
-          width: `${width}px`,
-        }}
-      >
+      <div className={cn('_SELECT_', className)}>
         {labelText && (
           <div style={{ padding: `${Spacer.spacer_small} 0` }}>
             <Text
@@ -92,7 +85,7 @@ const Select = ({
             <span>{getOptionName(selectedOption ?? '')}</span>
           </div>
           <button className={cn('_icon', height, { open: isOpen })} onClick={handleIconClick}>
-            <Icon.ArrowIcon
+            <Icon.Arrow
               size={HeightOption[height]}
               color={isOpen ? ColorMap.gray_8 : ColorMap.gray_6}
             />

@@ -22,7 +22,7 @@ export const Default = () => {
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
-          placeholder="Select Option"
+          placeholder="Select String Option"
         />
         <Divider />
         {selectedOption && <div>{getOptionName(selectedOption)}</div>}
@@ -41,7 +41,7 @@ export const ObjDefault = () => {
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={objTypeOptions}
-          placeholder="Job"
+          placeholder="Select Obj Option"
         />
         <Divider />
         {selectedOption && <div>{getOptionName(selectedOption)}</div>}
@@ -60,65 +60,11 @@ export const WithLabel = () => {
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={objTypeOptions}
-          labelText="Job"
-          placeholder="Please select your job (or future aspirations)"
+          labelText="Option"
+          placeholder="Select String Option"
         />
         <Divider />
         {selectedOption && <div>{getOptionName(selectedOption)}</div>}
-      </div>
-    </div>
-  );
-};
-
-export const Width = () => {
-  const [selectedOption, setSelectedOption] = React.useState<Option | null>(null);
-
-  return (
-    <div style={{ marginBottom: 50 }}>
-      <div style={{ padding: 20 }}>
-        <InputSelect
-          width={100}
-          selectedOption={selectedOption}
-          onChangeSelectedOption={setSelectedOption}
-          options={stringTypeOptions}
-          placeholder="Select Option"
-        />
-      </div>
-      <div style={{ padding: 20 }}>
-        <InputSelect
-          width={200}
-          selectedOption={selectedOption}
-          onChangeSelectedOption={setSelectedOption}
-          options={stringTypeOptions}
-          placeholder="Select Option"
-        />
-      </div>
-      <div style={{ padding: 20 }}>
-        <InputSelect
-          width={300}
-          selectedOption={selectedOption}
-          onChangeSelectedOption={setSelectedOption}
-          options={stringTypeOptions}
-          placeholder="Select Option"
-        />
-      </div>
-      <div style={{ padding: 20 }}>
-        <InputSelect
-          width={400}
-          selectedOption={selectedOption}
-          onChangeSelectedOption={setSelectedOption}
-          options={stringTypeOptions}
-          placeholder="Select Option"
-        />
-      </div>
-      <div style={{ padding: 20 }}>
-        <InputSelect
-          width={500}
-          selectedOption={selectedOption}
-          onChangeSelectedOption={setSelectedOption}
-          options={stringTypeOptions}
-          placeholder="Select Option"
-        />
       </div>
     </div>
   );
@@ -135,7 +81,7 @@ export const Height = () => {
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
-          placeholder="Select Option"
+          placeholder="Height: sm"
         />
       </div>
       <div style={{ padding: 20 }}>
@@ -144,7 +90,7 @@ export const Height = () => {
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
-          placeholder="Select Option"
+          placeholder="Height: md"
         />
       </div>
       <div style={{ padding: 20 }}>
@@ -153,7 +99,7 @@ export const Height = () => {
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={stringTypeOptions}
-          placeholder="Select Option"
+          placeholder="Height: lg"
         />
       </div>
     </div>
@@ -170,7 +116,7 @@ export const NoBorder = () => {
         selectedOption={selectedOption}
         onChangeSelectedOption={setSelectedOption}
         options={stringTypeOptions}
-        placeholder="Select Option"
+        placeholder="Select String Option"
       />
       <Divider />
       {selectedOption && <div>{getOptionName(selectedOption)}</div>}

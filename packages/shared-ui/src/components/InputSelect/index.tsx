@@ -16,7 +16,6 @@ export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   selectedOption: Option | null;
   onChangeSelectedOption: (value: Option | null) => void;
   options: Option[];
-  width?: number;
   height?: keyof typeof HeightOption;
   className?: string;
   placeholder?: string;
@@ -26,13 +25,13 @@ export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   border?: boolean;
 }
 
+// If you want to change the width, you must pass the class or style from the parent component.
 const InputSelect = ({
   selectedOption,
   onChangeSelectedOption,
   options,
   placeholder,
   className,
-  width = 200,
   height = 'sm',
   labelText,
   labelSize = 'medium',
@@ -69,12 +68,7 @@ const InputSelect = ({
 
   return (
     <CloseBoxOnOutside onClose={handleOptionListClose}>
-      <div
-        className={cn('_INPUT_SELECT_', className)}
-        style={{
-          width: `${width}px`,
-        }}
-      >
+      <div className={cn('_SELECT_', className)}>
         {labelText && (
           <div style={{ padding: `${Spacer.spacer_small} 0` }}>
             <Text
@@ -101,7 +95,7 @@ const InputSelect = ({
             id="dropdown-input"
           />
           <button className={cn('_icon', height, { open: isOpen })} onClick={handleIconClick}>
-            <Icon.ArrowIcon
+            <Icon.Arrow
               size={HeightOption[height]}
               color={isOpen ? ColorMap.gray_8 : ColorMap.gray_6}
             />

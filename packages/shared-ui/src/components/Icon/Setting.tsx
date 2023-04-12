@@ -3,7 +3,7 @@ import { ColorMap } from '../../config/colorMap';
 import './index.scss';
 import cn from 'classnames';
 
-export interface SettingIconProps {
+export interface SettingProps {
   color?: ColorMap;
   className?: string;
   size?: number;
@@ -11,13 +11,13 @@ export interface SettingIconProps {
   flip?: boolean;
 }
 
-export const SettingIcon = ({
+export const Setting = ({
   color = ColorMap.gray_8,
   className,
   size = 16,
   rotate,
   flip,
-}: SettingIconProps) => {
+}: SettingProps) => {
   return (
     <i
       className={cn('dds-icon', className, { flip })}
