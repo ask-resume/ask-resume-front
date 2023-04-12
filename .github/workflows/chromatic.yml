@@ -2,17 +2,20 @@ name: 'Chromatic Deployment'
 
 on:
   push:
-    branches:
-      - main
-      - develop
-    paths-ignore:
-      - '**/*.md'
+    # branches:
+    #   - main
+    #   - develop
+    # paths-ignore:
+    #   - '**/*.md'
 
 jobs:
   deploy_to_chromatic:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-node@v3
         with:
           node-version: 16
