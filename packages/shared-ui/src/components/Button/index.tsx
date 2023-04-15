@@ -56,40 +56,37 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     // Optional Styling
     //    - Basic styling is basically applied according to the "variant and buttonColor" option.
     //    - Define additional styling according to colorOptions and spacer props.
-    const Btn = React.useMemo(
-      () => styled.button`
-        &._BUTTON_.${variant} {
-          ${!spacer && 'margin-left: 0px;'}
-          ${colorOption?.default && `background-color: ${colorOption?.default}; `}
+    const Btn = styled.button`
+      &._BUTTON_.${variant} {
+        ${!spacer && 'margin-left: 0px;'}
+        ${colorOption?.default && `background-color: ${colorOption?.default}; `}
         ${colorOption?.font && `color: ${colorOption?.font};`}
     
       ${colorOption?.icon?.default &&
-          `
+        `
         i > svg #icon__fill {
           fill: ${colorOption?.icon?.default};
         }`}
     
       &:hover {
-            ${colorOption?.hover && `background-color: ${colorOption?.hover};`}
-            ${colorOption?.icon?.hover &&
-            `
+          ${colorOption?.hover && `background-color: ${colorOption?.hover};`}
+          ${colorOption?.icon?.hover &&
+          `
           i > svg #icon__fill {
             fill: ${colorOption?.icon?.hover};
           }`}
-          }
+        }
 
-          &:active {
-            ${colorOption?.active && `background-color: ${colorOption?.active};`}
-            ${colorOption?.icon?.active &&
-            `
+        &:active {
+          ${colorOption?.active && `background-color: ${colorOption?.active};`}
+          ${colorOption?.icon?.active &&
+          `
           i > svg #icon__fill {
             fill: ${colorOption?.icon?.active};
           }`}
-          }
         }
-      `,
-      [variant, colorOption],
-    );
+      }
+    `;
 
     return (
       <Btn

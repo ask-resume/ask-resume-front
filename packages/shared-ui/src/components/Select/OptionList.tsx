@@ -7,12 +7,19 @@ import { Option, HeightOption, getOptionName } from '.';
 interface OptionListProps {
   options: Option[];
   height?: keyof typeof HeightOption;
+  boxShadow?: boolean;
   selectedOption: Option | null;
   onChangeOption: (option: Option) => void;
 }
 
 // TODO: Render spinner while loading when options are not yet received
-const OptionList = ({ options, height, selectedOption, onChangeOption }: OptionListProps) => {
+const OptionList = ({
+  options,
+  height,
+  boxShadow,
+  selectedOption,
+  onChangeOption,
+}: OptionListProps) => {
   const listRef = React.useRef<HTMLUListElement>(null);
 
   React.useEffect(() => {
@@ -32,7 +39,7 @@ const OptionList = ({ options, height, selectedOption, onChangeOption }: OptionL
   }
 
   return (
-    <ul className={cn('_options', height)} ref={listRef}>
+    <ul className={cn('_options', height, boxShadow)} ref={listRef}>
       {options.map((option, index) => {
         const optionName = getOptionName(option);
 

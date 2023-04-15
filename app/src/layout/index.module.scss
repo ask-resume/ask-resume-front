@@ -1,0 +1,42 @@
+@import '../index.scss';
+
+._LAYOUT_ {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $white;
+
+  ._container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+._GNB_ {
+  display: flex;
+  background-color: $white;
+  padding: $font_size_xx_small $font_size_x_small;
+
+  ._wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    ._logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  ._select_width {
+    width: 150px;
+  }
+}
+
+._FOOTER_ {
+  width: 100%;
+  margin: 2rem;
+}

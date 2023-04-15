@@ -9,15 +9,17 @@ import OptionList from './OptionList';
 import { CloseBoxOnOutside } from 'shared-lib/hooks';
 
 import * as Spacer from '../../config/spacer';
-
 import './index.scss';
 
-export type Option = { [key: string]: any; name: string } | string;
 export const HeightOption = {
   sm: 16,
   md: 20,
   lg: 24,
 } as const;
+
+type ObjectOption = { name: string; value?: string };
+type StringOption = string;
+export type Option = ObjectOption | StringOption;
 
 export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
   selectedOption: Option | null;
@@ -31,9 +33,11 @@ export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
   labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
 }
 
-// when option's default value is null, initialize it with an empty string.
+export const isObjectOption = (option: Option): option is ObjectOption =>
+  typeof option !== 'string';
+
 export const getOptionName = (option: Option) => {
-  return option ? (typeof option === 'string' ? option : option.name) : '';
+  return option ? (isObjectOption(option) ? option.name : option) : '';
 };
 
 const Select = ({
