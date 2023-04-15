@@ -1,26 +1,31 @@
+import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
-import Text from 'shared-ui/src/components/Text';
-import Button from 'shared-ui/src/components/Button';
 import Link from 'next/link';
 
-export default function UserInfo({ data }) {
-  console.log(data);
+import Text from 'shared-ui/src/components/Text';
+import Button from 'shared-ui/src/components/Button';
+import { getJobs } from '@/api/form';
+
+interface UserInfoProps<T> {
+  jobs: T[];
+}
+
+export default function UserInfo<T>({ jobs }: UserInfoProps<T>) {
   return (
     <main>
       <Text>user info page</Text>
+      <div>{JSON.stringify(jobs)}</div>
       <Link href="/form/user-resume">Go to user resume page</Link>
     </main>
   );
 }
 
-export async function getStaticProps() {
-  const res = await fetch('http://3.38.55.104:8080/api/v1/jobs?locale=ko');
-  const { data } = await res.json();
-
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  const jobs = await getJobs(locale!);
   return {
     props: {
-      data,
+      jobs,
     },
-    revalidate: 60, // 60초마다 데이터 갱신
+    revalidate: 3600,
   };
 }

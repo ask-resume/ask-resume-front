@@ -2,20 +2,20 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "outputs": ["dist/**", "storybook-static/**"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
       "dependsOn": ["^build"],
-      "env": [
-        { "name": "NODE_ENV", "value": "build" },
-        { "name": "API_URL", "value": "$PRODUCTION_API_URL", "if": "$NODE_ENV === 'production'" }
-      ]
+      "env": ["NEXT_PUBLIC_PRODUCTION_API_URL"]
     },
     "dev": {
       "cache": false,
       "persistent": true,
-      "env": [
-        { "name": "NODE_ENV", "value": "development" },
-        { "name": "API_URL", "value": "$DEV_API_URL" }
-      ]
+      "env": ["NEXT_PUBLIC_DEV_API_URL"]
+    },
+    "storybook:dev": {
+      "cache": false
+    },
+    "storybook:build": {
+      "outputs": ["storybook-static/**"]
     },
     "clean": {
       "cache": false
@@ -24,5 +24,6 @@
       "cache": false
     }
   },
-  "globalEnv": ["GITHUB_TOKEN"]
+  "globalEnv": ["GITHUB_TOKEN", "NODE_ENV"],
+  "globalDependencies": [".env"]
 }

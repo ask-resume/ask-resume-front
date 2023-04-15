@@ -5,15 +5,12 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { RecoilRoot } from 'recoil';
 
 import Layout from '@/layout';
-import '../index.scss';
-import '../reset.scss';
+import '@/index.scss';
+import '@/reset.scss';
 
-// TODO: API URL should be set in the environment variable
 // TODO: Add a function to measure the number of views with Google Analytics
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
-  // const apiUrl = process.env.API_URL;
-
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps?.dehydrateState}>

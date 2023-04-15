@@ -9,6 +9,7 @@ import OptionList from './OptionList';
 import { CloseBoxOnOutside } from 'shared-lib/hooks';
 
 import * as Spacer from '../../config/spacer';
+
 import './index.scss';
 
 export const HeightOption = {
