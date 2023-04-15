@@ -1,0 +1,572 @@
+/////////////////* Fonts */////////////////
+
+// Font Family
+$font: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
+  'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+
+// Font Weight
+$font_weight_light: 300;
+$font_weight_regular: 400;
+$font_weight_medium: 500;
+$font_weight_bold: 700;
+
+// Font Size
+$font_size_xx_small: 1.2rem;
+$font_size_x_small: 1.3rem;
+$font_size_small: 1.4rem;
+$font_size_medium: 1.6rem;
+$font_size_large: 1.8rem;
+$font_size_x_large: 2.1rem;
+$font_size_xx_large: 2.4rem;
+$font_size_xxx_large: 3.6rem;
+$font_size_xxxx_large: 4.8rem;
+
+// Line Height
+$line_height_medium: 1.5em;
+$line_height_large: 1.75em;
+
+// Spacer
+$spacer_xx_small: 0.4rem;
+$spacer_x_small: 0.8rem;
+$spacer_small: 1.2rem;
+$spacer_medium: 1.6rem;
+$spacer_large: 2rem;
+$spacer_x_large: 2.8rem;
+$spacer_xx_large: 6rem;
+
+/////////////////* Color */////////////////
+
+// Primary Blue
+$blue_0: #f3f9ff;
+$blue_1: #e6f2ff;
+$blue_2: #c5e1ff;
+$blue_3: #92c7ff;
+$blue_4: #5facff;
+$blue_5: #1184ff;
+$blue_6: #0c6cd3;
+$blue_7: #004c9e;
+$blue_8: #003267;
+
+// Gray
+$white: #fff;
+$gray_0: #f9f9fb;
+$gray_1: #efeff2;
+$gray_2: #ebebee;
+$gray_3: #e0e0e5;
+$gray_4: #cacacc;
+$gray_5: #b1b1b3;
+$gray_6: #767679;
+$gray_7: #444348;
+$gray_8: #15141a;
+$blue_gray: #8f8f9c;
+
+// System Color
+$active_green: #69db7c;
+$inactive_red: #ff8787;
+$warning_red_1: #fff0ee;
+$warning_red_2: #f8d0d1;
+
+// Green
+$green: #34c759;
+$thumbs_green: #40c057;
+$text_green: #00a21d;
+
+// Red
+$red_5: #ff6b6b;
+$red_6: #fa5252;
+$red_7: #f03e3e;
+$red_8: #e03131;
+$red_9: #c92a2a;
+$red_10: #a51111;
+
+// Orange
+$orange_1: #ffece2;
+$interview_orange_7: #f38119;
+
+// Refferal Color
+$referral_blue_1: #e8eff7;
+$referral_blue_7: #1864ab;
+
+// Shadow
+$shadow_1: 0px 0px 1px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.24);
+$shadow_2: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 0px 16px rgba(0, 0, 0, 0.12);
+$shadow_3: 0px 3px 8px rgba(0, 0, 0, 0.15), 0px 1px 1px rgba(0, 0, 0, 0.06);
+$shadow_4: 0px 1px 1px rgba(0, 0, 0, 0.06), 0px 3px 12px rgba(0, 0, 0, 0.15);
+$shadow_5: 0px 4px 12px rgba(0, 0, 0, 0.16), 0px 1px 2px rgba(0, 0, 0, 0.08),
+  0px 1px 4px rgba(0, 0, 0, 0.08);
+$shadow_6: 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 3px 12px rgba(0, 0, 0, 0.36);
+$shadow_7: 0px 1px 2px rgba(0, 0, 0, 0.2), 0px 8px 20px rgba(0, 0, 0, 0.24);
+$shadow_inner: inset 0px 2px 3px rgba(0, 0, 0, 0.12);
+
+// Container
+$login_container_width: 772px;
+
+// Transition Variables
+$button_hover_transition: ease-out 0.1s;
+
+// Valiant
+// * $bgc: background-color (e.g. #fff)
+// * $fc: font-color (e.g. #111)
+// * $dis-bgc: disabled background-color
+// * $dis-fc: disabled font-color
+@mixin button-color($bgc: $gray_7, $fc: white) {
+  background: $bgc;
+  color: $fc;
+  &:hover {
+    @if $bgc == $gray_1 {
+      color: $gray_8;
+    } @else if $bgc == $gray_7 {
+      background: $gray_8;
+    } @else if $bgc == $blue_5 {
+      background: $blue_6;
+    } @else if $bgc == $red_7 {
+      background: $red_8;
+    } @else {
+      background: darken($bgc, 10%);
+    }
+  }
+  &:active {
+    @if $bgc == $gray_4 {
+      background: $gray_4;
+    } @else if $bgc == $gray_7 {
+      background: $gray_7;
+    } @else if $bgc == $blue_5 {
+      background: $blue_7;
+    } @else if $bgc == $red_7 {
+      background: $red_9;
+    } @else {
+      background: lighten($bgc, 5%);
+    }
+  }
+
+  // Variant
+  &.ghost {
+    background: transparent;
+    border-width: 1px;
+    border-style: solid;
+    color: $bgc;
+    @if $bgc == $gray_1 {
+      border-color: $gray_4;
+      color: $gray_8;
+    } @else if $bgc == $gray_7 {
+      color: $gray_8;
+    }
+    &:hover {
+      @if $bgc == $gray_1 {
+        background-color: $gray_1;
+      } @else {
+        background: $bgc;
+        color: $fc;
+        border-color: $bgc;
+      }
+    }
+    &:active {
+      @if $bgc == $gray_1 {
+        background: $gray_3;
+      } @else if $bgc == $blue_5 {
+        background: $blue_6;
+        border-color: $blue_6;
+      } @else if $bgc == $red_7 {
+        background: $red_9;
+        border-color: $red_9;
+      } @else {
+        background: darken($bgc, 15%);
+        border-color: darken($bgc, 15%);
+      }
+    }
+  }
+
+  &.quiet {
+    background: transparent;
+    @if $bgc == $gray_1 {
+      color: $gray_8;
+    } @else if $bgc == $gray_7 {
+      color: $gray_8;
+    } @else {
+      color: $bgc;
+    }
+    &:hover {
+      @if $bgc == $gray_1 {
+        background: rgba(117, 117, 139, 0.13);
+      } @else {
+        background: $bgc;
+        color: #fff;
+      }
+    }
+    &:active {
+      @if $bgc == $blue_5 {
+        background: $blue_6;
+      } @else if $bgc == $red_7 {
+        background: $red_9;
+      } @else if $bgc == $gray_7 {
+        background: $gray_8;
+      } @else {
+        background: rgba(117, 117, 139, 0.26);
+      }
+    }
+  }
+
+  &.minimal {
+    background: transparent;
+    @if $bgc == $gray_1 {
+      color: $gray_8;
+    } @else if $bgc == $gray_7 {
+      color: $gray_8;
+    } @else {
+      color: $bgc;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &.minimal2 {
+    background: transparent;
+    @if $bgc == $gray_1 {
+      color: $gray_6;
+    } @else if $bgc == $gray_7 {
+      color: $gray_8;
+    } @else {
+      color: $bgc;
+    }
+    &:hover {
+      @if $bgc == $blue_5 {
+        color: $blue_6;
+      } @else if $bgc == $red_7 {
+        color: $red_9;
+      } @else if $bgc == $gray_7 {
+        color: $gray_8;
+      } @else if $bgc == $gray_1 {
+        color: $gray_8;
+      } @else {
+        color: $gray_8;
+      }
+    }
+  }
+}
+
+// Mixin
+// * $WH: Width, height value (e.g. 160px)
+// * $Bsize: border-size value (e.g. 3px)
+// * $Bc0: border-color value (e.g. #fff)
+// * $Bc1: border-background-color value (e.g. #ffffff33)
+@mixin CustomSpin($WH: 16px, $Bsize: 3px, $Bc0: #fff, $Bc1: rgba(255, 255, 255, 0.2)) {
+  width: $WH;
+  height: $WH;
+  border: $Bsize solid $Bc0;
+  margin: 0;
+  content: ' ';
+  display: block;
+  border-radius: 50%;
+  border-color: $Bc0 $Bc1 $Bc1 $Bc1;
+  animation: spin 1.15s cubic-bezier(0.31, 0.63, 0.8, 0.73) infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/////////////////* Fonts */////////////////
+
+// Font Family
+$font: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
+  'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+
+// Font Weight
+$font_weight_light: 300;
+$font_weight_regular: 400;
+$font_weight_medium: 500;
+$font_weight_bold: 700;
+
+// Font Size
+$font_size_xx_small: 1.2rem;
+$font_size_x_small: 1.3rem;
+$font_size_small: 1.4rem;
+$font_size_medium: 1.6rem;
+$font_size_large: 1.8rem;
+$font_size_x_large: 2.1rem;
+$font_size_xx_large: 2.4rem;
+$font_size_xxx_large: 3.6rem;
+$font_size_xxxx_large: 4.8rem;
+
+// Line Height
+$line_height_medium: 1.5em;
+$line_height_large: 1.75em;
+
+// Spacer
+$spacer_xx_small: 0.4rem;
+$spacer_x_small: 0.8rem;
+$spacer_small: 1.2rem;
+$spacer_medium: 1.6rem;
+$spacer_large: 2rem;
+$spacer_x_large: 2.8rem;
+$spacer_xx_large: 6rem;
+
+/////////////////* Color */////////////////
+
+// Primary Blue
+$blue_0: #f3f9ff;
+$blue_1: #e6f2ff;
+$blue_2: #c5e1ff;
+$blue_3: #92c7ff;
+$blue_4: #5facff;
+$blue_5: #1184ff;
+$blue_6: #0c6cd3;
+$blue_7: #004c9e;
+$blue_8: #003267;
+
+// Gray
+$white: #fff;
+$gray_0: #f9f9fb;
+$gray_1: #efeff2;
+$gray_2: #ebebee;
+$gray_3: #e0e0e5;
+$gray_4: #cacacc;
+$gray_5: #b1b1b3;
+$gray_6: #767679;
+$gray_7: #444348;
+$gray_8: #15141a;
+$blue_gray: #8f8f9c;
+
+// System Color
+$active_green: #69db7c;
+$inactive_red: #ff8787;
+$warning_red_1: #fff0ee;
+$warning_red_2: #f8d0d1;
+
+// Green
+$green: #34c759;
+$thumbs_green: #40c057;
+$text_green: #00a21d;
+
+// Red
+$red_5: #ff6b6b;
+$red_6: #fa5252;
+$red_7: #f03e3e;
+$red_8: #e03131;
+$red_9: #c92a2a;
+$red_10: #a51111;
+
+// Orange
+$orange_1: #ffece2;
+$interview_orange_7: #f38119;
+
+// Refferal Color
+$referral_blue_1: #e8eff7;
+$referral_blue_7: #1864ab;
+
+// Shadow
+$shadow_1: 0px 0px 1px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.24);
+$shadow_2: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 0px 16px rgba(0, 0, 0, 0.12);
+$shadow_3: 0px 3px 8px rgba(0, 0, 0, 0.15), 0px 1px 1px rgba(0, 0, 0, 0.06);
+$shadow_4: 0px 1px 1px rgba(0, 0, 0, 0.06), 0px 3px 12px rgba(0, 0, 0, 0.15);
+$shadow_5: 0px 4px 12px rgba(0, 0, 0, 0.16), 0px 1px 2px rgba(0, 0, 0, 0.08),
+  0px 1px 4px rgba(0, 0, 0, 0.08);
+$shadow_6: 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 3px 12px rgba(0, 0, 0, 0.36);
+$shadow_7: 0px 1px 2px rgba(0, 0, 0, 0.2), 0px 8px 20px rgba(0, 0, 0, 0.24);
+$shadow_inner: inset 0px 2px 3px rgba(0, 0, 0, 0.12);
+
+// Container
+$login_container_width: 772px;
+
+// Transition Variables
+$button_hover_transition: ease-out 0.1s;
+
+// Valiant
+// * $bgc: background-color (e.g. #fff)
+// * $fc: font-color (e.g. #111)
+// * $dis-bgc: disabled background-color
+// * $dis-fc: disabled font-color
+@mixin button-color($bgc: $gray_7, $fc: white) {
+  background: $bgc;
+  color: $fc;
+  &:hover {
+    @if $bgc == $gray_1 {
+      color: $gray_8;
+    } @else if $bgc == $gray_7 {
+      background: $gray_8;
+    } @else if $bgc == $blue_5 {
+      background: $blue_6;
+    } @else if $bgc == $red_7 {
+      background: $red_8;
+    } @else {
+      background: darken($bgc, 10%);
+    }
+  }
+  &:active {
+    @if $bgc == $gray_4 {
+      background: $gray_4;
+    } @else if $bgc == $gray_7 {
+      background: $gray_7;
+    } @else if $bgc == $blue_5 {
+      background: $blue_7;
+    } @else if $bgc == $red_7 {
+      background: $red_9;
+    } @else {
+      background: lighten($bgc, 5%);
+    }
+  }
+
+  // Variant
+  &.ghost {
+    background: transparent;
+    border-width: 1px;
+    border-style: solid;
+    color: $bgc;
+    @if $bgc == $gray_1 {
+      border-color: $gray_4;
+      color: $gray_8;
+    } @else if $bgc == $gray_7 {
+      color: $gray_8;
+    }
+    &:hover {
+      @if $bgc == $gray_1 {
+        background-color: $gray_1;
+      } @else {
+        background: $bgc;
+        color: $fc;
+        border-color: $bgc;
+      }
+    }
+    &:active {
+      @if $bgc == $gray_1 {
+        background: $gray_3;
+      } @else if $bgc == $blue_5 {
+        background: $blue_6;
+        border-color: $blue_6;
+      } @else if $bgc == $red_7 {
+        background: $red_9;
+        border-color: $red_9;
+      } @else {
+        background: darken($bgc, 15%);
+        border-color: darken($bgc, 15%);
+      }
+    }
+  }
+
+  &.quiet {
+    background: transparent;
+    @if $bgc == $gray_1 {
+      color: $gray_8;
+    } @else if $bgc == $gray_7 {
+      color: $gray_8;
+    } @else {
+      color: $bgc;
+    }
+    &:hover {
+      @if $bgc == $gray_1 {
+        background: rgba(117, 117, 139, 0.13);
+      } @else {
+        background: $bgc;
+        color: #fff;
+      }
+    }
+    &:active {
+      @if $bgc == $blue_5 {
+        background: $blue_6;
+      } @else if $bgc == $red_7 {
+        background: $red_9;
+      } @else if $bgc == $gray_7 {
+        background: $gray_8;
+      } @else {
+        background: rgba(117, 117, 139, 0.26);
+      }
+    }
+  }
+
+  &.minimal {
+    background: transparent;
+    @if $bgc == $gray_1 {
+      color: $gray_8;
+    } @else if $bgc == $gray_7 {
+      color: $gray_8;
+    } @else {
+      color: $bgc;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &.minimal2 {
+    background: transparent;
+    @if $bgc == $gray_1 {
+      color: $gray_6;
+    } @else if $bgc == $gray_7 {
+      color: $gray_8;
+    } @else {
+      color: $bgc;
+    }
+    &:hover {
+      @if $bgc == $blue_5 {
+        color: $blue_6;
+      } @else if $bgc == $red_7 {
+        color: $red_9;
+      } @else if $bgc == $gray_7 {
+        color: $gray_8;
+      } @else if $bgc == $gray_1 {
+        color: $gray_8;
+      } @else {
+        color: $gray_8;
+      }
+    }
+  }
+}
+
+// Mixin
+// * $WH: Width, height value (e.g. 160px)
+// * $Bsize: border-size value (e.g. 3px)
+// * $Bc0: border-color value (e.g. #fff)
+// * $Bc1: border-background-color value (e.g. #ffffff33)
+@mixin CustomSpin($WH: 16px, $Bsize: 3px, $Bc0: #fff, $Bc1: rgba(255, 255, 255, 0.2)) {
+  width: $WH;
+  height: $WH;
+  border: $Bsize solid $Bc0;
+  margin: 0;
+  content: ' ';
+  display: block;
+  border-radius: 50%;
+  border-color: $Bc0 $Bc1 $Bc1 $Bc1;
+  animation: spin 1.15s cubic-bezier(0.31, 0.63, 0.8, 0.73) infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

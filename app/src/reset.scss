@@ -1,0 +1,148 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+input,
+textarea,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
+    'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  -webkit-font-smoothing: antialiased; // Safari, Chrome only
+  -moz-osx-font-smoothing: grayscale; // Safari, Chrome only
+  body {
+    font-size: 1.6rem;
+  }
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  outline: none;
+  color: inherit;
+  &:active,
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+    outline: 0;
+  }
+}
+
+// 브라우저에서 디폴트로 제공하는 스타일 제거
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+select,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  background: none;
+  padding: 0;
+  user-select: none;
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: inherit;
+}
+
+hr {
+  margin: 0;
+  border: 0;
+}

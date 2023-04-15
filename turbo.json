@@ -3,11 +3,19 @@
   "pipeline": {
     "build": {
       "outputs": ["dist/**", "storybook-static/**"],
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "env": [
+        { "name": "NODE_ENV", "value": "build" },
+        { "name": "API_URL", "value": "$PRODUCTION_API_URL", "if": "$NODE_ENV === 'production'" }
+      ]
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "env": [
+        { "name": "NODE_ENV", "value": "development" },
+        { "name": "API_URL", "value": "$DEV_API_URL" }
+      ]
     },
     "clean": {
       "cache": false
@@ -15,5 +23,6 @@
     "release": {
       "cache": false
     }
-  }
+  },
+  "globalEnv": ["GITHUB_TOKEN"]
 }
