@@ -10,14 +10,14 @@ import { ColorMap } from 'shared-ui/src/config/colorMap';
 import Divider from 'shared-ui/src/components/Divider';
 import Button from 'shared-ui/src/components/Button';
 import InputSelect, { useInputSelectedState } from 'shared-ui/src/components/InputSelect';
-import Select, { Option, isObjectOption, useSelectState } from 'shared-ui/src/components/Select';
+import Select, { Option, useSelectState } from 'shared-ui/src/components/Select';
 import Slider, { useSliderState } from 'shared-ui/src/components/Slider';
+import Icon from 'shared-ui/src/components/Icon';
 
 import { getI18nProps, getStaticPaths } from '../../../i18n/getStatic';
 import { useJobs } from '@/api/form';
 import { formatYearsOfCareer, validateUserInfoForm } from '@/service/form/user-info';
 import styles from './index.module.scss';
-
 const LABEL_SIZE = 'large';
 const LABEL_WEIGHT = 'medium';
 
@@ -37,12 +37,23 @@ export default function UserInfo() {
   ];
 
   const [selectedJob, onChangeSelectedJob] = useInputSelectedState(null);
-  const [selectedLanguage, onChangeSelectedLanguage] = useSelectState('en', NATION_OPTION);
-  const [selectedDifficulty, onChangeSelectedDifficulty] = useSelectState(
-    'medium',
-    DIFFICULTY_OPTION,
-  );
+  const [selectedLanguage, onChangeSelectedLanguage] = useSelectState({
+    initialSelected: 'en',
+    options: NATION_OPTION,
+  });
+  const [selectedDifficulty, onChangeSelectedDifficulty] = useSelectState({
+    initialSelected: 'medium',
+    options: DIFFICULTY_OPTION,
+  });
   const [selectedYearsOfCareer, setSelectedYearsOfCareer] = useSliderState(0);
+
+  //Initialize the form when the user changes language.
+  React.useEffect(() => {
+    onChangeSelectedJob(null);
+    onChangeSelectedLanguage('en');
+    onChangeSelectedDifficulty('medium');
+    setSelectedYearsOfCareer(0);
+  }, [locale]);
 
   // TODO: isLoading일 때 Option List에 loading바를 렌더링하게끔 수정
   const { data: jobs, isLoading } = useJobs(locale);
@@ -60,9 +71,7 @@ export default function UserInfo() {
         {/* Job InputSelect */}
         <InputSelect
           className={styles._SELECT_}
-          selectedOption={
-            jobs!.find(option => isObjectOption(option) && option.id === selectedJob) || null
-          }
+          selectedOption={selectedJob}
           onChangeSelectedOption={onChangeSelectedJob}
           options={jobs!}
           labelText={t('label.job') ?? ''}
@@ -120,7 +129,7 @@ export default function UserInfo() {
         {/* Routing Button of User Resume  */}
         <Link href="/form/user-resume">
           <Button
-            size="md"
+            size="lg"
             buttonColor="blue"
             fullWidth
             disabled={
@@ -131,7 +140,10 @@ export default function UserInfo() {
                 selectedYearsOfCareer,
               })
             }
-            label={{ labelText: 'Go to user resume page' }}
+            label={{
+              labelText: t('label.go-to-resume-page') ?? '',
+              labelTailingIcon: <Icon.Arrow flip />,
+            }}
           />
         </Link>
       </main>

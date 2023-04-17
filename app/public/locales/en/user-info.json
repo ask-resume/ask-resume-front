@@ -3,7 +3,8 @@
     "job": "Job",
     "nation": "Country of residence",
     "difficulty": "Interview difficulty",
-    "years-of-experience": "Years of experience"
+    "years-of-experience": "Years of experience",
+    "go-to-resume-page": "Go to Page to enter your resume"
   },
 
   "placeholder": {

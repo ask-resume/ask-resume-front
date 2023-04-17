@@ -11,7 +11,6 @@ export const useInputSelectedState = (
   initSelected: Option | null,
 ): [Option | null, (option: Option | null) => void] => {
   const [selected, setSelected] = React.useState<Option | null>(initSelected);
-
   const handleInputSelectChange = React.useCallback((option: Option | null) => {
     setSelected(option);
   }, []);

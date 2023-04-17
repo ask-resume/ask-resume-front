@@ -3,7 +3,8 @@
     "job": "직업",
     "nation": "거주 국가",
     "difficulty": "난이도",
-    "years-of-experience": "경력"
+    "years-of-experience": "경력",
+    "go-to-resume-page": "이력서 입력 페이지로 이동"
   },
 
   "placeholder": {
