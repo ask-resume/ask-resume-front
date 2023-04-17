@@ -8,6 +8,8 @@ import Text from '../Text';
 import { Option, HeightOption, getOptionName } from '../Select';
 import OptionList from '../Select/OptionList';
 import { CloseBoxOnOutside } from 'shared-lib/hooks';
+import { useInputSelectedState } from './useInputSelectState';
+export { useInputSelectedState };
 
 import './index.scss';
 

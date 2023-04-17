@@ -11,7 +11,7 @@
       "persistent": true,
       "env": ["NEXT_PUBLIC_DEV_API_URL"]
     },
-    "storybook:dev": {
+    "storybook": {
       "cache": false
     },
     "storybook:build": {

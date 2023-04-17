@@ -6,30 +6,25 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import Text from 'shared-ui/src/components/Text';
+import { ColorMap } from 'shared-ui/src/config/colorMap';
+import Divider from 'shared-ui/src/components/Divider';
 import Button from 'shared-ui/src/components/Button';
-import InputSelect from 'shared-ui/src/components/InputSelect';
-import Select, { Option, isObjectOption } from 'shared-ui/src/components/Select';
-import Slider from 'shared-ui/src/components/Slider';
+import InputSelect, { useInputSelectedState } from 'shared-ui/src/components/InputSelect';
+import Select, { Option, isObjectOption, useSelectState } from 'shared-ui/src/components/Select';
+import Slider, { useSliderState } from 'shared-ui/src/components/Slider';
 
 import { getI18nProps, getStaticPaths } from '../../../i18n/getStatic';
 import { useJobs } from '@/api/form';
+import { formatYearsOfCareer, validateUserInfoForm } from '@/service/form/user-info';
 import styles from './index.module.scss';
 
 const LABEL_SIZE = 'large';
 const LABEL_WEIGHT = 'medium';
 
 export default function UserInfo() {
-  const [selectedJob, setSelectedJob] = React.useState<Option | null>(null);
-  const [selectedLanguage, setSelectedLanguage] = React.useState('en');
-  const [selectedDifficulty, setSelectedDifficulty] = React.useState('medium');
-  const [selectedYearsOfCareer, setSelectedYearsOfCareer] = React.useState(0);
-
   const { t } = useTranslation(['user-info', 'common']);
   const router = useRouter();
   const locale = router.query.locale as string;
-
-  const { data: jobs, isLoading } = useJobs(locale);
-  if (isLoading) return <div>Loading</div>;
 
   const NATION_OPTION: Option[] = [
     { name: t('nation.english'), value: 'en' },
@@ -40,6 +35,18 @@ export default function UserInfo() {
     { name: t('difficulty.medium'), value: 'medium' },
     { name: t('difficulty.hard'), value: 'hard' },
   ];
+
+  const [selectedJob, onChangeSelectedJob] = useInputSelectedState(null);
+  const [selectedLanguage, onChangeSelectedLanguage] = useSelectState('en', NATION_OPTION);
+  const [selectedDifficulty, onChangeSelectedDifficulty] = useSelectState(
+    'medium',
+    DIFFICULTY_OPTION,
+  );
+  const [selectedYearsOfCareer, setSelectedYearsOfCareer] = useSliderState(0);
+
+  // TODO: isLoading일 때 Option List에 loading바를 렌더링하게끔 수정
+  const { data: jobs, isLoading } = useJobs(locale);
+  if (isLoading) return <div>Loading</div>;
 
   return (
     <>
@@ -56,11 +63,7 @@ export default function UserInfo() {
           selectedOption={
             jobs!.find(option => isObjectOption(option) && option.id === selectedJob) || null
           }
-          onChangeSelectedOption={option => {
-            if (option && isObjectOption(option)) {
-              setSelectedJob(option.id);
-            }
-          }}
+          onChangeSelectedOption={onChangeSelectedJob}
           options={jobs!}
           labelText={t('label.job') ?? ''}
           placeholder={t('placeholder.job') ?? ''}
@@ -71,16 +74,8 @@ export default function UserInfo() {
         {/* Nation InputSelect */}
         <Select
           className={styles._SELECT_}
-          selectedOption={
-            NATION_OPTION.find(
-              option => isObjectOption(option) && option.value === selectedLanguage,
-            ) || null
-          }
-          onChangeSelectedOption={option => {
-            if (isObjectOption(option) && option.value) {
-              setSelectedLanguage(option!.value);
-            }
-          }}
+          selectedOption={selectedLanguage}
+          onChangeSelectedOption={onChangeSelectedLanguage}
           options={NATION_OPTION}
           labelText={t('label.nation') ?? ''}
           placeholder={t('placeholder.nation') ?? ''}
@@ -91,16 +86,8 @@ export default function UserInfo() {
         {/* Interview Difficulty InputSelect */}
         <Select
           className={styles._SELECT_}
-          selectedOption={
-            DIFFICULTY_OPTION.find(
-              option => isObjectOption(option) && option.value === selectedDifficulty,
-            ) || null
-          }
-          onChangeSelectedOption={option => {
-            if (isObjectOption(option)) {
-              setSelectedDifficulty(option.value!);
-            }
-          }}
+          selectedOption={selectedDifficulty}
+          onChangeSelectedOption={onChangeSelectedDifficulty}
           options={DIFFICULTY_OPTION}
           labelText={t('label.difficulty') ?? ''}
           placeholder={t('placeholder.difficulty') ?? ''}
@@ -108,9 +95,18 @@ export default function UserInfo() {
           labelSize={LABEL_SIZE}
         />
 
+        {/* Years of Experience Slider */}
         <div>
-          <div>{t('label.years-of-experience')}</div>
-          <p>{selectedYearsOfCareer}</p>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Text className="_label" size={LABEL_SIZE} weight={LABEL_WEIGHT}>
+              {t('label.years-of-experience')}
+            </Text>
+            <Divider variant="vertical" color={ColorMap.gray_5} width={2} />
+            <Text variant="block" size="small" weight="medium" textColor={ColorMap.blue_5}>
+              {formatYearsOfCareer({ selectedYearsOfCareer, locale, t })}
+            </Text>
+          </div>
+
           <Slider
             size="medium"
             min={0}
@@ -120,7 +116,24 @@ export default function UserInfo() {
             onChangeInputValue={setSelectedYearsOfCareer}
           />
         </div>
-        <Link href="/form/user-resume">Go to user resume page</Link>
+
+        {/* Routing Button of User Resume  */}
+        <Link href="/form/user-resume">
+          <Button
+            size="md"
+            buttonColor="blue"
+            fullWidth
+            disabled={
+              !validateUserInfoForm({
+                selectedJob,
+                selectedLanguage,
+                selectedDifficulty,
+                selectedYearsOfCareer,
+              })
+            }
+            label={{ labelText: 'Go to user resume page' }}
+          />
+        </Link>
       </main>
     </>
   );

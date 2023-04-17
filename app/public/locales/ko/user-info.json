@@ -21,5 +21,11 @@
     "easy": "쉬움",
     "medium": "보통",
     "hard": "어려움"
+  },
+
+  "career": {
+    "newbie": "신입",
+    "more-than-10-years": "10년 이상",
+    "years": "년"
   }
 }

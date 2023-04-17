@@ -12,7 +12,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky install",
     "test": "turbo run jest",
-    "storybook:dev": "pnpm -r run storybook"
+    "storybook": "pnpm -r run storybook"
   },
   "turboConfig": "./turbo.json",
   "workspace": [

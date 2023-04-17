@@ -21,5 +21,11 @@
     "easy": "Easy",
     "medium": "Medium",
     "hard": "Hard"
+  },
+
+  "career": {
+    "newbie": "Newbie",
+    "more-than-10-years": "10 years +",
+    "years": "years"
   }
 }

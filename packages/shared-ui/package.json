@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "commonjs",
   "scripts": {
-    "storybook:dev": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook --quiet",
     "chromatic": "pnpx chromatic --project-token=%CHROMATIC_PROJECT_TOKEN%",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx"
