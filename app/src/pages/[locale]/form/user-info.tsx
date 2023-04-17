@@ -12,21 +12,24 @@ import Select, { Option, isObjectOption } from 'shared-ui/src/components/Select'
 import Slider from 'shared-ui/src/components/Slider';
 
 import { getI18nProps, getStaticPaths } from '../../../i18n/getStatic';
-import { getJobs } from '@/api/form';
+import { useJobs } from '@/api/form';
 import styles from './index.module.scss';
 
 const LABEL_SIZE = 'large';
 const LABEL_WEIGHT = 'medium';
 
 export default function UserInfo() {
-  const { t } = useTranslation(['user-info', 'common']);
-  const [jobs, setJobs] = React.useState<Option[]>([]); // TODO: React query를 이용해서 data fetch
-  const router = useRouter();
-  const locale = router.query.locale as string; // TODO: locale을 이용해서 jobs data fetch
+  const [selectedJob, setSelectedJob] = React.useState<Option | null>(null);
+  const [selectedLanguage, setSelectedLanguage] = React.useState('en');
+  const [selectedDifficulty, setSelectedDifficulty] = React.useState('medium');
+  const [selectedYearsOfCareer, setSelectedYearsOfCareer] = React.useState(0);
 
-  React.useEffect(() => {
-    getJobs(locale).then(res => setJobs(res.data));
-  }, [locale]);
+  const { t } = useTranslation(['user-info', 'common']);
+  const router = useRouter();
+  const locale = router.query.locale as string;
+
+  const { data: jobs, isLoading } = useJobs(locale);
+  if (isLoading) return <div>Loading</div>;
 
   const NATION_OPTION: Option[] = [
     { name: t('nation.english'), value: 'en' },
@@ -37,11 +40,6 @@ export default function UserInfo() {
     { name: t('difficulty.medium'), value: 'medium' },
     { name: t('difficulty.hard'), value: 'hard' },
   ];
-
-  const [selectedJob, setSelectedJob] = React.useState<Option | null>(null);
-  const [selectedLanguage, setSelectedLanguage] = React.useState('en');
-  const [selectedDifficulty, setSelectedDifficulty] = React.useState('medium');
-  const [selectedYearsOfCareer, setSelectedYearsOfCareer] = React.useState(0);
 
   return (
     <>
@@ -56,14 +54,14 @@ export default function UserInfo() {
         <InputSelect
           className={styles._SELECT_}
           selectedOption={
-            jobs.find(option => isObjectOption(option) && option.id === selectedJob) || null
+            jobs!.find(option => isObjectOption(option) && option.id === selectedJob) || null
           }
           onChangeSelectedOption={option => {
             if (option && isObjectOption(option)) {
               setSelectedJob(option.id);
             }
           }}
-          options={jobs}
+          options={jobs!}
           labelText={t('label.job') ?? ''}
           placeholder={t('placeholder.job') ?? ''}
           labelWeight={LABEL_WEIGHT}
