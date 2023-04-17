@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React from 'react';
 import { GetStaticPropsContext } from 'next';
 import Link from 'next/link';
@@ -18,7 +19,7 @@ const LABEL_SIZE = 'large';
 const LABEL_WEIGHT = 'medium';
 
 export default function UserInfo() {
-  const { t } = useTranslation('user-info');
+  const { t } = useTranslation(['user-info', 'common']);
   const [jobs, setJobs] = React.useState<Option[]>([]); // TODO: React query를 이용해서 data fetch
   const router = useRouter();
   const locale = router.query.locale as string; // TODO: locale을 이용해서 jobs data fetch
@@ -43,88 +44,94 @@ export default function UserInfo() {
   const [selectedYearsOfCareer, setSelectedYearsOfCareer] = React.useState(0);
 
   return (
-    <main className={styles._CONTAINER_}>
-      {/* Job InputSelect */}
-      <InputSelect
-        className={styles._SELECT_}
-        // selectedOption={selectedJob}
-        selectedOption={
-          jobs.find(option => isObjectOption(option) && option.id === selectedJob) || null
-        }
-        // onChangeSelectedOption={setSelectedJob}
-        onChangeSelectedOption={option => {
-          if (option && isObjectOption(option)) {
-            setSelectedJob(option.id);
-          }
-        }}
-        options={jobs}
-        labelText={t('label.job') ?? ''}
-        placeholder={t('placeholder.job') ?? ''}
-        labelWeight={LABEL_WEIGHT}
-        labelSize={LABEL_SIZE}
-      />
+    <>
+      <Head>
+        <title>{t('common:form_user_info_title')}</title>
+        <meta name="description" content={t('common:description') ?? ''} />
+        <meta name="keyword" content={t('common:keyword') ?? ''} />
+      </Head>
 
-      {/* Nation InputSelect */}
-      <Select
-        className={styles._SELECT_}
-        selectedOption={
-          NATION_OPTION.find(
-            option => isObjectOption(option) && option.value === selectedLanguage,
-          ) || null
-        }
-        onChangeSelectedOption={option => {
-          if (isObjectOption(option) && option.value) {
-            setSelectedLanguage(option!.value);
+      <main className={styles._CONTAINER_}>
+        {/* Job InputSelect */}
+        <InputSelect
+          className={styles._SELECT_}
+          selectedOption={
+            jobs.find(option => isObjectOption(option) && option.id === selectedJob) || null
           }
-        }}
-        options={NATION_OPTION}
-        labelText={t('label.nation') ?? ''}
-        placeholder={t('placeholder.nation') ?? ''}
-        labelWeight={LABEL_WEIGHT}
-        labelSize={LABEL_SIZE}
-      />
-
-      {/* Interview Difficulty InputSelect */}
-      <Select
-        className={styles._SELECT_}
-        selectedOption={
-          DIFFICULTY_OPTION.find(
-            option => isObjectOption(option) && option.value === selectedDifficulty,
-          ) || null
-        }
-        onChangeSelectedOption={option => {
-          if (isObjectOption(option)) {
-            setSelectedDifficulty(option.value!);
-          }
-        }}
-        options={DIFFICULTY_OPTION}
-        labelText={t('label.difficulty') ?? ''}
-        placeholder={t('placeholder.difficulty') ?? ''}
-        labelWeight={LABEL_WEIGHT}
-        labelSize={LABEL_SIZE}
-      />
-
-      <div>
-        <div>Years of career</div>
-        <p>{selectedYearsOfCareer}</p>
-        <Slider
-          size="medium"
-          min={0}
-          max={10}
-          step={1}
-          inputValue={selectedYearsOfCareer}
-          onChangeInputValue={setSelectedYearsOfCareer}
+          onChangeSelectedOption={option => {
+            if (option && isObjectOption(option)) {
+              setSelectedJob(option.id);
+            }
+          }}
+          options={jobs}
+          labelText={t('label.job') ?? ''}
+          placeholder={t('placeholder.job') ?? ''}
+          labelWeight={LABEL_WEIGHT}
+          labelSize={LABEL_SIZE}
         />
-      </div>
-      <Link href="/form/user-resume">Go to user resume page</Link>
-    </main>
+
+        {/* Nation InputSelect */}
+        <Select
+          className={styles._SELECT_}
+          selectedOption={
+            NATION_OPTION.find(
+              option => isObjectOption(option) && option.value === selectedLanguage,
+            ) || null
+          }
+          onChangeSelectedOption={option => {
+            if (isObjectOption(option) && option.value) {
+              setSelectedLanguage(option!.value);
+            }
+          }}
+          options={NATION_OPTION}
+          labelText={t('label.nation') ?? ''}
+          placeholder={t('placeholder.nation') ?? ''}
+          labelWeight={LABEL_WEIGHT}
+          labelSize={LABEL_SIZE}
+        />
+
+        {/* Interview Difficulty InputSelect */}
+        <Select
+          className={styles._SELECT_}
+          selectedOption={
+            DIFFICULTY_OPTION.find(
+              option => isObjectOption(option) && option.value === selectedDifficulty,
+            ) || null
+          }
+          onChangeSelectedOption={option => {
+            if (isObjectOption(option)) {
+              setSelectedDifficulty(option.value!);
+            }
+          }}
+          options={DIFFICULTY_OPTION}
+          labelText={t('label.difficulty') ?? ''}
+          placeholder={t('placeholder.difficulty') ?? ''}
+          labelWeight={LABEL_WEIGHT}
+          labelSize={LABEL_SIZE}
+        />
+
+        <div>
+          <div>{t('label.years-of-experience')}</div>
+          <p>{selectedYearsOfCareer}</p>
+          <Slider
+            size="medium"
+            min={0}
+            max={10}
+            step={1}
+            inputValue={selectedYearsOfCareer}
+            onChangeInputValue={setSelectedYearsOfCareer}
+          />
+        </div>
+        <Link href="/form/user-resume">Go to user resume page</Link>
+      </main>
+    </>
   );
 }
 
 const getStaticProps = async (ctx: GetStaticPropsContext) => {
   return {
     props: {
-      ...(await getI18nProps(ctx, ['user-info'])),
+      ...(await getI18nProps(ctx, ['user-info', 'common'])),
     },
   };
 };

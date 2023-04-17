@@ -37,6 +37,15 @@ const InputSelect = ({
   labelWeight = 'regular',
   border = true,
 }: InputSelectProps) => {
+  React.useEffect(() => {
+    if (!selectedOption) {
+      setInputValue('');
+      return;
+    }
+    const optionName = getOptionName(selectedOption);
+    setInputValue(optionName);
+  }, [selectedOption]);
+
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
