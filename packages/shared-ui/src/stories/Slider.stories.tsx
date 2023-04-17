@@ -20,10 +20,8 @@ export const Default = () => {
         min={0}
         max={100}
         step={10}
-        defaultValue={0}
         inputValue={value}
         onChangeInputValue={newValue => setValue(newValue)}
-        tooltipText={`${value} 번째`}
       />
       <Divider />
       <div>value: {value}</div>
@@ -41,7 +39,6 @@ export const Size = () => {
         min={0}
         max={100}
         step={10}
-        defaultValue={0}
         inputValue={value}
         onChangeInputValue={newValue => setValue(newValue)}
       />
@@ -49,7 +46,6 @@ export const Size = () => {
         min={0}
         max={100}
         step={10}
-        defaultValue={0}
         inputValue={value}
         onChangeInputValue={newValue => setValue(newValue)}
       />
@@ -58,7 +54,6 @@ export const Size = () => {
         min={0}
         max={100}
         step={10}
-        defaultValue={0}
         inputValue={value}
         onChangeInputValue={newValue => setValue(newValue)}
       />

@@ -3,13 +3,14 @@ import React from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { RecoilRoot } from 'recoil';
+import { appWithTranslation } from 'next-i18next';
 
 import Layout from '@/layout';
 import '@/index.scss';
 import '@/reset.scss';
 
 // TODO: Add a function to measure the number of views with Google Analytics
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
@@ -25,4 +26,6 @@ export default function App({ Component, pageProps }: AppProps) {
       )}
     </QueryClientProvider>
   );
-}
+};
+
+export default appWithTranslation(App);

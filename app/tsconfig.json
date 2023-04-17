@@ -19,6 +19,12 @@
       "public/*": ["./public/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/layout/LanguageSwitchLink.Jsx",
+    "src/layout/Gnb.jsx"
+  ],
   "exclude": ["node_modules"]
 }

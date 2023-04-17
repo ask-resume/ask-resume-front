@@ -1,8 +1,13 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import { useTranslation } from 'next-i18next';
+import i18nextConfig from '../../next-i18next.config';
 
-export default function Document() {
+const MyDocument = () => {
+  const { i18n } = useTranslation();
+  const currentLocale = i18n.language || i18nextConfig.i18n.defaultLocale;
+
   return (
-    <Html lang="en">
+    <Html lang={currentLocale}>
       <Head />
       <body>
         <Main />
@@ -10,4 +15,6 @@ export default function Document() {
       </body>
     </Html>
   );
-}
+};
+
+export default MyDocument;

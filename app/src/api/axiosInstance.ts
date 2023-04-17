@@ -16,13 +16,13 @@ const timeDelay = (k: number) => {
 const wait = (delay: number): Promise<void> => new Promise(resolve => setTimeout(resolve, delay));
 const baseURL =
   process.env.NODE_ENV === 'production'
-    ? process.env.NEXT_PUBLIC_DEV_API_URL
-    : process.env.NEXT_PUBLIC_PRODUCTION_API_URL;
+    ? process.env.NEXT_PUBLIC_PRODUCTION_API_URL
+    : process.env.NEXT_PUBLIC_DEV_API_URL;
 
 const axiosInstance = axios.create({
   baseURL,
   timeout: 10000,
-  withCredentials: true,
+  // withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -42,20 +42,20 @@ axiosInstance.interceptors.response.use(
       return wait(timeDelay(_retry_count)).then(() => axiosInstance.request(origReqConfig));
     }
 
-    const router = useRouter();
+    // const router = useRouter();
     switch (errorStatus) {
       // TODO: Implement login function
       case 401:
-        router.push({
-          pathname: signUpUrl,
-          query: { message: signUpMessage },
-        });
+        // router.push({
+        //   pathname: signUpUrl,
+        //   query: { message: signUpMessage },
+        // });
         break;
       case 403:
-        router.push({
-          pathname: signUpUrl,
-          query: { message: signUpMessage },
-        });
+        // router.push({
+        //   pathname: signUpUrl,
+        //   query: { message: signUpMessage },
+        // });
         break;
       default:
         break;

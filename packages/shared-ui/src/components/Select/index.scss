@@ -2,8 +2,10 @@
 
 // InputSelect wrapper
 // If you want to change the width, you must pass the class or style from the parent component.
+$width: 350px;
+
 ._SELECT_ {
-  width: 300px;
+  width: $width;
   position: relative;
   height: max-content;
 }
@@ -136,6 +138,9 @@
   display: flex;
   align-items: center;
 
+  width: 100%;
+  line-height: 1.5rem;
+
   &:hover {
     background-color: $gray_1;
   }
@@ -179,6 +184,7 @@
 .size-xs {
   height: 28px;
   padding: 0 8px;
+  margin: 4px 0;
   font-size: $font-size-small;
   @extend .border-xs;
 }
@@ -186,6 +192,7 @@
 .size-sm {
   height: 32px;
   padding: 0 12px;
+  margin: 6px 0;
   font-size: $font-size-small;
   @extend .border-sm;
 }
@@ -193,6 +200,7 @@
 .size-md {
   height: 36px;
   padding: 0 12px;
+  margin: 6px 0;
   font-size: $font-size-small;
   @extend .border-md;
 }
@@ -200,6 +208,7 @@
 .size-lg {
   height: 44px;
   padding: 0 16px;
+  margin: 8px 0;
   font-size: $font-size-medium;
   @extend .border-lg;
 }
@@ -207,6 +216,7 @@
 .size-xl {
   height: 56px;
   padding: 0 20px;
+  margin: 10px 0;
   font-size: $font-size-large;
   @extend .border-xl;
 }
@@ -229,4 +239,19 @@
 .border-xl {
   border-radius: 14px;
   border-width: 2px;
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #dcdcdc;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+  border-radius: 8px;
 }

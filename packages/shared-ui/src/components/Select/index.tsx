@@ -8,8 +8,6 @@ import Text from '../Text';
 import OptionList from './OptionList';
 import { CloseBoxOnOutside } from 'shared-lib/hooks';
 
-import * as Spacer from '../../config/spacer';
-
 import './index.scss';
 
 export const HeightOption = {
@@ -18,7 +16,7 @@ export const HeightOption = {
   lg: 24,
 } as const;
 
-type ObjectOption = { name: string; value?: string };
+type ObjectOption = { name: string; value?: string; id?: any };
 type StringOption = string;
 export type Option = ObjectOption | StringOption;
 
@@ -71,7 +69,7 @@ const Select = ({
     <CloseBoxOnOutside onClose={handleOptionListClose}>
       <div className={cn('_SELECT_', className)}>
         {labelText && (
-          <div style={{ padding: `${Spacer.spacer_small} 0` }}>
+          <div>
             <Text
               className={cn('_label')}
               size={labelSize}

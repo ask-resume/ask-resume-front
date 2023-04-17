@@ -9,7 +9,6 @@ import { Option, HeightOption, getOptionName } from '../Select';
 import OptionList from '../Select/OptionList';
 import { CloseBoxOnOutside } from 'shared-lib/hooks';
 
-import * as Spacer from '../../config/spacer';
 import './index.scss';
 
 export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -70,7 +69,7 @@ const InputSelect = ({
     <CloseBoxOnOutside onClose={handleOptionListClose}>
       <div className={cn('_SELECT_', className)}>
         {labelText && (
-          <div style={{ padding: `${Spacer.spacer_small} 0` }}>
+          <div>
             <Text
               className={cn('_label')}
               size={labelSize}

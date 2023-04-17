@@ -44,6 +44,9 @@ importers:
       next-i18next:
         specifier: ^13.2.2
         version: 13.2.2(i18next@22.4.14)(next@13.2.4)(react-i18next@12.2.0)(react@18.2.0)
+      next-language-detector:
+        specifier: ^1.0.2
+        version: 1.0.2
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -1748,6 +1751,13 @@ packages:
   /@babel/regjsgen@0.8.0:
     resolution: {integrity: sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==}
     dev: true
+
+  /@babel/runtime@7.16.7:
+    resolution: {integrity: sha512-9E9FJowqAsytyOY6LG+1KuueckRL+aQW+mKvXRXnuFGyRAyepJPmEo9vgMfXUA6O9u3IeEdv9MAkppFcaQwogQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.11
+    dev: false
 
   /@babel/runtime@7.21.0:
     resolution: {integrity: sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==}
@@ -9943,6 +9953,12 @@ packages:
     hasBin: true
     dev: true
 
+  /i18next-browser-languagedetector@6.1.2:
+    resolution: {integrity: sha512-YDzIGHhMRvr7M+c8B3EQUKyiMBhfqox4o1qkFvt4QXuu5V2cxf74+NCr+VEkUuU0y+RwcupA238eeolW1Yn80g==}
+    dependencies:
+      '@babel/runtime': 7.21.0
+    dev: false
+
   /i18next-fs-backend@2.1.1:
     resolution: {integrity: sha512-FTnj+UmNgT3YRml5ruRv0jMZDG7odOL/OP5PF5mOqvXud2vHrPOOs68Zdk6iqzL47cnnM0ZVkK2BAvpFeDJToA==}
     dev: false
@@ -12229,6 +12245,13 @@ packages:
       next: 13.2.4(@babel/core@7.21.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.60.0)
       react: 18.2.0
       react-i18next: 12.2.0(i18next@22.4.14)(react-dom@18.2.0)(react@18.2.0)
+    dev: false
+
+  /next-language-detector@1.0.2:
+    resolution: {integrity: sha512-kw6oMrvSZgT4JW2xay+nOJszKYO0IbBBn209TWwaCD7neBpH/DHZu5tISboKwaOHbrYSptEcUgX+L5Cmx0SJ6g==}
+    dependencies:
+      '@babel/runtime': 7.16.7
+      i18next-browser-languagedetector: 6.1.2
     dev: false
 
   /next@13.2.4(@babel/core@7.21.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.60.0):

@@ -9,11 +9,9 @@ interface SliderProps {
   min: number;
   max: number;
   step: number;
-  defaultValue: number;
   inputValue: number;
   onChangeInputValue: (value: number) => void;
   className?: string;
-  tooltipText?: string;
 }
 
 interface ThumbStyle extends React.CSSProperties {
@@ -45,16 +43,7 @@ const sliderSizes = {
 };
 
 const Slider = React.memo(
-  ({
-    size = 'medium',
-    min,
-    max,
-    step,
-    defaultValue,
-    inputValue,
-    onChangeInputValue,
-    className,
-  }: SliderProps) => {
+  ({ size = 'medium', min, max, step, inputValue, onChangeInputValue, className }: SliderProps) => {
     const sliderSize = sliderSizes[size];
     const thumbStyle: ThumbStyle = {
       '--thumb-width': sliderSize.thumbWidth,
@@ -81,7 +70,6 @@ const Slider = React.memo(
           max={max}
           step={step}
           value={inputValue}
-          defaultValue={defaultValue}
           onChange={handleInputValueChange}
           className={cn('_input', '_slider-thumb')}
           style={thumbStyle}

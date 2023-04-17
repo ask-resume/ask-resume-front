@@ -1,3 +1,2 @@
-export default function ResultPage() {
-  return <div>Result</div>;
-}
+import { Redirect } from '../i18n/redirect';
+export default Redirect;

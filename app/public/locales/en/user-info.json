@@ -1,0 +1,25 @@
+{
+  "label": {
+    "job": "Job",
+    "nation": "Country of residence",
+    "difficulty": "Interview difficulty",
+    "years-of-experience": "Years of experience"
+  },
+
+  "placeholder": {
+    "job": "Please select your job (or future aspirations).",
+    "nation": "Please select your country of residence.",
+    "difficulty": "Please select the level of interview difficulty."
+  },
+
+  "nation": {
+    "korea": "Korea",
+    "english": "English"
+  },
+
+  "difficulty": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  }
+}
