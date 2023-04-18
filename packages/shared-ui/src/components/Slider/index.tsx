@@ -2,8 +2,6 @@ import React from 'react';
 import cn from 'classnames';
 
 import { SliderSize } from '../../config/size';
-import { useSliderState } from './useSliderState';
-export { useSliderState };
 import './index.scss';
 
 interface SliderProps {

@@ -16,7 +16,7 @@
   },
   "turboConfig": "./turbo.json",
   "workspace": [
-    "app",
+    "apps/*",
     "packages/*"
   ],
   "author": "dev-redo",

@@ -6,9 +6,7 @@ import { FontSize } from '../../config/size';
 import Icon from '../Icon';
 import Text from '../Text';
 import OptionList from './OptionList';
-import { CloseBoxOnOutside } from 'shared-lib/hooks';
-import { useSelectState } from './useSelectState';
-export { useSelectState };
+import CloseBoxOnOutside from '../CloseBoxOnOutside';
 
 import './index.scss';
 
