@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { SliderSize } from '../../config/size';
 import './index.scss';
 
-interface SliderProps {
+export interface SliderProps {
   size?: SliderSize;
   min: number;
   max: number;
@@ -14,7 +14,7 @@ interface SliderProps {
   className?: string;
 }
 
-interface ThumbStyle extends React.CSSProperties {
+export interface ThumbStyle extends React.CSSProperties {
   '--thumb-width': string;
   '--thumb-height': string;
   '--thumb-margin-top': string;

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Divider from '../components/Divider';
-
 import Slider from '../components/Slider';
 import '../reset.scss';
 

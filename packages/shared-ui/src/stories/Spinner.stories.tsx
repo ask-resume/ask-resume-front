@@ -1,6 +1,7 @@
 import Spinner from '../components/Spinner';
 import '../reset.scss';
 import '../components/Spinner/index.scss';
+import React from 'react';
 
 export default {
   title: 'Component/Spinner',

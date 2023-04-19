@@ -5,6 +5,7 @@ import Tabs from '../components/Tabs';
 import TabItem from '../components/Tabs/TabItem';
 import Icon from '../components/Icon';
 import '../reset.scss';
+import React from 'react';
 
 export default {
   title: 'Component/Tabs',

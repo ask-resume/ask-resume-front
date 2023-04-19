@@ -1,6 +1,7 @@
 import Text from '../components/Text';
 import SkeletonUI from '../components/SkeletonUI';
 import '../reset.scss';
+import React from 'react';
 
 export default {
   title: 'Component/SkeletonUI',

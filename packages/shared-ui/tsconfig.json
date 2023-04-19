@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "ESNext",
+    "jsx": "react-jsx",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
@@ -14,10 +15,9 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "noEmit": true
   },
-  "include": ["**/*"],
-  "exclude": ["node_modules", "build"],
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "src/**/*.stories.tsx", "src/**/*.test.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

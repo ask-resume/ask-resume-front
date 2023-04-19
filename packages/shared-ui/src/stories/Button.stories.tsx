@@ -2,6 +2,7 @@ import Icon from '../components/Icon';
 import Button from '../components/Button';
 import { ColorMap } from '../config/colorMap';
 import '../reset.scss';
+import React from 'react';
 
 export default {
   title: 'Component/Button',
