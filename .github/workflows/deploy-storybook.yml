@@ -2,11 +2,11 @@ name: Build and Deploy Storybook to Netlify
 
 on:
   push:
-    # branches:
-    #   - main
-    #   - develop
-    # paths:
-    #   - 'packages/shared-ui/**'
+    branches:
+      - main
+      - develop
+    paths:
+      - 'packages/shared-ui/**'
 
 jobs:
   deploy_to_netlify:
