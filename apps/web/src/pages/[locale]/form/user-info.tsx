@@ -28,7 +28,7 @@ import styles from './index.module.scss';
 
 const LABEL_SIZE = 'large';
 const LABEL_WEIGHT = 'medium';
-const TranslateNamespaces = ['user-info', 'common'];
+const TranslateNamespaces = ['form', 'common'];
 
 export default function UserInfo() {
   const { t } = useTranslation(TranslateNamespaces);
