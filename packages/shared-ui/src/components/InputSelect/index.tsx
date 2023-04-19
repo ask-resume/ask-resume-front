@@ -7,9 +7,8 @@ import Icon from '../Icon';
 import Text from '../Text';
 import { Option, HeightOption, getOptionName } from '../Select';
 import OptionList from '../Select/OptionList';
-import { CloseBoxOnOutside } from 'shared-lib/hooks';
+import CloseBoxOnOutside from '../CloseBoxOnOutside';
 
-import * as Spacer from '../../config/spacer';
 import './index.scss';
 
 export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -38,6 +37,15 @@ const InputSelect = ({
   labelWeight = 'regular',
   border = true,
 }: InputSelectProps) => {
+  React.useEffect(() => {
+    if (!selectedOption) {
+      setInputValue('');
+      return;
+    }
+    const optionName = getOptionName(selectedOption);
+    setInputValue(optionName);
+  }, [selectedOption]);
+
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
@@ -70,7 +78,7 @@ const InputSelect = ({
     <CloseBoxOnOutside onClose={handleOptionListClose}>
       <div className={cn('_SELECT_', className)}>
         {labelText && (
-          <div style={{ padding: `${Spacer.spacer_small} 0` }}>
+          <div>
             <Text
               className={cn('_label')}
               size={labelSize}

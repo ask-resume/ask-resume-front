@@ -64,6 +64,7 @@ const IconList: Record<string, string[]> = {
   Arrow: ['arrow', 'chevron', 'chevron-alt', 'solid'],
   Edit: ['default', 'box'],
   Setting: [''],
+  AirPlane: [''],
   Check: ['single', 'double', 'alt', 'circle', 'circle-ghost'],
 };
 

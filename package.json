@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "turbo run dev",
-    "build": "turbo run build",
-    "deploy": "turbo run build --scope=app --includeDependencies --no-deps",
+    "dev:env": "cross-env NODE_ENV=development",
+    "build:env": "cross-env NODE_ENV=production",
+    "dev": "pnpm run dev:env && dotenv -- turbo run dev",
+    "build": "pnpm run build:env && turbo run build",
+    "deploy": "pnpm run build:env && turbo run build --scope=app --includeDependencies --no-deps",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky install",
     "test": "turbo run jest",
@@ -14,7 +16,7 @@
   },
   "turboConfig": "./turbo.json",
   "workspace": [
-    "app",
+    "apps/*",
     "packages/*"
   ],
   "author": "dev-redo",
@@ -33,5 +35,8 @@
       "eslint --fix",
       "prettier --parser=typescript --write"
     ]
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3"
   }
 }

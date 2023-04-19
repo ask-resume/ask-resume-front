@@ -62,13 +62,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ${colorOption?.default && `background-color: ${colorOption?.default}; `}
         ${colorOption?.font && `color: ${colorOption?.font};`}
     
-      ${colorOption?.icon?.default &&
+        ${colorOption?.icon?.default &&
         `
-        i > svg #icon__fill {
-          fill: ${colorOption?.icon?.default};
-        }`}
+          i > svg #icon__fill {
+            fill: ${colorOption?.icon?.default};
+          }`}
     
-      &:hover {
+        &:hover {
           ${colorOption?.hover && `background-color: ${colorOption?.hover};`}
           ${colorOption?.icon?.hover &&
           `
@@ -90,7 +90,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Btn
-        className={cn(`_BUTTON_`, className, size, variant, buttonColor, {
+        className={cn('_BUTTON_', className, size, variant, buttonColor, {
           loading,
           rounded,
           disabled,
@@ -120,10 +120,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             children
           )}
         </span>
+        {loading && <div className="_BUTTON_spinner" />}
       </Btn>
     );
   },
 );
 
 Button.displayName = 'Button';
-export default Button;
+export default React.memo(Button);

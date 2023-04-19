@@ -1,0 +1,7 @@
+{
+  "page_title": "AskResume: 이력서 면접 질문 및 답변 생성기",
+  "description": "OpenAI를 이용한 이력서 기반 예상 면접 질문 및 답변 제공 서비스",
+  "keywords": "이력서, 면접, 질문, 취준, 취업 준비, OpenAI, LLM",
+
+  "form_user_info_title": "유저 인적사항 폼 - AskResume"
+}

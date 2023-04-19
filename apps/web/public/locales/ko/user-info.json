@@ -1,0 +1,32 @@
+{
+  "label": {
+    "job": "직업",
+    "nation": "거주 국가",
+    "difficulty": "난이도",
+    "years-of-experience": "경력",
+    "go-to-resume-page": "이력서 입력 페이지로 이동"
+  },
+
+  "placeholder": {
+    "job": "직업(또는 장래희망)을 선택하세요.",
+    "nation": "거주 국가를 선택하세요.",
+    "difficulty": "면접 난이도를 선택하세요."
+  },
+
+  "nation": {
+    "korea": "한국",
+    "english": "영어권"
+  },
+
+  "difficulty": {
+    "easy": "쉬움",
+    "medium": "보통",
+    "hard": "어려움"
+  },
+
+  "career": {
+    "newbie": "신입",
+    "more-than-10-years": "10년 이상",
+    "years": "년"
+  }
+}
