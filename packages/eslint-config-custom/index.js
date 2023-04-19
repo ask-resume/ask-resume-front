@@ -26,6 +26,7 @@ module.exports = {
   rules: {
     'max-depth': ['error', 2],
     indent: 'off',
+    'import/no-anonymous-default-export': 'off',
     'import/no-unresolved': 'off',
     '@typescript-eslint/no-var-requires': 0,
     'max-params': ['error', 3],

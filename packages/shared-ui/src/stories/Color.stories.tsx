@@ -2,6 +2,7 @@ import Text from '../components/Text';
 import '../reset.scss';
 import '../index.scss';
 import { ColorMap } from '../config/colorMap';
+import React from 'react';
 
 export default {
   title: 'Styleguide/Color',

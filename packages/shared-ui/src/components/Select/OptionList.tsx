@@ -23,7 +23,7 @@ const OptionList = ({
   const listRef = React.useRef<HTMLUListElement>(null);
 
   React.useEffect(() => {
-    const options = [...(listRef.current?.querySelectorAll<HTMLLIElement>('.option') ?? [])];
+    const options = Array.from(listRef.current.querySelectorAll<HTMLLIElement>('.option'));
 
     const handleKeyDownEvent = (event: KeyboardEvent) =>
       handleKeyDown({ event, options, onChangeOption });

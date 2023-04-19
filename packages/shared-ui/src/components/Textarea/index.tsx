@@ -9,7 +9,7 @@ import { FontSize as FontSizeType } from '../../config/size';
 
 import * as Spacer from '../../config/spacer';
 
-interface TextareaProps {
+export interface TextareaProps {
   height?: number;
   maxLength?: number;
   placeholder?: string;

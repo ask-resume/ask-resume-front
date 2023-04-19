@@ -5,9 +5,10 @@ import './index.scss';
 import { FontSize } from '../../config/size';
 import { ColorMap } from '../../config/colorMap';
 
-type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'block' | 'inline' | 'label';
+export type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'block' | 'inline' | 'label';
 
-interface TextProps extends HTMLAttributes<HTMLDivElement | HTMLSpanElement | HTMLHeadingElement> {
+export interface TextProps
+  extends HTMLAttributes<HTMLDivElement | HTMLSpanElement | HTMLHeadingElement> {
   textColor?: ColorMap;
   className?: string;
   variant?: Variant;

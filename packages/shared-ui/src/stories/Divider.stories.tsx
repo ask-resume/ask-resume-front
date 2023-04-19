@@ -3,6 +3,7 @@ import Text from '../components/Text';
 import '../reset.scss';
 
 import { ColorMap } from '../config/colorMap';
+import React from 'react';
 
 export default {
   title: 'Component/Divider',

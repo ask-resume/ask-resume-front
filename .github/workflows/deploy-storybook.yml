@@ -1,4 +1,4 @@
-name: Deploy Chromatic
+name: Build and Deploy Storybook to Netlify
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - 'packages/shared-ui/**'
 
 jobs:
-  deploy_to_chromatic:
+  deploy_to_netlify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -35,8 +35,20 @@ jobs:
       - if: steps.pnpm-cache.outputs.cache-hit != 'true'
         run: pnpm install --no-frozen-lockfile
 
-      - name: Deploy to Chromatic
-        working-directory: packages/shared-ui
-        run: npx chromatic --exit-zero-on-changes
+      - name: Build Storybook
+        run: pnpm run build-storybook
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2.0
+        with:
+          publish-dir: packages/shared-ui/storybook-static
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'deploy: deploy storybook to netlify'
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
         env:
-          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1

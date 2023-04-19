@@ -16,7 +16,7 @@ export const HeightOption = {
   lg: 24,
 } as const;
 
-type ObjectOption = { name: string; value?: string; id?: any };
+type ObjectOption = { name: string; value?: string; id?: string | number };
 type StringOption = string;
 export type Option = ObjectOption | StringOption;
 
