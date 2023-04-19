@@ -14,7 +14,7 @@
     "storybook": {
       "cache": false
     },
-    "storybook:build": {
+    "build-storybook": {
       "outputs": ["storybook-static/**"]
     },
     "clean": {
