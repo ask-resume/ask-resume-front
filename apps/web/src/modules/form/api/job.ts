@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import axiosInstance from '../auth/axiosInstance';
+import axiosInstance from '../../auth/axiosInstance';
 import { Option } from 'shared-ui/src/components/Select';
 
 export const getJobs = async (locale: string) => {
