@@ -5,31 +5,55 @@ import { useTranslation } from 'next-i18next';
 
 import Text from 'shared-ui/src/components/Text';
 import Button from 'shared-ui/src/components/Button';
-import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
+import Icon from 'shared-ui/src/components/Icon';
+import { ColorMap } from 'shared-ui/src/config/colorMap';
 
-// Introducing AskResume
-// AskResume gives you answers to questions you might ask on your resume in a job interview.
+import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
+import styles from './index.module.scss';
+
+const TranslateNamespaces = ['landing', 'common'];
+
+// TODO: Add content explaining the expected effect of Ask resume.
+// Ex. AskResume gives you answers to questions you might ask on your resume in a job interview.
 export default function Home() {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation(TranslateNamespaces);
 
   return (
     <>
       <Head>
         <title>{t('common:page_title')}</title>
         <meta name="description" content={t('common:description') ?? ''} />
-        <meta name="keyword" content={t('common:keyword') ?? ''} />
+        <meta name="keyword" content={t('common:keywords') ?? ''} />
       </Head>
 
-      <main>
-        <div>
-          <Text lineHeight="narrow">
-            Find out what questions to ask on your resume in a job interview. Typing the options you
-            want and upload your resume pdf file.
+      <main className={styles._LANDING_}>
+        <div className={styles._wrapper}>
+          <div className={styles._title}>
+            <Text variant="h1" size="xxxx_large">
+              Ask
+            </Text>
+            <Text variant="h1" size="xxxx_large" textColor={ColorMap.blue_6}>
+              Resume
+            </Text>
+          </div>
+          <Text variant="h5" size="x_large">
+            {t('sub_title')}
           </Text>
-          <Link href="/form/user-info">
-            <Button>Go to form page</Button>
-          </Link>
         </div>
+
+        <Link href="/form/user-info" prefetch>
+          <Button
+            className={styles._button}
+            size="lg"
+            buttonColor="blue"
+            variant="ghost"
+            fullWidth
+            label={{
+              labelTailingIcon: <Icon.AirPlane color={ColorMap.blue_5} />,
+              labelText: t('button_label') ?? '',
+            }}
+          />
+        </Link>
       </main>
     </>
   );
@@ -38,7 +62,7 @@ export default function Home() {
 export async function getStaticProps(ctx: GetStaticPropsContext) {
   return {
     props: {
-      ...(await getI18nProps(ctx, ['common'])),
+      ...(await getI18nProps(ctx, TranslateNamespaces)),
     },
   };
 }
