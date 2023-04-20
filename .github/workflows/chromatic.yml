@@ -28,7 +28,7 @@ jobs:
         id: pnpm-cache
         with:
           path: |
-            packages/shared-ui/node_modules
+            **/node_modules
           key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
