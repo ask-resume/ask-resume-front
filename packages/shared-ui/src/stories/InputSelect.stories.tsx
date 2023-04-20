@@ -3,7 +3,7 @@ import React from 'react';
 import InputSelect from '../components/InputSelect';
 import { Option, getOptionName } from '../components/Select';
 import Divider from '../components/Divider';
-
+import Text from '../components/Text';
 import '../reset.scss';
 import { stringTypeOptions, objTypeOptions } from './config';
 
@@ -25,7 +25,7 @@ export const Default = () => {
           placeholder="Select String Option"
         />
         <Divider />
-        {selectedOption && <div>{getOptionName(selectedOption)}</div>}
+        {selectedOption && <Text size="small">value: {JSON.stringify(selectedOption)}</Text>}
       </div>
     </div>
   );
@@ -44,7 +44,7 @@ export const ObjDefault = () => {
           placeholder="Select Obj Option"
         />
         <Divider />
-        {selectedOption && <div>{getOptionName(selectedOption)}</div>}
+        {selectedOption && <Text size="small">value: {JSON.stringify(selectedOption)}</Text>}
       </div>
     </div>
   );
@@ -64,7 +64,7 @@ export const WithLabel = () => {
           placeholder="Select String Option"
         />
         <Divider />
-        {selectedOption && <div>{getOptionName(selectedOption)}</div>}
+        {selectedOption && <Text size="small">value: {JSON.stringify(selectedOption)}</Text>}
       </div>
     </div>
   );
@@ -119,7 +119,7 @@ export const NoBorder = () => {
         placeholder="Select String Option"
       />
       <Divider />
-      {selectedOption && <div>{getOptionName(selectedOption)}</div>}
+      {selectedOption && <Text size="small">value: {JSON.stringify(selectedOption)}</Text>}
     </div>
   );
 };

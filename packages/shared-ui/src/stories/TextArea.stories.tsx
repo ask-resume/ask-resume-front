@@ -1,8 +1,6 @@
 import React from 'react';
 import Textarea from '../components/Textarea';
 
-import '../reset.scss';
-
 export default {
   title: 'Component/Textarea',
   component: Textarea,
@@ -10,7 +8,7 @@ export default {
 
 export const Default = () => {
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ padding: 20, width: '500px' }}>
       <Textarea height={100} labelText="Input" />
     </div>
   );
@@ -19,20 +17,24 @@ export const Default = () => {
 export const Height = () => {
   return (
     <div style={{ marginBottom: 50 }}>
-      <div style={{ padding: 20 }}>
-        <Textarea height={100} labelText="Input" />
+      <div style={{ padding: 20, width: '500px' }}>
+        <Textarea height={100} labelText="Height 100px" />
       </div>
-      <div style={{ padding: 20 }}>
-        <Textarea height={200} labelText="Input" />
+
+      <div style={{ padding: 20, width: '500px' }}>
+        <Textarea height={200} labelText="Height 200px" />
       </div>
-      <div style={{ padding: 20 }}>
-        <Textarea height={300} labelText="Input" />
+
+      <div style={{ padding: 20, width: '500px' }}>
+        <Textarea height={300} labelText="Height 300px" />
       </div>
-      <div style={{ padding: 20 }}>
-        <Textarea height={400} labelText="Input" />
+
+      <div style={{ padding: 20, width: '500px' }}>
+        <Textarea height={400} labelText="Height 400px" />
       </div>
-      <div style={{ padding: 20 }}>
-        <Textarea height={500} labelText="Input" />
+
+      <div style={{ padding: 20, width: '500px' }}>
+        <Textarea height={500} labelText="Height 500px" />
       </div>
     </div>
   );

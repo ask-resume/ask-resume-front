@@ -2,6 +2,7 @@ import React from 'react';
 
 import Divider from '../components/Divider';
 import Slider from '../components/Slider';
+import Text from '../components/Text';
 import '../reset.scss';
 
 export default {
@@ -13,7 +14,7 @@ export const Default = () => {
   const [value, setValue] = React.useState(0);
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ width: '300px', padding: 20 }}>
       <Slider
         size="small"
         min={0}
@@ -23,7 +24,7 @@ export const Default = () => {
         onChangeInputValue={newValue => setValue(newValue)}
       />
       <Divider />
-      <div>value: {value}</div>
+      <Text size="small">value: {value}</Text>
     </div>
   );
 };
@@ -32,7 +33,7 @@ export const Size = () => {
   const [value, setValue] = React.useState(0);
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ width: '300px', padding: 20 }}>
       <Slider
         size="small"
         min={0}
@@ -57,7 +58,7 @@ export const Size = () => {
         onChangeInputValue={newValue => setValue(newValue)}
       />
       <Divider />
-      <div>value: {value}</div>
+      <Text size="small">value: {value}</Text>
     </div>
   );
 };
