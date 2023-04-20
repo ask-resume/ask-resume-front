@@ -9,9 +9,10 @@ import GoToFormButton from 'modules/home/components/GoToFormButton';
 
 const TranslateNamespaces = ['landing', 'common'];
 
+// TODO: implement Dark mode switcher
+
 // TODO: Add content explaining the expected effect of Ask resume.
 // Ex. AskResume gives you answers to questions you might ask on your resume in a job interview.
-
 export default function Home() {
   const { t } = useTranslation(TranslateNamespaces);
 
