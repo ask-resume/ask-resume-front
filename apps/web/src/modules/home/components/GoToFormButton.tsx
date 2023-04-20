@@ -19,6 +19,7 @@ const GoToFormButton = ({ t }: GoToFormButtonProps) => {
         buttonColor="blue"
         variant="ghost"
         fullWidth
+        rounded
         label={{
           labelTailingIcon: <Icon.AirPlane color={ColorMap.blue_5} />,
           labelText: t('button_label') ?? '',

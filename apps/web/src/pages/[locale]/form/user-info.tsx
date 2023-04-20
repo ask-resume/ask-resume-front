@@ -16,7 +16,7 @@ import Icon from 'shared-ui/src/components/Icon';
 import Spinner from 'shared-ui/src/components/Spinner';
 
 import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
-import { useJobs } from 'modules/form/api';
+import { useJobs } from 'modules/form/api/job';
 import {
   formatYearsOfCareer,
   validateUserInfoForm,
