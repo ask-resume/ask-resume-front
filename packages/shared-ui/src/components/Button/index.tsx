@@ -23,6 +23,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   variant?: 'ghost' | 'solid' | 'quiet' | 'minimal' | 'minimal2';
   buttonColor?: 'black' | 'gray' | 'blue' | 'red';
   colorOption?: ColorOption;
+  disabled?: boolean;
   spacer?: boolean;
   fullWidth?: boolean;
   loading?: boolean;

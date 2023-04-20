@@ -2,6 +2,7 @@ import React from 'react';
 
 import Select, { Option, getOptionName } from '../components/Select';
 import Divider from '../components/Divider';
+import Text from '../components/Text';
 
 import '../reset.scss';
 import { stringTypeOptions, objTypeOptions } from './config';
@@ -23,7 +24,7 @@ export const Default = () => {
           options={stringTypeOptions}
         />
         <Divider />
-        {selectedOption && <div>{getOptionName(selectedOption)}</div>}
+        {selectedOption && <Text size="small">value: {JSON.stringify(selectedOption)}</Text>}
       </div>
     </div>
   );
@@ -41,7 +42,7 @@ export const ObjDefault = () => {
           options={objTypeOptions}
         />
         <Divider />
-        {selectedOption && <div>{getOptionName(selectedOption)}</div>}
+        {selectedOption && <Text size="small">value: {JSON.stringify(selectedOption)}</Text>}
       </div>
     </div>
   );
@@ -60,7 +61,7 @@ export const WithLabel = () => {
           options={objTypeOptions}
         />
         <Divider />
-        {selectedOption && <div>{getOptionName(selectedOption)}</div>}
+        {selectedOption && <Text size="small">value: {JSON.stringify(selectedOption)}</Text>}
       </div>
     </div>
   );
@@ -97,9 +98,10 @@ export const Height = () => {
           options={stringTypeOptions}
         />
       </div>
-
-      <Divider />
-      {selectedOption && <div>{getOptionName(selectedOption)}</div>}
+      <div style={{ padding: 20 }}>
+        <Divider />
+        {selectedOption && <Text size="small">value: {JSON.stringify(selectedOption)}</Text>}
+      </div>
     </div>
   );
 };
@@ -109,14 +111,16 @@ export const NoBorder = () => {
 
   return (
     <div style={{ marginBottom: 50 }}>
-      <Select
-        border={false}
-        selectedOption={selectedOption}
-        onChangeSelectedOption={setSelectedOption}
-        options={stringTypeOptions}
-      />
-      <Divider />
-      {selectedOption && <div>{getOptionName(selectedOption)}</div>}
+      <div style={{ padding: 20 }}>
+        <Select
+          border={false}
+          selectedOption={selectedOption}
+          onChangeSelectedOption={setSelectedOption}
+          options={stringTypeOptions}
+        />
+        <Divider />
+        {selectedOption && <Text size="small">value: {JSON.stringify(selectedOption)}</Text>}
+      </div>
     </div>
   );
 };
