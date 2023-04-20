@@ -1,9 +1,13 @@
 {
   "404": {
-    "description": "PAGE Not Found",
+    "description": "PAGE NOT FOUND",
     "content": "We couldn't find the page you were looking for. Please double-check the URL for typos and try again.",
     "home-router": "Go to Home"
   },
 
-  "500": {}
+  "500": {
+    "description": "SERVER ERROR",
+    "content": "The server encountered an internal error or misconfiguration and was unable to complete your request.",
+    "home-router": "Go to Home"
+  }
 }

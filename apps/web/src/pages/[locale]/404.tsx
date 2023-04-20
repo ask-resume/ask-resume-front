@@ -13,7 +13,7 @@ const Custom404 = () => {
   const { t } = useTranslation('error-page');
 
   return (
-    <div className={styles._404_}>
+    <div className={styles._ERROR_PAGE_}>
       <div className={styles._wrapper}>
         <div className={styles.title}>
           <Text variant="h1" size="xxxx_large" weight="bold">
