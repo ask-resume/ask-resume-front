@@ -4,23 +4,4 @@
   display: flex;
   flex-direction: column;
   gap: 4rem;
-
-  ._wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-
-    ._title {
-      display: flex;
-    }
-  }
-
-  ._button {
-    font-size: $font_size_x_large;
-    border-width: 3px !important;
-    border-radius: 20px !important;
-    padding: 0 20px !important;
-  }
 }
