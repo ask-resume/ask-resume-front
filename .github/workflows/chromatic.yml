@@ -2,11 +2,11 @@ name: Deploy Chromatic
 
 on:
   push:
-    branches:
-      - main
-      - develop
-    paths:
-      - 'packages/shared-ui/**'
+    # branches:
+    #   - main
+    #   - develop
+    # paths:
+    #   - 'packages/shared-ui/**'
 
 jobs:
   deploy_to_chromatic:
@@ -32,6 +32,7 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
+
       - if: steps.pnpm-cache.outputs.cache-hit != 'true'
         run: pnpm install --no-frozen-lockfile
 
