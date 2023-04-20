@@ -1,4 +1,4 @@
-@import '../index.scss';
+@import 'shared-ui/src/index.scss';
 
 ._LAYOUT_ {
   display: flex;
@@ -17,7 +17,7 @@
 ._GNB_ {
   display: flex;
   background-color: $white;
-  padding: $font_size_xx_small $font_size_x_small;
+  padding: 0 2rem;
 
   ._wrapper {
     display: flex;

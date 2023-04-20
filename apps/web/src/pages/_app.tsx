@@ -5,9 +5,10 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { RecoilRoot } from 'recoil';
 import { appWithTranslation } from 'next-i18next';
 
-import Layout from 'layout/Layout';
+import Layout from 'modules/layout/components';
 import '../index.scss';
 import '../reset.scss';
+import '../darkmode.scss';
 
 // TODO: Add a function to measure the number of views with Google Analytics
 const App = ({ Component, pageProps }: AppProps) => {

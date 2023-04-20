@@ -1,3 +1,4 @@
+import React from 'react';
 import { ColorMap } from '../../config/colorMap';
 import cn from 'classnames';
 import './index.scss';

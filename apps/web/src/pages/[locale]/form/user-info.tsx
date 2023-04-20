@@ -68,7 +68,7 @@ export default function UserInfo() {
       <Head>
         <title>{t('common:form_user_info_title')}</title>
         <meta name="description" content={t('common:description') ?? ''} />
-        <meta name="keyword" content={t('common:keyword') ?? ''} />
+        <meta name="keyword" content={t('common:keywords') ?? ''} />
       </Head>
 
       <main className={styles._CONTAINER_}>

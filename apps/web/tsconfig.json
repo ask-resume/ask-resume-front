@@ -16,12 +16,16 @@
     "incremental": true,
     "paths": {
       "common/*": ["./src/common/*"],
-      "layout/*": ["./src/layout/*"],
       "modules/*": ["./src/modules/*"],
       "pages/*": ["./src/pages/*"],
       "public/*": ["./public/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/modules/layout/components/Gnb/LanguageSwitcher.jsx"
+  ],
   "exclude": ["node_modules"]
 }
