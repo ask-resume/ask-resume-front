@@ -1,17 +1,32 @@
-import Text from 'shared-ui/src/components/Text';
-import { ColorMap } from 'shared-ui/src/config/colorMap';
-import Divider from 'shared-ui/src/components/Divider';
-import InputSelect from 'shared-ui/src/components/InputSelect';
-import Select, { Option } from 'shared-ui/src/components/Select';
-import Slider from 'shared-ui/src/components/Slider';
+import { TFunction } from 'next-i18next';
 
-const Router = () => {
+import Text from 'shared-ui/src/components/Text';
+import styles from './index.module.scss';
+
+interface RouterProps {
+  t: TFunction;
+}
+
+// Router changing form's type query string
+const Router = ({ t }: RouterProps) => {
   return (
-    <div>
-      <Text>User Info</Text>
-      <Text>Use</Text>
-      <Text>User Info</Text>
-    </div>
+    <section className={styles._ROUTER_}>
+      <Text weight="bold" size="medium">
+        {t('router.user-info')}
+      </Text>
+
+      <div className={styles.divider} />
+
+      <Text weight="bold" size="medium">
+        {t('router.resume')}
+      </Text>
+
+      <div className={styles.divider} />
+
+      <Text weight="bold" size="medium">
+        {t('router.input-confirmation')}
+      </Text>
+    </section>
   );
 };
 

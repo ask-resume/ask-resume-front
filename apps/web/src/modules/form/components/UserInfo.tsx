@@ -13,6 +13,7 @@ import { useJobs } from '../api/job';
 import { formatYearsOfCareer, useSelectState, useInputSelectedState, useSliderState } from '../lib';
 import styles from './index.module.scss';
 
+// TODO: UserInfo 전체 state 변경사항을 추적하는 setState hook props
 interface UserInfoProps {
   t: TFunction;
   locale: string;

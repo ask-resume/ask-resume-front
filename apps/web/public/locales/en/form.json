@@ -13,6 +13,12 @@
     "difficulty": "Please select the level of interview difficulty."
   },
 
+  "router": {
+    "user-info": "User Info",
+    "resume": "Resume",
+    "input-confirmation": "Confirmation"
+  },
+
   "nation": {
     "korea": "Korea",
     "english": "English"

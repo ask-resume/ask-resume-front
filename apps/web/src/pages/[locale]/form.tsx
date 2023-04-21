@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next';
 
 import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
 import styles from './index.module.scss';
-import UserInfo from 'modules/form/components/UserInfo';
+import { UserInfo, Router } from 'modules/form/components';
 
 const TranslateNamespaces = ['form', 'common'];
 
@@ -23,9 +23,13 @@ export default function FormPage() {
         <meta name="keyword" content={t('common:keywords') ?? ''} />
       </Head>
 
-      <main>
-        <UserInfo t={t} locale={locale} />
-      </main>
+      <div className={styles._FORM_}>
+        <Router t={t} />
+
+        <main className={styles._content}>
+          <UserInfo t={t} locale={locale} />
+        </main>
+      </div>
     </>
   );
 }
