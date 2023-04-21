@@ -1,0 +1,16 @@
+._CONTAINER_ {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+._SELECT_ {
+  width: 350px;
+
+  ul {
+    max-height: 200px;
+    li {
+      max-width: 350px;
+    }
+  }
+}
