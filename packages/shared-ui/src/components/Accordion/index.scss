@@ -1,0 +1,61 @@
+@import '../../index.scss';
+
+._ACCORDION_ {
+  border: 0;
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 100%;
+  border-top: 1px solid $gray_3;
+  border-bottom: 1px solid $gray_3;
+}
+
+._item {
+  display: list-item;
+  overflow: visible;
+
+  & + & {
+    border-top: 1px solid $gray_3;
+  }
+
+  ._header {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px;
+    cursor: pointer;
+
+    &._icon--right {
+      justify-content: space-between;
+    }
+
+    &._icon--left {
+      gap: 10px;
+    }
+
+    &:hover {
+      background-color: $gray_3;
+    }
+  }
+
+  ._body {
+    padding: 10px;
+  }
+}
+
+._icon {
+  transform: translateY(-50%);
+  font-size: 14px;
+  cursor: pointer;
+  transform: rotate(-90deg);
+
+  &.open {
+    transform: rotate(90deg);
+    transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  &:not(.open) {
+    transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
