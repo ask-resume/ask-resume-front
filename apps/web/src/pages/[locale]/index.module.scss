@@ -1,12 +1,13 @@
 @import 'shared-ui/src/index.scss';
 
+// Home Page
 ._LANDING_ {
   display: flex;
   flex-direction: column;
   gap: 4rem;
 }
 
-// 400
+// 404, 500 Custom Error Page
 ._ERROR_PAGE_ {
   display: flex;
   flex-direction: column;
@@ -34,6 +35,24 @@
       max-width: 256px;
       font-size: 14px;
       font-weight: 500;
+    }
+  }
+}
+
+// Form Page
+._CONTAINER_ {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+._SELECT_ {
+  width: 350px;
+
+  ul {
+    max-height: 200px;
+    li {
+      max-width: 350px;
     }
   }
 }

@@ -33,7 +33,7 @@ const TranslateNamespaces = ['form', 'common'];
 export default function UserInfo() {
   const { t } = useTranslation(TranslateNamespaces);
   const router = useRouter();
-  const locale = router.query.locale as string;
+  const { locale, type } = router.query as { locale: string; type: string };
 
   const NATION_OPTION: Option[] = [
     { name: t('nation.english'), value: 'en' },

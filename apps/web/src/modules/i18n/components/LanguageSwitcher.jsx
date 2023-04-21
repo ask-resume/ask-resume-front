@@ -10,6 +10,7 @@ import Icon from 'shared-ui/src/components/Icon';
 import { HeightOption } from 'shared-ui/src/components/Select';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
 import styles from './index.module.scss';
+import { generateUrl } from 'shared-lib/utils/location';
 
 const height = 'lg';
 const languageOptions = {
@@ -59,25 +60,12 @@ export default LanguageSwitcher;
 const LanguageSwitchLink = ({ locale, href }) => {
   const router = useRouter();
 
-  const replaceQueryParams = (path, query) => {
-    return Object.keys(query).reduce((p, c) => {
-      if (c === 'locale') {
-        return p.replace(`[${c}]`, locale);
-      }
-      return p.replace(`[${c}]`, query[c]);
-    }, path);
-  };
+  const newPathname = generateUrl({
+    pathname: router.pathname,
+    query: { ...router.query, locale },
+  });
 
-  let newHref = href || router.asPath;
-  const newPathname = replaceQueryParams(router.pathname, router.query);
-
-  if (locale) {
-    newHref = href ? `/${locale}${href}` : newPathname;
-  }
-
-  if (!newHref.includes(`/${locale}`)) {
-    newHref = `/${locale}${newHref}`;
-  }
+  const newHref = href ? `/${locale}${href}` : newPathname;
 
   return (
     <>

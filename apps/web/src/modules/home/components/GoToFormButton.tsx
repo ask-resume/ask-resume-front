@@ -12,7 +12,7 @@ interface GoToFormButtonProps {
 
 const GoToFormButton = ({ t }: GoToFormButtonProps) => {
   return (
-    <Link href="/form/user-info" prefetch>
+    <Link href={{ pathname: '/form', query: { type: 'user-info' } }} prefetch>
       <Button
         className={styles._button}
         size="lg"

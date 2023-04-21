@@ -1,2 +1,4 @@
 import { getQueryParams } from './getQueryParams';
-export { getQueryParams };
+import { generateUrl } from './generateUrl';
+
+export { getQueryParams, generateUrl };
