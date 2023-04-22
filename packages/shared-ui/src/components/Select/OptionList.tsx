@@ -12,7 +12,6 @@ interface OptionListProps {
   onChangeOption: (option: Option) => void;
 }
 
-// TODO: Render spinner while loading when options are not yet received
 const OptionList = ({
   options,
   height,
@@ -23,7 +22,7 @@ const OptionList = ({
   const listRef = React.useRef<HTMLUListElement>(null);
 
   React.useEffect(() => {
-    const options = Array.from(listRef.current.querySelectorAll<HTMLLIElement>('.option'));
+    const options = Array.from(listRef.current?.querySelectorAll<HTMLLIElement>('.option') ?? []);
 
     const handleKeyDownEvent = (event: KeyboardEvent) =>
       handleKeyDown({ event, options, onChangeOption });

@@ -4,17 +4,18 @@ import React from 'react';
 import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
 import Divider from 'shared-ui/src/components/Divider';
+import Button from 'shared-ui/src/components/Button';
 import InputSelect from 'shared-ui/src/components/InputSelect';
 import Select, { Option } from 'shared-ui/src/components/Select';
 import Slider from 'shared-ui/src/components/Slider';
-import Spinner from 'shared-ui/src/components/Spinner';
+import Icon from 'shared-ui/src/components/Icon';
 
 import { useJobs } from '../api/job';
-import { formatYearsOfCareer } from '../lib';
+import { formatYearsOfCareer, validateUserInfoForm } from '../lib';
 import styles from './index.module.scss';
 import { StateName, ChangedValue } from '../hooks/useUserInfoState';
+import { useQueryParams } from 'common/lib/router/useQueryParams';
 
-// TODO: UserInfo 전체 state 변경사항을 추적하는 setState hook props
 export interface UserInfoState {
   selectedJob: Option | null;
   selectedLanguage: Option | null;
@@ -44,6 +45,8 @@ const UserInfo = ({ t, locale, userInfo, onChangeUserInfo }: UserInfoProps) => {
   ];
 
   const { data: jobs, isLoading: isJobsLoading } = useJobs(locale);
+  const pathname = `/${locale}/form`;
+  const { changeQueryParams } = useQueryParams();
 
   return (
     <div className={styles._CONTAINER_}>
@@ -110,6 +113,25 @@ const UserInfo = ({ t, locale, userInfo, onChangeUserInfo }: UserInfoProps) => {
               step={1}
               inputValue={userInfo.selectedYearsOfCareer}
               onChangeSelectedOption={changed => onChangeUserInfo('selectedYearsOfCareer', changed)}
+            />
+          </div>
+
+          <div
+            style={{ width: '100%' }}
+            onClick={() => {
+              const query = { type: 'resume' };
+              changeQueryParams(pathname, query);
+            }}
+          >
+            <Button
+              size="lg"
+              buttonColor="blue"
+              fullWidth
+              disabled={!validateUserInfoForm(userInfo)}
+              label={{
+                labelText: t('label.go-to-resume-page') ?? '',
+                labelTailingIcon: <Icon.Arrow flip />,
+              }}
             />
           </div>
         </>
