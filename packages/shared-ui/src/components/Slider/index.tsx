@@ -10,7 +10,7 @@ export interface SliderProps {
   max: number;
   step: number;
   inputValue: number;
-  onChangeInputValue: (value: number) => void;
+  onChangeSelectedOption: (value: number) => void;
   className?: string;
 }
 
@@ -43,7 +43,15 @@ const sliderSizes = {
 };
 
 const Slider = React.memo(
-  ({ size = 'medium', min, max, step, inputValue, onChangeInputValue, className }: SliderProps) => {
+  ({
+    size = 'medium',
+    min,
+    max,
+    step,
+    inputValue,
+    onChangeSelectedOption,
+    className,
+  }: SliderProps) => {
     const sliderSize = sliderSizes[size];
     const thumbStyle: ThumbStyle = {
       '--thumb-width': sliderSize.thumbWidth,
@@ -56,10 +64,10 @@ const Slider = React.memo(
       (event: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = Number(event.target.value);
         if (newValue !== inputValue) {
-          onChangeInputValue(newValue);
+          onChangeSelectedOption(newValue);
         }
       },
-      [onChangeInputValue, inputValue],
+      [onChangeSelectedOption, inputValue],
     );
 
     return (

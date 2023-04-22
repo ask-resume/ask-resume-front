@@ -2,13 +2,11 @@ import React from 'react';
 import { Option, isObjectOption } from 'shared-ui/src/components/Select';
 
 interface UseSelectStateProps {
-  locale: string;
   initialSelected: Option | null;
   options: Option[];
 }
 
 export const useSelectState = ({
-  locale,
   initialSelected,
   options,
 }: UseSelectStateProps): [Option | null, (option: Option) => void] => {
@@ -20,10 +18,6 @@ export const useSelectState = ({
     }
     setSelected(option);
   }, []);
-
-  React.useEffect(() => {
-    setSelected(initialSelected);
-  }, [locale]);
 
   const selectedOption =
     options.find(option => isObjectOption(option) && option.value === selected) || null;

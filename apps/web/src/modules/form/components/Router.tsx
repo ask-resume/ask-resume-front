@@ -3,49 +3,59 @@ import { TFunction } from 'next-i18next';
 
 import Text from 'shared-ui/src/components/Text';
 import styles from './index.module.scss';
-import Link from 'next/link';
 
 interface RouterProps {
   t: TFunction;
 }
 
-// Router changing form's type query string
 const Router = ({ t }: RouterProps) => {
   const router = useRouter();
-  const { type } = router.query as { type: string };
+  const { type, locale } = router.query as { type: string; locale: string };
+
+  const handleQueryChange = (type: string) => {
+    const pathname = `/${locale}/form`;
+    router.push(
+      {
+        pathname: pathname,
+        query: { type },
+      },
+      undefined,
+      { shallow: true },
+    );
+  };
 
   return (
     <section className={styles._ROUTER_}>
-      <Link
-        href={{ pathname: '/form', query: { type: 'user-info' } }}
+      <button
+        onClick={() => handleQueryChange('user-info')}
         className={type === 'user-info' ? styles.selected : ''}
       >
         <Text weight="bold" size="medium">
           {t('router.user-info')}
         </Text>
-      </Link>
+      </button>
 
       <div className={styles.divider} />
 
-      <Link
-        href={{ pathname: '/form', query: { type: 'resume' } }}
+      <button
+        onClick={() => handleQueryChange('resume')}
         className={type === 'resume' ? styles.selected : ''}
       >
         <Text weight="bold" size="medium">
           {t('router.resume')}
         </Text>
-      </Link>
+      </button>
 
       <div className={styles.divider} />
 
-      <Link
-        href={{ pathname: '/form', query: { type: 'confirmation' } }}
+      <button
+        onClick={() => handleQueryChange('confirmation')}
         className={type === 'confirmation' ? styles.selected : ''}
       >
         <Text weight="bold" size="medium">
           {t('router.input-confirmation')}
         </Text>
-      </Link>
+      </button>
     </section>
   );
 };

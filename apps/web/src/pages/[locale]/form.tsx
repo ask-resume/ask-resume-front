@@ -6,14 +6,19 @@ import { useTranslation } from 'next-i18next';
 
 import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
 import styles from './index.module.scss';
-import { UserInfo, Router } from 'modules/form/components';
+import Router from 'modules/form/components/Router';
+import UserInfo from 'modules/form/components/UserInfo';
+
+import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
 
 const TranslateNamespaces = ['form', 'common'];
 
 export default function FormPage() {
-  const { t } = useTranslation(TranslateNamespaces);
+  const { t, ready } = useTranslation(TranslateNamespaces);
   const router = useRouter();
+
   const { locale, type } = router.query as { locale: string; type: string };
+  const { userInfoState, userInfoSetter } = useUserInfoState({ t, locale });
 
   return (
     <>
@@ -27,7 +32,14 @@ export default function FormPage() {
         <Router t={t} />
 
         <main className={styles._content}>
-          <UserInfo t={t} locale={locale} />
+          {type === 'user-info' && (
+            <UserInfo
+              t={t}
+              locale={locale}
+              userInfo={userInfoState}
+              onChangeUserInfo={userInfoSetter}
+            />
+          )}
         </main>
       </div>
     </>
