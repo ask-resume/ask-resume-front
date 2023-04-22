@@ -37,7 +37,7 @@ const LanguageSwitcher = () => {
       <div className={styles._SWITCHER_}>
         <div className={cn('_wrapper', height)} onClick={handleOptionListOpen}>
           <div className={cn('select')}>
-            <span style={{ paddingRight: '1rem' }}>{languageOptions[locale] ?? 'Loading...'}</span>
+            <span style={{ paddingRight: '1rem' }}>{languageOptions[locale] ?? '...'}</span>
           </div>
           <button className={cn('_icon', { open: isOpen })} onClick={handleIconClick}>
             <Icon.Arrow size={HeightOption.md} color={isOpen ? ColorMap.gray_8 : ColorMap.gray_6} />

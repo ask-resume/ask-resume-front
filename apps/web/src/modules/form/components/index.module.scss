@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 2rem;
   width: 100%;
+  align-items: center;
 }
 
 ._SELECT_ {
@@ -23,6 +24,10 @@
   top: 10rem;
   z-index: 2;
   gap: 2rem;
+
+  .selected {
+    color: $blue_5;
+  }
 
   .divider {
     width: 5px;

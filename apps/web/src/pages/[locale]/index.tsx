@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import { GetStaticPropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
