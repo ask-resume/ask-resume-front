@@ -4,6 +4,7 @@
 ._LANDING_ {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4rem;
 }
 
@@ -42,11 +43,25 @@
 // Form Page
 ._FORM_ {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 5rem;
 
   ._content {
     display: flex;
     flex-direction: column;
     width: 350px;
+
+    @media screen and (min-width: $breakpoint-large) {
+      width: 600px;
+    }
+
+    @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
+      width: 500px;
+    }
+
+    @media screen and (max-width: $breakpoint-xsmall) {
+      width: 90vw;
+      padding-top: 10vh;
+    }
   }
 }

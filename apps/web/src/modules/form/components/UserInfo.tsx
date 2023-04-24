@@ -14,7 +14,7 @@ import { useJobs } from '../api/job';
 import { formatYearsOfCareer, validateUserInfoForm } from '../lib';
 import styles from './index.module.scss';
 import { StateName, ChangedValue } from '../hooks/useUserInfoState';
-import { useQueryParams } from 'common/lib/router/useQueryParams';
+import { useQueryParams } from 'common/hooks/router/useQueryParams';
 
 export interface UserInfoState {
   selectedJob: Option | null;
@@ -26,6 +26,7 @@ export interface UserInfoState {
 interface UserInfoProps {
   t: TFunction;
   locale: string;
+  isMobile: boolean;
   userInfo: UserInfoState;
   onChangeUserInfo: (stateName: StateName, changedValue: ChangedValue) => void;
 }
@@ -33,7 +34,7 @@ interface UserInfoProps {
 const LABEL_SIZE = 'large';
 const LABEL_WEIGHT = 'medium';
 
-const UserInfo = ({ t, locale, userInfo, onChangeUserInfo }: UserInfoProps) => {
+const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProps) => {
   const NATION_OPTION: Option[] = [
     { name: t('nation.english'), value: 'en' },
     { name: t('nation.korea'), value: 'ko' },
@@ -50,70 +51,74 @@ const UserInfo = ({ t, locale, userInfo, onChangeUserInfo }: UserInfoProps) => {
 
   return (
     <div className={styles._CONTAINER_}>
-      {isJobsLoading && <div></div>}
+      {isJobsLoading && <div style={{ minWidth: '500px' }}></div>}
 
       {!isJobsLoading && (
         <>
-          {/* Job InputSelect */}
-          <InputSelect
-            className={styles._SELECT_}
-            selectedOption={userInfo.selectedJob}
-            onChangeSelectedOption={changed => onChangeUserInfo('selectedJob', changed)}
-            options={jobs!}
-            labelText={t('label.job') ?? ''}
-            placeholder={t('placeholder.job') ?? ''}
-            labelWeight={LABEL_WEIGHT}
-            labelSize={LABEL_SIZE}
-          />
-
-          {/* Nation InputSelect */}
-          <Select
-            className={styles._SELECT_}
-            selectedOption={userInfo.selectedLanguage}
-            onChangeSelectedOption={changed => onChangeUserInfo('selectedLanguage', changed)}
-            options={NATION_OPTION}
-            labelText={t('label.nation') ?? ''}
-            placeholder={t('placeholder.nation') ?? ''}
-            labelWeight={LABEL_WEIGHT}
-            labelSize={LABEL_SIZE}
-          />
-
-          {/* Interview Difficulty InputSelect */}
-          <Select
-            className={styles._SELECT_}
-            selectedOption={userInfo.selectedDifficulty}
-            onChangeSelectedOption={changed => onChangeUserInfo('selectedDifficulty', changed)}
-            options={DIFFICULTY_OPTION}
-            labelText={t('label.difficulty') ?? ''}
-            placeholder={t('placeholder.difficulty') ?? ''}
-            labelWeight={LABEL_WEIGHT}
-            labelSize={LABEL_SIZE}
-          />
-
-          {/* Years of Experience Slider */}
-          <div style={{ width: '100%' }}>
-            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-              <Text className="_label" size={LABEL_SIZE} weight={LABEL_WEIGHT}>
-                {t('label.years-of-experience')}
-              </Text>
-              <Divider variant="vertical" color={ColorMap.gray_5} width={2} />
-              <Text variant="block" size="small" weight="medium" textColor={ColorMap.blue_5}>
-                {formatYearsOfCareer({
-                  t,
-                  locale,
-                  selectedYearsOfCareer: userInfo.selectedYearsOfCareer,
-                })}
-              </Text>
-            </div>
-
-            <Slider
-              size="medium"
-              min={0}
-              max={10}
-              step={1}
-              inputValue={userInfo.selectedYearsOfCareer}
-              onChangeSelectedOption={changed => onChangeUserInfo('selectedYearsOfCareer', changed)}
+          <div className={styles.content}>
+            {/* Job InputSelect */}
+            <InputSelect
+              className={styles._SELECT_}
+              selectedOption={userInfo.selectedJob}
+              onChangeSelectedOption={changed => onChangeUserInfo('selectedJob', changed)}
+              options={jobs!}
+              labelText={t('label.job') ?? ''}
+              placeholder={t('placeholder.job') ?? ''}
+              labelWeight={LABEL_WEIGHT}
+              labelSize={LABEL_SIZE}
             />
+
+            {/* Nation InputSelect */}
+            <Select
+              className={styles._SELECT_}
+              selectedOption={userInfo.selectedLanguage}
+              onChangeSelectedOption={changed => onChangeUserInfo('selectedLanguage', changed)}
+              options={NATION_OPTION}
+              labelText={t('label.nation') ?? ''}
+              placeholder={t('placeholder.nation') ?? ''}
+              labelWeight={LABEL_WEIGHT}
+              labelSize={LABEL_SIZE}
+            />
+
+            {/* Interview Difficulty InputSelect */}
+            <Select
+              className={styles._SELECT_}
+              selectedOption={userInfo.selectedDifficulty}
+              onChangeSelectedOption={changed => onChangeUserInfo('selectedDifficulty', changed)}
+              options={DIFFICULTY_OPTION}
+              labelText={t('label.difficulty') ?? ''}
+              placeholder={t('placeholder.difficulty') ?? ''}
+              labelWeight={LABEL_WEIGHT}
+              labelSize={LABEL_SIZE}
+            />
+
+            {/* Years of Experience Slider */}
+            <div style={{ width: '100%' }}>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                <Text className="_label" size={LABEL_SIZE} weight={LABEL_WEIGHT}>
+                  {t('label.years-of-experience')}
+                </Text>
+                <Divider variant="vertical" color={ColorMap.gray_5} width={2} />
+                <Text variant="block" size="small" weight="medium" textColor={ColorMap.blue_5}>
+                  {formatYearsOfCareer({
+                    t,
+                    locale,
+                    selectedYearsOfCareer: userInfo.selectedYearsOfCareer,
+                  })}
+                </Text>
+              </div>
+
+              <Slider
+                size="medium"
+                min={0}
+                max={10}
+                step={1}
+                inputValue={userInfo.selectedYearsOfCareer}
+                onChangeSelectedOption={changed =>
+                  onChangeUserInfo('selectedYearsOfCareer', changed)
+                }
+              />
+            </div>
           </div>
 
           <div
@@ -124,7 +129,7 @@ const UserInfo = ({ t, locale, userInfo, onChangeUserInfo }: UserInfoProps) => {
             }}
           >
             <Button
-              size="lg"
+              size={isMobile ? 'sm' : 'lg'}
               buttonColor="blue"
               fullWidth
               disabled={!validateUserInfoForm(userInfo)}

@@ -6,6 +6,13 @@
   gap: 2rem;
   width: 100%;
   align-items: center;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-height: 300px;
+  }
 }
 
 ._SELECT_ {
@@ -13,17 +20,35 @@
     max-height: 200px;
     li {
       max-width: 350px;
+      @media screen and (max-width: $breakpoint-xsmall) {
+        width: 85vw !important;
+      }
     }
+  }
+
+  @media screen and (min-width: $breakpoint-large) {
+    width: 600px !important;
+  }
+
+  @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
+    width: 500px !important;
+  }
+
+  @media screen and (max-width: $breakpoint-xsmall) {
+    width: 90vw !important;
   }
 }
 
 ._ROUTER_ {
   display: flex;
   align-items: center;
-  position: absolute;
-  top: 10rem;
-  z-index: 2;
   gap: 2rem;
+  justify-content: center;
+  padding-top: 10vh;
+
+  @media screen and (max-width: $breakpoint-xsmall) {
+    display: none;
+  }
 
   .selected {
     color: $blue_5;

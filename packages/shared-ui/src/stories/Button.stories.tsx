@@ -35,57 +35,6 @@ export const Type = () => (
   </div>
 );
 
-export const ColorOption = () => (
-  <div style={{ padding: 20, display: 'flex', alignItems: 'center' }}>
-    <Button
-      size="md"
-      label={{ labelText: 'custom' }}
-      colorOption={{
-        font: ColorMap.blue_5,
-        default: ColorMap.blue_1,
-        hover: ColorMap.blue_2,
-        active: ColorMap.blue_3,
-      }}
-    />
-    <Button
-      size="md"
-      label={{ labelLeadingIcon: <Icon.Edit /> }}
-      colorOption={{
-        default: ColorMap.blue_1,
-        hover: ColorMap.blue_2,
-        active: ColorMap.blue_3,
-        icon: {
-          default: ColorMap.blue_5,
-          hover: ColorMap.blue_6,
-          active: ColorMap.blue_7,
-        },
-      }}
-    />
-  </div>
-);
-
-export const Spacer = () => (
-  <div style={{ padding: 20 }}>
-    <div className="article" style={{ marginBottom: 28 }}>
-      <h1 style={{ marginBottom: 12 }}>With spacer(default, margin-left: 8px)</h1>
-      <Button size="md" buttonColor="black" label={{ labelText: 'black' }} />
-      <Button size="md" buttonColor="black" label={{ labelText: 'black' }} />
-      <Button size="md" buttonColor="black" label={{ labelText: 'black' }} />
-      <Button size="md" buttonColor="black" label={{ labelText: 'black' }} />
-      <Button size="md" buttonColor="black" label={{ labelText: 'black' }} />
-    </div>
-
-    <div className="article" style={{ marginBottom: 28 }}>
-      <h1 style={{ marginBottom: 12 }}>Without spacer(no margin left)</h1>
-      <Button size="md" spacer={false} buttonColor="black" label={{ labelText: 'black' }} />
-      <Button size="md" spacer={false} buttonColor="black" label={{ labelText: 'black' }} />
-      <Button size="md" spacer={false} buttonColor="black" label={{ labelText: 'black' }} />
-      <Button size="md" spacer={false} buttonColor="black" label={{ labelText: 'black' }} />
-      <Button size="md" spacer={false} buttonColor="black" label={{ labelText: 'black' }} />
-    </div>
-  </div>
-);
-
 export const Rounded = () => (
   <div style={{ padding: 20 }}>
     <Button size="md" buttonColor="gray" rounded label={{ labelText: 'gray' }} />
@@ -124,13 +73,6 @@ export const Variant = () => (
       <Button size="md" variant="minimal" buttonColor="black" label={{ labelText: 'black' }} />
       <Button size="md" variant="minimal" buttonColor="blue" label={{ labelText: 'blue' }} />
       <Button size="md" variant="minimal" buttonColor="red" label={{ labelText: 'red' }} />
-    </div>
-    <div className="article" style={{ marginBottom: 28 }}>
-      <h1 style={{ marginBottom: 12 }}>Minimal 2</h1>
-      <Button size="md" variant="minimal2" buttonColor="gray" label={{ labelText: 'gray' }} />
-      <Button size="md" variant="minimal2" buttonColor="black" label={{ labelText: 'black' }} />
-      <Button size="md" variant="minimal2" buttonColor="blue" label={{ labelText: 'blue' }} />
-      <Button size="md" variant="minimal2" buttonColor="red" label={{ labelText: 'red' }} />
     </div>
   </div>
 );
@@ -704,41 +646,6 @@ export const WithIcon = () => (
         />
         <Button
           variant="minimal"
-          buttonColor="red"
-          label={{
-            labelLeadingIcon: <Icon.Setting color={ColorMap.gray_7} />,
-            labelText: 'Setting',
-          }}
-        />
-      </div>
-
-      <div className="buttons" style={{ display: 'flex', alignItems: 'center', marginTop: 8 }}>
-        <Button
-          variant="minimal2"
-          buttonColor="gray"
-          label={{
-            labelLeadingIcon: <Icon.Setting color={ColorMap.gray_7} />,
-            labelText: 'Setting',
-          }}
-        />
-        <Button
-          variant="minimal2"
-          buttonColor="black"
-          label={{
-            labelLeadingIcon: <Icon.Setting color={ColorMap.gray_7} />,
-            labelText: 'Setting',
-          }}
-        />
-        <Button
-          variant="minimal2"
-          buttonColor="blue"
-          label={{
-            labelLeadingIcon: <Icon.Setting color={ColorMap.gray_7} />,
-            labelText: 'Setting',
-          }}
-        />
-        <Button
-          variant="minimal2"
           buttonColor="red"
           label={{
             labelLeadingIcon: <Icon.Setting color={ColorMap.gray_7} />,

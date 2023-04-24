@@ -35,7 +35,14 @@ const LanguageSwitcher = () => {
   return (
     <CloseBoxOnOutside onClose={handleOptionListClose}>
       <div className={styles._SWITCHER_}>
-        <div className={cn('_wrapper', height)} onClick={handleOptionListOpen}>
+        <div
+          className={cn('_wrapper', height, styles.switcher_wrapper)}
+          style={{
+            margin: 0,
+            padding: 0,
+          }}
+          onClick={handleOptionListOpen}
+        >
           <div className={cn('select')}>
             <span style={{ paddingRight: '1rem' }}>{languageOptions[locale] ?? '...'}</span>
           </div>

@@ -8,20 +8,23 @@ import styles from './index.module.scss';
 
 interface GoToFormButtonProps {
   t: TFunction;
+  isMobile: boolean;
 }
 
-const GoToFormButton = ({ t }: GoToFormButtonProps) => {
+const GoToFormButton = ({ t, isMobile }: GoToFormButtonProps) => {
+  const labelTailingIcon = isMobile ? <></> : <Icon.AirPlane color={ColorMap.blue_5} />;
+
   return (
     <Link href={{ pathname: '/form', query: { type: 'user-info' } }} prefetch>
       <Button
         className={styles._button}
-        size="lg"
+        size={isMobile ? 'xxs' : 'lg'}
         buttonColor="blue"
         variant="ghost"
         fullWidth
         rounded
         label={{
-          labelTailingIcon: <Icon.AirPlane color={ColorMap.blue_5} />,
+          labelTailingIcon,
           labelText: t('button_label') ?? '',
         }}
       />

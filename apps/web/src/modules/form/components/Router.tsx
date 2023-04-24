@@ -3,7 +3,7 @@ import { TFunction } from 'next-i18next';
 
 import Text from 'shared-ui/src/components/Text';
 import styles from './index.module.scss';
-import { useQueryParams } from 'common/lib/router/useQueryParams';
+import { useQueryParams } from 'common/hooks/router/useQueryParams';
 
 interface RouterProps {
   t: TFunction;

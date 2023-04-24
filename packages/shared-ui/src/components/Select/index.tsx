@@ -87,7 +87,11 @@ const Select = ({
           <div className={cn('select')}>
             <span>{getOptionName(selectedOption ?? '')}</span>
           </div>
-          <button className={cn('_icon', height, { open: isOpen })} onClick={handleIconClick}>
+          <button
+            aria-label="dropdown_icon"
+            className={cn('_icon', height, { open: isOpen })}
+            onClick={handleIconClick}
+          >
             <Icon.Arrow
               size={HeightOption[height]}
               color={isOpen ? ColorMap.gray_8 : ColorMap.gray_6}

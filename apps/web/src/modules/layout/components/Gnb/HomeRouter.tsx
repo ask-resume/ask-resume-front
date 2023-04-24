@@ -7,7 +7,9 @@ const HomeRouter = () => {
   return (
     <Link className={styles._logo} href="/">
       <Logo />
-      <Text variant="h4">AskResume</Text>
+      <div className={styles.title}>
+        <Text variant="h4">AskResume</Text>
+      </div>
     </Link>
   );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { GetStaticPropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
+import { useIsMobile } from 'common/hooks/media-query';
 
 import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
 import styles from './index.module.scss';
@@ -16,6 +17,7 @@ const TranslateNamespaces = ['landing', 'common'];
 // Ex. AskResume gives you answers to questions you might ask on your resume in a job interview.
 export default function Home() {
   const { t } = useTranslation(TranslateNamespaces);
+  const isMobile = useIsMobile();
 
   return (
     <>
@@ -26,8 +28,8 @@ export default function Home() {
       </Head>
 
       <main className={styles._LANDING_}>
-        <Title t={t} />
-        <GoToFormButton t={t} />
+        <Title t={t} isMobile={isMobile} />
+        <GoToFormButton t={t} isMobile={isMobile} />
       </main>
     </>
   );
