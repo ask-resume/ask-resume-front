@@ -10,6 +10,7 @@ import styles from './index.module.scss';
 import Router from 'modules/form/components/Router';
 import UserInfo from 'modules/form/components/UserInfo';
 import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
+import Confirmation from 'modules/form/components/Confirmation';
 
 const TranslateNamespaces = ['form', 'common'];
 
@@ -30,11 +31,11 @@ export default function FormPage() {
       </Head>
 
       <div className={styles._FORM_}>
-        <Router t={t} />
+        <Router t={t} isMobile={isMobile} />
 
         {/* TODO: dynamic importing form components */}
-        <main className={styles._content}>
-          {type === 'user-info' && (
+        {type === 'user-info' && (
+          <main className={styles.user_info_content}>
             <UserInfo
               t={t}
               isMobile={isMobile}
@@ -42,8 +43,14 @@ export default function FormPage() {
               userInfo={userInfoState}
               onChangeUserInfo={userInfoSetter}
             />
-          )}
-        </main>
+          </main>
+        )}
+
+        {type === 'confirmation' && (
+          <main className={styles.confirm_content}>
+            <Confirmation t={t} isMobile={isMobile} locale={locale} userInfo={userInfoState} />
+          </main>
+        )}
       </div>
     </>
   );

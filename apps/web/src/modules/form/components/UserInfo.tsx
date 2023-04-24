@@ -31,10 +31,10 @@ interface UserInfoProps {
   onChangeUserInfo: (stateName: StateName, changedValue: ChangedValue) => void;
 }
 
-const LABEL_SIZE = 'large';
-const LABEL_WEIGHT = 'medium';
-
 const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProps) => {
+  const LABEL_SIZE = isMobile ? 'medium' : 'large';
+  const LABEL_WEIGHT = 'medium';
+
   const NATION_OPTION: Option[] = [
     { name: t('nation.english'), value: 'en' },
     { name: t('nation.korea'), value: 'ko' },
@@ -49,13 +49,15 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
   const pathname = `/${locale}/form`;
   const { changeQueryParams } = useQueryParams();
 
+  const isNavigationEnabled = !validateUserInfoForm(userInfo);
+
   return (
     <div className={styles._CONTAINER_}>
       {isJobsLoading && <div style={{ minWidth: '500px' }}></div>}
 
       {!isJobsLoading && (
         <>
-          <div className={styles.content}>
+          <div className={styles.user_content}>
             {/* Job InputSelect */}
             <InputSelect
               className={styles._SELECT_}
@@ -66,6 +68,7 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
               placeholder={t('placeholder.job') ?? ''}
               labelWeight={LABEL_WEIGHT}
               labelSize={LABEL_SIZE}
+              height={isMobile ? 'md' : 'lg'}
             />
 
             {/* Nation InputSelect */}
@@ -78,6 +81,7 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
               placeholder={t('placeholder.nation') ?? ''}
               labelWeight={LABEL_WEIGHT}
               labelSize={LABEL_SIZE}
+              height={isMobile ? 'md' : 'lg'}
             />
 
             {/* Interview Difficulty InputSelect */}
@@ -90,6 +94,7 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
               placeholder={t('placeholder.difficulty') ?? ''}
               labelWeight={LABEL_WEIGHT}
               labelSize={LABEL_SIZE}
+              height={isMobile ? 'md' : 'lg'}
             />
 
             {/* Years of Experience Slider */}
@@ -99,7 +104,7 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
                   {t('label.years-of-experience')}
                 </Text>
                 <Divider variant="vertical" color={ColorMap.gray_5} width={2} />
-                <Text variant="block" size="small" weight="medium" textColor={ColorMap.blue_5}>
+                <Text variant="block" size={LABEL_SIZE} weight="medium" textColor={ColorMap.blue_5}>
                   {formatYearsOfCareer({
                     t,
                     locale,
@@ -109,7 +114,7 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
               </div>
 
               <Slider
-                size="medium"
+                size={isMobile ? 'medium' : 'large'}
                 min={0}
                 max={10}
                 step={1}
@@ -122,8 +127,9 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
           </div>
 
           <div
-            style={{ width: '100%' }}
+            className={styles.button_wrapper}
             onClick={() => {
+              if (isNavigationEnabled) return;
               const query = { type: 'resume' };
               changeQueryParams(pathname, query);
             }}
@@ -131,8 +137,7 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
             <Button
               size={isMobile ? 'sm' : 'lg'}
               buttonColor="blue"
-              fullWidth
-              disabled={!validateUserInfoForm(userInfo)}
+              disabled={isNavigationEnabled}
               label={{
                 labelText: t('label.go-to-resume-page') ?? '',
                 labelTailingIcon: <Icon.Arrow flip />,

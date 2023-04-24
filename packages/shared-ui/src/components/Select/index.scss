@@ -215,7 +215,7 @@ $width: 350px;
 .size-md {
   height: 36px;
   padding: 0 12px;
-  margin: 6px 0;
+  margin: 10px 0;
   font-size: $font-size-small;
   @extend .border-md;
 }
@@ -223,7 +223,7 @@ $width: 350px;
 .size-lg {
   height: 44px;
   padding: 0 16px;
-  margin: 8px 0;
+  margin: 10px 0;
   font-size: $font-size-medium;
   @extend .border-lg;
 }
@@ -231,7 +231,7 @@ $width: 350px;
 .size-xl {
   height: 56px;
   padding: 0 20px;
-  margin: 10px 0;
+  margin: 12px 0;
   font-size: $font-size-large;
   @extend .border-xl;
 }

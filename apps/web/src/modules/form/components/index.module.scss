@@ -7,35 +7,67 @@
   width: 100%;
   align-items: center;
 
-  .content {
+  @media screen and (max-width: $breakpoint-xsmall) {
+    padding-top: 10vh;
+  }
+
+  .user_content {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    min-height: 300px;
-  }
-}
 
-._SELECT_ {
-  ul {
-    max-height: 200px;
-    li {
-      max-width: 350px;
+    ._SELECT_ {
+      ul {
+        max-height: 200px;
+        li {
+          max-width: 350px;
+          @media screen and (min-width: $breakpoint-xlarge) {
+            max-width: 700px;
+          }
+          @media screen and (min-width: $breakpoint-large) {
+            max-width: 600px;
+          }
+          @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
+            max-width: 500px;
+          }
+          @media screen and (max-width: $breakpoint-xsmall) {
+            max-width: 75vw;
+          }
+        }
+      }
+
+      @media screen and (min-width: $breakpoint-xlarge) {
+        width: 700px !important;
+      }
+      @media screen and (min-width: $breakpoint-large) {
+        width: 600px !important;
+      }
+      @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
+        width: 500px !important;
+      }
       @media screen and (max-width: $breakpoint-xsmall) {
-        width: 85vw !important;
+        width: 80vw !important;
       }
     }
   }
 
-  @media screen and (min-width: $breakpoint-large) {
-    width: 600px !important;
+  .confirm_content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 80vw;
+
+    @media screen and (min-width: $breakpoint-small) {
+      width: 60vw;
+    }
+    max-height: 60vh;
+    overflow-y: auto;
   }
 
-  @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
-    width: 500px !important;
-  }
-
-  @media screen and (max-width: $breakpoint-xsmall) {
-    width: 90vw !important;
+  .button_wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 }
 
@@ -55,8 +87,13 @@
   }
 
   .divider {
-    width: 5px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
+    @media screen and (max-width: $breakpoint-small) {
+      width: 5px;
+      height: 5px;
+    }
+
     background-color: $blue_5;
     border-radius: 50%;
   }

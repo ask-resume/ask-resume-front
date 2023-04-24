@@ -4,7 +4,8 @@
     "nation": "Country of residence",
     "difficulty": "Interview difficulty",
     "years-of-experience": "Years of experience",
-    "go-to-resume-page": "Go to Page to enter your resume"
+    "go-to-resume-page": "Go To Resume Page",
+    "not-selected": "Not Selected"
   },
 
   "placeholder": {

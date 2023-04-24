@@ -46,10 +46,14 @@
   flex-direction: column;
   gap: 5rem;
 
-  ._content {
+  .user_info_content {
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 400px;
+
+    @media screen and (min-width: $breakpoint-xlarge) {
+      width: 700px;
+    }
 
     @media screen and (min-width: $breakpoint-large) {
       width: 600px;
@@ -60,8 +64,7 @@
     }
 
     @media screen and (max-width: $breakpoint-xsmall) {
-      width: 90vw;
-      padding-top: 10vh;
+      width: 80vw;
     }
   }
 }
