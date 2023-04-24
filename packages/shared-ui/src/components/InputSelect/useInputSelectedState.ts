@@ -1,5 +1,5 @@
 import React from 'react';
-import { Option } from 'shared-ui/src/components/Select';
+import { Option } from '../Select';
 
 interface UserInputSelectedStateProps {
   initSelected: Option | null;

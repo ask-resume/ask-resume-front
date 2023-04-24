@@ -1,39 +1,47 @@
 {
-  "label": {
-    "job": "Job",
-    "nation": "Country of residence",
-    "difficulty": "Interview difficulty",
-    "years-of-experience": "Years of experience",
-    "go-to-resume-page": "Go To Resume Page",
-    "not-selected": "Not Selected"
+  "user_info": {
+    "label": {
+      "job": "Job",
+      "nation": "Country of residence",
+      "difficulty": "Interview difficulty",
+      "years-of-experience": "Years of experience",
+      "go-to-resume-page": "Go To Resume Page",
+      "not-selected": "Not Selected"
+    },
+
+    "placeholder": {
+      "job": "Please select your job (or future aspirations).",
+      "nation": "Please select your country of residence.",
+      "difficulty": "Please select the level of interview difficulty."
+    },
+
+    "router": {
+      "user-info": "User Info",
+      "resume": "Resume",
+      "input-confirmation": "Confirmation"
+    },
+
+    "nation": {
+      "korea": "Korea",
+      "english": "English"
+    },
+
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+
+    "career": {
+      "newbie": "Newbie",
+      "more-than-10-years": "10 years +",
+      "years": "years"
+    }
   },
 
-  "placeholder": {
-    "job": "Please select your job (or future aspirations).",
-    "nation": "Please select your country of residence.",
-    "difficulty": "Please select the level of interview difficulty."
-  },
-
-  "router": {
-    "user-info": "User Info",
-    "resume": "Resume",
-    "input-confirmation": "Confirmation"
-  },
-
-  "nation": {
-    "korea": "Korea",
-    "english": "English"
-  },
-
-  "difficulty": {
-    "easy": "Easy",
-    "medium": "Medium",
-    "hard": "Hard"
-  },
-
-  "career": {
-    "newbie": "Newbie",
-    "more-than-10-years": "10 years +",
-    "years": "years"
+  "resume_info": {
+    "label": {},
+    "tab": "Question {{idx}}",
+    "placeholder": {}
   }
 }

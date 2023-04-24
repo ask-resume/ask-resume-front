@@ -1,9 +1,9 @@
 import React from 'react';
-import { useMedia } from './useMedia';
+import { useMediaSize } from './useMediaSize';
 
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = React.useState(false);
-  const { isMobile: isMobileMedia } = useMedia();
+  const { isMobile: isMobileMedia } = useMediaSize();
 
   React.useEffect(() => {
     setIsMobile(isMobileMedia);

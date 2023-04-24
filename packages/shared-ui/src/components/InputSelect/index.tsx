@@ -9,6 +9,7 @@ import { Option, HeightOption, getOptionName } from '../Select';
 import OptionList from '../Select/OptionList';
 import CloseBoxOnOutside from '../CloseBoxOnOutside';
 
+export { useInputSelectedState } from './useInputSelectedState';
 import './index.scss';
 
 export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Option, isObjectOption } from 'shared-ui/src/components/Select';
+import { Option, isObjectOption } from '.';
 
 interface UseSelectStateProps {
   initialSelected: Option | null;

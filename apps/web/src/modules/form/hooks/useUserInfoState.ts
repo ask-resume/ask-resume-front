@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useInputSelectedState } from '../lib';
-import { useSelectState } from '../lib';
-import { useSliderState } from '../lib';
+import { useInputSelectedState } from 'shared-ui/src/components/InputSelect';
+import { useSelectState } from 'shared-ui/src/components/Select';
+import { useSliderState } from 'shared-ui/src/components/Slider';
 import { TFunction } from 'next-i18next';
 import { Option } from 'shared-ui/src/components/Select';
 import { UserInfoState } from '../components/UserInfo';
@@ -33,13 +33,13 @@ export const useUserInfoState = ({
   userInfoSetter: (stateName: StateName, changedValue: ChangedValue) => void;
 } => {
   const NATION_OPTION: Option[] = [
-    { name: t('nation.english'), value: 'en' },
-    { name: t('nation.korea'), value: 'ko' },
+    { name: t('user_info.nation.english'), value: 'en' },
+    { name: t('user_info.nation.korea'), value: 'ko' },
   ];
   const DIFFICULTY_OPTION: Option[] = [
-    { name: t('difficulty.easy'), value: 'easy' },
-    { name: t('difficulty.medium'), value: 'medium' },
-    { name: t('difficulty.hard'), value: 'hard' },
+    { name: t('user_info.difficulty.easy'), value: 'easy' },
+    { name: t('user_info.difficulty.medium'), value: 'medium' },
+    { name: t('user_info.difficulty.hard'), value: 'hard' },
   ];
 
   // IF You want to add another state, you should add state name to StateName type.

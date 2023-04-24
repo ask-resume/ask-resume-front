@@ -25,7 +25,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/modules/layout/components/Gnb/LanguageSwitcher.jsx"
+    "src/modules/layout/components/Gnb/LanguageSwitcher.jsx",
+    "../../packages/shared-ui/src/components/Select/useSelectState.ts",
+    "../../packages/shared-ui/src/components/InputSelect/useInputSelectedState.ts",
+    "../../packages/shared-ui/src/components/Slider/useSliderState.ts"
   ],
   "exclude": ["node_modules"]
 }

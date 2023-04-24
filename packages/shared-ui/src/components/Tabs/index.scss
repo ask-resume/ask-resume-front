@@ -64,15 +64,15 @@
   }
   &.xs .underline ._TAB_ITEM_ {
     height: 28px;
-    padding: 0 8px;
+    padding: 0 14px;
   }
   &.sm .underline ._TAB_ITEM_ {
     height: 32px;
-    padding: 0 12px;
+    padding: 0 18px;
   }
   &.md .underline ._TAB_ITEM_ {
     height: 36px;
-    padding: 0 14px;
+    padding: 0 22px;
   }
 }
 
@@ -90,6 +90,19 @@
   text-align: center;
   cursor: pointer;
   transition: $button_hover_transition;
+
+  &.xs {
+    font-size: $font_size_x_small;
+  }
+
+  &.sm {
+    font-size: $font_size_small;
+  }
+
+  &.md {
+    font-size: $font_size_medium;
+  }
+
   &:hover {
     background-color: $gray_3;
   }

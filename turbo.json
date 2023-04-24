@@ -24,6 +24,6 @@
       "cache": false
     }
   },
-  "globalEnv": ["GITHUB_TOKEN", "NODE_ENV"],
+  "globalEnv": ["GITHUB_TOKEN", "NODE_ENV", "ANALYZE"],
   "globalDependencies": [".env"]
 }

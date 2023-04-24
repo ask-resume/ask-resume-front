@@ -3,6 +3,7 @@ import cn from 'classnames';
 
 import { SliderSize } from '../../config/size';
 import './index.scss';
+export { useSliderState } from './useSliderState';
 
 export interface SliderProps {
   size?: SliderSize;

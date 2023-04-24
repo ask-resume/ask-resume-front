@@ -8,7 +8,9 @@ const HomeRouter = () => {
     <Link className={styles._logo} href="/">
       <Logo />
       <div className={styles.title}>
-        <Text variant="h4">AskResume</Text>
+        <Text weight="medium" size="x_large">
+          AskResume
+        </Text>
       </div>
     </Link>
   );

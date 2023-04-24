@@ -23,6 +23,7 @@
   "author": "dev-redo",
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "dotenv-cli": "^7.2.1",
     "eslint": "8.37.0",
     "husky": "^8.0.3",
@@ -36,8 +37,5 @@
       "eslint --fix",
       "prettier --parser=typescript --write"
     ]
-  },
-  "dependencies": {
-    "cross-env": "^7.0.3"
   }
 }

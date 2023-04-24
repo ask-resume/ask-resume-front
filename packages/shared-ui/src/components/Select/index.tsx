@@ -7,6 +7,7 @@ import Icon from '../Icon';
 import Text from '../Text';
 import OptionList from './OptionList';
 import CloseBoxOnOutside from '../CloseBoxOnOutside';
+export { useSelectState } from './useSelectState';
 
 import './index.scss';
 

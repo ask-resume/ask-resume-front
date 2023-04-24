@@ -36,13 +36,13 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
   const LABEL_WEIGHT = 'medium';
 
   const NATION_OPTION: Option[] = [
-    { name: t('nation.english'), value: 'en' },
-    { name: t('nation.korea'), value: 'ko' },
+    { name: t('user_info.nation.english'), value: 'en' },
+    { name: t('user_info.nation.korea'), value: 'ko' },
   ];
   const DIFFICULTY_OPTION: Option[] = [
-    { name: t('difficulty.easy'), value: 'easy' },
-    { name: t('difficulty.medium'), value: 'medium' },
-    { name: t('difficulty.hard'), value: 'hard' },
+    { name: t('user_info.difficulty.easy'), value: 'easy' },
+    { name: t('user_info.difficulty.medium'), value: 'medium' },
+    { name: t('user_info.difficulty.hard'), value: 'hard' },
   ];
 
   const { data: jobs, isLoading: isJobsLoading } = useJobs(locale);
@@ -64,8 +64,8 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
               selectedOption={userInfo.selectedJob}
               onChangeSelectedOption={changed => onChangeUserInfo('selectedJob', changed)}
               options={jobs!}
-              labelText={t('label.job') ?? ''}
-              placeholder={t('placeholder.job') ?? ''}
+              labelText={t('user_info.label.job') ?? ''}
+              placeholder={t('user_info.placeholder.job') ?? ''}
               labelWeight={LABEL_WEIGHT}
               labelSize={LABEL_SIZE}
               height={isMobile ? 'md' : 'lg'}
@@ -77,8 +77,8 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
               selectedOption={userInfo.selectedLanguage}
               onChangeSelectedOption={changed => onChangeUserInfo('selectedLanguage', changed)}
               options={NATION_OPTION}
-              labelText={t('label.nation') ?? ''}
-              placeholder={t('placeholder.nation') ?? ''}
+              labelText={t('user_info.label.nation') ?? ''}
+              placeholder={t('user_info.placeholder.nation') ?? ''}
               labelWeight={LABEL_WEIGHT}
               labelSize={LABEL_SIZE}
               height={isMobile ? 'md' : 'lg'}
@@ -90,8 +90,8 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
               selectedOption={userInfo.selectedDifficulty}
               onChangeSelectedOption={changed => onChangeUserInfo('selectedDifficulty', changed)}
               options={DIFFICULTY_OPTION}
-              labelText={t('label.difficulty') ?? ''}
-              placeholder={t('placeholder.difficulty') ?? ''}
+              labelText={t('user_info.label.difficulty') ?? ''}
+              placeholder={t('user_info.placeholder.difficulty') ?? ''}
               labelWeight={LABEL_WEIGHT}
               labelSize={LABEL_SIZE}
               height={isMobile ? 'md' : 'lg'}
@@ -101,7 +101,7 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
             <div style={{ width: '100%' }}>
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                 <Text className="_label" size={LABEL_SIZE} weight={LABEL_WEIGHT}>
-                  {t('label.years-of-experience')}
+                  {t('user_info.label.years-of-experience')}
                 </Text>
                 <Divider variant="vertical" color={ColorMap.gray_5} width={2} />
                 <Text variant="block" size={LABEL_SIZE} weight="medium" textColor={ColorMap.blue_5}>
@@ -139,7 +139,7 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
               buttonColor="blue"
               disabled={isNavigationEnabled}
               label={{
-                labelText: t('label.go-to-resume-page') ?? '',
+                labelText: t('user_info.label.go-to-resume-page') ?? '',
                 labelTailingIcon: <Icon.Arrow flip />,
               }}
             />

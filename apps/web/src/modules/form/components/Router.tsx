@@ -28,7 +28,7 @@ const Router = ({ t, isMobile }: RouterProps) => {
         className={type === 'user-info' ? styles.selected : ''}
       >
         <Text weight="bold" size={LABEL_SIZE}>
-          {t('router.user-info')}
+          {t('user_info.router.user-info')}
         </Text>
       </button>
 
@@ -42,7 +42,7 @@ const Router = ({ t, isMobile }: RouterProps) => {
         className={type === 'resume' ? styles.selected : ''}
       >
         <Text weight="bold" size={LABEL_SIZE}>
-          {t('router.resume')}
+          {t('user_info.router.resume')}
         </Text>
       </button>
 
@@ -56,7 +56,7 @@ const Router = ({ t, isMobile }: RouterProps) => {
         className={type === 'confirmation' ? styles.selected : ''}
       >
         <Text weight="bold" size={LABEL_SIZE}>
-          {t('router.input-confirmation')}
+          {t('user_info.router.input-confirmation')}
         </Text>
       </button>
     </section>
