@@ -12,10 +12,11 @@ const Title = ({ t, isMobile }: TitleProps) => {
   return (
     <div className={styles._wrapper}>
       <div className={styles._title}>
-        <Text weight="bold" size={isMobile ? 'xxx_large' : 'xxxx_large'}>
+        <Text variant="h1" weight="bold" size={isMobile ? 'xxx_large' : 'xxxx_large'}>
           Ask
         </Text>
         <Text
+          variant="p"
           weight="bold"
           size={isMobile ? 'xxx_large' : 'xxxx_large'}
           textColor={ColorMap.blue_6}

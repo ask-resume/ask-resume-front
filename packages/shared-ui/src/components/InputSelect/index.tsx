@@ -18,10 +18,13 @@ export interface InputSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   options: Option[];
   height?: keyof typeof HeightOption;
   className?: string;
+  label?: {
+    labelText?: string;
+    labelSize?: FontSize;
+    labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
+  };
   placeholder?: string;
-  labelText?: string;
-  labelSize?: FontSize;
-  labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
+  locale?: string;
   border?: boolean;
 }
 
@@ -33,11 +36,23 @@ const InputSelect = ({
   placeholder,
   className,
   height = 'sm',
-  labelText,
-  labelSize = 'medium',
-  labelWeight = 'regular',
+  label = {
+    labelText: '',
+    labelSize: 'medium',
+    labelWeight: 'regular',
+  },
+  locale = 'en',
   border = true,
 }: InputSelectProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+
+  // Reset input value when selectedOption or locale is changed.
+  React.useEffect(() => {
+    setInputValue('');
+  }, [locale]);
+
+  //
   React.useEffect(() => {
     if (!selectedOption) {
       setInputValue('');
@@ -46,9 +61,6 @@ const InputSelect = ({
     const optionName = getOptionName(selectedOption);
     setInputValue(optionName);
   }, [selectedOption]);
-
-  const [isOpen, setIsOpen] = useState(false);
-  const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
@@ -78,16 +90,16 @@ const InputSelect = ({
   return (
     <CloseBoxOnOutside onClose={handleOptionListClose}>
       <div className={cn('_SELECT_', className)}>
-        {labelText && (
+        {label.labelText && (
           <div>
             <Text
               className={cn('_label')}
-              size={labelSize}
-              weight={labelWeight}
+              size={label.labelSize}
+              weight={label.labelWeight}
               variant="label"
               htmlFor="dropdown-input"
             >
-              {labelText}
+              {label.labelText}
             </Text>
           </div>
         )}
@@ -116,6 +128,7 @@ const InputSelect = ({
             selectedOption={selectedOption}
             onChangeOption={handleOptionChange}
             height={height}
+            locale={locale}
           />
         )}
       </div>

@@ -9,6 +9,8 @@
       "not-selected": "Not Selected"
     },
 
+    "load-job-data": "Receiving Job data ...",
+
     "placeholder": {
       "job": "Please select your job (or future aspirations).",
       "nation": "Please select your country of residence.",

@@ -12,6 +12,7 @@
   }
 
   @mixin responsive-web {
+    width: 400px;
     @media screen and (min-width: $breakpoint-xlarge) {
       width: 700px;
     }
@@ -26,6 +27,16 @@
     }
   }
 
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: min(60vh, 300px);
+    max-height: max(60vh, 300px);
+    flex-direction: column;
+    gap: 3rem;
+  }
+
   .user_content {
     display: flex;
     flex-direction: column;
@@ -35,11 +46,20 @@
       @include responsive-web;
       ul {
         max-height: 200px;
+        width: 100%;
         li {
-          @include responsive-web;
-          width: 350px;
+          max-width: 400px;
+          @media screen and (min-width: $breakpoint-xlarge) {
+            max-width: 700px;
+          }
+          @media screen and (min-width: $breakpoint-large) {
+            max-width: 600px;
+          }
+          @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
+            max-width: 500px;
+          }
           @media screen and (max-width: $breakpoint-xsmall) {
-            width: min(350px, 75vw);
+            max-width: 80vw;
           }
         }
       }
@@ -47,7 +67,6 @@
   }
 
   .resume_content {
-    width: 400px;
     @include responsive-web;
   }
 
@@ -58,7 +77,6 @@
     min-height: min(60vh, 400px);
     max-height: max(60vh, 400px);
     overflow-y: auto;
-    width: 400px;
     @include responsive-web;
   }
 

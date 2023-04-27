@@ -5,7 +5,7 @@ import './index.scss';
 import { FontSize } from '../../config/size';
 import { ColorMap } from '../../config/colorMap';
 
-export type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'block' | 'inline' | 'label';
+export type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'block' | 'inline' | 'label';
 
 export interface TextProps
   extends HTMLAttributes<HTMLDivElement | HTMLSpanElement | HTMLHeadingElement> {
@@ -25,6 +25,7 @@ const elementMap = {
   h3: 'h3',
   h4: 'h4',
   h5: 'h5',
+  p: 'p',
   block: 'div',
   inline: 'span',
   label: 'label',

@@ -8,6 +8,8 @@ import { useIsMobile } from 'shared-lib/hooks/media-query';
 import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
 import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
 import styles from './index.module.scss';
+import { getJobs } from 'modules/form/api/job';
+import { Option } from 'shared-ui/src/components/Select';
 
 const TranslateNamespaces = ['form', 'common'];
 
@@ -16,7 +18,11 @@ const UserInfo = dynamic(() => import('modules/form/components/UserInfo'), { ssr
 const ResumeInfo = dynamic(() => import('modules/form/components/ResumeInfo'), { ssr: false });
 const Confirmation = dynamic(() => import('modules/form/components/Confirmation'), { ssr: false });
 
-export default function FormPage() {
+interface FormPageProps {
+  jobs: Option[];
+}
+
+export default function FormPage({ jobs }: FormPageProps) {
   const { t } = useTranslation(TranslateNamespaces);
   const router = useRouter();
   const isMobile = useIsMobile();
@@ -41,6 +47,7 @@ export default function FormPage() {
               t={t}
               isMobile={isMobile}
               locale={locale}
+              initialJobs={jobs}
               userInfo={userInfoState}
               onChangeUserInfo={userInfoSetter}
             />
@@ -64,10 +71,15 @@ export default function FormPage() {
 }
 
 const getStaticProps = async (ctx: GetStaticPropsContext) => {
+  const locale = ctx.locale as string;
+  const { data } = await getJobs(locale);
+
   return {
     props: {
+      jobs: data,
       ...(await getI18nProps(ctx, TranslateNamespaces)),
     },
+    revalidate: 86400, // 24 hours in seconds
   };
 };
 

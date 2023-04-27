@@ -9,6 +9,7 @@ import InputSelect from 'shared-ui/src/components/InputSelect';
 import Select, { Option } from 'shared-ui/src/components/Select';
 import Slider from 'shared-ui/src/components/Slider';
 import Icon from 'shared-ui/src/components/Icon';
+import Spinner from 'shared-ui/src/components/Spinner';
 
 import { useJobs } from '../api/job';
 import { formatYearsOfCareer, validateUserInfoForm } from '../lib';
@@ -26,12 +27,20 @@ export interface UserInfoState {
 interface UserInfoProps {
   t: TFunction;
   locale: string;
+  initialJobs: Option[];
   isMobile: boolean;
   userInfo: UserInfoState;
   onChangeUserInfo: (stateName: StateName, changedValue: ChangedValue) => void;
 }
 
-const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProps) => {
+const UserInfo = ({
+  t,
+  locale,
+  initialJobs,
+  isMobile,
+  userInfo,
+  onChangeUserInfo,
+}: UserInfoProps) => {
   const LABEL_SIZE = isMobile ? 'medium' : 'large';
   const LABEL_WEIGHT = 'medium';
 
@@ -45,7 +54,7 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
     { name: t('user_info.difficulty.hard'), value: 'hard' },
   ];
 
-  const { data: jobs, isLoading: isJobsLoading } = useJobs(locale);
+  const { data: jobs, isLoading: isJobsLoading } = useJobs({ locale, initialJobs });
   const pathname = `/${locale}/form`;
   const { changeQueryParams } = useQueryParams();
 
@@ -53,7 +62,12 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
 
   return (
     <div className={styles._CONTAINER_}>
-      {isJobsLoading && <div style={{ minWidth: '500px' }}></div>}
+      {isJobsLoading && (
+        <div className={styles.loading}>
+          <Spinner size="xl" />
+          <Text size="large">{t('user_info.load-job-data') ?? ''}</Text>
+        </div>
+      )}
 
       {!isJobsLoading && (
         <>
@@ -64,10 +78,13 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
               selectedOption={userInfo.selectedJob}
               onChangeSelectedOption={changed => onChangeUserInfo('selectedJob', changed)}
               options={jobs!}
-              labelText={t('user_info.label.job') ?? ''}
+              label={{
+                labelText: t('user_info.label.job') ?? '',
+                labelWeight: LABEL_WEIGHT,
+                labelSize: LABEL_SIZE,
+              }}
               placeholder={t('user_info.placeholder.job') ?? ''}
-              labelWeight={LABEL_WEIGHT}
-              labelSize={LABEL_SIZE}
+              locale={locale}
               height={isMobile ? 'md' : 'lg'}
             />
 
@@ -77,10 +94,12 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
               selectedOption={userInfo.selectedLanguage}
               onChangeSelectedOption={changed => onChangeUserInfo('selectedLanguage', changed)}
               options={NATION_OPTION}
-              labelText={t('user_info.label.nation') ?? ''}
+              label={{
+                labelText: t('user_info.label.nation') ?? '',
+                labelWeight: LABEL_WEIGHT,
+                labelSize: LABEL_SIZE,
+              }}
               placeholder={t('user_info.placeholder.nation') ?? ''}
-              labelWeight={LABEL_WEIGHT}
-              labelSize={LABEL_SIZE}
               height={isMobile ? 'md' : 'lg'}
             />
 
@@ -90,10 +109,12 @@ const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoP
               selectedOption={userInfo.selectedDifficulty}
               onChangeSelectedOption={changed => onChangeUserInfo('selectedDifficulty', changed)}
               options={DIFFICULTY_OPTION}
-              labelText={t('user_info.label.difficulty') ?? ''}
+              label={{
+                labelText: t('user_info.label.difficulty') ?? '',
+                labelWeight: LABEL_WEIGHT,
+                labelSize: LABEL_SIZE,
+              }}
               placeholder={t('user_info.placeholder.difficulty') ?? ''}
-              labelWeight={LABEL_WEIGHT}
-              labelSize={LABEL_SIZE}
               height={isMobile ? 'md' : 'lg'}
             />
 

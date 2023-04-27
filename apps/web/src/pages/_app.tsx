@@ -12,7 +12,15 @@ import 'shared-ui/src/darkmode.scss';
 
 // TODO: Add a function to measure the number of views with Google Analytics
 const App = ({ Component, pageProps }: AppProps) => {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: 0,
+        suspense: true,
+      },
+    },
+  });
+
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps?.dehydrateState}>

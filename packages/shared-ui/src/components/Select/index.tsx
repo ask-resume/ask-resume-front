@@ -27,10 +27,13 @@ export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
   options: Option[];
   height?: keyof typeof HeightOption;
   className?: string;
+  label?: {
+    labelText?: string;
+    labelSize?: FontSize;
+    labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
+  };
+  locale?: string;
   border?: boolean;
-  labelText?: string;
-  labelSize?: FontSize;
-  labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
 }
 
 export const isObjectOption = (option: Option): option is ObjectOption =>
@@ -46,9 +49,12 @@ const Select = ({
   options,
   className,
   height = 'sm',
-  labelText,
-  labelSize = 'medium',
-  labelWeight = 'regular',
+  label = {
+    labelText: '',
+    labelSize: 'medium',
+    labelWeight: 'regular',
+  },
+  locale = 'en',
   border = true,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,15 +75,15 @@ const Select = ({
   return (
     <CloseBoxOnOutside onClose={handleOptionListClose}>
       <div className={cn('_SELECT_', className)}>
-        {labelText && (
+        {label.labelText && (
           <div>
             <Text
               className={cn('_label')}
-              size={labelSize}
-              weight={labelWeight}
+              size={label.labelSize}
+              weight={label.labelWeight}
               onClick={handleOptionListOpen}
             >
-              {labelText}
+              {label.labelText}
             </Text>
           </div>
         )}
@@ -105,6 +111,7 @@ const Select = ({
             selectedOption={selectedOption}
             onChangeOption={handleOptionChange}
             height={height}
+            locale={locale}
           />
         )}
       </div>
