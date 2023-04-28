@@ -8,8 +8,13 @@ import { useIsMobile } from 'shared-lib/hooks/media-query';
 import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
 import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
 import { TranslateNamespaces } from 'modules/form/constants';
-import styles from './index.module.scss';
+import {
+  useResumeTextAreaState,
+  useResumeSelectState,
+} from 'modules/form/hooks/useResumeInfoState';
+import { TAB_CNT } from 'modules/form/constants';
 
+import styles from './index.module.scss';
 const Router = dynamic(() => import('modules/form/components/Router'), { ssr: false });
 const UserInfo = dynamic(() => import('modules/form/components/UserInfo'), { ssr: false });
 const ResumeInfo = dynamic(() => import('modules/form/components/ResumeInfo'), { ssr: false });
@@ -21,7 +26,20 @@ export default function FormPage() {
   const isMobile = useIsMobile();
 
   const { locale, type } = router.query as { locale: string; type: string };
-  const { userInfoState, userInfoSetter } = useUserInfoState({ t, locale });
+
+  // userInfo: user information entered by the user
+  const { userInfo, userInfoSetter } = useUserInfoState({ t, locale });
+
+  // resumeTextArea = value entered by the user in the resume textarea
+  // resumeSelect = type of option selected by the user in the resume
+  const { resumeTextArea, resumeTextAreaSetter } = useResumeTextAreaState({
+    tabCnt: TAB_CNT,
+    locale,
+  });
+  const { resumeSelect, resumeSelectSetter } = useResumeSelectState({
+    tabCnt: TAB_CNT,
+    locale,
+  });
 
   return (
     <>
@@ -39,7 +57,7 @@ export default function FormPage() {
             <UserInfo
               isMobile={isMobile}
               locale={locale}
-              userInfo={userInfoState}
+              userInfo={userInfo}
               onChangeUserInfo={userInfoSetter}
             />
           </main>
@@ -47,13 +65,19 @@ export default function FormPage() {
 
         {type === 'resume' && (
           <main className={styles.confirm_content}>
-            <ResumeInfo isMobile={isMobile} locale={locale} />
+            <ResumeInfo
+              isMobile={isMobile}
+              resumeTextArea={resumeTextArea}
+              resumeSelect={resumeSelect}
+              onChangeResumeTextArea={resumeTextAreaSetter}
+              onChangeResumeSelect={resumeSelectSetter}
+            />
           </main>
         )}
 
         {type === 'confirmation' && (
           <main className={styles.confirm_content}>
-            <Confirmation isMobile={isMobile} locale={locale} userInfo={userInfoState} />
+            <Confirmation isMobile={isMobile} userInfo={userInfo} />
           </main>
         )}
       </div>

@@ -1,11 +1,13 @@
 import React from 'react';
 import { uid } from 'react-uid';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 import Select, { Option } from 'shared-ui/src/components/Select';
 import TextArea from 'shared-ui/src/components/TextArea';
 import { TranslateNamespaces } from 'modules/form/constants';
 import { getResumeSelectObj } from 'modules/form/lib/getResumeSelectObj';
+import styles from '../index.module.scss';
 
 interface ResumeTextAreaProps {
   select: number;
@@ -23,8 +25,9 @@ const ResumeTextAreas = ({
   onChangeResumeSelect,
 }: ResumeTextAreaProps) => {
   const { t } = useTranslation(TranslateNamespaces);
-  const resumeSelectObj = getResumeSelectObj(t);
+  const { locale } = useRouter().query as { locale: string };
 
+  const resumeSelectObj = React.useMemo(() => getResumeSelectObj(t), [t]);
   const handleChangeResumeTextArea = React.useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>, idx: number) => {
       onChangeResumeTextArea(event, idx);
@@ -44,6 +47,7 @@ const ResumeTextAreas = ({
             select === idx && (
               <Select
                 key={uid(idx)}
+                className={styles.textarea_select}
                 selectedOption={selectEl}
                 options={resumeSelectObj}
                 onChangeSelectedOption={newSelectedOption =>
@@ -61,6 +65,7 @@ const ResumeTextAreas = ({
               <TextArea
                 key={uid(idx)}
                 text={textareaEl ?? ''}
+                placeholder={t('resume_info.placeholder.textarea') ?? ''}
                 onChangeText={event => handleChangeResumeTextArea(event, idx)}
               />
             ),

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
@@ -10,8 +11,6 @@ import Select, { Option, isObjectOption } from 'shared-ui/src/components/Select'
 import Slider from 'shared-ui/src/components/Slider';
 import Icon from 'shared-ui/src/components/Icon';
 
-import { useJobs } from '../api/job';
-import { formatYearsOfCareer, validateUserInfoForm } from '../lib';
 import styles from './index.module.scss';
 import { StateName, ChangedValue } from '../hooks/useUserInfoState';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
@@ -19,13 +18,13 @@ import { UserInfoState } from './UserInfo';
 import { TranslateNamespaces } from 'modules/form/constants';
 
 interface ConfirmationProps {
-  locale: string;
   isMobile: boolean;
   userInfo: UserInfoState;
 }
 
-const Confirmation = ({ locale, isMobile, userInfo }: ConfirmationProps) => {
+const Confirmation = ({ isMobile, userInfo }: ConfirmationProps) => {
   const { t } = useTranslation(TranslateNamespaces);
+  const { locale } = useRouter().query as { locale: string };
 
   return (
     <div className={styles._CONTAINER_}>

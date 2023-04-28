@@ -45,7 +45,7 @@ interface UseResumeSelectProps {
 
 export const useResumeSelectState = ({ tabCnt, locale }: UseResumeSelectProps) => {
   const { t } = useTranslation(TranslateNamespaces);
-  const resumeSelectOptions = React.useMemo(() => getResumeSelectObj(t), [t, locale]);
+  const resumeSelectOptions = React.useMemo(() => getResumeSelectObj(t), [t]);
 
   const initSelectState: Option[] = [...Array(tabCnt)].map(() => resumeSelectOptions[0]);
   const [resumeSelect, setResumeSelect] = React.useState(initSelectState);

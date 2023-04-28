@@ -13,3 +13,4 @@ export const initResumeInfo: {
 };
 
 export const TranslateNamespaces = ['form', 'common'];
+export const TAB_CNT = 4;

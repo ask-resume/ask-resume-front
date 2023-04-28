@@ -1,37 +1,37 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
-import styles from '../index.module.scss';
-import { useResumeTextAreaState, useResumeSelectState } from '../../hooks/useResumeInfoState';
+import { TranslateNamespaces } from 'modules/form/constants';
 import ResumeTabs from './Tabs';
 import ResumeTextAreas from './TextAreas';
-import { TranslateNamespaces } from 'modules/form/constants';
+import { Option } from 'shared-ui/src/components/Select';
+import styles from '../index.module.scss';
 
 interface ResumeInfoProps {
   isMobile: boolean;
-  locale: string;
+  resumeTextArea: string[];
+  resumeSelect: Option[];
+  onChangeResumeTextArea: (event: React.ChangeEvent<HTMLTextAreaElement>, idx: number) => void;
+  onChangeResumeSelect: (newSelectedOption: Option, idx: number) => void;
 }
 
-const TAB_CNT = 4;
 const INIT_SELECT_IDX = 0;
-
-const ResumeInfo = ({ isMobile, locale }: ResumeInfoProps) => {
+const ResumeInfo = ({
+  isMobile,
+  resumeTextArea,
+  resumeSelect,
+  onChangeResumeTextArea,
+  onChangeResumeSelect,
+}: ResumeInfoProps) => {
   const { t } = useTranslation(TranslateNamespaces);
+  const { locale } = useRouter().query as { locale: string };
 
   const [selectedIdx, setSelectedIdx] = React.useState(INIT_SELECT_IDX);
   const handleSelectedIdxChange = React.useCallback(
     (newSelect: number) => setSelectedIdx(newSelect),
     [],
   );
-
-  const { resumeTextArea, resumeTextAreaSetter } = useResumeTextAreaState({
-    tabCnt: TAB_CNT,
-    locale,
-  });
-  const { resumeSelect, resumeSelectSetter } = useResumeSelectState({
-    tabCnt: TAB_CNT,
-    locale,
-  });
 
   return (
     <div className={styles._CONTAINER_}>
@@ -47,9 +47,9 @@ const ResumeInfo = ({ isMobile, locale }: ResumeInfoProps) => {
           <ResumeTextAreas
             select={selectedIdx}
             resumeTextArea={resumeTextArea}
-            onChangeResumeTextArea={resumeTextAreaSetter}
+            onChangeResumeTextArea={onChangeResumeTextArea}
             resumeSelect={resumeSelect}
-            onChangeResumeSelect={resumeSelectSetter}
+            onChangeResumeSelect={onChangeResumeSelect}
           />
         </div>
       </div>

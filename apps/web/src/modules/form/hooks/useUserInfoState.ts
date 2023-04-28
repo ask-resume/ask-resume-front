@@ -29,7 +29,7 @@ export const useUserInfoState = ({
   t,
   locale,
 }: UseUserInfoProps): {
-  userInfoState: UserInfoState;
+  userInfo: UserInfoState;
   userInfoSetter: (stateName: StateName, changedValue: ChangedValue) => void;
 } => {
   const NATION_OPTION: Option[] = [
@@ -76,7 +76,7 @@ export const useUserInfoState = ({
   }, []);
 
   return {
-    userInfoState: {
+    userInfo: {
       selectedJob,
       selectedLanguage,
       selectedDifficulty,

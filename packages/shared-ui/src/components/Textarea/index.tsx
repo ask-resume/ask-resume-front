@@ -6,8 +6,6 @@ import { useUID } from 'react-uid';
 import { FontSize } from '../../config/font';
 import { FontSize as FontSizeType } from '../../config/size';
 
-import * as Spacer from '../../config/spacer';
-
 export interface TextareaProps {
   text: string;
   onChangeText: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -37,7 +35,7 @@ const Textarea = ({
 
   return (
     <div className="_TEXTAREA_">
-      <div style={{ padding: `${Spacer.spacer_x_small} 0` }}>
+      <div>
         <Text
           className="_header"
           variant="label"

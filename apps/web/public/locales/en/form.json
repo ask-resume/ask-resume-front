@@ -43,16 +43,18 @@
 
   "resume_info": {
     "label": {},
-    "placeholder": {},
+    "placeholder": {
+      "textarea": "Please fill in the details for each option."
+    },
     "tab": "Question {{idx}}",
     "select": {
-      "acc": "acc",
-      "career": "career",
-      "education": "education",
-      "introduction": "introduction",
-      "outsideActivities": "outsideActivities",
-      "project": "project",
-      "technical": "technical"
+      "introduction": "Introduction",
+      "career": "Work Experience",
+      "education": "Education",
+      "technical": "Technical Skills",
+      "outsideActivities": "Extracurricular Activities",
+      "project": "Projects",
+      "acc": "Awards / Certifications"
     }
   }
 }

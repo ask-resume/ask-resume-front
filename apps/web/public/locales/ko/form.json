@@ -43,7 +43,9 @@
 
   "resume_info": {
     "label": {},
-    "placeholder": {},
+    "placeholder": {
+      "textarea": "선택지에 대한 내용을 채워넣어주세요."
+    },
     "tab": "질문 {{idx}}",
     "select": {
       "introduction": "자기소개",
@@ -52,7 +54,7 @@
       "technical": "보유한 기술",
       "outsideActivities": "대외활동",
       "project": "프로젝트",
-      "acc": "수상/자격증"
+      "acc": "수상 / 자격증"
     }
   }
 }
