@@ -43,7 +43,16 @@
 
   "resume_info": {
     "label": {},
+    "placeholder": {},
     "tab": "Question {{idx}}",
-    "placeholder": {}
+    "select": {
+      "acc": "acc",
+      "career": "career",
+      "education": "education",
+      "introduction": "introduction",
+      "outsideActivities": "outsideActivities",
+      "project": "project",
+      "technical": "technical"
+    }
   }
 }

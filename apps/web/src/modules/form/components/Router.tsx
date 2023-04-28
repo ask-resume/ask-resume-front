@@ -1,16 +1,18 @@
 import { useRouter } from 'next/router';
-import { TFunction } from 'next-i18next';
+import { useTranslation } from 'next-i18next';
 
 import Text from 'shared-ui/src/components/Text';
 import styles from './index.module.scss';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
+import { TranslateNamespaces } from '../constants';
 
 interface RouterProps {
-  t: TFunction;
   isMobile: boolean;
 }
 
-const Router = ({ t, isMobile }: RouterProps) => {
+const Router = ({ isMobile }: RouterProps) => {
+  const { t } = useTranslation(TranslateNamespaces);
+
   const router = useRouter();
   const { type, locale } = router.query as { type: string; locale: string };
   const LABEL_SIZE = isMobile ? 'medium' : 'large';

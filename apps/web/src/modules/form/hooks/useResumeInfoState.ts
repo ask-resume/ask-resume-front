@@ -1,37 +1,72 @@
 import React from 'react';
-import { TFunction } from 'next-i18next';
-import { ResumeInfoName } from '../components/ResumeInfo';
+import { useTranslation } from 'next-i18next';
 
-interface UseResumeInfoProps {
-  t: TFunction;
-  locale: string;
+import { Option } from 'shared-ui/src/components/Select';
+import { getResumeSelectObj } from '../lib/getResumeSelectObj';
+import { TranslateNamespaces } from '../constants';
+
+interface UseResumeTextAreaProps {
   tabCnt: number;
+  locale: string;
 }
 
-export const useResumeInfoState = ({ t, locale, tabCnt }: UseResumeInfoProps) => {
-  const initState: { name: ResumeInfoName; value: string }[] = [...Array(tabCnt)].map((_, idx) => ({
-    name: 'acc' as ResumeInfoName,
-    value: '',
-  }));
-  const [resumeInfo, setResumeInfo] = React.useState(initState);
+export const useResumeTextAreaState = ({ tabCnt, locale }: UseResumeTextAreaProps) => {
+  const initTextAreaState: string[] = [...Array(tabCnt)].map(() => '');
+  const [resumeTextArea, setResumeTextArea] = React.useState(initTextAreaState);
+
+  React.useEffect(() => {
+    setResumeTextArea(initTextAreaState);
+  }, [locale]);
 
   /**
-   * Updates the resumeInfo state based on the input event and index.
+   * Updates the resumeTextArea state based on the input event and index.
    * @param {React.ChangeEvent<HTMLTextAreaElement>} event - The input event.
    * @param {number} idx - The index of the current item to be updated.
    * @returns {void}
    */
-  const handleResumeInfoChange = React.useCallback(
+  const handleResumeTextAreaChange = React.useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>, idx: number) => {
-      const newResumeInfo = [...resumeInfo];
-      newResumeInfo[idx].value = event.target.value;
-      setResumeInfo(newResumeInfo);
+      setResumeTextArea(prevState => {
+        const newResumeInfo = [...prevState];
+        newResumeInfo[idx] = event.target.value;
+        return newResumeInfo;
+      });
     },
     [],
   );
 
-  return {
-    resumeInfoState: resumeInfo,
-    resumeInfoSetter: handleResumeInfoChange,
-  };
+  return { resumeTextArea, resumeTextAreaSetter: handleResumeTextAreaChange };
+};
+
+interface UseResumeSelectProps {
+  tabCnt: number;
+  locale: string;
+}
+
+export const useResumeSelectState = ({ tabCnt, locale }: UseResumeSelectProps) => {
+  const { t } = useTranslation(TranslateNamespaces);
+  const resumeSelectOptions = React.useMemo(() => getResumeSelectObj(t), [t, locale]);
+
+  const initSelectState: Option[] = [...Array(tabCnt)].map(() => resumeSelectOptions[0]);
+  const [resumeSelect, setResumeSelect] = React.useState(initSelectState);
+
+  React.useEffect(() => {
+    setResumeSelect(() => [...Array(tabCnt)].map(() => resumeSelectOptions[0]));
+  }, [resumeSelectOptions]);
+
+  /**
+   * Updates the resumeSelect state based on the input event and index.
+   * @param {React.ChangeEvent<HTMLSelectElement>} event - The input event.
+   * @param {number} idx - The index of the current item to be updated.
+   * @returns {void}
+   */
+  const handleResumeSelectChange = React.useCallback((newSelectedOption: Option, idx: number) => {
+    setResumeSelect(prevState => {
+      const newResumeSelect = [...prevState];
+      newResumeSelect[idx] = newSelectedOption;
+      return newResumeSelect;
+    });
+  }, []);
+
+  return { resumeSelect, resumeSelectSetter: handleResumeSelectChange };
 };

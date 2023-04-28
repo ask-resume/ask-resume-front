@@ -55,7 +55,9 @@ export const WithLabel = () => {
     <div style={{ marginBottom: 50 }}>
       <div style={{ padding: 20 }}>
         <Select
-          labelText="Job"
+          label={{
+            labelText: 'Jobs',
+          }}
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={objTypeOptions}

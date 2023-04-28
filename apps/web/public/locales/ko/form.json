@@ -43,7 +43,16 @@
 
   "resume_info": {
     "label": {},
+    "placeholder": {},
     "tab": "질문 {{idx}}",
-    "placeholder": {}
+    "select": {
+      "introduction": "자기소개",
+      "career": "업무 경험",
+      "education": "교육 이력",
+      "technical": "보유한 기술",
+      "outsideActivities": "대외활동",
+      "project": "프로젝트",
+      "acc": "수상/자격증"
+    }
   }
 }

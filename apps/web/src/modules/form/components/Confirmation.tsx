@@ -1,5 +1,5 @@
-import { TFunction } from 'next-i18next';
 import React from 'react';
+import { useTranslation } from 'next-i18next';
 
 import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
@@ -16,19 +16,21 @@ import styles from './index.module.scss';
 import { StateName, ChangedValue } from '../hooks/useUserInfoState';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { UserInfoState } from './UserInfo';
+import { TranslateNamespaces } from 'modules/form/constants';
 
 interface ConfirmationProps {
-  t: TFunction;
   locale: string;
   isMobile: boolean;
   userInfo: UserInfoState;
 }
 
-const Confirmation = ({ t, locale, isMobile, userInfo }: ConfirmationProps) => {
+const Confirmation = ({ locale, isMobile, userInfo }: ConfirmationProps) => {
+  const { t } = useTranslation(TranslateNamespaces);
+
   return (
     <div className={styles._CONTAINER_}>
       <div className={styles.confirm_content}>
-        <UserInfoConfirmation t={t} userInfo={userInfo} />
+        <UserInfoConfirmation userInfo={userInfo} />
 
         <div style={{ width: '100%', backgroundColor: 'black' }}></div>
 
@@ -70,12 +72,12 @@ const Confirmation = ({ t, locale, isMobile, userInfo }: ConfirmationProps) => {
 export default Confirmation;
 
 interface UserInfoConfirmationProps {
-  t: TFunction;
   userInfo: UserInfoState;
 }
 
-const UserInfoConfirmation = ({ t, userInfo }: UserInfoConfirmationProps) => {
+const UserInfoConfirmation = ({ userInfo }: UserInfoConfirmationProps) => {
   const notSelected = 'not selected';
+  const { t } = useTranslation(TranslateNamespaces);
 
   return (
     <div>

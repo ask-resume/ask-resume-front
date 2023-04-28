@@ -60,7 +60,9 @@ export const WithLabel = () => {
           selectedOption={selectedOption}
           onChangeSelectedOption={setSelectedOption}
           options={objTypeOptions}
-          labelText="Option"
+          label={{
+            labelText: 'Option',
+          }}
           placeholder="Select String Option"
         />
         <Divider />

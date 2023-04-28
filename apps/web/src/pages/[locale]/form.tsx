@@ -7,9 +7,8 @@ import { useIsMobile } from 'shared-lib/hooks/media-query';
 
 import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
 import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
+import { TranslateNamespaces } from 'modules/form/constants';
 import styles from './index.module.scss';
-
-const TranslateNamespaces = ['form', 'common'];
 
 const Router = dynamic(() => import('modules/form/components/Router'), { ssr: false });
 const UserInfo = dynamic(() => import('modules/form/components/UserInfo'), { ssr: false });
@@ -33,12 +32,11 @@ export default function FormPage() {
       </Head>
 
       <div className={styles._FORM_}>
-        <Router t={t} isMobile={isMobile} />
+        <Router isMobile={isMobile} />
 
         {type === 'user-info' && (
           <main className={styles.user_info_content}>
             <UserInfo
-              t={t}
               isMobile={isMobile}
               locale={locale}
               userInfo={userInfoState}
@@ -49,13 +47,13 @@ export default function FormPage() {
 
         {type === 'resume' && (
           <main className={styles.confirm_content}>
-            <ResumeInfo t={t} isMobile={isMobile} locale={locale} />
+            <ResumeInfo isMobile={isMobile} locale={locale} />
           </main>
         )}
 
         {type === 'confirmation' && (
           <main className={styles.confirm_content}>
-            <Confirmation t={t} isMobile={isMobile} locale={locale} userInfo={userInfoState} />
+            <Confirmation isMobile={isMobile} locale={locale} userInfo={userInfoState} />
           </main>
         )}
       </div>

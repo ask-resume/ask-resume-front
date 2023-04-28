@@ -1,5 +1,5 @@
-import { TFunction } from 'next-i18next';
 import React from 'react';
+import { useTranslation } from 'next-i18next';
 
 import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
@@ -13,9 +13,11 @@ import Spinner from 'shared-ui/src/components/Spinner';
 
 import { useJobs } from '../api/job';
 import { formatYearsOfCareer, validateUserInfoForm } from '../lib';
-import styles from './index.module.scss';
 import { StateName, ChangedValue } from '../hooks/useUserInfoState';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
+
+import styles from './index.module.scss';
+import { TranslateNamespaces } from '../constants';
 
 export interface UserInfoState {
   selectedJob: Option | null;
@@ -25,14 +27,15 @@ export interface UserInfoState {
 }
 
 interface UserInfoProps {
-  t: TFunction;
   locale: string;
   isMobile: boolean;
   userInfo: UserInfoState;
   onChangeUserInfo: (stateName: StateName, changedValue: ChangedValue) => void;
 }
 
-const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProps) => {
+const UserInfo = ({ locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProps) => {
+  const { t } = useTranslation(TranslateNamespaces);
+
   const LABEL_SIZE = isMobile ? 'medium' : 'large';
   const LABEL_WEIGHT = 'medium';
 
