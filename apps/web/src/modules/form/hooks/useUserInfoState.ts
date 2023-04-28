@@ -58,7 +58,6 @@ export const useUserInfoState = ({
 
   // Initialize state when locale is changed.
   React.useEffect(() => {
-    console.log('hi');
     onChangeSelectedJob(null);
     onChangeSelectedLanguage(INIT_STATE.language);
     onChangeSelectedDifficulty(INIT_STATE.difficulty);

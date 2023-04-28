@@ -11,15 +11,10 @@ export const getJobs = async (locale: string) => {
   });
 };
 
-interface UseJobsProps {
-  locale: string;
-  initialJobs: Option[];
-}
-
-export const useJobs = ({ locale, initialJobs }: UseJobsProps) => {
+export const useJobs = (locale: string) => {
   return useQuery(['jobs', locale], () => getJobs(locale), {
-    initialData: () => ({ data: initialJobs }),
     cacheTime: Infinity,
+    retry: false,
     select: (res: { data: Option[] }) => res.data,
   });
 };

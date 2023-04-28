@@ -27,20 +27,12 @@ export interface UserInfoState {
 interface UserInfoProps {
   t: TFunction;
   locale: string;
-  initialJobs: Option[];
   isMobile: boolean;
   userInfo: UserInfoState;
   onChangeUserInfo: (stateName: StateName, changedValue: ChangedValue) => void;
 }
 
-const UserInfo = ({
-  t,
-  locale,
-  initialJobs,
-  isMobile,
-  userInfo,
-  onChangeUserInfo,
-}: UserInfoProps) => {
+const UserInfo = ({ t, locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProps) => {
   const LABEL_SIZE = isMobile ? 'medium' : 'large';
   const LABEL_WEIGHT = 'medium';
 
@@ -54,7 +46,7 @@ const UserInfo = ({
     { name: t('user_info.difficulty.hard'), value: 'hard' },
   ];
 
-  const { data: jobs, isLoading: isJobsLoading } = useJobs({ locale, initialJobs });
+  const { data: jobs, isLoading: isJobsLoading } = useJobs(locale);
   const pathname = `/${locale}/form`;
   const { changeQueryParams } = useQueryParams();
 
@@ -65,7 +57,9 @@ const UserInfo = ({
       {isJobsLoading && (
         <div className={styles.loading}>
           <Spinner size="xl" />
-          <Text size="large">{t('user_info.load-job-data') ?? ''}</Text>
+          <Text align="center" textColor={ColorMap.gray_6} size="small" lineHeight="wide">
+            {t('user_info.load-job-data') ?? ''}
+          </Text>
         </div>
       )}
 

@@ -9,28 +9,31 @@ import { FontSize as FontSizeType } from '../../config/size';
 import * as Spacer from '../../config/spacer';
 
 export interface TextareaProps {
+  text: string;
+  onChangeText: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   height?: number;
   maxLength?: number;
   placeholder?: string;
-  labelText?: string;
-  labelSize?: FontSizeType;
-  labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
+  label?: {
+    labelText?: string;
+    labelSize?: FontSizeType;
+    labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
+  };
 }
 
 const Textarea = ({
+  text,
+  onChangeText,
   height = 300,
   maxLength = 1000,
   placeholder = 'Type the text.',
-  labelText,
-  labelSize = 'large',
-  labelWeight = 'regular',
+  label = {
+    labelText: '',
+    labelSize: 'large',
+    labelWeight: 'regular',
+  },
 }: TextareaProps) => {
   const uid = useUID();
-
-  const [text, setText] = React.useState('');
-  const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(event.target.value);
-  };
 
   return (
     <div className="_TEXTAREA_">
@@ -38,11 +41,11 @@ const Textarea = ({
         <Text
           className="_header"
           variant="label"
-          size={labelSize}
-          weight={labelWeight}
+          size={label.labelSize}
+          weight={label.labelWeight}
           htmlFor={uid}
         >
-          {labelText}
+          {label.labelText}
         </Text>
       </div>
 
@@ -52,7 +55,7 @@ const Textarea = ({
           maxLength={maxLength}
           placeholder={placeholder}
           value={text}
-          onChange={handleTextChange}
+          onChange={event => onChangeText(event)}
           id={uid}
           name={uid}
         />

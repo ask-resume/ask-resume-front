@@ -1,5 +1,6 @@
 import { TFunction } from 'next-i18next';
 import React from 'react';
+import { uid } from 'react-uid';
 
 import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
@@ -12,6 +13,7 @@ import Icon from 'shared-ui/src/components/Icon';
 import TextArea from 'shared-ui/src/components/TextArea';
 import Tabs from 'shared-ui/src/components/Tabs';
 import TabItem from 'shared-ui/src/components/Tabs/TabItem';
+import Tooltip from 'shared-ui/src/components/Tooltip';
 
 import { useJobs } from '../api/job';
 import { formatYearsOfCareer, validateUserInfoForm } from '../lib';
@@ -19,6 +21,7 @@ import styles from './index.module.scss';
 import { StateName, ChangedValue } from '../hooks/useUserInfoState';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { UserInfoState } from './UserInfo';
+import { useResumeInfoState } from '../hooks/useResumeInfoState';
 
 interface ResumeInfoProps {
   t: TFunction;
@@ -31,14 +34,23 @@ const INIT_SELECT_IDX = 0;
 
 const ResumeInfo = ({ t, isMobile, locale }: ResumeInfoProps) => {
   const [select, setSelect] = React.useState(INIT_SELECT_IDX);
-  const onChangeSelect = React.useCallback((newSelect: number) => setSelect(newSelect), []);
+  const handleSelectChange = React.useCallback((newSelect: number) => setSelect(newSelect), []);
+
+  const { resumeInfoState, resumeInfoSetter } = useResumeInfoState({ t, locale, tabCnt: TAB_CNT });
+  console.log(resumeInfoState);
 
   return (
     <div className={styles._CONTAINER_}>
       <div className={styles.resume_content}>
-        <ResumeTabs t={t} isMobile={isMobile} select={select} setSelect={onChangeSelect} />
+        <ResumeTabs t={t} isMobile={isMobile} select={select} onChangeSelect={handleSelectChange} />
 
-        <TextArea />
+        <div>
+          <ResumeTextAreas
+            select={select}
+            resumeInfo={resumeInfoState}
+            onChangeResumeInfo={resumeInfoSetter}
+          />
+        </div>
       </div>
     </div>
   );
@@ -46,14 +58,14 @@ const ResumeInfo = ({ t, isMobile, locale }: ResumeInfoProps) => {
 
 export default ResumeInfo;
 
-interface ResumeTabsProps {
+export interface ResumeTabsProps {
   t: TFunction;
   isMobile: boolean;
   select: number;
-  setSelect: (newSelect: number) => void;
+  onChangeSelect: (newSelect: number) => void;
 }
 
-const ResumeTabs = ({ t, isMobile, select, setSelect }: ResumeTabsProps) => {
+const ResumeTabs = ({ t, isMobile, select, onChangeSelect }: ResumeTabsProps) => {
   const TAB_SIZE = isMobile ? 'sm' : 'md';
 
   return (
@@ -63,10 +75,48 @@ const ResumeTabs = ({ t, isMobile, select, setSelect }: ResumeTabsProps) => {
           key={idx}
           size={TAB_SIZE}
           label={t('resume_info.tab', { idx: idx + 1 }) ?? ''}
-          onClick={() => setSelect(idx)}
+          onClick={() => onChangeSelect(idx)}
           selected={select === idx}
         />
       ))}
     </Tabs>
+  );
+};
+
+export type ResumeInfoName =
+  | 'acc'
+  | 'career'
+  | 'education'
+  | 'introduction'
+  | 'outsideActivities'
+  | 'project'
+  | 'technical';
+interface ResumeTextAreaProps {
+  select: number;
+  resumeInfo: { name: ResumeInfoName; value: string }[];
+  onChangeResumeInfo: (event: React.ChangeEvent<HTMLTextAreaElement>, idx: number) => void;
+}
+
+const ResumeTextAreas = ({ select, resumeInfo, onChangeResumeInfo }: ResumeTextAreaProps) => {
+  const handleChangeResumeInfo = React.useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>, idx: number) => {
+      onChangeResumeInfo(event, idx);
+    },
+    [onChangeResumeInfo],
+  );
+
+  return (
+    <>
+      {resumeInfo.map(
+        (el, idx) =>
+          select === idx && (
+            <TextArea
+              key={idx}
+              text={el?.value ?? ''}
+              onChangeText={event => handleChangeResumeInfo(event, idx)}
+            />
+          ),
+      )}
+    </>
   );
 };
