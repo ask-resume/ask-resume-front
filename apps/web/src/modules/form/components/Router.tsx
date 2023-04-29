@@ -5,6 +5,7 @@ import Text from 'shared-ui/src/components/Text';
 import styles from './index.module.scss';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { TranslateNamespaces } from '../constants';
+import { useFormRouter } from '../hooks/useFormRouter';
 
 interface RouterProps {
   isMobile: boolean;
@@ -12,21 +13,14 @@ interface RouterProps {
 
 const Router = ({ isMobile }: RouterProps) => {
   const { t } = useTranslation(TranslateNamespaces);
-
-  const router = useRouter();
-  const { type, locale } = router.query as { type: string; locale: string };
   const LABEL_SIZE = isMobile ? 'medium' : 'large';
 
-  const pathname = `/${locale}/form`;
-  const { changeQueryParams } = useQueryParams();
+  const { type, changeFormRouter } = useFormRouter();
 
   return (
     <section className={styles._ROUTER_}>
       <button
-        onClick={() => {
-          const query = { type: 'user-info' };
-          changeQueryParams(pathname, query);
-        }}
+        onClick={() => changeFormRouter('user-info')}
         className={type === 'user-info' ? styles.selected : ''}
       >
         <Text weight="bold" size={LABEL_SIZE}>
@@ -37,10 +31,7 @@ const Router = ({ isMobile }: RouterProps) => {
       <div className={styles.divider} />
 
       <button
-        onClick={() => {
-          const query = { type: 'resume' };
-          changeQueryParams(pathname, query);
-        }}
+        onClick={() => changeFormRouter('resume')}
         className={type === 'resume' ? styles.selected : ''}
       >
         <Text weight="bold" size={LABEL_SIZE}>
@@ -51,10 +42,7 @@ const Router = ({ isMobile }: RouterProps) => {
       <div className={styles.divider} />
 
       <button
-        onClick={() => {
-          const query = { type: 'confirmation' };
-          changeQueryParams(pathname, query);
-        }}
+        onClick={() => changeFormRouter('confirmation')}
         className={type === 'confirmation' ? styles.selected : ''}
       >
         <Text weight="bold" size={LABEL_SIZE}>

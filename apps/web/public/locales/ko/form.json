@@ -1,4 +1,9 @@
 {
+  "button": {
+    "prev-page": "이전 페이지",
+    "next-page": "다음 페이지"
+  },
+
   "user_info": {
     "label": {
       "job": "직업",
@@ -55,6 +60,9 @@
       "outsideActivities": "대외활동",
       "project": "프로젝트",
       "acc": "수상 / 자격증"
+    },
+    "textarea": {
+      "error": "입력값은 100자에서 1,000자 이내이어야 합니다."
     }
   }
 }

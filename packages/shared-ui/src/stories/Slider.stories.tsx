@@ -21,7 +21,7 @@ export const Default = () => {
         max={100}
         step={10}
         inputValue={value}
-        onChangeInputValue={newValue => setValue(newValue)}
+        onChangeSelectedOption={setValue}
       />
       <Divider />
       <Text size="small">value: {value}</Text>
@@ -40,22 +40,16 @@ export const Size = () => {
         max={100}
         step={10}
         inputValue={value}
-        onChangeInputValue={newValue => setValue(newValue)}
+        onChangeSelectedOption={setValue}
       />
-      <Slider
-        min={0}
-        max={100}
-        step={10}
-        inputValue={value}
-        onChangeInputValue={newValue => setValue(newValue)}
-      />
+      <Slider min={0} max={100} step={10} inputValue={value} onChangeSelectedOption={setValue} />
       <Slider
         size="large"
         min={0}
         max={100}
         step={10}
         inputValue={value}
-        onChangeInputValue={newValue => setValue(newValue)}
+        onChangeSelectedOption={setValue}
       />
       <Divider />
       <Text size="small">value: {value}</Text>

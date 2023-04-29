@@ -6,6 +6,10 @@
     cursor: pointer;
   }
 
+  .label {
+    padding: 12px;
+  }
+
   ._wrapper {
     width: 100%;
     display: flex;
@@ -24,11 +28,16 @@
       position: relative;
       resize: none;
       border-radius: $font_size_x_small $font_size_x_small 0 0;
-    }
 
-    textarea:focus {
-      outline: none;
-      border-color: $blue_5;
+      &:focus {
+        outline: none;
+        border-color: $blue_5;
+      }
+
+      & .error {
+        outline: none;
+        border-color: $inactive_red;
+      }
     }
 
     ._text-limit {
@@ -48,5 +57,19 @@
       outline: none;
       border-color: $blue_5;
     }
+
+    & .error {
+      outline: none;
+      border-color: $inactive_red;
+    }
+  }
+
+  .error_message {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 12px 0;
+    margin-left: 12px;
+    line-height: 1.5;
   }
 }

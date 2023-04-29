@@ -9,7 +9,6 @@ import InputSelect from 'shared-ui/src/components/InputSelect';
 import Select, { Option } from 'shared-ui/src/components/Select';
 import Slider from 'shared-ui/src/components/Slider';
 import Icon from 'shared-ui/src/components/Icon';
-import Spinner from 'shared-ui/src/components/Spinner';
 
 import { useJobs } from '../api/job';
 import { formatYearsOfCareer, validateUserInfoForm } from '../lib';
@@ -57,14 +56,7 @@ const UserInfo = ({ locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProp
 
   return (
     <div className={styles._CONTAINER_}>
-      {isJobsLoading && (
-        <div className={styles.loading}>
-          <Spinner size="xl" />
-          <Text align="center" textColor={ColorMap.gray_6} size="small" lineHeight="wide">
-            {t('user_info.load-job-data') ?? ''}
-          </Text>
-        </div>
-      )}
+      {isJobsLoading && <div className={styles.loading} />}
 
       {!isJobsLoading && (
         <>
@@ -157,7 +149,7 @@ const UserInfo = ({ locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProp
               buttonColor="blue"
               disabled={isNavigationEnabled}
               label={{
-                labelText: t('user_info.label.go-to-resume-page') ?? '',
+                labelText: t('button.next-page') ?? '',
                 labelTailingIcon: <Icon.Arrow flip />,
               }}
             />

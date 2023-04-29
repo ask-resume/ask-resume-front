@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 
 import { Option } from 'shared-ui/src/components/Select';
-import { getResumeSelectObj } from '../lib/getResumeSelectObj';
+import { getResumeSelectObj } from '../lib';
 import { TranslateNamespaces } from '../constants';
 
 interface UseResumeTextAreaProps {

@@ -18,6 +18,5 @@
     "noEmit": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "build", "src/**/*.stories.tsx", "src/**/*.test.tsx"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "exclude": ["node_modules", "build", "src/**/*.stories.tsx", "src/**/*.test.tsx"]
 }

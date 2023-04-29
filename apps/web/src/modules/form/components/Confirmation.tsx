@@ -42,15 +42,19 @@ const Confirmation = ({ isMobile, userInfo }: ConfirmationProps) => {
           </Text>
         </div>
       </div>
-      <div>
+      <div
+        style={{
+          display: 'flex',
+        }}
+      >
         <Button
           size={isMobile ? 'sm' : 'lg'}
           buttonColor="blue"
           // fullWidth
           // disabled={!validateUserInfoForm(userInfo)}
           label={{
-            labelText: t('label.go-to-resume-page') ?? '',
-            labelTailingIcon: <Icon.Arrow flip />,
+            labelText: t('button.prev-page') ?? '',
+            labelLeadingIcon: <Icon.Arrow />,
           }}
         />
         <Button
@@ -59,7 +63,7 @@ const Confirmation = ({ isMobile, userInfo }: ConfirmationProps) => {
           // fullWidth
           // disabled={!validateUserInfoForm(userInfo)}
           label={{
-            labelText: t('label.go-to-resume-page') ?? '',
+            labelText: t('button.next-page') ?? '',
             labelTailingIcon: <Icon.Arrow flip />,
           }}
         />

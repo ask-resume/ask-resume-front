@@ -3,6 +3,7 @@ import { Check } from './Check';
 import { Edit } from './Edit';
 import { Setting } from './Setting';
 import { AirPlane } from './Airplane';
+import { Wanning } from './Wanning';
 
 export default {
   Arrow,
@@ -10,4 +11,5 @@ export default {
   Edit,
   Setting,
   AirPlane,
+  Wanning,
 };

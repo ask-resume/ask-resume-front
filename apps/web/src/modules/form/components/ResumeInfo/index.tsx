@@ -1,12 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
-
 import { TranslateNamespaces } from 'modules/form/constants';
+
+import { Option } from 'shared-ui/src/components/Select';
+import Button from 'shared-ui/src/components/Button';
+import Icon from 'shared-ui/src/components/Icon';
 import ResumeTabs from './Tabs';
 import ResumeTextAreas from './TextAreas';
-import { Option } from 'shared-ui/src/components/Select';
+import { useFormRouter } from 'modules/form/hooks/useFormRouter';
 import styles from '../index.module.scss';
+import { validateResumeInfoForm } from 'modules/form/lib';
 
 interface ResumeInfoProps {
   isMobile: boolean;
@@ -25,7 +28,7 @@ const ResumeInfo = ({
   onChangeResumeSelect,
 }: ResumeInfoProps) => {
   const { t } = useTranslation(TranslateNamespaces);
-  const { locale } = useRouter().query as { locale: string };
+  const { type, changeFormRouter } = useFormRouter();
 
   const [selectedIdx, setSelectedIdx] = React.useState(INIT_SELECT_IDX);
   const handleSelectedIdxChange = React.useCallback(
@@ -43,13 +46,33 @@ const ResumeInfo = ({
           onChangeSelect={handleSelectedIdxChange}
         />
 
-        <div>
-          <ResumeTextAreas
-            select={selectedIdx}
-            resumeTextArea={resumeTextArea}
-            onChangeResumeTextArea={onChangeResumeTextArea}
-            resumeSelect={resumeSelect}
-            onChangeResumeSelect={onChangeResumeSelect}
+        <ResumeTextAreas
+          select={selectedIdx}
+          resumeTextArea={resumeTextArea}
+          onChangeResumeTextArea={onChangeResumeTextArea}
+          resumeSelect={resumeSelect}
+          onChangeResumeSelect={onChangeResumeSelect}
+        />
+
+        <div className={styles.button_wrapper}>
+          <Button
+            onClick={() => changeFormRouter('user-info')}
+            size={isMobile ? 'sm' : 'lg'}
+            buttonColor="blue"
+            label={{
+              labelText: t('button.prev-page') ?? '',
+              labelLeadingIcon: <Icon.Arrow />,
+            }}
+          />
+          <Button
+            size={isMobile ? 'sm' : 'lg'}
+            buttonColor="blue"
+            onClick={() => changeFormRouter('confirmation')}
+            disabled={!validateResumeInfoForm(resumeTextArea)}
+            label={{
+              labelText: t('button.next-page') ?? '',
+              labelTailingIcon: <Icon.Arrow flip />,
+            }}
           />
         </div>
       </div>

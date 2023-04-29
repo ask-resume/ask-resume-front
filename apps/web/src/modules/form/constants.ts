@@ -14,3 +14,5 @@ export const initResumeInfo: {
 
 export const TranslateNamespaces = ['form', 'common'];
 export const TAB_CNT = 4;
+
+export const TEXTAREA_REGEX = /^.{0,99}$|^.{1001,}$/;

@@ -5,8 +5,7 @@ import { useTranslation } from 'next-i18next';
 import CustomErrorPage from 'modules/error/components/CustomErrorPage';
 
 const Custom500 = () => {
-  const { t } = useTranslation('error-page');
-  return <CustomErrorPage t={t} errorCode="500" />;
+  return <CustomErrorPage errorCode="500" />;
 };
 
 const getStaticProps = async (ctx: GetStaticPropsContext) => {

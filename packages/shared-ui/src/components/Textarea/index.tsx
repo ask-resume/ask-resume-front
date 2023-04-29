@@ -1,12 +1,17 @@
 import React from 'react';
-import './index.scss';
-import Text from '../Text';
 import { useUID } from 'react-uid';
+import cn from 'classnames';
 
+import Icon from '../Icon';
+import Text from '../Text';
+import { isNotBlank } from 'shared-lib/utils/string';
+import { ColorMap } from '../../config/colorMap';
 import { FontSize } from '../../config/font';
 import { FontSize as FontSizeType } from '../../config/size';
+import './index.scss';
 
 export interface TextareaProps {
+  className?: string;
   text: string;
   onChangeText: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   height?: number;
@@ -17,11 +22,16 @@ export interface TextareaProps {
     labelSize?: FontSizeType;
     labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
   };
+  error?: {
+    message?: string;
+    regex?: RegExp;
+  };
 }
 
 const Textarea = ({
   text,
   onChangeText,
+  className,
   height = 300,
   maxLength = 1000,
   placeholder = 'Type the text.',
@@ -30,34 +40,58 @@ const Textarea = ({
     labelSize: 'large',
     labelWeight: 'regular',
   },
+  error = {
+    message: '',
+    regex: undefined,
+  },
 }: TextareaProps) => {
   const uid = useUID();
+  const [isFocused, setIsFocused] = React.useState(false);
+  const isError = !isFocused && isNotBlank(text) && error.regex && error.regex.test(text);
 
   return (
-    <div className="_TEXTAREA_">
-      <div>
-        <Text
-          className="_header"
-          variant="label"
-          size={label.labelSize}
-          weight={label.labelWeight}
-          htmlFor={uid}
-        >
-          {label.labelText}
-        </Text>
-      </div>
+    <div className={cn('_TEXTAREA_', className)}>
+      {label.labelText && (
+        <div className="label">
+          <Text
+            className="_header"
+            variant="label"
+            size={label.labelSize}
+            weight={label.labelWeight}
+            htmlFor={uid}
+          >
+            {label.labelText}
+          </Text>
+        </div>
+      )}
 
       <div className="_wrapper">
         <textarea
-          style={{ height, fontSize: getFontSize(text) }}
+          style={{
+            height,
+            fontSize: getFontSize(text),
+          }}
+          className={cn({ error: isError })}
           maxLength={maxLength}
           placeholder={placeholder}
           value={text}
           onChange={event => onChangeText(event)}
           id={uid}
           name={uid}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
         />
-        <div className="_text-limit">{`${text.length}/${maxLength}`}</div>
+        <div className={cn('_text-limit', { error: isError })}>{`${text.length}/${maxLength}`}</div>
+        {isError && (
+          <div className="error_message">
+            <>
+              <Icon.Wanning />
+              <Text variant="p" textColor={ColorMap.inactive_red}>
+                {error.message}
+              </Text>
+            </>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -65,12 +99,10 @@ const Textarea = ({
 
 const getFontSize = (text: string) => {
   switch (true) {
-    case text.length > 200:
-      return FontSize.medium;
     case text.length > 100:
-      return FontSize.large;
+      return FontSize.medium;
     default:
-      return FontSize.x_large;
+      return FontSize.large;
   }
 };
 

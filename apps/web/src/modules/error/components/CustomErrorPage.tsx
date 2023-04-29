@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { TFunction } from 'next-i18next';
+import { useTranslation } from 'next-i18next';
 
 import styles from './index.module.scss';
 import Text from 'shared-ui/src/components/Text';
@@ -8,11 +9,11 @@ import Button from 'shared-ui/src/components/Button';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
 
 interface ErrorPageProps {
-  t: TFunction;
   errorCode: string;
 }
 
-const CustomErrorPage = ({ t, errorCode }: ErrorPageProps) => {
+const CustomErrorPage = ({ errorCode }: ErrorPageProps) => {
+  const { t } = useTranslation(['error-page']);
   return (
     <div className={styles._ERROR_PAGE_}>
       <div className={styles._wrapper}>

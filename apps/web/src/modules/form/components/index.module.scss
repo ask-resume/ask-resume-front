@@ -68,6 +68,14 @@
 
   .resume_content {
     @include responsive-web;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .button_wrapper {
+      display: 'flex';
+      justify-content: 'center';
+    }
   }
 
   .confirm_content {
@@ -115,6 +123,14 @@
   }
 }
 
-.textarea_select {
-  width: 220px;
+._RESUME_TEXTAREA_ {
+  .select {
+    width: 220px;
+  }
+
+  .textarea {
+    textarea {
+      height: 250px !important;
+    }
+  }
 }

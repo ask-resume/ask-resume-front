@@ -1,6 +1,6 @@
-import { initResumeInfo } from '../constants';
+import { initResumeInfo } from '../../constants';
 import { Option, isObjectOption } from 'shared-ui/src/components/Select';
-import { ResumeInfoName } from '../types/resume-info';
+import { ResumeInfoName } from '../../types/resume-info';
 
 interface GetResumeInfoProps {
   resumeTextArea: string[];

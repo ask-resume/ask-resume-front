@@ -14,8 +14,8 @@ import { generateUrl } from 'shared-lib/utils/location';
 
 const height = 'lg';
 const languageOptions = {
-  en: 'English',
-  ko: '한국어',
+  en: 'English (en)',
+  ko: '한국어 (ko)',
 };
 
 const LanguageSwitcher = () => {
@@ -44,7 +44,7 @@ const LanguageSwitcher = () => {
           onClick={handleOptionListOpen}
         >
           <div className={cn('select')}>
-            <span style={{ paddingRight: '1rem' }}>{languageOptions[locale] ?? '...'}</span>
+            <span style={{ paddingRight: '1rem' }}>{languageOptions[locale]}</span>
           </div>
           <button className={cn('_icon', { open: isOpen })} onClick={handleIconClick}>
             <Icon.Arrow size={HeightOption.md} color={isOpen ? ColorMap.gray_8 : ColorMap.gray_6} />
