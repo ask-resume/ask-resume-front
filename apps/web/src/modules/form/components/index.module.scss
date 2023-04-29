@@ -98,16 +98,28 @@
 ._ROUTER_ {
   display: flex;
   align-items: center;
-  gap: 2rem;
   justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
   padding-top: 10vh;
 
   @media screen and (max-width: $breakpoint-small) {
     display: none;
   }
 
-  .selected {
-    color: $blue_5;
+  .router_item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .font {
+      font-weight: $font-weight-bold;
+      color: $gray_5;
+
+      &.checked {
+        color: $blue_5;
+      }
+    }
   }
 
   .divider {
@@ -120,6 +132,20 @@
 
     background-color: $blue_5;
     border-radius: 50%;
+  }
+
+  .router_icon {
+    width: 16px;
+    height: 16px;
+    font-size: 13px;
+    background-color: transparent;
+    color: $blue_5;
+    border-radius: 50%;
+    outline: 2px solid $blue_5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: $font-weight-bold;
   }
 }
 

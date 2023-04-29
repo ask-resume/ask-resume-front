@@ -15,8 +15,9 @@ import {
 } from 'modules/form/hooks/useResumeInfoState';
 import { TAB_CNT } from 'modules/form/constants';
 import { useFormRouter } from 'modules/form/hooks/useFormRouter';
-import { getJobs } from 'modules/form/api/job';
 import styles from './index.module.scss';
+import { validateUserInfoForm, validateResumeInfoForm } from 'modules/form/lib';
+import { FormRouterType } from 'modules/form/types';
 
 const Router = dynamic(() => import('modules/form/components/Router'), { ssr: false });
 const UserInfo = dynamic(() => import('modules/form/components/UserInfo'), { ssr: false });
@@ -27,9 +28,12 @@ export default function FormPage() {
   const { t } = useTranslation(TranslateNamespaces);
   const router = useRouter();
   const isMobile = useIsMobile();
+  const { locale, type } = router.query as {
+    locale: string;
+    type: FormRouterType;
+  };
 
-  const { locale, type } = router.query as { locale: string; type: string };
-  // Initialize the query string with user-info when the language is refreshed
+  // Initialize the query string with user-info when page refresh.
   const { changeFormRouter } = useFormRouter();
   React.useEffect(() => {
     changeFormRouter('user-info');
@@ -52,7 +56,11 @@ export default function FormPage() {
       </Head>
 
       <div className={styles._FORM_}>
-        <Router isMobile={isMobile} />
+        <Router
+          type={type}
+          userInfoChecked={validateUserInfoForm(userInfo)}
+          resumeInfoChecked={validateResumeInfoForm(resumeTextArea)}
+        />
 
         {type === 'user-info' && (
           <main className={styles.user_info_content}>

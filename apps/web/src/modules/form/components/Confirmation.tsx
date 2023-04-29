@@ -26,6 +26,9 @@ const Confirmation = ({ isMobile, userInfo }: ConfirmationProps) => {
   const { t } = useTranslation(TranslateNamespaces);
   const { locale } = useRouter().query as { locale: string };
 
+  const pathname = `/${locale}/form`;
+  const { changeQueryParams } = useQueryParams();
+
   return (
     <div className={styles._CONTAINER_}>
       <div className={styles.confirm_content}>
@@ -42,6 +45,7 @@ const Confirmation = ({ isMobile, userInfo }: ConfirmationProps) => {
           </Text>
         </div>
       </div>
+
       <div
         style={{
           display: 'flex',
@@ -50,22 +54,25 @@ const Confirmation = ({ isMobile, userInfo }: ConfirmationProps) => {
         <Button
           size={isMobile ? 'sm' : 'lg'}
           buttonColor="blue"
-          // fullWidth
-          // disabled={!validateUserInfoForm(userInfo)}
           label={{
             labelText: t('button.prev-page') ?? '',
             labelLeadingIcon: <Icon.Arrow />,
+          }}
+          onClick={() => {
+            const query = { type: 'resume' };
+            changeQueryParams(pathname, query);
           }}
         />
         <Button
           size={isMobile ? 'sm' : 'lg'}
           buttonColor="blue"
-          // fullWidth
-          // disabled={!validateUserInfoForm(userInfo)}
           label={{
             labelText: t('button.next-page') ?? '',
             labelTailingIcon: <Icon.Arrow flip />,
           }}
+          // TODO: Resume page로 이동하는 기능 구현
+          // onClick={() => {
+          // }}
         />
       </div>
     </div>
