@@ -5,18 +5,9 @@ import { Option } from 'shared-ui/src/components/Select';
 import { getResumeSelectObj } from '../lib';
 import { TranslateNamespaces } from '../constants';
 
-interface UseResumeTextAreaProps {
-  tabCnt: number;
-  locale: string;
-}
-
-export const useResumeTextAreaState = ({ tabCnt, locale }: UseResumeTextAreaProps) => {
+export const useResumeTextAreaState = (tabCnt: number) => {
   const initTextAreaState: string[] = [...Array(tabCnt)].map(() => '');
   const [resumeTextArea, setResumeTextArea] = React.useState(initTextAreaState);
-
-  React.useEffect(() => {
-    setResumeTextArea(initTextAreaState);
-  }, [locale]);
 
   /**
    * Updates the resumeTextArea state based on the input event and index.
@@ -38,12 +29,7 @@ export const useResumeTextAreaState = ({ tabCnt, locale }: UseResumeTextAreaProp
   return { resumeTextArea, resumeTextAreaSetter: handleResumeTextAreaChange };
 };
 
-interface UseResumeSelectProps {
-  tabCnt: number;
-  locale: string;
-}
-
-export const useResumeSelectState = ({ tabCnt, locale }: UseResumeSelectProps) => {
+export const useResumeSelectState = (tabCnt: number) => {
   const { t } = useTranslation(TranslateNamespaces);
   const resumeSelectOptions = React.useMemo(() => getResumeSelectObj(t), [t]);
 

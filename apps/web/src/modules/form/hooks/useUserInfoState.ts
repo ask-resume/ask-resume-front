@@ -7,11 +7,6 @@ import { TFunction } from 'next-i18next';
 import { Option } from 'shared-ui/src/components/Select';
 import { UserInfoState } from '../components/UserInfo';
 
-interface UseUserInfoProps {
-  t: TFunction;
-  locale: string;
-}
-
 export type StateName =
   | 'selectedJob'
   | 'selectedLanguage'
@@ -25,10 +20,9 @@ const INIT_STATE = {
   career: 0,
 };
 
-export const useUserInfoState = ({
-  t,
-  locale,
-}: UseUserInfoProps): {
+export const useUserInfoState = (
+  t: TFunction,
+): {
   userInfo: UserInfoState;
   userInfoSetter: (stateName: StateName, changedValue: ChangedValue) => void;
 } => {
@@ -55,14 +49,6 @@ export const useUserInfoState = ({
   const [selectedYearsOfCareer, onChangeSelectedYearsOfCareer] = useSliderState({
     initialValue: INIT_STATE.career,
   });
-
-  // Initialize state when locale is changed.
-  React.useEffect(() => {
-    onChangeSelectedJob(null);
-    onChangeSelectedLanguage(INIT_STATE.language);
-    onChangeSelectedDifficulty(INIT_STATE.difficulty);
-    onChangeSelectedYearsOfCareer(INIT_STATE.career);
-  }, [locale]);
 
   const onChangeUserInfo = React.useCallback((stateName: StateName, changedValue: ChangedValue) => {
     const callback = {

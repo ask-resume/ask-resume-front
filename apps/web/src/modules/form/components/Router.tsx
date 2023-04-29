@@ -3,7 +3,6 @@ import { useTranslation } from 'next-i18next';
 
 import Text from 'shared-ui/src/components/Text';
 import styles from './index.module.scss';
-import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { TranslateNamespaces } from '../constants';
 import { useFormRouter } from '../hooks/useFormRouter';
 

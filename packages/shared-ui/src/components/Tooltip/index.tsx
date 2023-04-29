@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
+import { ColorMap } from 'src/config/colorMap';
 import './index.scss';
 
 type Placement =
@@ -18,6 +19,10 @@ export interface TooltipProps {
   tooltipText: string;
   placement?: Placement;
   withArrow?: boolean;
+  colorOption?: {
+    bgColor?: ColorMap;
+    textColor?: ColorMap;
+  };
 }
 
 const Tooltip = ({
@@ -26,6 +31,7 @@ const Tooltip = ({
   tooltipText,
   placement = '_bottom',
   withArrow = true,
+  colorOption,
 }: TooltipProps) => {
   const [hovered, setHovered] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);

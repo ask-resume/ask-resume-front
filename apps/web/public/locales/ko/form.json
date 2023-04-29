@@ -51,7 +51,7 @@
     "placeholder": {
       "textarea": "선택지에 대한 내용을 채워넣어주세요."
     },
-    "tab": "질문 {{idx}}",
+    "tab": "입력 {{idx}}",
     "select": {
       "introduction": "자기소개",
       "career": "업무 경험",

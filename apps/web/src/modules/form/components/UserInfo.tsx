@@ -9,14 +9,15 @@ import InputSelect from 'shared-ui/src/components/InputSelect';
 import Select, { Option } from 'shared-ui/src/components/Select';
 import Slider from 'shared-ui/src/components/Slider';
 import Icon from 'shared-ui/src/components/Icon';
+import Spinner from 'shared-ui/src/components/Spinner';
 
-import { useJobs } from '../api/job';
 import { formatYearsOfCareer, validateUserInfoForm } from '../lib';
 import { StateName, ChangedValue } from '../hooks/useUserInfoState';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
 
 import styles from './index.module.scss';
 import { TranslateNamespaces } from '../constants';
+import { useJobs } from '../api/job';
 
 export interface UserInfoState {
   selectedJob: Option | null;
@@ -48,15 +49,19 @@ const UserInfo = ({ locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProp
     { name: t('user_info.difficulty.hard'), value: 'hard' },
   ];
 
-  const { data: jobs, isLoading: isJobsLoading } = useJobs(locale);
   const pathname = `/${locale}/form`;
   const { changeQueryParams } = useQueryParams();
 
+  const { data: jobs, isLoading: isJobsLoading } = useJobs(locale);
   const isNavigationEnabled = !validateUserInfoForm(userInfo);
 
   return (
     <div className={styles._CONTAINER_}>
-      {isJobsLoading && <div className={styles.loading} />}
+      {isJobsLoading && (
+        <div className={styles.loading}>
+          <Spinner size="xl" />
+        </div>
+      )}
 
       {!isJobsLoading && (
         <>

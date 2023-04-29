@@ -12,7 +12,7 @@ export interface AirplaneProps {
 }
 
 export const AirPlane = ({
-  color = ColorMap.white,
+  color = ColorMap.blue_5,
   className,
   size = 16,
   rotate,

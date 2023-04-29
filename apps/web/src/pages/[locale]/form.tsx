@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { GetStaticPropsContext } from 'next';
@@ -13,8 +14,10 @@ import {
   useResumeSelectState,
 } from 'modules/form/hooks/useResumeInfoState';
 import { TAB_CNT } from 'modules/form/constants';
-
+import { useFormRouter } from 'modules/form/hooks/useFormRouter';
+import { getJobs } from 'modules/form/api/job';
 import styles from './index.module.scss';
+
 const Router = dynamic(() => import('modules/form/components/Router'), { ssr: false });
 const UserInfo = dynamic(() => import('modules/form/components/UserInfo'), { ssr: false });
 const ResumeInfo = dynamic(() => import('modules/form/components/ResumeInfo'), { ssr: false });
@@ -26,20 +29,19 @@ export default function FormPage() {
   const isMobile = useIsMobile();
 
   const { locale, type } = router.query as { locale: string; type: string };
+  // Initialize the query string with user-info when the language is refreshed
+  const { changeFormRouter } = useFormRouter();
+  React.useEffect(() => {
+    changeFormRouter('user-info');
+  }, []);
 
   // userInfo: user information entered by the user
-  const { userInfo, userInfoSetter } = useUserInfoState({ t, locale });
+  const { userInfo, userInfoSetter } = useUserInfoState(t);
 
   // resumeTextArea = value entered by the user in the resume textarea
   // resumeSelect = type of option selected by the user in the resume
-  const { resumeTextArea, resumeTextAreaSetter } = useResumeTextAreaState({
-    tabCnt: TAB_CNT,
-    locale,
-  });
-  const { resumeSelect, resumeSelectSetter } = useResumeSelectState({
-    tabCnt: TAB_CNT,
-    locale,
-  });
+  const { resumeTextArea, resumeTextAreaSetter } = useResumeTextAreaState(TAB_CNT);
+  const { resumeSelect, resumeSelectSetter } = useResumeSelectState(TAB_CNT);
 
   return (
     <>

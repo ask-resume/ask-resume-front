@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import i18nextConfig from '../../../../next-i18next.config';
 import cn from 'classnames';
 
@@ -11,6 +10,7 @@ import { HeightOption } from 'shared-ui/src/components/Select';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
 import styles from './index.module.scss';
 import { generateUrl } from 'shared-lib/utils/location';
+import { useQueryParams } from 'common/hooks/router/useQueryParams';
 
 const height = 'lg';
 const languageOptions = {
@@ -18,6 +18,7 @@ const languageOptions = {
   ko: '한국어 (ko)',
 };
 
+// TODO: Modified by using the select box of shared-ui
 const LanguageSwitcher = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -74,13 +75,18 @@ const LanguageSwitchLink = ({ locale, href }) => {
 
   const newHref = href ? `/${locale}${href}` : newPathname;
 
+  // If the selected language is different from the existing language, refresh after changing the language
+  const handleClick = async () => {
+    if (router.query.locale === locale) return;
+
+    await router.replace(newHref, undefined, { shallow: true });
+    languageDetector.cache(locale);
+    router.reload();
+  };
+
   return (
-    <>
-      <Link href={newHref}>
-        <button className={styles._option} onClick={() => languageDetector.cache(locale)}>
-          {languageOptions[locale]}
-        </button>
-      </Link>
-    </>
+    <button className={styles._option} onClick={handleClick}>
+      {languageOptions[locale]}
+    </button>
   );
 };

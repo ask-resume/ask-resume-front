@@ -1,14 +1,14 @@
 import React from 'react';
 import { uid } from 'react-uid';
 import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
 
 import Select, { Option } from 'shared-ui/src/components/Select';
 import TextArea from 'shared-ui/src/components/TextArea';
+
 import { TranslateNamespaces } from 'modules/form/constants';
 import { getResumeSelectObj } from 'modules/form/lib';
-import styles from '../index.module.scss';
 import { TEXTAREA_REGEX as regex } from 'modules/form/constants';
+import styles from '../index.module.scss';
 
 interface ResumeTextAreaProps {
   select: number;
@@ -26,7 +26,6 @@ const ResumeTextAreas = ({
   onChangeResumeSelect,
 }: ResumeTextAreaProps) => {
   const { t } = useTranslation(TranslateNamespaces);
-  const { locale } = useRouter().query as { locale: string };
 
   const resumeSelectObj = React.useMemo(() => getResumeSelectObj(t), [t]);
   const handleChangeResumeTextArea = React.useCallback(

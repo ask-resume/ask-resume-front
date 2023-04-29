@@ -66,6 +66,7 @@ const IconList: Record<string, string[]> = {
   Setting: [''],
   AirPlane: [''],
   Check: ['single', 'double', 'alt', 'circle', 'circle-ghost'],
+  Wanning: ['circle', 'circle-ghost'],
 };
 
 export const Default = () => {

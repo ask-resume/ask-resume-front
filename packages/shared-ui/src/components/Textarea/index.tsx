@@ -81,15 +81,14 @@ const Textarea = ({
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />
+
         <div className={cn('_text-limit', { error: isError })}>{`${text.length}/${maxLength}`}</div>
         {isError && (
           <div className="error_message">
-            <>
-              <Icon.Wanning />
-              <Text variant="p" textColor={ColorMap.inactive_red}>
-                {error.message}
-              </Text>
-            </>
+            <Icon.Wanning variant="circle-ghost" size={24} />
+            <Text variant="p" weight="medium" textColor={ColorMap.inactive_red}>
+              {error.message}
+            </Text>
           </div>
         )}
       </div>

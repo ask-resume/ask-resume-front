@@ -52,7 +52,7 @@
     "placeholder": {
       "textarea": "Please fill in the details for each option."
     },
-    "tab": "Question {{idx}}",
+    "tab": "Input {{idx}}",
     "select": {
       "introduction": "Introduction",
       "career": "Work Experience",
