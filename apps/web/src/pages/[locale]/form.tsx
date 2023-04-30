@@ -15,10 +15,11 @@ import {
 } from 'modules/form/hooks/useResumeInfoState';
 import { TAB_CNT } from 'modules/form/constants';
 import { useFormRouter } from 'modules/form/hooks/useFormRouter';
-import styles from './index.module.scss';
 import { validateUserInfoForm, validateResumeInfoForm } from 'modules/form/lib';
 import { FormRouterType } from 'modules/form/types';
+import { isObjectOption } from 'shared-ui/src/components/Select';
 
+import styles from './index.module.scss';
 const Router = dynamic(() => import('modules/form/components/Router'), { ssr: false });
 const UserInfo = dynamic(() => import('modules/form/components/UserInfo'), { ssr: false });
 const ResumeInfo = dynamic(() => import('modules/form/components/ResumeInfo'), { ssr: false });
@@ -28,10 +29,10 @@ export default function FormPage() {
   const { t } = useTranslation(TranslateNamespaces);
   const router = useRouter();
   const isMobile = useIsMobile();
-  const { locale, type } = router.query as {
-    locale: string;
-    type: FormRouterType;
-  };
+  const { locale, type } = React.useMemo(
+    () => router.query as { locale: string; type: FormRouterType },
+    [router.query],
+  );
 
   // Initialize the query string with user-info when page refresh.
   const { changeFormRouter } = useFormRouter();
@@ -42,10 +43,22 @@ export default function FormPage() {
   // userInfo: user information entered by the user
   const { userInfo, userInfoSetter } = useUserInfoState(t);
 
-  // resumeTextArea = value entered by the user in the resume textarea
-  // resumeSelect = type of option selected by the user in the resume
   const { resumeTextArea, resumeTextAreaSetter } = useResumeTextAreaState(TAB_CNT);
   const { resumeSelect, resumeSelectSetter } = useResumeSelectState(TAB_CNT);
+  // resumeInfo = resume information entered by the user
+  const resumeInfo = React.useMemo(
+    () =>
+      resumeTextArea
+        .filter(textArea => textArea.trim())
+        .map((textArea, index) => {
+          const curr = resumeSelect[index];
+          if (isObjectOption(curr)) {
+            return { name: curr.name, value: textArea };
+          }
+          return { name: curr, value: textArea };
+        }),
+    [resumeSelect, resumeTextArea],
+  );
 
   return (
     <>
@@ -87,7 +100,7 @@ export default function FormPage() {
 
         {type === 'confirmation' && (
           <main className={styles._CONFIRM_CONTENT_}>
-            <Confirmation isMobile={isMobile} userInfo={userInfo} />
+            <Confirmation isMobile={isMobile} userInfo={userInfo} resumeInfo={resumeInfo} />
           </main>
         )}
       </div>

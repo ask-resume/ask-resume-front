@@ -28,6 +28,7 @@
       position: relative;
       resize: none;
       border-radius: $font_size_x_small $font_size_x_small 0 0;
+      line-height: 1.5;
 
       &:focus {
         outline: none;

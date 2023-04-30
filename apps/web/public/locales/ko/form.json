@@ -1,7 +1,8 @@
 {
   "button": {
     "prev-page": "이전 페이지",
-    "next-page": "다음 페이지"
+    "next-page": "다음 페이지",
+    "submit": "Q&A 생성"
   },
 
   "user_info": {
@@ -64,6 +65,12 @@
     "textarea": {
       "explain": "* 이력서 내용은 최소 1개, 최대 4개까지 입력 가능합니다.",
       "error": "입력값은 100자에서 1,000자 이내이어야 합니다."
+    }
+  },
+
+  "confirmation": {
+    "error_message": {
+      "resume": "입력하신 이력서 정보가 없습니다."
     }
   }
 }

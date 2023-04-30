@@ -1,10 +1,14 @@
+import React from 'react';
 import { useRouter } from 'next/router';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { FormRouterType } from '../types';
 
 const useFormRouter = () => {
   const router = useRouter();
-  const { type, locale } = router.query as { type: FormRouterType; locale: string };
+  const { locale, type } = React.useMemo(
+    () => router.query as { locale: string; type: FormRouterType },
+    [router.query],
+  );
 
   const pathname = `/${locale}/form`;
   const { changeQueryParams } = useQueryParams();

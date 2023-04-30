@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
+import { uid } from 'react-uid';
 
 import Text, { TextWeight } from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
@@ -20,12 +21,16 @@ import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { UserInfoState } from './UserInfo';
 import { TranslateNamespaces } from 'modules/form/constants';
 
+type ResumeInfo = {
+  [x: string]: string;
+}[];
 interface ConfirmationProps {
   isMobile: boolean;
   userInfo: UserInfoState;
+  resumeInfo: ResumeInfo;
 }
 
-const Confirmation = ({ isMobile, userInfo }: ConfirmationProps) => {
+const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => {
   const { t } = useTranslation(TranslateNamespaces);
   const { locale } = useRouter().query as { locale: string };
 
@@ -36,21 +41,7 @@ const Confirmation = ({ isMobile, userInfo }: ConfirmationProps) => {
     <div className={styles._CONTAINER_}>
       <div className={styles._CONFIRM_CONTENT_}>
         <UserInfoConfirmation userInfo={userInfo} />
-
-        <div>
-          <Text>
-            안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕
-            안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕
-            안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕
-            안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕
-          </Text>
-          <Text>
-            안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕
-            안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕
-            안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕
-            안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕
-          </Text>
-        </div>
+        <ResumeInfoConfirmation resumeInfo={resumeInfo} />
       </div>
 
       <div className={styles._button_wrapper}>
@@ -70,8 +61,8 @@ const Confirmation = ({ isMobile, userInfo }: ConfirmationProps) => {
           size={isMobile ? 'sm' : 'lg'}
           buttonColor="blue"
           label={{
-            labelText: t('button.next-page') ?? '',
-            labelTailingIcon: <Icon.Arrow flip />,
+            labelText: t('button.submit') ?? '',
+            labelTailingIcon: <Icon.AirPlane />,
           }}
           // TODO: Resume page로 이동하는 기능 구현
           // onClick={() => {
@@ -84,6 +75,35 @@ const Confirmation = ({ isMobile, userInfo }: ConfirmationProps) => {
 
 export default Confirmation;
 
+interface ResumeInfoConfirmationProps {
+  resumeInfo: ResumeInfo;
+}
+
+const ResumeInfoConfirmation = ({ resumeInfo }: ResumeInfoConfirmationProps) => {
+  const { t } = useTranslation(TranslateNamespaces);
+
+  return (
+    <div className={styles._resume_info_container}>
+      {resumeInfo.length > 0 &&
+        resumeInfo.map((info, index) => (
+          <div key={uid(index)} className={styles.item_container}>
+            <Text textColor={ColorMap.gray_7} size="medium" weight="bold">
+              [ {info.name} ]
+            </Text>
+            <Text size="medium" lineHeight="wide">
+              {info.value}
+            </Text>
+          </div>
+        ))}
+      {resumeInfo.length === 0 && (
+        <Text textColor={ColorMap.gray_7} size="medium" weight="bold">
+          {t('confirmation.error_message.resume')}
+        </Text>
+      )}
+    </div>
+  );
+};
+
 interface UserInfoConfirmationProps {
   userInfo: UserInfoState;
 }
@@ -92,19 +112,25 @@ const UserInfoConfirmation = ({ userInfo }: UserInfoConfirmationProps) => {
   const { t } = useTranslation(TranslateNamespaces);
   const { locale } = useRouter().query as { locale: string };
 
-  const Option = ({ title, value }: { title: string; value: string }) => (
-    <div className={styles.item_container}>
-      <div className={styles.item_content}>
+  interface OptionProps {
+    title: string;
+    value: string;
+    className?: string;
+  }
+
+  const Option = ({ className, title, value }: OptionProps) => (
+    <div>
+      <div className={cn(styles.item_content, className)}>
         <Text
           className={styles.item_title}
-          variant="inline"
           size="medium"
-          textColor={ColorMap.gray_5}
+          weight="medium"
+          textColor={ColorMap.gray_6}
         >
           {title}
         </Text>
-        <Text variant="inline" textColor={ColorMap.gray_7} size="medium" weight="bold">
-          {value ? value : t('user_info.not_selected')}
+        <Text textColor={ColorMap.gray_7} size="medium" weight="bold">
+          {value ? value : t('user_info.label.not_selected')}
         </Text>
       </div>
     </div>
@@ -113,6 +139,7 @@ const UserInfoConfirmation = ({ userInfo }: UserInfoConfirmationProps) => {
   return (
     <div className={styles._user_info_container}>
       <Option
+        className={styles.job_option}
         title={t('user_info.label.job')}
         value={
           userInfo.selectedJob && isObjectOption(userInfo.selectedJob)
