@@ -1,5 +1,23 @@
 @import 'shared-ui/src/index.scss';
 
+// Form page's container responsive width
+@mixin responsive-web {
+  width: 400px;
+  @media screen and (min-width: $breakpoint-xlarge) {
+    width: 700px;
+  }
+  @media screen and (min-width: $breakpoint-large) {
+    width: 600px;
+  }
+  @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
+    width: 500px;
+  }
+  @media screen and (max-width: $breakpoint-xsmall) {
+    width: 80vw;
+  }
+}
+
+// Form page's content
 ._CONTAINER_ {
   display: flex;
   flex-direction: column;
@@ -9,22 +27,6 @@
 
   @media screen and (max-width: $breakpoint-small) {
     padding-top: 10vh;
-  }
-
-  @mixin responsive-web {
-    width: 400px;
-    @media screen and (min-width: $breakpoint-xlarge) {
-      width: 700px;
-    }
-    @media screen and (min-width: $breakpoint-large) {
-      width: 600px;
-    }
-    @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
-      width: 500px;
-    }
-    @media screen and (max-width: $breakpoint-xsmall) {
-      width: 80vw;
-    }
   }
 
   .loading {
@@ -37,64 +39,110 @@
     gap: 3rem;
   }
 
-  .user_content {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-
-    ._SELECT_ {
-      @include responsive-web;
-      ul {
-        max-height: 200px;
-        width: 100%;
-        li {
-          max-width: 400px;
-          @media screen and (min-width: $breakpoint-xlarge) {
-            max-width: 700px;
-          }
-          @media screen and (min-width: $breakpoint-large) {
-            max-width: 600px;
-          }
-          @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
-            max-width: 500px;
-          }
-          @media screen and (max-width: $breakpoint-xsmall) {
-            max-width: 80vw;
-          }
-        }
-      }
-    }
-  }
-
-  .resume_content {
-    @include responsive-web;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-
-    .button_wrapper {
-      display: flex;
-      justify-content: center;
-    }
-  }
-
-  .confirm_content {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    min-height: min(60vh, 400px);
-    max-height: max(60vh, 400px);
-    overflow-y: auto;
-    @include responsive-web;
-  }
-
-  .button_wrapper {
+  ._button_wrapper {
     display: flex;
     justify-content: center;
     width: 100%;
   }
 }
 
+._USER_CONTENT_ {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  ._select {
+    @include responsive-web;
+    ul {
+      max-height: 200px;
+      width: 100%;
+      li {
+        max-width: 400px;
+        @media screen and (min-width: $breakpoint-xlarge) {
+          max-width: 700px;
+        }
+        @media screen and (min-width: $breakpoint-large) {
+          max-width: 600px;
+        }
+        @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
+          max-width: 500px;
+        }
+        @media screen and (max-width: $breakpoint-xsmall) {
+          max-width: 80vw;
+        }
+      }
+    }
+  }
+}
+
+._RESUME_CONTENT_ {
+  @include responsive-web;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  ._button_wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  ._resume_textarea {
+    .select {
+      width: 220px;
+    }
+
+    .text {
+      padding: 6px 0;
+      padding-bottom: 4px;
+    }
+
+    .textarea {
+      textarea {
+        height: 250px !important;
+      }
+    }
+  }
+}
+
+._CONFIRM_CONTENT_ {
+  @include responsive-web;
+  display: flex;
+  flex-direction: column;
+  min-height: min(60vh, 400px);
+  max-height: max(60vh, 400px);
+  overflow-y: auto;
+  gap: 3rem;
+
+  ._user_info_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .item_container {
+      display: flex;
+    }
+
+    .item_content {
+      @media screen and (min-width: $breakpoint-medium) {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      @media screen and (max-width: #{$breakpoint-medium - 1}) {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    .item_title {
+      min-width: 150px;
+    }
+  }
+}
+
+// Router
 ._ROUTER_ {
   display: flex;
   align-items: center;
@@ -107,7 +155,7 @@
     display: none;
   }
 
-  .router_item {
+  ._router_item {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -146,22 +194,5 @@
     justify-content: center;
     align-items: center;
     font-weight: $font-weight-bold;
-  }
-}
-
-._RESUME_TEXTAREA_ {
-  .select {
-    width: 220px;
-  }
-
-  .text {
-    padding: 6px 0;
-    padding-bottom: 4px;
-  }
-
-  .textarea {
-    textarea {
-      height: 250px !important;
-    }
   }
 }

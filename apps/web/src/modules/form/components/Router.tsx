@@ -28,21 +28,21 @@ const Router = ({ type, userInfoChecked, resumeInfoChecked }: RouterProps) => {
 
   return (
     <section className={styles._ROUTER_}>
-      <div className={styles.router_item}>
+      <div className={styles._router_item}>
         <RouterIcon order={1} checked={userInfoChecked} />
         <Text {...getTextProps('user-info')}>{t('user_info.router.user-info')}</Text>
       </div>
 
       <Divider variant="vertical" width={20} height={2} />
 
-      <div className={styles.router_item}>
+      <div className={styles._router_item}>
         <RouterIcon order={2} checked={resumeInfoChecked} />
         <Text {...getTextProps('resume')}>{t('user_info.router.resume')}</Text>
       </div>
 
       <Divider variant="vertical" width={20} height={2} />
 
-      <div className={styles.router_item}>
+      <div className={styles._router_item}>
         <RouterIcon order={3} checked={userInfoChecked && resumeInfoChecked} />
         <Text {...getTextProps('confirmation')}>{t('user_info.router.input-confirmation')}</Text>
       </div>

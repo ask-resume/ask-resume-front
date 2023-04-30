@@ -65,10 +65,10 @@ const UserInfo = ({ locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProp
 
       {!isJobsLoading && (
         <>
-          <div className={styles.user_content}>
+          <div className={styles._USER_CONTENT_}>
             {/* Job InputSelect */}
             <InputSelect
-              className={styles._SELECT_}
+              className={styles._select}
               selectedOption={userInfo.selectedJob}
               onChangeSelectedOption={changed => onChangeUserInfo('selectedJob', changed)}
               options={jobs!}
@@ -84,7 +84,7 @@ const UserInfo = ({ locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProp
 
             {/* Nation InputSelect */}
             <Select
-              className={styles._SELECT_}
+              className={styles._select}
               selectedOption={userInfo.selectedLanguage}
               onChangeSelectedOption={changed => onChangeUserInfo('selectedLanguage', changed)}
               options={NATION_OPTION}
@@ -99,7 +99,7 @@ const UserInfo = ({ locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProp
 
             {/* Interview Difficulty InputSelect */}
             <Select
-              className={styles._SELECT_}
+              className={styles._select}
               selectedOption={userInfo.selectedDifficulty}
               onChangeSelectedOption={changed => onChangeUserInfo('selectedDifficulty', changed)}
               options={DIFFICULTY_OPTION}
@@ -142,7 +142,7 @@ const UserInfo = ({ locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProp
           </div>
 
           <div
-            className={styles.button_wrapper}
+            className={styles._button_wrapper}
             onClick={() => {
               if (isNavigationEnabled) return;
               const query = { type: 'resume' };

@@ -43,7 +43,7 @@ const ResumeTextAreas = ({
 
   return (
     <>
-      <div className={styles._RESUME_TEXTAREA_}>
+      <div className={styles._resume_textarea}>
         {resumeSelect.map(
           (selectEl, idx) =>
             select === idx && (

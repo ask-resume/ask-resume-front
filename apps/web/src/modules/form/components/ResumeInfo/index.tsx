@@ -38,7 +38,7 @@ const ResumeInfo = ({
 
   return (
     <div className={styles._CONTAINER_}>
-      <div className={styles.resume_content}>
+      <div className={styles._RESUME_CONTENT_}>
         <ResumeTabs
           t={t}
           isMobile={isMobile}
@@ -54,7 +54,7 @@ const ResumeInfo = ({
           onChangeResumeSelect={onChangeResumeSelect}
         />
 
-        <div className={styles.button_wrapper}>
+        <div className={styles._button_wrapper}>
           <Button
             onClick={() => changeFormRouter('user-info')}
             size={isMobile ? 'sm' : 'lg'}

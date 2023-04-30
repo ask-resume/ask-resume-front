@@ -74,7 +74,7 @@ export default function FormPage() {
         )}
 
         {type === 'resume' && (
-          <main className={styles.confirm_content}>
+          <main className={styles._CONFIRM_CONTENT_}>
             <ResumeInfo
               isMobile={isMobile}
               resumeTextArea={resumeTextArea}
@@ -86,7 +86,7 @@ export default function FormPage() {
         )}
 
         {type === 'confirmation' && (
-          <main className={styles.confirm_content}>
+          <main className={styles._CONFIRM_CONTENT_}>
             <Confirmation isMobile={isMobile} userInfo={userInfo} />
           </main>
         )}
