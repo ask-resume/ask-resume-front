@@ -73,8 +73,8 @@
     gap: 2rem;
 
     .button_wrapper {
-      display: 'flex';
-      justify-content: 'center';
+      display: flex;
+      justify-content: center;
     }
   }
 
@@ -152,6 +152,11 @@
 ._RESUME_TEXTAREA_ {
   .select {
     width: 220px;
+  }
+
+  .text {
+    padding: 6px 0;
+    padding-bottom: 4px;
   }
 
   .textarea {

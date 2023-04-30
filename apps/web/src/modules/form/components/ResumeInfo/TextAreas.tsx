@@ -2,13 +2,16 @@ import React from 'react';
 import { uid } from 'react-uid';
 import { useTranslation } from 'next-i18next';
 
+import Text from 'shared-ui/src/components/Text';
 import Select, { Option } from 'shared-ui/src/components/Select';
 import TextArea from 'shared-ui/src/components/TextArea';
+import Tooltip from 'shared-ui/src/components/Tooltip';
 
 import { TranslateNamespaces } from 'modules/form/constants';
 import { getResumeSelectObj } from 'modules/form/lib';
 import { TEXTAREA_REGEX as regex } from 'modules/form/constants';
 import styles from '../index.module.scss';
+import { ColorMap } from 'shared-ui/src/config/colorMap';
 
 interface ResumeTextAreaProps {
   select: number;
@@ -26,7 +29,6 @@ const ResumeTextAreas = ({
   onChangeResumeSelect,
 }: ResumeTextAreaProps) => {
   const { t } = useTranslation(TranslateNamespaces);
-
   const resumeSelectObj = React.useMemo(() => getResumeSelectObj(t), [t]);
   const handleChangeResumeTextArea = React.useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>, idx: number) => {
@@ -58,6 +60,10 @@ const ResumeTextAreas = ({
               />
             ),
         )}
+
+        <Text className={styles.text} size="xx_small" textColor={ColorMap.gray_6}>
+          {t('resume_info.textarea.explain')}
+        </Text>
 
         {resumeTextArea.map(
           (textareaEl, idx) =>

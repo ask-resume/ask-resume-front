@@ -86,7 +86,7 @@ const Textarea = ({
         {isError && (
           <div className="error_message">
             <Icon.Wanning variant="circle-ghost" size={24} />
-            <Text variant="p" weight="medium" textColor={ColorMap.inactive_red}>
+            <Text variant="p" weight="medium" textColor={ColorMap.red_5}>
               {error.message}
             </Text>
           </div>

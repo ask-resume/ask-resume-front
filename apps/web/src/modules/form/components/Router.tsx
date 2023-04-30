@@ -17,6 +17,7 @@ interface RouterProps {
 
 const Router = ({ type, userInfoChecked, resumeInfoChecked }: RouterProps) => {
   const { t } = useTranslation(TranslateNamespaces);
+
   const getTextProps = (routeType: FormRouterType) => {
     return {
       textColor: type === routeType ? ColorMap.gray_7 : ColorMap.gray_4,

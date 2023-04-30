@@ -63,6 +63,7 @@
       "acc": "Awards / Certifications"
     },
     "textarea": {
+      "explain": "* Resume content can be entered from 1 to 4 items at minimum and maximum.",
       "error": "The input value must be between 100 and 1,000 characters."
     }
   }
