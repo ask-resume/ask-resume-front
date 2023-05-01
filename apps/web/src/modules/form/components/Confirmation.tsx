@@ -16,6 +16,7 @@ import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { UserInfoState } from './UserInfo';
 import { TranslateNamespaces } from 'modules/form/constants';
 import { calculateFormContents } from '../lib/confirmation';
+import { getSessionStorage, setSessionStorage } from 'shared-lib/utils/sessionStorage';
 
 export type ResumeInfoState = {
   select: Option;
@@ -38,6 +39,8 @@ interface ConfirmationProps {
 }
 
 const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => {
+  const router = useRouter();
+
   const { t } = useTranslation(TranslateNamespaces);
   const { locale } = useRouter().query as { locale: string };
   const calculatedFormContents = calculateFormContents({ locale, userInfo, resumeInfo });
@@ -48,6 +51,14 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
     const pathname = `/${locale}/form`;
     const query = { type: 'resume' };
     changeQueryParams(pathname, query);
+  };
+
+  const handleSubmitClick = () => {
+    const pathname = `/${locale}/result`;
+
+    router.replace({
+      pathname,
+    });
   };
 
   return (
@@ -75,8 +86,7 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
             labelTailingIcon: <Icon.AirPlane />,
           }}
           // TODO: Resume page로 이동하는 기능 구현
-          // onClick={() => {
-          // }}
+          onClick={handleSubmitClick}
         />
       </div>
     </div>

@@ -1,9 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { isInstanceOfAPIError } from '../error/lib/CustomError';
 
-export default function withGetServerSideProps(
-  getServerSideProps: GetServerSideProps,
-): GetServerSideProps {
+export function withGetServerSideProps(getServerSideProps: GetServerSideProps): GetServerSideProps {
   return async (context: GetServerSidePropsContext) => {
     try {
       return await getServerSideProps(context);

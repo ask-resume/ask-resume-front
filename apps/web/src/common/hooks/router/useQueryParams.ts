@@ -5,7 +5,7 @@ const useQueryParams = () => {
 
   const changeQueryParams = <T extends Record<string, string | string[]>>(
     pathname: string,
-    query: T,
+    query?: T,
   ) => {
     router.push(
       {
