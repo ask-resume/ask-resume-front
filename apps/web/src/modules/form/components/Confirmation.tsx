@@ -15,22 +15,40 @@ import styles from './index.module.scss';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { UserInfoState } from './UserInfo';
 import { TranslateNamespaces } from 'modules/form/constants';
+import { calculateFormContents } from '../lib/confirmation';
 
-type ResumeInfo = {
-  [x: string]: string;
+export type ResumeInfoState = {
+  select: Option;
+  textarea: string;
 }[];
+
+export type ResumeContent = { [key: string]: { contents: string }[] };
+export interface FormattedFormInfo {
+  careerYear: number;
+  difficulty: Option | null;
+  jobId: number;
+  locale: string;
+  contents: ResumeContent;
+}
+
 interface ConfirmationProps {
   isMobile: boolean;
   userInfo: UserInfoState;
-  resumeInfo: ResumeInfo;
+  resumeInfo: ResumeInfoState;
 }
 
 const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => {
   const { t } = useTranslation(TranslateNamespaces);
   const { locale } = useRouter().query as { locale: string };
+  const calculatedFormContents = calculateFormContents({ locale, userInfo, resumeInfo });
+  console.log(calculatedFormContents);
 
-  const pathname = `/${locale}/form`;
   const { changeQueryParams } = useQueryParams();
+  const handlePrevPageClick = () => {
+    const pathname = `/${locale}/form`;
+    const query = { type: 'resume' };
+    changeQueryParams(pathname, query);
+  };
 
   return (
     <div className={styles._CONTAINER_}>
@@ -47,10 +65,7 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
             labelText: t('button.prev-page') ?? '',
             labelLeadingIcon: <Icon.Arrow />,
           }}
-          onClick={() => {
-            const query = { type: 'resume' };
-            changeQueryParams(pathname, query);
-          }}
+          onClick={handlePrevPageClick}
         />
         <Button
           size={isMobile ? 'sm' : 'lg'}
@@ -71,22 +86,21 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
 export default Confirmation;
 
 interface ResumeInfoConfirmationProps {
-  resumeInfo: ResumeInfo;
+  resumeInfo: ResumeInfoState;
 }
 
 const ResumeInfoConfirmation = ({ resumeInfo }: ResumeInfoConfirmationProps) => {
   const { t } = useTranslation(TranslateNamespaces);
-
   return (
     <div className={styles._resume_info_container}>
       {resumeInfo.length > 0 &&
         resumeInfo.map((info, index) => (
           <div key={uid(index)} className={styles.item_container}>
             <Text textColor={ColorMap.gray_7} size="medium" weight="bold">
-              [ {info.name} ]
+              [ {isObjectOption(info.select) ? info.select.name : info.select} ]
             </Text>
             <Text size="medium" lineHeight="wide">
-              {info.value}
+              {info.textarea}
             </Text>
           </div>
         ))}

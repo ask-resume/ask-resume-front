@@ -17,8 +17,8 @@ export const HeightOption = {
   lg: 24,
 } as const;
 
-type ObjectOption = { name: string; value?: string; id?: string | number };
-type StringOption = string;
+export type ObjectOption = { name: string; id?: string | number; value?: string };
+export type StringOption = string;
 export type Option = ObjectOption | StringOption;
 
 export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {

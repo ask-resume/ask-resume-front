@@ -17,7 +17,6 @@ import { TAB_CNT } from 'modules/form/constants';
 import { useFormRouter } from 'modules/form/hooks/useFormRouter';
 import { validateUserInfoForm, validateResumeInfoForm } from 'modules/form/lib';
 import { FormRouterType } from 'modules/form/types';
-import { isObjectOption } from 'shared-ui/src/components/Select';
 
 import styles from './index.module.scss';
 const Router = dynamic(() => import('modules/form/components/Router'), { ssr: false });
@@ -52,10 +51,7 @@ export default function FormPage() {
         .filter(textArea => textArea.trim())
         .map((textArea, index) => {
           const curr = resumeSelect[index];
-          if (isObjectOption(curr)) {
-            return { name: curr.name, value: textArea };
-          }
-          return { name: curr, value: textArea };
+          return { select: curr, textarea: textArea };
         }),
     [resumeSelect, resumeTextArea],
   );
