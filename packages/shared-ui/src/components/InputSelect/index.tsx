@@ -47,12 +47,6 @@ const InputSelect = ({
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
-  // Reset input value when selectedOption or locale is changed.
-  React.useEffect(() => {
-    setInputValue('');
-  }, [locale]);
-
-  //
   React.useEffect(() => {
     if (!selectedOption) {
       setInputValue('');

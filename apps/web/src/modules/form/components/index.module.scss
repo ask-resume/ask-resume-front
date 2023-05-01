@@ -39,6 +39,11 @@
     gap: 3rem;
   }
 
+  .error_fallback {
+    min-height: min(60vh, 300px);
+    max-height: max(60vh, 300px);
+  }
+
   ._button_wrapper {
     display: flex;
     justify-content: center;

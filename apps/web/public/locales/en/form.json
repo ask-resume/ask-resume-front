@@ -44,6 +44,13 @@
       "newbie": "Newbie",
       "more-than-10-years": "10 years +",
       "years": "years"
+    },
+
+    "error_fallback": {
+      "title": "Oops!",
+      "description": "Something went wrong.",
+      "content": "There's a high chance that there's a network problem or a server error. Please check your internet connection or try again later.",
+      "button": "Retry"
     }
   },
 

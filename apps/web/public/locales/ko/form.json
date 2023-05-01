@@ -44,6 +44,13 @@
       "newbie": "신입",
       "more-than-10-years": "10년 이상",
       "years": "년"
+    },
+
+    "error_fallback": {
+      "title": "이런!",
+      "description": "문제가 발생했습니다.",
+      "content": "네트워크 문제나 서버 에러가 높은 가능성이 있습니다. 인터넷 연결을 확인하거나 나중에 다시 시도해주세요.",
+      "button": "재시도"
     }
   },
 

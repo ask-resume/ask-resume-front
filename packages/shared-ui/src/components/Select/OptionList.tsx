@@ -65,7 +65,11 @@ const OptionList = ({
 };
 
 const NoResultPhrases = ({ locale }: { locale: string }) => {
-  const NO_RESULT_PHRASES = {
+  type ResultPhrases = {
+    [key: string]: string;
+  };
+
+  const NO_RESULT_PHRASES: ResultPhrases = {
     en: 'No Result Found',
     ko: '검색 결과 없음',
   };

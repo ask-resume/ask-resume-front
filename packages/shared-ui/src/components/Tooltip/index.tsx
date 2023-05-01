@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { ColorMap } from 'src/config/colorMap';
+import { ColorMap } from '../../config/colorMap';
 import './index.scss';
 
 type Placement =

@@ -4,19 +4,14 @@ import { useRouter } from 'next/router';
 import cn from 'classnames';
 import { uid } from 'react-uid';
 
-import Text, { TextWeight } from 'shared-ui/src/components/Text';
+import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
-import Divider from 'shared-ui/src/components/Divider';
 import Button from 'shared-ui/src/components/Button';
-import InputSelect from 'shared-ui/src/components/InputSelect';
-import Select, { Option, isObjectOption } from 'shared-ui/src/components/Select';
-import Slider from 'shared-ui/src/components/Slider';
+import { Option, isObjectOption } from 'shared-ui/src/components/Select';
 import Icon from 'shared-ui/src/components/Icon';
-import { FontSize } from 'shared-ui/src/config/size';
 
 import { formatYearsOfCareer } from '../lib';
 import styles from './index.module.scss';
-import { StateName, ChangedValue } from '../hooks/useUserInfoState';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { UserInfoState } from './UserInfo';
 import { TranslateNamespaces } from 'modules/form/constants';

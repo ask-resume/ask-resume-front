@@ -1,7 +1,18 @@
 {
-  "name": "apps",
-  "version": "0.1.0",
+  "name": "ask-resume-web",
+  "description": "AskResume: Resume Interview Question and Answer Generator",
+  "version": "0.0.0",
   "private": true,
+  "keywords": [
+    "OpenAI",
+    "LLM",
+    "resume",
+    "interview",
+    "question",
+    "job search",
+    "employment",
+    "preparation"
+  ],
   "scripts": {
     "dev": "next dev -p 4000",
     "build": "next build",

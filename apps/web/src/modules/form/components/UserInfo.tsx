@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
+import cn from 'classnames';
 
 import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
@@ -16,6 +17,7 @@ import { StateName, ChangedValue } from '../hooks/useUserInfoState';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
 
 import styles from './index.module.scss';
+import errorPageStyles from '../../error/components/index.module.scss';
 import { TranslateNamespaces } from '../constants';
 import { useJobs } from '../api/job';
 
@@ -52,18 +54,15 @@ const UserInfo = ({ locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProp
   const pathname = `/${locale}/form`;
   const { changeQueryParams } = useQueryParams();
 
-  const { data: jobs, isLoading: isJobsLoading } = useJobs(locale);
+  const { data: jobs, isLoading: isJobsLoading, isError, refetch } = useJobs(locale);
   const isNavigationEnabled = !validateUserInfoForm(userInfo);
+  const isDataLoaded = !isJobsLoading && !isError;
 
   return (
     <div className={styles._CONTAINER_}>
-      {isJobsLoading && (
-        <div className={styles.loading}>
-          <Spinner size="xl" />
-        </div>
-      )}
-
-      {!isJobsLoading && (
+      {isJobsLoading && <LoadingSpinner />}
+      {isError && <ErrorFallback onRefetch={refetch} />}
+      {isDataLoaded && (
         <>
           <div className={styles._USER_CONTENT_}>
             {/* Job InputSelect */}
@@ -140,29 +139,76 @@ const UserInfo = ({ locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProp
               />
             </div>
           </div>
-
-          <div
-            className={styles._button_wrapper}
-            onClick={() => {
-              if (isNavigationEnabled) return;
-              const query = { type: 'resume' };
-              changeQueryParams(pathname, query);
-            }}
-          >
-            <Button
-              size={isMobile ? 'sm' : 'lg'}
-              buttonColor="blue"
-              disabled={isNavigationEnabled}
-              label={{
-                labelText: t('button.next-page') ?? '',
-                labelTailingIcon: <Icon.Arrow flip />,
-              }}
-            />
-          </div>
         </>
       )}
+
+      <div
+        className={styles._button_wrapper}
+        onClick={() => {
+          if (isNavigationEnabled) return;
+          const query = { type: 'resume' };
+          changeQueryParams(pathname, query);
+        }}
+      >
+        <Button
+          size={isMobile ? 'sm' : 'lg'}
+          buttonColor="blue"
+          disabled={isNavigationEnabled}
+          label={{
+            labelText: t('button.next-page') ?? '',
+            labelTailingIcon: <Icon.Arrow flip />,
+          }}
+        />
+      </div>
     </div>
   );
 };
 
 export default UserInfo;
+
+const LoadingSpinner = () => (
+  <div className={styles.loading}>
+    <Spinner size="xl" />
+  </div>
+);
+
+interface ErrorFallbackProps {
+  onRefetch: () => void;
+}
+
+const ErrorFallback = ({ onRefetch }: ErrorFallbackProps) => {
+  const { t } = useTranslation(TranslateNamespaces);
+
+  return (
+    <div className={cn(errorPageStyles._ERROR_PAGE_, styles.error_fallback)}>
+      <div className={errorPageStyles._wrapper}>
+        <div className={errorPageStyles.title}>
+          <Text variant="h1" size="xxxx_large" weight="bold">
+            {t('user_info.error_fallback.title')}
+          </Text>
+          <Text variant="h1" size="x_large" weight="bold">
+            {t('user_info.error_fallback.description')}
+          </Text>
+        </div>
+
+        <Divider />
+
+        <div className={errorPageStyles.explain}>
+          <Text align="center" textColor={ColorMap.gray_6} size="small" lineHeight="wide">
+            {t('user_info.error_fallback.content')}
+          </Text>
+        </div>
+      </div>
+
+      <Button
+        label={{
+          labelText: t('user_info.error_fallback.button') ?? '',
+        }}
+        rounded
+        variant="ghost"
+        buttonColor="blue"
+        onClick={onRefetch}
+      />
+    </div>
+  );
+};
