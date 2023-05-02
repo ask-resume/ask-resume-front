@@ -51,7 +51,6 @@
     "sass-loader": "^13.2.2",
     "storybook": "7.0.6",
     "style-loader": "^3.3.2",
-    "tsconfig-paths-webpack-plugin": "^4.0.1",
-    "tsconfig": "workspace:*"
+    "tsconfig-paths-webpack-plugin": "^4.0.1"
   }
 }

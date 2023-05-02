@@ -26,15 +26,16 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
-        include: path.resolve(__dirname, '../stories'),
+        include: path.resolve(__dirname, '../../../packages/shared-ui/src'),
       },
     );
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),
       new TsconfigPathsPlugin({
-        configFile: path.resolve(__dirname, '../tsconfig.json'),
+        configFile: path.resolve(__dirname, '../../../packages/shared-ui/tsconfig.json'),
       }),
     ];
+    
     return config;
   },
 };

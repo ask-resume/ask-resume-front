@@ -1,7 +1,0 @@
-{
-  "extends": "tsconfig/react-library.json",
-  "compilerOptions": {
-    "baseUrl": "."
-  },
-  "exclude": ["node_modules", "build", "**/*.stories.tsx", "**/*.test.tsx"]
-}
