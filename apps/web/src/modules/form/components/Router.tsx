@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import Text, { TextWeight } from 'shared-ui/src/components/Text';
 import { FontSize } from 'shared-ui/src/config/size';
 import Divider from 'shared-ui/src/components/Divider';
-import { TranslateNamespaces } from '../constants';
+import { FormTranslateNamespaces } from '../constants';
 import Icon from 'shared-ui/src/components/Icon';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
 import { FormRouterType } from '../types';
@@ -16,7 +16,7 @@ interface RouterProps {
 }
 
 const Router = ({ type, userInfoChecked, resumeInfoChecked }: RouterProps) => {
-  const { t } = useTranslation(TranslateNamespaces);
+  const { t } = useTranslation(FormTranslateNamespaces);
 
   const getTextProps = (routeType: FormRouterType) => {
     return {

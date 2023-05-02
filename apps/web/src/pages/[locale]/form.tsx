@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { useIsMobile } from 'shared-lib/hooks/media-query';
@@ -9,7 +8,7 @@ import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
 
 import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
 import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
-import { TranslateNamespaces } from 'modules/form/constants';
+import { FormTranslateNamespaces } from 'modules/form/constants';
 import {
   useResumeTextAreaState,
   useResumeSelectState,
@@ -19,14 +18,14 @@ import { useFormRouter } from 'modules/form/hooks/useFormRouter';
 import { validateUserInfoForm, validateResumeInfoForm } from 'modules/form/lib';
 import { FormRouterType } from 'modules/form/types';
 
-import styles from './index.module.scss';
+import styles from '../../page.module.scss';
 const Router = dynamic(() => import('modules/form/components/Router'), { ssr: false });
 const UserInfo = dynamic(() => import('modules/form/components/UserInfo'), { ssr: false });
 const ResumeInfo = dynamic(() => import('modules/form/components/ResumeInfo'), { ssr: false });
 const Confirmation = dynamic(() => import('modules/form/components/Confirmation'), { ssr: false });
 
 export default function FormPage() {
-  const { t } = useTranslation(TranslateNamespaces);
+  const { t } = useTranslation(FormTranslateNamespaces);
   const router = useRouter();
   const isMobile = useIsMobile();
   const { locale, type } = React.useMemo(
@@ -103,7 +102,7 @@ export default function FormPage() {
 export const getServerSideProps = withGetServerSideProps(async ctx => {
   return {
     props: {
-      ...(await getI18nProps(ctx, TranslateNamespaces)),
+      ...(await getI18nProps(ctx, FormTranslateNamespaces)),
     },
   };
 });

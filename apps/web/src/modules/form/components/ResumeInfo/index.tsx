@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { TranslateNamespaces } from 'modules/form/constants';
+import { FormTranslateNamespaces } from 'modules/form/constants';
 
 import { Option } from 'shared-ui/src/components/Select';
 import Button from 'shared-ui/src/components/Button';
@@ -27,7 +27,7 @@ const ResumeInfo = ({
   onChangeResumeTextArea,
   onChangeResumeSelect,
 }: ResumeInfoProps) => {
-  const { t } = useTranslation(TranslateNamespaces);
+  const { t } = useTranslation(FormTranslateNamespaces);
   const { type, changeFormRouter } = useFormRouter();
 
   const [selectedIdx, setSelectedIdx] = React.useState(INIT_SELECT_IDX);

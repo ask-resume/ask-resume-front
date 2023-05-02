@@ -1,21 +1,5 @@
 @import 'shared-ui/src/index.scss';
-
-// Form page's container responsive width
-@mixin responsive-web {
-  width: 400px;
-  @media screen and (min-width: $breakpoint-xlarge) {
-    width: 700px;
-  }
-  @media screen and (min-width: $breakpoint-large) {
-    width: 600px;
-  }
-  @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
-    width: 500px;
-  }
-  @media screen and (max-width: $breakpoint-xsmall) {
-    width: 80vw;
-  }
-}
+@import '../../../page.module.scss';
 
 // Form page's content
 ._CONTAINER_ {

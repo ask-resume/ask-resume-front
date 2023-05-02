@@ -14,7 +14,6 @@ export const getJobs = async (locale: string) => {
 export const useJobs = (locale: string) => {
   return useQuery(['jobs'], () => getJobs(locale), {
     cacheTime: Infinity,
-    retry: false,
     select: (res: { data: Option[] }) => res.data,
   });
 };

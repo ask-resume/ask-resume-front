@@ -1,0 +1,6 @@
+{
+  "loading_fallback": {
+    "title": "로딩중입니다.",
+    "description": "질문을 생성하고 있습니다. 약 30초 정도 소요됩니다."
+  }
+}
