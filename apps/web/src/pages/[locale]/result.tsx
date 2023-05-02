@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { useRouter } from 'next/router';
-import { useGenerateResume, generateResume } from 'modules/result/api/result';
+import { useGenerateResume } from 'modules/result/api/result';
 import styles from '../../page.module.scss';
 import { GetStaticPropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
@@ -41,18 +41,12 @@ export default function ResultPage() {
 
   const router = useRouter();
   const { locale, formInfo } = router.query as { locale: string; formInfo: string };
-  const isLoading = true;
-  // const {
-  //   data: resumeData,
-  //   isLoading,
-  //   isError,
-  //   error,
-  // } = useGenerateResume({ formInfo: JSON.parse(formInfo), locale });
+  const { data: resumeData, isLoading, isError, error } = useGenerateResume({ formInfo, locale });
 
   return (
     <div className={styles._RESULT_}>
       {isLoading && <LoadingFallback />}
-      {/* {isError && <DefaultErrorFallback error={error} />} */}
+      {isError && <DefaultErrorFallback error={error} />}
       {/* <div>{JSON.stringify(resumeData)}</div> */}
     </div>
   );
