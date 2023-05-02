@@ -37,7 +37,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Deploy to Chromatic
-        working-directory: packages/shared-ui
+        working-directory: apps/docs
         run: npx chromatic --exit-zero-on-changes
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
