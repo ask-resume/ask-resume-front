@@ -1,6 +1,6 @@
-import Spinner from '../components/Spinner';
-import '../reset.scss';
-import '../components/Spinner/index.scss';
+import Spinner from 'shared-ui/src/components/Spinner';
+import 'shared-ui/src/reset.scss';
+import 'shared-ui/src/components/Spinner/index.scss';
 import React from 'react';
 
 export default {

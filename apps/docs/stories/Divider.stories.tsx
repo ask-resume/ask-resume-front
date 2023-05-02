@@ -1,8 +1,8 @@
-import Divider from '../components/Divider';
-import Text from '../components/Text';
-import '../reset.scss';
+import Divider from 'shared-ui/src/components/Divider';
+import Text from 'shared-ui/src/components/Text';
+import 'shared-ui/src/reset.scss';
 
-import { ColorMap } from '../config/colorMap';
+import { ColorMap } from 'shared-ui/src/config/colorMap';
 import React from 'react';
 
 export default {

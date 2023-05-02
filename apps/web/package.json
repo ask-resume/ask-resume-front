@@ -43,6 +43,7 @@
     "cross-env": "^7.0.3",
     "eslint": "8.37.0",
     "eslint-config-custom": "workspace:*",
-    "eslint-config-next": "13.2.4"
+    "eslint-config-next": "13.2.4",
+    "tsconfig": "workspace:*"
   }
 }

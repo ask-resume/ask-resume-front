@@ -1,10 +1,10 @@
 import { useState } from '@storybook/addons';
 
-import Divider from '../components/Divider';
-import Tabs from '../components/Tabs';
-import TabItem from '../components/Tabs/TabItem';
-import Icon from '../components/Icon';
-import '../reset.scss';
+import Divider from 'shared-ui/src/components/Divider';
+import Tabs from 'shared-ui/src/components/Tabs';
+import TabItem from 'shared-ui/src/components/Tabs/TabItem';
+import Icon from 'shared-ui/src/components/Icon';
+import 'shared-ui/src/reset.scss';
 import React from 'react';
 
 export default {

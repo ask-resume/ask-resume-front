@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Divider from '../components/Divider';
-import Slider from '../components/Slider';
-import Text from '../components/Text';
-import '../reset.scss';
+import Divider from 'shared-ui/src/components/Divider';
+import Slider from 'shared-ui/src/components/Slider';
+import Text from 'shared-ui/src/components/Text';
+import 'shared-ui/src/reset.scss';
 
 export default {
   title: 'Component/Slider',

@@ -1,6 +1,6 @@
 import React from 'react';
-import Accordion, { AccordionItem } from '../components/Accordion';
-import '../reset.scss';
+import Accordion, { AccordionItem } from 'shared-ui/src/components/Accordion';
+import 'shared-ui/src/reset.scss';
 
 export default {
   title: 'Component/Accodion',

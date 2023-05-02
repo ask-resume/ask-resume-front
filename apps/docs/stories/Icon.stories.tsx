@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Text from '../components/Text';
-import Divider from '../components/Divider';
-import StoriesIcon from '../components/Icon';
+import Text from 'shared-ui/src/components/Text';
+import Divider from 'shared-ui/src/components/Divider';
+import StoriesIcon from 'shared-ui/src/components/Icon';
 
-import '../reset.scss';
-import { ColorMap } from '../config/colorMap';
+import 'shared-ui/src/reset.scss';
+import { ColorMap } from 'shared-ui/src/config/colorMap';
 
 export default {
   title: 'Styleguide/Icon',

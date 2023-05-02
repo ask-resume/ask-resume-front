@@ -1,7 +1,7 @@
-import Text from '../components/Text';
-import '../reset.scss';
-import '../index.scss';
-import { ShadowMap } from '../config/colorMap';
+import Text from 'shared-ui/src/components/Text';
+import 'shared-ui/src/reset.scss';
+import 'shared-ui/src/index.scss';
+import { ShadowMap } from 'shared-ui/src/config/colorMap';
 import React from 'react';
 
 export default {

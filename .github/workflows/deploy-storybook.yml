@@ -6,7 +6,7 @@ on:
       - main
       - develop
     paths:
-      - 'packages/shared-ui/**'
+      - 'apps/docs/**'
 
 jobs:
   deploy_to_netlify:
@@ -41,7 +41,7 @@ jobs:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
         with:
-          publish-dir: packages/shared-ui/storybook-static
+          publish-dir: apps/docs/storybook-static
           production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: 'deploy: deploy storybook to netlify'

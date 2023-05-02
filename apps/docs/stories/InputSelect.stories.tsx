@@ -1,10 +1,10 @@
 import React from 'react';
 
-import InputSelect from '../components/InputSelect';
-import { Option, getOptionName } from '../components/Select';
-import Divider from '../components/Divider';
-import Text from '../components/Text';
-import '../reset.scss';
+import InputSelect from 'shared-ui/src/components/InputSelect';
+import { Option, getOptionName } from 'shared-ui/src/components/Select';
+import Divider from 'shared-ui/src/components/Divider';
+import Text from 'shared-ui/src/components/Text';
+import 'shared-ui/src/reset.scss';
 import { stringTypeOptions, objTypeOptions } from './config';
 
 export default {

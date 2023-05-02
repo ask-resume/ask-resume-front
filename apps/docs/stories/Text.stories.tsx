@@ -1,6 +1,6 @@
 import React from 'react';
-import Text from '../components/Text';
-import '../reset.scss';
+import Text from 'shared-ui/src/components/Text';
+import 'shared-ui/src/reset.scss';
 
 export default {
   title: 'Component/Text',

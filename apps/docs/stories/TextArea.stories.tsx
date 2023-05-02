@@ -1,5 +1,5 @@
 import React from 'react';
-import Textarea from '../components/Textarea';
+import Textarea from 'shared-ui/src/components/Textarea';
 
 export default {
   title: 'Component/Textarea',

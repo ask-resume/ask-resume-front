@@ -1,6 +1,6 @@
-import Text from '../components/Text';
-import SkeletonUI from '../components/SkeletonUI';
-import '../reset.scss';
+import Text from 'shared-ui/src/components/Text';
+import SkeletonUI from 'shared-ui/src/components/SkeletonUI';
+import 'shared-ui/src/reset.scss';
 import React from 'react';
 
 export default {

@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from '../components/Button';
-import Divider from '../components/Divider';
-import Tooltip from '../components/Tooltip';
-import '../reset.scss';
+import Button from 'shared-ui/src/components/Button';
+import Divider from 'shared-ui/src/components/Divider';
+import Tooltip from 'shared-ui/src/components/Tooltip';
+import 'shared-ui/src/reset.scss';
 
 export default {
   title: 'Component/Tooltip',

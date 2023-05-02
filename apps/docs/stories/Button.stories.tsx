@@ -1,7 +1,7 @@
-import Icon from '../components/Icon';
-import Button from '../components/Button';
-import { ColorMap } from '../config/colorMap';
-import '../reset.scss';
+import Icon from 'shared-ui/src/components/Icon';
+import Button from 'shared-ui/src/components/Button';
+import { ColorMap } from 'shared-ui/src/config/colorMap';
+import 'shared-ui/src/reset.scss';
 import React from 'react';
 
 export default {
