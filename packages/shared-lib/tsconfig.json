@@ -1,22 +1,4 @@
 {
-  "extends": "./tsconfig.node.json",
-  "include": ["**/*"],
-  "exclude": ["node_modules", ".github"],
-  "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["ES2015", "ES2019", "dom"],
-    "module": "CommonJS",
-    "useDefineForClassFields": true,
-    "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
-  }
+  "extends": "tsconfig/react-library.json",
+  "exclude": ["node_modules"]
 }

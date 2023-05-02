@@ -2,11 +2,12 @@ import React from 'react';
 import cn from 'classnames';
 import './index.scss';
 import { ButtonHTMLAttributes } from 'react';
+import { TabSize } from '../../config/size';
 
 export interface TabItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   label?: string;
-  width?: number;
+  size?: TabSize;
   selected?: boolean;
   icon?: { leading?: React.ReactElement; tailing?: React.ReactElement };
   disabled?: boolean;
@@ -16,7 +17,7 @@ const TabItem = ({
   className,
   onClick,
   label,
-  width,
+  size = 'sm',
   selected,
   icon,
   disabled,
@@ -24,13 +25,12 @@ const TabItem = ({
 }: TabItemProps) => {
   return (
     <button
-      className={cn('_TAB_ITEM_', className, {
+      className={cn('_TAB_ITEM_', size, className, {
         selected,
         iconOnly: !label,
         disabled,
       })}
       onClick={onClick}
-      style={{ width: width }}
       {...props}
     >
       {icon?.leading && <div className="leading-icon">{icon.leading}</div>}

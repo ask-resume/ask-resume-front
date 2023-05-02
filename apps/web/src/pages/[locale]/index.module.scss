@@ -1,39 +1,38 @@
 @import 'shared-ui/src/index.scss';
 
+// Home Page
 ._LANDING_ {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4rem;
 }
 
-// 400
-._ERROR_PAGE_ {
+// Form Page
+._FORM_ {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
+  gap: 5rem;
 
-  ._wrapper {
+  .user_info_content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    line-height: 2;
-    gap: 1rem;
+    width: 400px;
 
-    .title {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      gap: 1rem;
+    @media screen and (min-width: $breakpoint-xlarge) {
+      width: 700px;
     }
 
-    .explain {
-      margin: 0 auto;
-      max-width: 256px;
-      font-size: 14px;
-      font-weight: 500;
+    @media screen and (min-width: $breakpoint-large) {
+      width: 600px;
+    }
+
+    @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
+      width: 500px;
+    }
+
+    @media screen and (max-width: $breakpoint-xsmall) {
+      width: 80vw;
     }
   }
 }

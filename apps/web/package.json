@@ -1,7 +1,18 @@
 {
-  "name": "apps",
-  "version": "0.1.0",
+  "name": "ask-resume-web",
+  "description": "AskResume: Resume Interview Question and Answer Generator",
+  "version": "0.0.0",
   "private": true,
+  "keywords": [
+    "OpenAI",
+    "LLM",
+    "resume",
+    "interview",
+    "question",
+    "job search",
+    "employment",
+    "preparation"
+  ],
   "scripts": {
     "dev": "next dev -p 4000",
     "build": "next build",
@@ -11,6 +22,7 @@
   "dependencies": {
     "@tanstack/react-query": "^4.29.3",
     "axios": "^1.3.5",
+    "i18next": "^22.4.15",
     "next": "13.2.4",
     "next-i18next": "^13.2.2",
     "next-language-detector": "^1.0.2",
@@ -23,13 +35,15 @@
     "shared-ui": "workspace:*"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^13.3.1",
     "@types/node": "18.15.11",
     "@types/react": "18.0.31",
     "@types/react-dom": "18.0.11",
     "classnames": "^2.3.2",
+    "cross-env": "^7.0.3",
     "eslint": "8.37.0",
     "eslint-config-custom": "workspace:*",
     "eslint-config-next": "13.2.4",
-    "typescript": "5.0.3"
+    "tsconfig": "workspace:*"
   }
 }

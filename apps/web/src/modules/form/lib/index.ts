@@ -1,13 +1,7 @@
-import { formatYearsOfCareer } from './formatYearsOfCareer';
-import { useInputSelectedState } from './useInputSelectedState';
-import { useSelectState } from './useSelectState';
-import { useSliderState } from './useSliderState';
-import { validateUserInfoForm } from './validateUserInfoForm';
+export { formatYearsOfCareer } from './formatYearsOfCareer';
 
-export {
-  formatYearsOfCareer,
-  useInputSelectedState,
-  useSelectState,
-  useSliderState,
-  validateUserInfoForm,
-};
+export { validateUserInfoForm } from './userInfo/validateUserInfoForm';
+
+export { getResumeInfo } from './resumeInfo/getResumeInfo';
+export { getResumeSelectObj } from './resumeInfo/getResumeSelectObj';
+export { validateResumeInfoForm } from './resumeInfo/validateResumeInfoForm';

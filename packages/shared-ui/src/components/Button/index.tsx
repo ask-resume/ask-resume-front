@@ -1,30 +1,13 @@
 import React from 'react';
 import cn from 'classnames';
-import styled from 'styled-components';
 import './index.scss';
-
 import { ButtonSize } from '../../config/size';
-import { ColorMap } from '../../config/colorMap';
-
-export interface ColorOption {
-  font?: ColorMap;
-  default?: ColorMap;
-  hover?: ColorMap;
-  active?: ColorMap;
-  icon?: {
-    default?: ColorMap;
-    hover?: ColorMap;
-    active?: ColorMap;
-  };
-}
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
-  variant?: 'ghost' | 'solid' | 'quiet' | 'minimal' | 'minimal2';
+  variant?: 'ghost' | 'solid' | 'quiet' | 'minimal';
   buttonColor?: 'black' | 'gray' | 'blue' | 'red';
-  colorOption?: ColorOption;
   disabled?: boolean;
-  spacer?: boolean;
   fullWidth?: boolean;
   loading?: boolean;
   rounded?: boolean;
@@ -43,54 +26,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size = 'md',
       variant = 'solid',
       disabled,
-      spacer = true,
       fullWidth,
       loading,
       rounded,
       buttonColor = 'black',
-      colorOption,
       label,
       ...restProps
     },
     ref,
   ) => {
-    // Optional Styling
-    //    - Basic styling is basically applied according to the "variant and buttonColor" option.
-    //    - Define additional styling according to colorOptions and spacer props.
-    const Btn = styled.button`
-      &._BUTTON_.${variant} {
-        ${!spacer && 'margin-left: 0px;'}
-        ${colorOption?.default && `background-color: ${colorOption?.default}; `}
-        ${colorOption?.font && `color: ${colorOption?.font};`}
-    
-        ${colorOption?.icon?.default &&
-        `
-          i > svg #icon__fill {
-            fill: ${colorOption?.icon?.default};
-          }`}
-    
-        &:hover {
-          ${colorOption?.hover && `background-color: ${colorOption?.hover};`}
-          ${colorOption?.icon?.hover &&
-          `
-          i > svg #icon__fill {
-            fill: ${colorOption?.icon?.hover};
-          }`}
-        }
-
-        &:active {
-          ${colorOption?.active && `background-color: ${colorOption?.active};`}
-          ${colorOption?.icon?.active &&
-          `
-          i > svg #icon__fill {
-            fill: ${colorOption?.icon?.active};
-          }`}
-        }
-      }
-    `;
-
     return (
-      <Btn
+      <button
         className={cn('_BUTTON_', className, size, variant, buttonColor, {
           loading,
           rounded,
@@ -122,7 +68,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           )}
         </span>
         {loading && <div className="_BUTTON_spinner" />}
-      </Btn>
+      </button>
     );
   },
 );

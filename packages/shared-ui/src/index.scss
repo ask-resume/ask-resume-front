@@ -34,6 +34,13 @@ $spacer_large: 2rem;
 $spacer_x_large: 2.8rem;
 $spacer_xx_large: 6rem;
 
+// Media Query Breakpoint - using Material Design
+$breakpoint-xsmall: 375px; // small smartphone
+$breakpoint-small: 600px; // smartphone
+$breakpoint-medium: 960px; // tablet
+$breakpoint-large: 1280px; // desktop
+$breakpoint-xlarge: 1920px; // large desktop
+
 /////////////////* Color */////////////////
 
 // Primary Blue
@@ -62,9 +69,7 @@ $blue_gray: #8f8f9c;
 
 // System Color
 $active_green: #69db7c;
-$inactive_red: #ff8787;
-$warning_red_1: #fff0ee;
-$warning_red_2: #f8d0d1;
+$inactive_red: #ff7272;
 
 // Green
 $green: #34c759;

@@ -1,0 +1,134 @@
+import React from 'react';
+import Text from 'shared-ui/src/components/Text';
+import 'shared-ui/src/reset.scss';
+
+export default {
+  title: 'Component/Text',
+  component: Text,
+};
+
+export const Default = () => {
+  return (
+    <div style={{ padding: 20 }}>
+      <Text>
+        안녕하세요?
+        <br />
+        날씨가 참 좋아요.
+      </Text>
+    </div>
+  );
+};
+
+export const Variant = () => {
+  return (
+    <div style={{ padding: 20 }}>
+      <header style={{ color: '#1C7ED6', paddingBottom: 8 }}>
+        <Text variant="h4">Title</Text>
+      </header>
+      <Text variant="h1">h1 타이틀 48px</Text>
+      <Text variant="h2">h2 타이틀 36px </Text>
+      <Text variant="h3">h3 타이틀 24px</Text>
+      <Text variant="h4">h4 타이틀 21px </Text>
+      <Text variant="h5">h5 타이틀 18px </Text>
+
+      <header style={{ color: '#1C7ED6', paddingTop: 48, paddingBottom: 8 }}>
+        <Text variant="h4">Font Size</Text>
+      </header>
+      <Text variant="block" size="xx_small">
+        xx_small: 12px
+      </Text>
+      <Text variant="block" size="x_small">
+        x-small: 13px
+      </Text>
+      <Text variant="block" size="small">
+        small: 14px
+      </Text>
+      <Text variant="block" size="medium">
+        medium: 16px
+      </Text>
+      <Text variant="block" size="large">
+        large: 18px
+      </Text>
+      <Text variant="block" size="x_large">
+        x_large: 21px
+      </Text>
+      <Text variant="block" size="xx_large">
+        xx_large: 24px
+      </Text>
+      <Text variant="block" size="xxx_large">
+        xxx_large: 36px
+      </Text>
+      <Text variant="block" size="xxxx_large">
+        xxxx_large: 48px
+      </Text>
+
+      <header style={{ color: '#1C7ED6', paddingTop: 48, paddingBottom: 8 }}>
+        <Text variant="h4">Font Weight</Text>
+      </header>
+      <Text variant="block" weight="light">
+        light (300)
+      </Text>
+      <Text variant="block" weight="regular">
+        regular (400)
+      </Text>
+      <Text variant="block" weight="medium">
+        medium (500)
+      </Text>
+      <Text variant="block" weight="bold">
+        bold (700)
+      </Text>
+
+      <header style={{ color: '#1C7ED6', paddingTop: 48, paddingBottom: 8 }}>
+        <Text variant="h4">Line Height</Text>
+      </header>
+      <header style={{ paddingBottom: 8 }}>
+        <Text variant="h5">Narrow</Text>
+      </header>
+      <Text variant="block" lineHeight="narrow">
+        토끼, 않은 이런 계절이 내일 하나에 별빛이 이네들은 봅니다. 이름과, 멀리 내 있습니다. 별에도
+        별 이름과, 이제 언덕 프랑시스 소학교 까닭입니다. 잔디가 소학교 둘 패, 어머니, 그리워 애기
+        듯합니다. 소녀들의 내일 노루, 별 가을 옥 이름과 내 있습니다. 같이 나는 오는 패, 이름과
+        새겨지는 둘 사람들의 듯합니다. 비둘기, 새겨지는 별 우는 않은 까닭입니다.{' '}
+      </Text>
+      <header style={{ paddingTop: 16, paddingBottom: 8 }}>
+        <Text variant="h5">Wide</Text>
+      </header>
+      <Text variant="block" lineHeight="wide">
+        토끼, 않은 이런 계절이 내일 하나에 별빛이 이네들은 봅니다. 이름과, 멀리 내 있습니다. 별에도
+        별 이름과, 이제 언덕 프랑시스 소학교 까닭입니다. 잔디가 소학교 둘 패, 어머니, 그리워 애기
+        듯합니다. 소녀들의 내일 노루, 별 가을 옥 이름과 내 있습니다. 같이 나는 오는 패, 이름과
+        새겨지는 둘 사람들의 듯합니다. 비둘기, 새겨지는 별 우는 않은 까닭입니다.
+      </Text>
+      <header style={{ color: '#1C7ED6', paddingTop: 48, paddingBottom: 8 }}>
+        <Text variant="h4">Text Align</Text>
+      </header>
+      <header style={{ paddingBottom: 8 }}>
+        <Text variant="h5">start</Text>
+      </header>
+      <Text align="start">
+        토끼, 않은 이런 계절이 내일 하나에 별빛이 이네들은 봅니다. 이름과, 멀리 내 있습니다. 별에도
+        별 이름과, 이제 언덕 프랑시스 소학교 까닭입니다. 잔디가 소학교 둘 패, 어머니, 그리워 애기
+        듯합니다. 소녀들의 내일 노루, 별 가을 옥 이름과 내 있습니다. 같이 나는 오는 패, 이름과
+        새겨지는 둘 사람들의 듯합니다. 비둘기, 새겨지는 별 우는 않은 까닭입니다.
+      </Text>
+      <header style={{ paddingTop: 16, paddingBottom: 8 }}>
+        <Text variant="h5">center</Text>
+      </header>
+      <Text align="center">
+        토끼, 않은 이런 계절이 내일 하나에 별빛이 이네들은 봅니다. 이름과, 멀리 내 있습니다. 별에도
+        별 이름과, 이제 언덕 프랑시스 소학교 까닭입니다. 잔디가 소학교 둘 패, 어머니, 그리워 애기
+        듯합니다. 소녀들의 내일 노루, 별 가을 옥 이름과 내 있습니다. 같이 나는 오는 패, 이름과
+        새겨지는 둘 사람들의 듯합니다. 비둘기, 새겨지는 별 우는 않은 까닭입니다.
+      </Text>
+      <header style={{ paddingTop: 16, paddingBottom: 8 }}>
+        <Text variant="h5">end</Text>
+      </header>
+      <Text align="end">
+        토끼, 않은 이런 계절이 내일 하나에 별빛이 이네들은 봅니다. 이름과, 멀리 내 있습니다. 별에도
+        별 이름과, 이제 언덕 프랑시스 소학교 까닭입니다. 잔디가 소학교 둘 패, 어머니, 그리워 애기
+        듯합니다. 소녀들의 내일 노루, 별 가을 옥 이름과 내 있습니다. 같이 나는 오는 패, 이름과
+        새겨지는 둘 사람들의 듯합니다. 비둘기, 새겨지는 별 우는 않은 까닭입니다.
+      </Text>
+    </div>
+  );
+};

@@ -1,0 +1,216 @@
+@import 'shared-ui/src/index.scss';
+
+// Form page's container responsive width
+@mixin responsive-web {
+  width: 400px;
+  @media screen and (min-width: $breakpoint-xlarge) {
+    width: 700px;
+  }
+  @media screen and (min-width: $breakpoint-large) {
+    width: 600px;
+  }
+  @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
+    width: 500px;
+  }
+  @media screen and (max-width: $breakpoint-xsmall) {
+    width: 80vw;
+  }
+}
+
+// Form page's content
+._CONTAINER_ {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  align-items: center;
+
+  @media screen and (max-width: $breakpoint-small) {
+    padding-top: 10vh;
+  }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: min(60vh, 300px);
+    max-height: max(60vh, 300px);
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .error_fallback {
+    min-height: min(60vh, 300px);
+    max-height: max(60vh, 300px);
+  }
+
+  ._button_wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+._USER_CONTENT_ {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  ._select {
+    @include responsive-web;
+    ul {
+      max-height: 200px;
+      width: 100%;
+      li {
+        max-width: 400px;
+        @media screen and (min-width: $breakpoint-xlarge) {
+          max-width: 700px;
+        }
+        @media screen and (min-width: $breakpoint-large) {
+          max-width: 600px;
+        }
+        @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
+          max-width: 500px;
+        }
+        @media screen and (max-width: $breakpoint-xsmall) {
+          max-width: 80vw;
+        }
+      }
+    }
+  }
+}
+
+._RESUME_CONTENT_ {
+  @include responsive-web;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  ._button_wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  ._resume_textarea {
+    .select {
+      width: 220px;
+    }
+
+    .text {
+      padding: 6px 0;
+      padding-bottom: 4px;
+    }
+
+    .textarea {
+      textarea {
+        height: 250px !important;
+      }
+    }
+  }
+}
+
+._CONFIRM_CONTENT_ {
+  @include responsive-web;
+  display: flex;
+  flex-direction: column;
+  min-height: min(60vh, 400px);
+  max-height: max(60vh, 400px);
+  overflow-y: auto;
+  gap: 4rem;
+
+  ._user_info_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .item_container {
+      display: flex;
+    }
+
+    .item_content {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      &.job_option {
+        @media screen and (max-width: #{$breakpoint-medium - 1}) {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+      }
+    }
+
+    .item_title {
+      min-width: 150px;
+    }
+  }
+
+  ._resume_info_container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    .item_container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+}
+
+// Router
+._ROUTER_ {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  padding-top: 10vh;
+
+  @media screen and (max-width: $breakpoint-small) {
+    display: none;
+  }
+
+  ._router_item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .font {
+      font-weight: $font-weight-bold;
+      color: $gray_5;
+
+      &.checked {
+        color: $blue_5;
+      }
+    }
+  }
+
+  .divider {
+    width: 7px;
+    height: 7px;
+    @media screen and (max-width: $breakpoint-small) {
+      width: 5px;
+      height: 5px;
+    }
+
+    background-color: $blue_5;
+    border-radius: 50%;
+  }
+
+  .router_icon {
+    width: 16px;
+    height: 16px;
+    font-size: 13px;
+    background-color: transparent;
+    color: $blue_5;
+    border-radius: 50%;
+    outline: 2px solid $blue_5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: $font-weight-bold;
+  }
+}

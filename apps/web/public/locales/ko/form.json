@@ -1,32 +1,83 @@
 {
-  "label": {
-    "job": "직업",
-    "nation": "거주 국가",
-    "difficulty": "난이도",
-    "years-of-experience": "경력",
-    "go-to-resume-page": "이력서 입력 페이지로 이동"
+  "button": {
+    "prev-page": "이전 페이지",
+    "next-page": "다음 페이지",
+    "submit": "Q&A 생성"
   },
 
-  "placeholder": {
-    "job": "직업(또는 장래희망)을 선택하세요.",
-    "nation": "거주 국가를 선택하세요.",
-    "difficulty": "면접 난이도를 선택하세요."
+  "user_info": {
+    "label": {
+      "job": "직업",
+      "nation": "거주 국가",
+      "difficulty": "난이도",
+      "years-of-experience": "경력",
+      "go-to-resume-page": "이력서 페이지로 이동하기",
+      "not-selected": "값을 선택하지 않았습니다!"
+    },
+
+    "load-job-data": "직업 데이터를 받아오는 중 ...",
+
+    "placeholder": {
+      "job": "직업(또는 장래희망)을 선택하세요.",
+      "nation": "거주 국가를 선택하세요.",
+      "difficulty": "면접 난이도를 선택하세요."
+    },
+
+    "router": {
+      "user-info": "사용자정보",
+      "resume": "이력서",
+      "input-confirmation": "입력확인"
+    },
+
+    "nation": {
+      "korea": "한국",
+      "english": "영어권"
+    },
+
+    "difficulty": {
+      "easy": "쉬움",
+      "medium": "보통",
+      "hard": "어려움"
+    },
+
+    "career": {
+      "newbie": "신입",
+      "more-than-10-years": "10년 이상",
+      "years": "년"
+    },
+
+    "error_fallback": {
+      "title": "이런!",
+      "description": "문제가 발생했습니다.",
+      "content": "네트워크 문제나 서버 에러가 높은 가능성이 있습니다. 인터넷 연결을 확인하거나 나중에 다시 시도해주세요.",
+      "button": "재시도"
+    }
   },
 
-  "nation": {
-    "korea": "한국",
-    "english": "영어권"
+  "resume_info": {
+    "label": {},
+    "placeholder": {
+      "textarea": "선택지에 대한 내용을 채워넣어주세요."
+    },
+    "tab": "입력 {{idx}}",
+    "select": {
+      "introduction": "자기소개",
+      "career": "업무 경험",
+      "education": "교육 이력",
+      "technical": "보유한 기술",
+      "outsideActivities": "대외활동",
+      "project": "프로젝트",
+      "acc": "수상 / 자격증"
+    },
+    "textarea": {
+      "explain": "* 이력서 내용은 최소 1개, 최대 4개까지 입력 가능합니다.",
+      "error": "입력값은 100자에서 1,000자 이내이어야 합니다."
+    }
   },
 
-  "difficulty": {
-    "easy": "쉬움",
-    "medium": "보통",
-    "hard": "어려움"
-  },
-
-  "career": {
-    "newbie": "신입",
-    "more-than-10-years": "10년 이상",
-    "years": "년"
+  "confirmation": {
+    "error_message": {
+      "resume": "입력하신 이력서 정보가 없습니다."
+    }
   }
 }

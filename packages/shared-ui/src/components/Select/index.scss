@@ -23,7 +23,6 @@ $width: 350px;
   align-items: center;
   width: 100%;
   background-color: #fff;
-  // cursor: text;
   cursor: pointer;
 
   transition: all 0.2s ease-out;
@@ -80,10 +79,6 @@ $width: 350px;
 
   &.open {
     transform: rotate(90deg);
-    transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  &:not(.open) {
-    transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 }
 
@@ -207,7 +202,7 @@ $width: 350px;
 .size-sm {
   height: 32px;
   padding: 0 12px;
-  margin: 6px 0;
+  margin: 8px 0;
   font-size: $font-size-small;
   @extend .border-sm;
 }
@@ -215,7 +210,7 @@ $width: 350px;
 .size-md {
   height: 36px;
   padding: 0 12px;
-  margin: 6px 0;
+  margin: 10px 0;
   font-size: $font-size-small;
   @extend .border-md;
 }
@@ -223,7 +218,7 @@ $width: 350px;
 .size-lg {
   height: 44px;
   padding: 0 16px;
-  margin: 8px 0;
+  margin: 10px 0;
   font-size: $font-size-medium;
   @extend .border-lg;
 }
@@ -231,7 +226,7 @@ $width: 350px;
 .size-xl {
   height: 56px;
   padding: 0 20px;
-  margin: 10px 0;
+  margin: 12px 0;
   font-size: $font-size-large;
   @extend .border-xl;
 }

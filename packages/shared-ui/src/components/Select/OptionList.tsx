@@ -3,6 +3,8 @@ import cn from 'classnames';
 import { uid } from 'react-uid';
 
 import { Option, HeightOption, getOptionName } from '.';
+import { ColorMap } from '../../config/colorMap';
+import Text from '../Text';
 
 interface OptionListProps {
   options: Option[];
@@ -10,20 +12,21 @@ interface OptionListProps {
   boxShadow?: boolean;
   selectedOption: Option | null;
   onChangeOption: (option: Option) => void;
+  locale?: string;
 }
 
-// TODO: Render spinner while loading when options are not yet received
 const OptionList = ({
   options,
   height,
   boxShadow,
   selectedOption,
   onChangeOption,
+  locale = 'en',
 }: OptionListProps) => {
   const listRef = React.useRef<HTMLUListElement>(null);
 
   React.useEffect(() => {
-    const options = Array.from(listRef.current.querySelectorAll<HTMLLIElement>('.option'));
+    const options = Array.from(listRef.current?.querySelectorAll<HTMLLIElement>('.option') ?? []);
 
     const handleKeyDownEvent = (event: KeyboardEvent) =>
       handleKeyDown({ event, options, onChangeOption });
@@ -35,7 +38,7 @@ const OptionList = ({
   }, [onChangeOption, listRef]);
 
   if (options.length === 0) {
-    return <ul className="_options no-content">No Content</ul>;
+    return <NoResultPhrases locale={locale} />;
   }
 
   return (
@@ -58,6 +61,25 @@ const OptionList = ({
         );
       })}
     </ul>
+  );
+};
+
+const NoResultPhrases = ({ locale }: { locale: string }) => {
+  type ResultPhrases = {
+    [key: string]: string;
+  };
+
+  const NO_RESULT_PHRASES: ResultPhrases = {
+    en: 'No Result Found',
+    ko: '검색 결과 없음',
+  };
+
+  return (
+    <div className="_options no-content">
+      <Text align="center" textColor={ColorMap.gray_6} size="small" lineHeight="wide">
+        {NO_RESULT_PHRASES[locale]}
+      </Text>
+    </div>
   );
 };
 

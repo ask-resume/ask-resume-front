@@ -20,12 +20,12 @@ export const formatYearsOfCareer = ({
 }: FormatYearsOfCareerProps) => {
   const labels: Labels = {
     ko: {
-      0: t('career.newbie'),
-      10: t('career.more-than-10-years'),
+      0: t('user_info.career.newbie'),
+      10: t('user_info.career.more-than-10-years'),
     },
     en: {
-      0: t('career.newbie'),
-      10: t('career.more-than-10-years'),
+      0: t('user_info.career.newbie'),
+      10: t('user_info.career.more-than-10-years'),
     },
   };
 
@@ -33,5 +33,5 @@ export const formatYearsOfCareer = ({
     return labels[locale][selectedYearsOfCareer];
   }
 
-  return `${selectedYearsOfCareer} ${t('career.years')}`;
+  return `${selectedYearsOfCareer} ${t('user_info.career.years')}`;
 };

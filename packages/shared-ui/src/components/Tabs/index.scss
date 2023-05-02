@@ -25,12 +25,12 @@
 
     ._TAB_ITEM_ {
       font-weight: $font-weight-regular;
-      border-bottom: 2px solid transparent;
+      border-bottom: 3px solid transparent;
       padding: 0 8px;
       &.selected {
         color: $gray_8;
         font-weight: $font-weight-medium;
-        border-bottom: 2px solid $blue_5;
+        border-bottom: 3px solid $blue_5;
       }
       .leading-icon {
         display: flex;
@@ -50,7 +50,7 @@
         cursor: not-allowed;
         color: $gray_5;
         font-weight: $font-weight-regular;
-        border-bottom: 2px solid transparent;
+        border-bottom: 3px solid transparent;
         .dds-icon {
           #icon__fill {
             fill: $gray_5;
@@ -64,15 +64,15 @@
   }
   &.xs .underline ._TAB_ITEM_ {
     height: 28px;
-    padding: 0 8px;
+    padding: 0 14px;
   }
   &.sm .underline ._TAB_ITEM_ {
     height: 32px;
-    padding: 0 12px;
+    padding: 0 18px;
   }
   &.md .underline ._TAB_ITEM_ {
     height: 36px;
-    padding: 0 14px;
+    padding: 0 22px;
   }
 }
 
@@ -90,6 +90,19 @@
   text-align: center;
   cursor: pointer;
   transition: $button_hover_transition;
+
+  &.xs {
+    font-size: $font_size_x_small;
+  }
+
+  &.sm {
+    font-size: $font_size_small;
+  }
+
+  &.md {
+    font-size: $font_size_medium;
+  }
+
   &:hover {
     background-color: $gray_3;
   }

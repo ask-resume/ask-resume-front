@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
+import { ColorMap } from '../../config/colorMap';
 import './index.scss';
 
 type Placement =
@@ -18,6 +19,10 @@ export interface TooltipProps {
   tooltipText: string;
   placement?: Placement;
   withArrow?: boolean;
+  colorOption?: {
+    bgColor?: ColorMap;
+    textColor?: ColorMap;
+  };
 }
 
 const Tooltip = ({
@@ -26,6 +31,7 @@ const Tooltip = ({
   tooltipText,
   placement = '_bottom',
   withArrow = true,
+  colorOption,
 }: TooltipProps) => {
   const [hovered, setHovered] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
@@ -39,10 +45,24 @@ const Tooltip = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       ref={ref}
+      style={{
+        backgroundColor: colorOption?.bgColor,
+      }}
     >
-      <div className={cn('_target', { 'with-arrow': withArrow })}>
+      <div
+        className={cn('_target', { 'with-arrow': withArrow })}
+        style={{
+          backgroundColor: colorOption?.bgColor,
+        }}
+      >
         {children}
-        {tooltipText.length > 0 && <TooltipBox tooltipText={tooltipText} hovered={hovered} />}
+        {tooltipText.length > 0 && (
+          <TooltipBox
+            textColor={colorOption?.textColor}
+            tooltipText={tooltipText}
+            hovered={hovered}
+          />
+        )}
       </div>
     </div>
   );
@@ -51,15 +71,22 @@ const Tooltip = ({
 export default Tooltip;
 
 interface TooltipBoxProps {
+  textColor?: ColorMap;
   tooltipText: string;
   hovered: boolean;
 }
 
-const TooltipBox = ({ tooltipText, hovered }: TooltipBoxProps) => {
+const TooltipBox = ({ textColor = ColorMap.white, tooltipText, hovered }: TooltipBoxProps) => {
   const ref = React.useRef<HTMLDivElement>(null);
 
   return (
-    <div ref={ref} className={cn('_tooltip-box', { appear: hovered })}>
+    <div
+      style={{
+        color: textColor,
+      }}
+      ref={ref}
+      className={cn('_tooltip-box', { appear: hovered })}
+    >
       {tooltipText}
     </div>
   );

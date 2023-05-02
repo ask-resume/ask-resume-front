@@ -6,7 +6,7 @@ on:
       - main
       - develop
     paths:
-      - 'packages/shared-ui/**'
+      - 'apps/docs/**'
 
 jobs:
   deploy_to_chromatic:

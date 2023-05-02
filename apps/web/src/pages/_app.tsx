@@ -6,13 +6,20 @@ import { RecoilRoot } from 'recoil';
 import { appWithTranslation } from 'next-i18next';
 
 import Layout from 'modules/layout/components';
-import '../index.scss';
-import '../reset.scss';
-import '../darkmode.scss';
+import 'shared-ui/src/index.scss';
+import 'shared-ui/src/reset.scss';
+import 'shared-ui/src/darkmode.scss';
 
 // TODO: Add a function to measure the number of views with Google Analytics
 const App = ({ Component, pageProps }: AppProps) => {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: 0,
+      },
+    },
+  });
+
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps?.dehydrateState}>

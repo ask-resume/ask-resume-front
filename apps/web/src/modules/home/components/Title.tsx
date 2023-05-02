@@ -5,20 +5,26 @@ import { TFunction } from 'next-i18next';
 
 interface TitleProps {
   t: TFunction;
+  isMobile: boolean;
 }
 
-const Title = ({ t }: TitleProps) => {
+const Title = ({ t, isMobile }: TitleProps) => {
   return (
     <div className={styles._wrapper}>
       <div className={styles._title}>
-        <Text variant="h1" size="xxxx_large">
+        <Text variant="h1" weight="bold" size={isMobile ? 'xxx_large' : 'xxxx_large'}>
           Ask
         </Text>
-        <Text variant="h1" size="xxxx_large" textColor={ColorMap.blue_6}>
+        <Text
+          variant="p"
+          weight="bold"
+          size={isMobile ? 'xxx_large' : 'xxxx_large'}
+          textColor={ColorMap.blue_6}
+        >
           Resume
         </Text>
       </div>
-      <Text variant="h5" size="x_large">
+      <Text weight="medium" size={isMobile ? 'small' : 'x_large'}>
         {t('sub_title')}
       </Text>
     </div>

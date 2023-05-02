@@ -7,6 +7,7 @@ import Icon from '../Icon';
 import Text from '../Text';
 import OptionList from './OptionList';
 import CloseBoxOnOutside from '../CloseBoxOnOutside';
+export { useSelectState } from './useSelectState';
 
 import './index.scss';
 
@@ -16,8 +17,8 @@ export const HeightOption = {
   lg: 24,
 } as const;
 
-type ObjectOption = { name: string; value?: string; id?: string | number };
-type StringOption = string;
+export type ObjectOption = { name: string; id?: string | number; value?: string };
+export type StringOption = string;
 export type Option = ObjectOption | StringOption;
 
 export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -26,10 +27,13 @@ export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
   options: Option[];
   height?: keyof typeof HeightOption;
   className?: string;
+  label?: {
+    labelText?: string;
+    labelSize?: FontSize;
+    labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
+  };
+  locale?: string;
   border?: boolean;
-  labelText?: string;
-  labelSize?: FontSize;
-  labelWeight?: 'light' | 'regular' | 'medium' | 'bold';
 }
 
 export const isObjectOption = (option: Option): option is ObjectOption =>
@@ -45,9 +49,12 @@ const Select = ({
   options,
   className,
   height = 'sm',
-  labelText,
-  labelSize = 'medium',
-  labelWeight = 'regular',
+  label = {
+    labelText: '',
+    labelSize: 'medium',
+    labelWeight: 'regular',
+  },
+  locale = 'en',
   border = true,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,15 +75,15 @@ const Select = ({
   return (
     <CloseBoxOnOutside onClose={handleOptionListClose}>
       <div className={cn('_SELECT_', className)}>
-        {labelText && (
+        {label.labelText && (
           <div>
             <Text
               className={cn('_label')}
-              size={labelSize}
-              weight={labelWeight}
+              size={label.labelSize}
+              weight={label.labelWeight}
               onClick={handleOptionListOpen}
             >
-              {labelText}
+              {label.labelText}
             </Text>
           </div>
         )}
@@ -87,7 +94,11 @@ const Select = ({
           <div className={cn('select')}>
             <span>{getOptionName(selectedOption ?? '')}</span>
           </div>
-          <button className={cn('_icon', height, { open: isOpen })} onClick={handleIconClick}>
+          <button
+            aria-label="dropdown_icon"
+            className={cn('_icon', height, { open: isOpen })}
+            onClick={handleIconClick}
+          >
             <Icon.Arrow
               size={HeightOption[height]}
               color={isOpen ? ColorMap.gray_8 : ColorMap.gray_6}
@@ -100,6 +111,7 @@ const Select = ({
             selectedOption={selectedOption}
             onChangeOption={handleOptionChange}
             height={height}
+            locale={locale}
           />
         )}
       </div>

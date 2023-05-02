@@ -66,7 +66,7 @@ const getCheck = (valiant?: Valiant, color?: ColorMap) => {
       );
     case 'circle':
       return (
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path
             id="icon__fill"
             fillRule="evenodd"
