@@ -1,12 +1,15 @@
 import { useRouter } from 'next/router';
+import { ParsedUrlQuery } from 'querystring';
 
 const useQueryParams = () => {
   const router = useRouter();
 
-  const changeQueryParams = <T extends Record<string, string | string[]>>(
-    pathname: string,
-    query?: T,
-  ) => {
+  interface Option {
+    pathname: string;
+    query?: ParsedUrlQuery;
+  }
+
+  const changeQueryParams = ({ pathname, query }: Option) => {
     router.push(
       {
         pathname,
@@ -17,7 +20,45 @@ const useQueryParams = () => {
     );
   };
 
-  return { changeQueryParams };
+  const changeQueryParamsWithReplace = ({ pathname, query }: Option) => {
+    router.replace(
+      {
+        pathname,
+        query,
+      },
+      undefined,
+      { shallow: true },
+    );
+  };
+
+  const passQueryParams = ({ pathname, query }: Option) => {
+    router.push(
+      {
+        pathname,
+        query,
+      },
+      pathname,
+      { shallow: true },
+    );
+  };
+
+  const passQueryParamsWithReplace = ({ pathname, query }: Option) => {
+    router.replace(
+      {
+        pathname,
+        query,
+      },
+      pathname,
+      { shallow: true },
+    );
+  };
+
+  return {
+    changeQueryParams,
+    changeQueryParamsWithReplace,
+    passQueryParams,
+    passQueryParamsWithReplace,
+  };
 };
 
 export { useQueryParams };

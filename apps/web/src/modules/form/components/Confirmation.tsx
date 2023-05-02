@@ -16,7 +16,6 @@ import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { UserInfoState } from './UserInfo';
 import { TranslateNamespaces } from 'modules/form/constants';
 import { calculateFormContents } from '../lib/confirmation';
-import { getSessionStorage, setSessionStorage } from 'shared-lib/utils/sessionStorage';
 
 export type ResumeInfoState = {
   select: Option;
@@ -39,25 +38,23 @@ interface ConfirmationProps {
 }
 
 const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => {
-  const router = useRouter();
-
   const { t } = useTranslation(TranslateNamespaces);
   const { locale } = useRouter().query as { locale: string };
-  const calculatedFormContents = calculateFormContents({ locale, userInfo, resumeInfo });
-  console.log(calculatedFormContents);
 
-  const { changeQueryParams } = useQueryParams();
+  const { changeQueryParams, passQueryParams } = useQueryParams();
   const handlePrevPageClick = () => {
     const pathname = `/${locale}/form`;
     const query = { type: 'resume' };
-    changeQueryParams(pathname, query);
+    changeQueryParams({ pathname, query });
   };
 
   const handleSubmitClick = () => {
     const pathname = `/${locale}/result`;
+    const calculatedFormContents = calculateFormContents({ locale, userInfo, resumeInfo });
 
-    router.replace({
+    passQueryParams({
       pathname,
+      query: { formInfo: JSON.stringify(calculatedFormContents) },
     });
   };
 
@@ -85,7 +82,6 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
             labelText: t('button.submit') ?? '',
             labelTailingIcon: <Icon.AirPlane />,
           }}
-          // TODO: Resume page로 이동하는 기능 구현
           onClick={handleSubmitClick}
         />
       </div>

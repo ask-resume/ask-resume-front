@@ -5,6 +5,7 @@ import { GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { useIsMobile } from 'shared-lib/hooks/media-query';
+import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
 
 import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
 import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
@@ -73,12 +74,7 @@ export default function FormPage() {
 
         {type === 'user-info' && (
           <main className={styles.user_info_content}>
-            <UserInfo
-              isMobile={isMobile}
-              locale={locale}
-              userInfo={userInfo}
-              onChangeUserInfo={userInfoSetter}
-            />
+            <UserInfo isMobile={isMobile} userInfo={userInfo} onChangeUserInfo={userInfoSetter} />
           </main>
         )}
 
@@ -104,12 +100,10 @@ export default function FormPage() {
   );
 }
 
-const getStaticProps = async (ctx: GetStaticPropsContext) => {
+export const getServerSideProps = withGetServerSideProps(async ctx => {
   return {
     props: {
       ...(await getI18nProps(ctx, TranslateNamespaces)),
     },
   };
-};
-
-export { getStaticProps, getStaticPaths };
+});

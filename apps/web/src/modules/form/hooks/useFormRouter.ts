@@ -15,7 +15,7 @@ const useFormRouter = () => {
 
   const changeFormRouter = (type: 'user-info' | 'resume' | 'confirmation') => {
     const query = { type };
-    changeQueryParams(pathname, query);
+    changeQueryParams({ pathname, query });
   };
 
   return { type, changeFormRouter };

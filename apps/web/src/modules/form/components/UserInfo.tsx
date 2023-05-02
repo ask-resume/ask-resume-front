@@ -20,6 +20,7 @@ import styles from './index.module.scss';
 import errorPageStyles from '../../error/components/index.module.scss';
 import { TranslateNamespaces } from '../constants';
 import { useJobs } from '../api/job';
+import { useRouter } from 'next/router';
 
 export interface UserInfoState {
   selectedJob: Option | null;
@@ -29,14 +30,14 @@ export interface UserInfoState {
 }
 
 interface UserInfoProps {
-  locale: string;
   isMobile: boolean;
   userInfo: UserInfoState;
   onChangeUserInfo: (stateName: StateName, changedValue: ChangedValue) => void;
 }
 
-const UserInfo = ({ locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProps) => {
+const UserInfo = ({ isMobile, userInfo, onChangeUserInfo }: UserInfoProps) => {
   const { t } = useTranslation(TranslateNamespaces);
+  const { locale } = useRouter().query as { locale: string };
 
   const LABEL_SIZE = isMobile ? 'medium' : 'large';
   const LABEL_WEIGHT = 'medium';
@@ -147,7 +148,7 @@ const UserInfo = ({ locale, isMobile, userInfo, onChangeUserInfo }: UserInfoProp
         onClick={() => {
           if (isNavigationEnabled) return;
           const query = { type: 'resume' };
-          changeQueryParams(pathname, query);
+          changeQueryParams({ pathname, query });
         }}
       >
         <Button
