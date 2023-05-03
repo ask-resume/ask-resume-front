@@ -1,7 +1,49 @@
 @import 'shared-ui/src/index.scss';
+@import '../../../page.module.scss';
 
 // LoadingFallback
+._loading {
+  @include responsive-web;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+}
 
 // Result list
+._result {
+  @include responsive-web;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
 
-// ErrorFallback
+  .title {
+    padding-bottom: 3rem;
+  }
+
+  .button {
+    margin-top: 3rem;
+  }
+
+  .accordion_item {
+    @media screen and (max-width: $breakpoint-small) {
+      font-size: $font_size_xx_small;
+      & {
+        * {
+          font-size: inherit;
+        }
+      }
+    }
+  }
+}

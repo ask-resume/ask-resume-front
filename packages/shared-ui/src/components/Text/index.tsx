@@ -11,7 +11,7 @@ export type TextWeight = 'light' | 'regular' | 'medium' | 'bold';
 export interface TextProps
   extends HTMLAttributes<HTMLDivElement | HTMLSpanElement | HTMLHeadingElement> {
   textColor?: ColorMap;
-  className?: string;
+  classNames?: string;
   variant?: Variant;
   htmlFor?: string;
   weight?: TextWeight;
@@ -33,21 +33,21 @@ const elementMap = {
 };
 
 const Text = ({
-  className,
+  classNames,
   children,
-  variant = 'block',
   htmlFor,
-  weight,
-  lineHeight,
-  size,
-  align,
+  variant = 'block',
+  weight = 'regular',
+  lineHeight = 'narrow',
+  size = 'medium',
+  align = 'start',
   textColor,
   ...props
 }: TextProps) => {
   const element = elementMap[variant] || 'span';
-  const classNames = cn(
+  const className = cn(
     '_TEXT_',
-    className,
+    classNames,
     `font-size-${size}`,
     `font-weight-${weight}`,
     `line-height-${lineHeight}`,
@@ -56,7 +56,7 @@ const Text = ({
 
   if (variant === 'label') {
     return (
-      <label className={classNames} style={{ color: textColor }} htmlFor={htmlFor} {...props}>
+      <label className={className} style={{ color: textColor }} htmlFor={htmlFor} {...props}>
         {children}
       </label>
     );
@@ -65,7 +65,7 @@ const Text = ({
   return React.createElement(
     element,
     {
-      className: classNames,
+      className,
       style: { color: textColor },
       ...props,
     },

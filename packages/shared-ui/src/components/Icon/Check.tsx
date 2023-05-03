@@ -3,9 +3,9 @@ import cn from 'classnames';
 import { ColorMap } from '../../config/colorMap';
 import './index.scss';
 
-type Valiant = 'single' | 'double' | 'circle' | 'alt' | 'circle-ghost';
+export type Valiant = 'single' | 'double' | 'circle' | 'alt' | 'circle-ghost';
 
-interface CheckProps {
+export interface CheckProps {
   color?: ColorMap;
   className?: string;
   size?: number;

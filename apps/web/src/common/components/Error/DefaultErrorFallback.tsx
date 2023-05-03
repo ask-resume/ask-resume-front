@@ -19,7 +19,7 @@ const DefaultErrorFallback = ({ error }) => {
   const size = getSize(isMobile);
 
   return (
-    <div className={pageStyles._loading}>
+    <div className={pageStyles._error_fallback}>
       <div className={pageStyles.content}>
         <Text size={size.title} weight="bold" textColor={ColorMap.gray_7}>
           {errorCode}
