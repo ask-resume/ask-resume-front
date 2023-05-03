@@ -95,9 +95,9 @@ video {
 }
 
 html {
-  font-family: Pretendard, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
-    'Noto Sans KR', 'Malgun Gothic', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
-    'Arial', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 62.5%;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
+    'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   -webkit-font-smoothing: antialiased; // Safari, Chrome only
   -moz-osx-font-smoothing: grayscale; // Safari, Chrome only
   body {
@@ -118,7 +118,6 @@ a {
   }
 }
 
-// 브라우저에서 디폴트로 제공하는 스타일 제거
 select {
   -moz-appearance: none;
   -webkit-appearance: none;

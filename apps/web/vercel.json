@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/v1/:path*",
+      "destination": "https://api.ask-resume.com/api/:path*"
+    },
+    {
+      "source": "/v1/:path*/",
+      "destination": "https://api.ask-resume.com/api/:path*/"
+    }
+  ]
+}
