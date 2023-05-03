@@ -18,6 +18,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   };
 }
 
+// TODO: Make modifications to allow passing color options.
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {

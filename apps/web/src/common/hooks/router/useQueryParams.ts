@@ -4,52 +4,57 @@ import { ParsedUrlQuery } from 'querystring';
 const useQueryParams = () => {
   const router = useRouter();
 
-  interface Option {
+  interface RouterProps {
     pathname: string;
     query?: ParsedUrlQuery;
+    options?: {
+      shallow?: boolean;
+      locale?: string;
+      scroll?: boolean;
+    };
   }
 
-  const changeQueryParams = ({ pathname, query }: Option) => {
+  const changeQueryParams = ({ pathname, query, options }: RouterProps) => {
     router.push(
       {
         pathname,
         query,
       },
       undefined,
-      { shallow: true },
+      options,
     );
   };
 
-  const changeQueryParamsWithReplace = ({ pathname, query }: Option) => {
+  const changeQueryParamsWithReplace = ({ pathname, query, options }: RouterProps) => {
     router.replace(
       {
         pathname,
         query,
       },
       undefined,
-      { shallow: true },
+      options,
     );
   };
 
-  const passQueryParams = ({ pathname, query }: Option) => {
+  const passQueryParams = ({ pathname, query, options }: RouterProps) => {
     router.push(
       {
         pathname,
         query,
       },
       pathname,
-      { shallow: true },
+      options,
     );
   };
 
-  const passQueryParamsWithReplace = ({ pathname, query }: Option) => {
+  const passQueryParamsWithReplace = ({ pathname, query, options }: RouterProps) => {
     router.replace(
       {
         pathname,
         query,
       },
       pathname,
-      { shallow: true },
+      options,
     );
   };
 

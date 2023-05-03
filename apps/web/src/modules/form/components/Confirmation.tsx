@@ -14,7 +14,7 @@ import { formatYearsOfCareer } from '../lib';
 import styles from './index.module.scss';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { UserInfoState } from './UserInfo';
-import { TranslateNamespaces } from 'modules/form/constants';
+import { FormTranslateNamespaces } from 'modules/form/constants';
 import { calculateFormContents } from '../lib/confirmation';
 
 export type ResumeInfoState = {
@@ -22,7 +22,7 @@ export type ResumeInfoState = {
   textarea: string;
 }[];
 
-export type ResumeContent = { [key: string]: { contents: string }[] };
+export type ResumeContent = { [key: string]: { content: string }[] };
 export interface FormattedFormInfo {
   careerYear: number;
   difficulty: Option | null;
@@ -38,7 +38,7 @@ interface ConfirmationProps {
 }
 
 const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => {
-  const { t } = useTranslation(TranslateNamespaces);
+  const { t } = useTranslation(FormTranslateNamespaces);
   const { locale } = useRouter().query as { locale: string };
 
   const { changeQueryParams, passQueryParams } = useQueryParams();
@@ -52,7 +52,7 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
     const pathname = `/${locale}/result`;
     const calculatedFormContents = calculateFormContents({ locale, userInfo, resumeInfo });
 
-    passQueryParams({
+    changeQueryParams({
       pathname,
       query: { formInfo: JSON.stringify(calculatedFormContents) },
     });
@@ -96,7 +96,7 @@ interface ResumeInfoConfirmationProps {
 }
 
 const ResumeInfoConfirmation = ({ resumeInfo }: ResumeInfoConfirmationProps) => {
-  const { t } = useTranslation(TranslateNamespaces);
+  const { t } = useTranslation(FormTranslateNamespaces);
   return (
     <div className={styles._resume_info_container}>
       {resumeInfo.length > 0 &&
@@ -124,7 +124,7 @@ interface UserInfoConfirmationProps {
 }
 
 const UserInfoConfirmation = ({ userInfo }: UserInfoConfirmationProps) => {
-  const { t } = useTranslation(TranslateNamespaces);
+  const { t } = useTranslation(FormTranslateNamespaces);
   const { locale } = useRouter().query as { locale: string };
 
   interface OptionProps {

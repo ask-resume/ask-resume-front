@@ -2,7 +2,7 @@
 
 ._TEXT_ {
   font-size: $font-size-medium;
-  white-space: pre-wrap;
+  word-wrap: break-word;
   line-height: 1em;
   &.block {
     display: block;
@@ -28,7 +28,7 @@
 
   &.line-height {
     &-narrow {
-      line-height: 1.5em;
+      line-height: 1.25em;
     }
     &-wide {
       line-height: 1.75em;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { NotFoundError, ForbiddenError, AuthError } from 'modules/error/lib/CustomError';
+import { NotFoundError, ForbiddenError, AuthError } from './CustomError';
 
 const baseURL =
   process.env.NODE_ENV === 'production'
@@ -9,7 +9,6 @@ const baseURL =
 // TODO: implement Google OAuth
 const axiosInstance = axios.create({
   baseURL,
-  timeout: 10000,
   // withCredentials: true,
   headers: {
     'Content-Type': 'application/json',

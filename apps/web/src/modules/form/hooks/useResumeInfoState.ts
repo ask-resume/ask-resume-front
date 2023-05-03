@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 
 import { Option } from 'shared-ui/src/components/Select';
 import { getResumeSelectObj } from '../lib';
-import { TranslateNamespaces } from '../constants';
+import { FormTranslateNamespaces } from '../constants';
 
 export const useResumeTextAreaState = (tabCnt: number) => {
   const initTextAreaState: string[] = [...Array(tabCnt)].map(() => '');
@@ -30,7 +30,7 @@ export const useResumeTextAreaState = (tabCnt: number) => {
 };
 
 export const useResumeSelectState = (tabCnt: number) => {
-  const { t } = useTranslation(TranslateNamespaces);
+  const { t } = useTranslation(FormTranslateNamespaces);
   const resumeSelectOptions = React.useMemo(() => getResumeSelectObj(t), [t]);
 
   const initSelectState: Option[] = [...Array(tabCnt)].map(() => resumeSelectOptions[0]);

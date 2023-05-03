@@ -1,0 +1,12 @@
+{
+  "loading_fallback": {
+    "title": "로딩중입니다.",
+    "description": "질문을 생성하고 있습니다. 약 30초 정도 소요됩니다."
+  },
+  "result": {
+    "title": "생성된 Q&A",
+    "question": "[질문 {{index}}] {{question}}",
+    "answer": "[모범 답안 {{index}}] {{answer}}",
+    "button": "Q&A를 텍스트 파일로 다운로드"
+  }
+}

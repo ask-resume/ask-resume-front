@@ -10,11 +10,16 @@
   width: 100%;
   border-top: 1px solid $gray_3;
   border-bottom: 1px solid $gray_3;
+  height: 100%;
 }
 
 ._item {
   display: list-item;
   overflow: visible;
+
+  &.open {
+    background-color: $gray_1;
+  }
 
   & + & {
     border-top: 1px solid $gray_3;
@@ -26,6 +31,7 @@
     background-color: transparent;
     padding: 10px;
     cursor: pointer;
+    gap: $font_size_x_large;
 
     &._icon--right {
       justify-content: space-between;

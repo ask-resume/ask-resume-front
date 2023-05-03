@@ -1,0 +1,79 @@
+@import 'shared-ui/src/index.scss';
+
+@mixin responsive-web {
+  width: 400px;
+  @media screen and (min-width: $breakpoint-xlarge) {
+    width: 700px;
+  }
+  @media screen and (min-width: $breakpoint-large) {
+    width: 600px;
+  }
+  @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
+    width: 500px;
+  }
+  @media screen and (max-width: $breakpoint-xsmall) {
+    width: 80vw;
+  }
+}
+
+// Home Page
+._LANDING_ {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+}
+
+// Form Page
+._FORM_ {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+
+  .user_info_content {
+    display: flex;
+    flex-direction: column;
+    @include responsive-web;
+  }
+}
+
+// Result Page
+._RESULT_ {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  padding: 10vh 0;
+}
+
+// Error Page
+._ERROR_PAGE_ {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+
+  ._wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 2;
+    gap: 1rem;
+
+    .title {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .explain {
+      margin: 0 auto;
+      max-width: 256px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}

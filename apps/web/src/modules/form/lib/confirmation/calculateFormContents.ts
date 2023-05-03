@@ -15,7 +15,7 @@ const calculateFormContents = ({ locale, userInfo, resumeInfo }: CalculateFormCo
 
     if (!contents[contentsId]) contents[contentsId] = [];
 
-    contents[contentsId]?.push({ contents: textarea });
+    contents[contentsId]?.push({ content: textarea });
     return contents;
   }, {} as ResumeContent);
 

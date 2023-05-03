@@ -17,8 +17,8 @@ import { StateName, ChangedValue } from '../hooks/useUserInfoState';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
 
 import styles from './index.module.scss';
-import errorPageStyles from '../../error/components/index.module.scss';
-import { TranslateNamespaces } from '../constants';
+import errorPageStyles from '../../../page.module.scss';
+import { FormTranslateNamespaces } from '../constants';
 import { useJobs } from '../api/job';
 import { useRouter } from 'next/router';
 
@@ -36,7 +36,7 @@ interface UserInfoProps {
 }
 
 const UserInfo = ({ isMobile, userInfo, onChangeUserInfo }: UserInfoProps) => {
-  const { t } = useTranslation(TranslateNamespaces);
+  const { t } = useTranslation(FormTranslateNamespaces);
   const { locale } = useRouter().query as { locale: string };
 
   const LABEL_SIZE = isMobile ? 'medium' : 'large';
@@ -140,27 +140,27 @@ const UserInfo = ({ isMobile, userInfo, onChangeUserInfo }: UserInfoProps) => {
               />
             </div>
           </div>
+
+          <div
+            className={styles._button_wrapper}
+            onClick={() => {
+              if (isNavigationEnabled) return;
+              const query = { type: 'resume' };
+              changeQueryParams({ pathname, query });
+            }}
+          >
+            <Button
+              size={isMobile ? 'sm' : 'lg'}
+              buttonColor="blue"
+              disabled={isNavigationEnabled}
+              label={{
+                labelText: t('button.next-page') ?? '',
+                labelTailingIcon: <Icon.Arrow flip />,
+              }}
+            />
+          </div>
         </>
       )}
-
-      <div
-        className={styles._button_wrapper}
-        onClick={() => {
-          if (isNavigationEnabled) return;
-          const query = { type: 'resume' };
-          changeQueryParams({ pathname, query });
-        }}
-      >
-        <Button
-          size={isMobile ? 'sm' : 'lg'}
-          buttonColor="blue"
-          disabled={isNavigationEnabled}
-          label={{
-            labelText: t('button.next-page') ?? '',
-            labelTailingIcon: <Icon.Arrow flip />,
-          }}
-        />
-      </div>
     </div>
   );
 };
@@ -178,7 +178,7 @@ interface ErrorFallbackProps {
 }
 
 const ErrorFallback = ({ onRefetch }: ErrorFallbackProps) => {
-  const { t } = useTranslation(TranslateNamespaces);
+  const { t } = useTranslation(FormTranslateNamespaces);
 
   return (
     <div className={cn(errorPageStyles._ERROR_PAGE_, styles.error_fallback)}>

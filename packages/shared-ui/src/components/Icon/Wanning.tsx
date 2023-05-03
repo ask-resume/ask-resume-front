@@ -5,14 +5,14 @@ import './index.scss';
 
 type Valiant = 'circle' | 'circle-ghost';
 
-interface CheckProps {
+export interface WanningProps {
   color?: ColorMap;
   className?: string;
   size?: number;
   variant?: Valiant;
 }
 
-export const Wanning = ({ color, className, size = 16, variant = 'circle' }: CheckProps) => {
+export const Wanning = ({ color, className, size = 16, variant = 'circle' }: WanningProps) => {
   const Wanning = getWanning(variant, color);
   return (
     <i

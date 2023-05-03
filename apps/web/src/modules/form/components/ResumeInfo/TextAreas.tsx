@@ -7,7 +7,7 @@ import Select, { Option } from 'shared-ui/src/components/Select';
 import TextArea from 'shared-ui/src/components/TextArea';
 import Tooltip from 'shared-ui/src/components/Tooltip';
 
-import { TranslateNamespaces } from 'modules/form/constants';
+import { FormTranslateNamespaces } from 'modules/form/constants';
 import { getResumeSelectObj } from 'modules/form/lib';
 import { TEXTAREA_REGEX as regex } from 'modules/form/constants';
 import styles from '../index.module.scss';
@@ -28,7 +28,7 @@ const ResumeTextAreas = ({
   resumeSelect,
   onChangeResumeSelect,
 }: ResumeTextAreaProps) => {
-  const { t } = useTranslation(TranslateNamespaces);
+  const { t } = useTranslation(FormTranslateNamespaces);
   const resumeSelectObj = React.useMemo(() => getResumeSelectObj(t), [t]);
   const handleChangeResumeTextArea = React.useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>, idx: number) => {

@@ -11,9 +11,9 @@ export const Default = () => {
   return (
     <div style={{ padding: 20 }}>
       <Text>
-        안녕하세요?
+        Text
         <br />
-        날씨가 참 좋아요.
+        Default Text
       </Text>
     </div>
   );
@@ -25,11 +25,11 @@ export const Variant = () => {
       <header style={{ color: '#1C7ED6', paddingBottom: 8 }}>
         <Text variant="h4">Title</Text>
       </header>
-      <Text variant="h1">h1 타이틀 48px</Text>
-      <Text variant="h2">h2 타이틀 36px </Text>
-      <Text variant="h3">h3 타이틀 24px</Text>
-      <Text variant="h4">h4 타이틀 21px </Text>
-      <Text variant="h5">h5 타이틀 18px </Text>
+      <Text variant="h1">h1 Title 48px</Text>
+      <Text variant="h2">h2 Title 36px</Text>
+      <Text variant="h3">h3 Title 24px</Text>
+      <Text variant="h4">h4 Title 21px</Text>
+      <Text variant="h5">h5 Title 18px</Text>
 
       <header style={{ color: '#1C7ED6', paddingTop: 48, paddingBottom: 8 }}>
         <Text variant="h4">Font Size</Text>
@@ -85,19 +85,15 @@ export const Variant = () => {
         <Text variant="h5">Narrow</Text>
       </header>
       <Text variant="block" lineHeight="narrow">
-        토끼, 않은 이런 계절이 내일 하나에 별빛이 이네들은 봅니다. 이름과, 멀리 내 있습니다. 별에도
-        별 이름과, 이제 언덕 프랑시스 소학교 까닭입니다. 잔디가 소학교 둘 패, 어머니, 그리워 애기
-        듯합니다. 소녀들의 내일 노루, 별 가을 옥 이름과 내 있습니다. 같이 나는 오는 패, 이름과
-        새겨지는 둘 사람들의 듯합니다. 비둘기, 새겨지는 별 우는 않은 까닭입니다.{' '}
+        The Text component receives className, children, variant, htmlFor, weight, lineHeight, size,
+        align, and textColor as arguments. Use htmlFor when variant is "label".
       </Text>
       <header style={{ paddingTop: 16, paddingBottom: 8 }}>
         <Text variant="h5">Wide</Text>
       </header>
       <Text variant="block" lineHeight="wide">
-        토끼, 않은 이런 계절이 내일 하나에 별빛이 이네들은 봅니다. 이름과, 멀리 내 있습니다. 별에도
-        별 이름과, 이제 언덕 프랑시스 소학교 까닭입니다. 잔디가 소학교 둘 패, 어머니, 그리워 애기
-        듯합니다. 소녀들의 내일 노루, 별 가을 옥 이름과 내 있습니다. 같이 나는 오는 패, 이름과
-        새겨지는 둘 사람들의 듯합니다. 비둘기, 새겨지는 별 우는 않은 까닭입니다.
+        The Text component receives className, children, variant, htmlFor, weight, lineHeight, size,
+        align, and textColor as arguments. Use htmlFor when variant is "label".
       </Text>
       <header style={{ color: '#1C7ED6', paddingTop: 48, paddingBottom: 8 }}>
         <Text variant="h4">Text Align</Text>
@@ -106,28 +102,22 @@ export const Variant = () => {
         <Text variant="h5">start</Text>
       </header>
       <Text align="start">
-        토끼, 않은 이런 계절이 내일 하나에 별빛이 이네들은 봅니다. 이름과, 멀리 내 있습니다. 별에도
-        별 이름과, 이제 언덕 프랑시스 소학교 까닭입니다. 잔디가 소학교 둘 패, 어머니, 그리워 애기
-        듯합니다. 소녀들의 내일 노루, 별 가을 옥 이름과 내 있습니다. 같이 나는 오는 패, 이름과
-        새겨지는 둘 사람들의 듯합니다. 비둘기, 새겨지는 별 우는 않은 까닭입니다.
+        The Text component receives className, children, variant, htmlFor, weight, lineHeight, size,
+        align, and textColor as arguments. Use htmlFor when variant is "label".
       </Text>
       <header style={{ paddingTop: 16, paddingBottom: 8 }}>
         <Text variant="h5">center</Text>
       </header>
       <Text align="center">
-        토끼, 않은 이런 계절이 내일 하나에 별빛이 이네들은 봅니다. 이름과, 멀리 내 있습니다. 별에도
-        별 이름과, 이제 언덕 프랑시스 소학교 까닭입니다. 잔디가 소학교 둘 패, 어머니, 그리워 애기
-        듯합니다. 소녀들의 내일 노루, 별 가을 옥 이름과 내 있습니다. 같이 나는 오는 패, 이름과
-        새겨지는 둘 사람들의 듯합니다. 비둘기, 새겨지는 별 우는 않은 까닭입니다.
+        The Text component receives className, children, variant, htmlFor, weight, lineHeight, size,
+        align, and textColor as arguments. Use htmlFor when variant is "label".
       </Text>
       <header style={{ paddingTop: 16, paddingBottom: 8 }}>
         <Text variant="h5">end</Text>
       </header>
       <Text align="end">
-        토끼, 않은 이런 계절이 내일 하나에 별빛이 이네들은 봅니다. 이름과, 멀리 내 있습니다. 별에도
-        별 이름과, 이제 언덕 프랑시스 소학교 까닭입니다. 잔디가 소학교 둘 패, 어머니, 그리워 애기
-        듯합니다. 소녀들의 내일 노루, 별 가을 옥 이름과 내 있습니다. 같이 나는 오는 패, 이름과
-        새겨지는 둘 사람들의 듯합니다. 비둘기, 새겨지는 별 우는 않은 까닭입니다.
+        The Text component receives className, children, variant, htmlFor, weight, lineHeight, size,
+        align, and textColor as arguments. Use htmlFor when variant is "label".
       </Text>
     </div>
   );
