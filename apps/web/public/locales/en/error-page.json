@@ -9,5 +9,9 @@
     "description": "SERVER ERROR",
     "content": "The server encountered an internal error or misconfiguration and was unable to complete your request.",
     "home-router": "Go to Home"
+  },
+
+  "error-fallback": {
+    "retry": "Retry"
   }
 }

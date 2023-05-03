@@ -1,26 +1,30 @@
 import { AxiosError } from 'axios';
 import React from 'react';
+import { useTranslation } from 'next-i18next';
 
-import pageStyles from '../../../page.module.scss';
+import styles from './index.module.scss';
 import Text from 'shared-ui/src/components/Text';
 import { useIsMobile } from 'shared-lib/hooks/media-query';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
 import { getSize } from 'modules/result/lib';
+import Button from 'shared-ui/src/components/Button';
 
-interface CustomError {
-  errorCode: string;
-  errorMessage: string;
+interface DefaultErrorFallbackProps {
+  error: unknown;
+  refetch: () => void;
 }
 
 // A component that renders error codes and messages sent by the server
-const DefaultErrorFallback = ({ error }) => {
-  const { errorCode, errorMessage } = getErrorInfo(error);
+const DefaultErrorFallback = ({ error, refetch }: DefaultErrorFallbackProps) => {
+  const { t } = useTranslation('error-page');
   const isMobile = useIsMobile();
   const size = getSize(isMobile);
 
+  const { errorCode, errorMessage, isServerError } = getErrorInfo(error as AxiosError);
+
   return (
-    <div className={pageStyles._error_fallback}>
-      <div className={pageStyles.content}>
+    <div className={styles._error_fallback}>
+      <div className={styles.content}>
         <Text size={size.title} weight="bold" textColor={ColorMap.gray_7}>
           {errorCode}
         </Text>
@@ -34,14 +38,34 @@ const DefaultErrorFallback = ({ error }) => {
           {errorMessage}
         </Text>
       </div>
+
+      {/* Create a retry button to try again in case of a GPT server error */}
+      {isServerError && (
+        <Button
+          className={styles.retry_button}
+          rounded
+          size={isMobile ? 'md' : 'lg'}
+          buttonColor="blue"
+          label={{ labelText: t('retry') }}
+          onClick={refetch}
+          variant="ghost"
+        />
+      )}
     </div>
   );
 };
 
+interface CustomError {
+  errorCode: string;
+  errorMessage: string;
+  isServerError?: boolean;
+}
+
 const getErrorInfo = (error: AxiosError) => {
   const errorCode = (error?.response?.data as CustomError)?.errorCode ?? 'Uncatched Error';
   const errorMessage = (error?.response?.data as CustomError)?.errorMessage ?? 'Something is Error';
-  return { errorCode, errorMessage };
+  const isServerError = error?.response?.status === 500;
+  return { errorCode, errorMessage, isServerError };
 };
 
 export default DefaultErrorFallback;
