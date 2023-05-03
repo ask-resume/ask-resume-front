@@ -1,0 +1,48 @@
+@import 'shared-ui/src/index.scss';
+
+._LAYOUT_ {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $white;
+
+  ._container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+._GNB_ {
+  display: flex;
+  background-color: $white;
+  padding: 0 2vw;
+
+  ._wrapper {
+    margin: 4px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    ._logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .title {
+      @media screen and (max-width: $breakpoint-xsmall) {
+        display: none;
+      }
+    }
+  }
+
+  ._select_width {
+    width: 150px;
+  }
+}
+
+._FOOTER_ {
+  width: 100%;
+  margin: 2rem;
+}

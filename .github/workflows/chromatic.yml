@@ -1,0 +1,43 @@
+name: Deploy Chromatic
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'apps/docs/**'
+
+jobs:
+  deploy_to_chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 7
+
+      - uses: actions/cache@v3
+        id: pnpm-cache
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - if: steps.pnpm-cache.outputs.cache-hit != 'true'
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Deploy to Chromatic
+        working-directory: apps/docs
+        run: npx chromatic --exit-zero-on-changes
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

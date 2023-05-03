@@ -1,0 +1,78 @@
+@import '../../index.scss';
+
+._TEXTAREA_ {
+  ._header {
+    color: $blue_gray;
+    cursor: pointer;
+  }
+
+  .label {
+    padding: 12px;
+  }
+
+  ._wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    textarea {
+      display: flex;
+      justify-content: flex-end;
+      padding: 25px 25px 0px 25px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;
+      border: 3px solid $gray_3;
+      border-bottom: none;
+      box-sizing: border-box;
+      position: relative;
+      resize: none;
+      border-radius: $font_size_x_small $font_size_x_small 0 0;
+      line-height: 1.5;
+
+      &:focus {
+        outline: none;
+        border-color: $blue_5;
+      }
+
+      & .error {
+        outline: none;
+        border-color: $red_5;
+      }
+    }
+
+    ._text-limit {
+      display: flex;
+      justify-content: flex-end;
+      color: $blue_gray;
+      background: #fff;
+      border: 3px solid $gray_3;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0px 20px 10px 10px;
+      border-radius: 0 0 $font_size_x_small $font_size_x_small;
+      border-top: none;
+    }
+
+    &:focus-within ._text-limit {
+      outline: none;
+      border-color: $blue_5;
+    }
+
+    & .error {
+      outline: none;
+      border-color: $red_5;
+    }
+  }
+
+  .error_message {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 12px 0;
+    margin-left: 12px;
+    line-height: 1.5;
+  }
+}

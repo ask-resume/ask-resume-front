@@ -2,14 +2,14 @@ const fontFamily = `Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Ro
 "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
 "Malgun Gothic", sans-serif`;
 
-enum FWeight {
+enum FontWeight {
   light = 300,
   regular = 400,
   medium = 500,
   bold = 700,
 }
 
-enum FSize {
+enum FontSize {
   xx_small = `1.2rem`,
   x_small = `1.3rem`,
   small = `1.4rem`,
@@ -21,9 +21,9 @@ enum FSize {
   xxxx_large = `4.8rem`,
 }
 
-enum FLineHeight {
+enum FontLineHeight {
   medium = `1.5em`,
   large = `1.75em`,
 }
 
-export { fontFamily, FWeight, FSize, FLineHeight };
+export { fontFamily, FontWeight, FontSize, FontLineHeight };

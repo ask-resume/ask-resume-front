@@ -1,0 +1,227 @@
+@import '../../index.scss';
+
+._TOOLTIP_ {
+  display: inline-block;
+  ._target {
+    position: relative;
+    ._tooltip-box {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      z-index: 500;
+      top: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      height: max-content;
+      padding: 5px 8px;
+      background-color: $gray_8;
+      color: #fff;
+      font-size: 12px;
+      font-weight: $font-weight-medium;
+      text-align: start;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      transition: $button_hover_transition;
+      transition-delay: 0.2s;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0;
+
+      transition: 0.2s ease-out;
+      transition-delay: 0.3s;
+    }
+    &:hover {
+      ._tooltip-box {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Arrow
+.with-arrow {
+  ._tooltip-box {
+    align-items: flex-start;
+    top: calc(100% + 4px);
+    line-height: 18px;
+    padding: 8px 12px;
+    &::before {
+      position: absolute;
+      content: '';
+      width: 0;
+      height: 0;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-bottom: 5px solid $gray_8;
+      pointer-events: none;
+
+      transition: 0.2s ease-out;
+      transition-delay: 0.3s;
+      opacity: 0;
+    }
+  }
+  &:hover {
+    ._tooltip-box {
+      top: calc(100% + 10px);
+      opacity: 1;
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Placement
+._TOOLTIP_._top-left {
+  ._target {
+    ._tooltip-box {
+      top: unset;
+      left: 0;
+      bottom: calc(100% + 4px);
+      transform: translateX(0);
+    }
+
+    ._tooltip-box::before {
+      left: 10%;
+      top: 100%;
+      border-top: 5px solid $gray_8;
+      border-bottom: 0;
+    }
+
+    &:hover {
+      ._tooltip-box {
+        top: unset;
+        bottom: calc(100% + 10px);
+      }
+    }
+  }
+}
+
+._TOOLTIP_._top {
+  ._target {
+    ._tooltip-box {
+      top: unset;
+      bottom: calc(100% + 4px);
+    }
+    ._tooltip-box::before {
+      top: 100%;
+      border-top: 5px solid $gray_8;
+      border-bottom: 0;
+    }
+    &:hover {
+      ._tooltip-box {
+        top: unset;
+        bottom: calc(100% + 10px);
+      }
+    }
+  }
+}
+
+._TOOLTIP_._top-right {
+  ._target {
+    ._tooltip-box {
+      top: unset;
+      left: unset;
+      right: 0;
+      bottom: calc(100% + 4px);
+      transform: translateX(0);
+    }
+
+    ._tooltip-box::before {
+      left: 90%;
+      top: 100%;
+      border-top: 5px solid $gray_8;
+      border-bottom: 0;
+    }
+    &:hover {
+      ._tooltip-box {
+        top: unset;
+        bottom: calc(100% + 10px);
+      }
+    }
+  }
+}
+
+._TOOLTIP_._left {
+  ._target {
+    ._tooltip-box {
+      top: 50%;
+      left: unset;
+      right: calc(100% + 4px);
+      transform: translate(0, -50%);
+    }
+
+    ._tooltip-box::before {
+      top: 50%;
+      left: calc(100% + 4px);
+      transform: translate(-50%, -50%);
+      border-top: 4px solid transparent;
+      border-left: 5px solid $gray_8;
+      border-bottom: 4px solid transparent;
+    }
+    &:hover {
+      ._tooltip-box {
+        top: 50%;
+        right: calc(100% + 10px);
+      }
+    }
+  }
+}
+
+._TOOLTIP_._right {
+  ._target {
+    ._tooltip-box {
+      top: 50%;
+      left: calc(100% + 4px);
+      transform: translate(0, -50%);
+    }
+
+    ._tooltip-box::before {
+      top: 50%;
+      left: unset;
+      right: calc(100% + 4px);
+      transform: translate(50%, -50%);
+      border-top: 4px solid transparent;
+      border-right: 5px solid $gray_8;
+      border-bottom: 4px solid transparent;
+    }
+    &:hover {
+      ._tooltip-box {
+        top: 50%;
+        left: calc(100% + 10px);
+      }
+    }
+  }
+}
+
+._TOOLTIP_._bottom-left {
+  ._target {
+    ._tooltip-box {
+      left: 0;
+      transform: translateX(0);
+    }
+
+    ._tooltip-box::before {
+      left: 10%;
+    }
+  }
+}
+
+._TOOLTIP_._bottom-right {
+  ._target {
+    ._tooltip-box {
+      left: unset;
+      right: 0;
+      transform: translateX(0);
+    }
+
+    ._tooltip-box::before {
+      left: 10%;
+    }
+  }
+}

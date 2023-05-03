@@ -1,0 +1,17 @@
+@import 'shared-ui/src/index.scss';
+
+._wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+
+  ._title {
+    display: flex;
+  }
+}
+
+._button {
+  font-size: $font_size_x_large;
+}

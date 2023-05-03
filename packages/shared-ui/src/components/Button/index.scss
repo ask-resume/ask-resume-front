@@ -29,6 +29,7 @@
     line-height: 1em;
   }
 
+  // Default Spacer 8px
   & + & {
     margin-left: 8px;
   }
@@ -38,7 +39,7 @@
     height: 24px;
     padding: 0 6px;
     border-radius: 6px;
-    font-size: $font-size-xx-small;
+    font-size: $font-size-xx_small;
     &.rounded {
       border-radius: calc(24px / 2);
       padding: 0 8px;
@@ -190,6 +191,7 @@
     }
   }
 
+  // label With Icon
   ._BUTTON_leading-icon,
   ._BUTTON_tailing-icon {
     display: flex;
@@ -213,22 +215,17 @@
     }
   }
 
-  &.minimal {
-    padding: 4px;
-    height: max-content;
-  }
-
-  &.minimal2 {
-    padding: 0;
-    height: 28px;
-  }
-
   // Variant
   &.solid {
     @include button-color();
   }
 
-  // buttonColor
+  &.minimal {
+    padding: 4px;
+    height: max-content;
+  }
+
+  // buttonColor - Default Style
   &.black {
     svg {
       #icon__stroke {
@@ -255,6 +252,7 @@
       background-color: $gray_8;
     }
   }
+
   &.blue {
     @include button-color($blue_5);
     svg {
@@ -287,6 +285,7 @@
       background-color: $blue_5;
     }
   }
+
   &.red {
     @include button-color($red_7);
     svg {
@@ -320,6 +319,7 @@
       background-color: $red_7;
     }
   }
+
   &.gray {
     @include button-color($gray_1, $gray_8);
     &.solid {
@@ -331,31 +331,8 @@
         background-color: $gray_4;
       }
     }
-    &.minimal2 {
-      svg {
-        #icon__stroke {
-          stroke: $gray_6;
-          transition: 0.1s ease-out;
-        }
-        #icon__fill {
-          fill: $gray_6;
-          transition: 0.1s ease-out;
-        }
-      }
-      &:hover {
-        svg {
-          #icon__stroke {
-            stroke: $gray_8;
-            transition: 0.1s ease-out;
-          }
-          #icon__fill {
-            fill: $gray_8;
-            transition: 0.1s ease-out;
-          }
-        }
-      }
-    }
   }
+
   &.black,
   &.blue,
   &.red {
@@ -407,45 +384,6 @@
         }
         #icon__fill {
           fill: $red_7;
-          transition: 0.1s ease-out;
-        }
-      }
-    }
-  }
-
-  &.minimal2 {
-    &.black:hover {
-      svg {
-        #icon__stroke {
-          stroke: $gray_8;
-          transition: 0.1s ease-out;
-        }
-        #icon__fill {
-          fill: $gray_8;
-          transition: 0.1s ease-out;
-        }
-      }
-    }
-    &.blue:hover {
-      svg {
-        #icon__stroke {
-          stroke: $blue_6;
-          transition: 0.1s ease-out;
-        }
-        #icon__fill {
-          fill: $blue_6;
-          transition: 0.1s ease-out;
-        }
-      }
-    }
-    &.red:hover {
-      svg {
-        #icon__stroke {
-          stroke: $red_9;
-          transition: 0.1s ease-out;
-        }
-        #icon__fill {
-          fill: $red_9;
           transition: 0.1s ease-out;
         }
       }
@@ -559,34 +497,6 @@
       &:hover {
         background-color: transparent;
         text-decoration: none;
-        svg {
-          #icon__stroke {
-            stroke: $gray_8;
-          }
-          #icon__fill {
-            fill: $gray_8;
-          }
-        }
-      }
-    }
-    &.minimal2 {
-      color: $gray_5;
-      &.blue,
-      &.red,
-      &.black,
-      &.gray {
-        background-color: transparent;
-        svg {
-          #icon__stroke {
-            stroke: $gray_6;
-          }
-          #icon__fill {
-            fill: $gray_6;
-          }
-        }
-      }
-      &:hover {
-        background-color: transparent;
         svg {
           #icon__stroke {
             stroke: $gray_8;
@@ -718,20 +628,6 @@
     @include CustomSpin(18px, 3px, $Bc0: $gray_7, $Bc1: $gray_2);
   }
   &.loading.xl.minimal::before {
-    @include CustomSpin(24px, 3px, $Bc0: $gray_7, $Bc1: $gray_2);
-  }
-
-  &.loading.xs.minimal2::before {
-    @include CustomSpin(14px, 2px, $Bc0: $gray_7, $Bc1: $gray_2);
-  }
-  &.loading.sm.minimal2::before,
-  &.loading.md.minimal2::before {
-    @include CustomSpin(16px, 2px, $Bc0: $gray_7, $Bc1: $gray_2);
-  }
-  &.loading.lg.minimal2::before {
-    @include CustomSpin(18px, 3px, $Bc0: $gray_7, $Bc1: $gray_2);
-  }
-  &.loading.xl.minimal2::before {
     @include CustomSpin(24px, 3px, $Bc0: $gray_7, $Bc1: $gray_2);
   }
 

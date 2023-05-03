@@ -2,16 +2,21 @@ import React, { HTMLAttributes } from 'react';
 import cn from 'classnames';
 import './index.scss';
 
-import { TFontSize } from '../../config/size';
-import { EColorMap } from '../../config/colorMap';
+import { FontSize } from '../../config/size';
+import { ColorMap } from '../../config/colorMap';
 
-interface TextProps extends HTMLAttributes<HTMLDivElement | HTMLSpanElement | HTMLHeadingElement> {
-  textColor?: EColorMap;
-  className?: string;
-  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'block' | 'inline';
-  weight?: 'light' | 'regular' | 'medium' | 'bold';
+export type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'block' | 'inline' | 'label';
+export type TextWeight = 'light' | 'regular' | 'medium' | 'bold';
+
+export interface TextProps
+  extends HTMLAttributes<HTMLDivElement | HTMLSpanElement | HTMLHeadingElement> {
+  textColor?: ColorMap;
+  classNames?: string;
+  variant?: Variant;
+  htmlFor?: string;
+  weight?: TextWeight;
   lineHeight?: 'narrow' | 'wide';
-  size?: TFontSize;
+  size?: FontSize;
   align?: 'start' | 'center' | 'end';
 }
 
@@ -21,35 +26,46 @@ const elementMap = {
   h3: 'h3',
   h4: 'h4',
   h5: 'h5',
+  p: 'p',
   block: 'div',
   inline: 'span',
+  label: 'label',
 };
 
 const Text = ({
-  className,
+  classNames,
   children,
+  htmlFor,
   variant = 'block',
-  weight,
-  lineHeight,
-  size,
-  align,
+  weight = 'regular',
+  lineHeight = 'narrow',
+  size = 'medium',
+  align = 'start',
   textColor,
   ...props
 }: TextProps) => {
   const element = elementMap[variant] || 'span';
-  const classNames = cn(
+  const className = cn(
     '_TEXT_',
-    className,
+    classNames,
     `font-size-${size}`,
     `font-weight-${weight}`,
     `line-height-${lineHeight}`,
     `text-align-${align}`,
   );
 
+  if (variant === 'label') {
+    return (
+      <label className={className} style={{ color: textColor }} htmlFor={htmlFor} {...props}>
+        {children}
+      </label>
+    );
+  }
+
   return React.createElement(
     element,
     {
-      className: classNames,
+      className,
       style: { color: textColor },
       ...props,
     },

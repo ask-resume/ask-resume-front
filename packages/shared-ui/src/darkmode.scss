@@ -1,0 +1,26 @@
+$primary-color: #0070f3;
+
+// Light Mode Variables
+$bg-color: #ffffff;
+$text-color: #333333;
+
+// Dark Mode Variables
+$dark-bg-color: #333333;
+$dark-text-color: #ffffff;
+
+// Default Styles
+body {
+  background-color: $bg-color;
+  color: $text-color;
+}
+
+// Dark Mode Styles
+body.dark-mode {
+  background-color: $dark-bg-color;
+  color: $dark-text-color;
+}
+
+.primary-button {
+  background-color: $primary-color;
+  color: #ffffff;
+}

@@ -1,0 +1,115 @@
+@import '../../index.scss';
+
+._TABS_ {
+  display: inline-block;
+  width: 100%;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #dcdcdc;
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+  }
+
+  .underline {
+    width: 100%;
+    white-space: nowrap;
+
+    ._TAB_ITEM_ {
+      font-weight: $font-weight-regular;
+      border-bottom: 3px solid transparent;
+      padding: 0 8px;
+      &.selected {
+        color: $gray_8;
+        font-weight: $font-weight-medium;
+        border-bottom: 3px solid $blue_5;
+      }
+      .leading-icon {
+        display: flex;
+        margin-right: 4px;
+      }
+      .tailing-icon {
+        display: flex;
+        margin-left: 4px;
+      }
+      &.iconOnly {
+        .leading-icon,
+        .tailing-icon {
+          margin: 0;
+        }
+      }
+      &.disabled {
+        cursor: not-allowed;
+        color: $gray_5;
+        font-weight: $font-weight-regular;
+        border-bottom: 3px solid transparent;
+        .dds-icon {
+          #icon__fill {
+            fill: $gray_5;
+          }
+          #icon__stroke {
+            stroke: $gray_5;
+          }
+        }
+      }
+    }
+  }
+  &.xs .underline ._TAB_ITEM_ {
+    height: 28px;
+    padding: 0 14px;
+  }
+  &.sm .underline ._TAB_ITEM_ {
+    height: 32px;
+    padding: 0 18px;
+  }
+  &.md .underline ._TAB_ITEM_ {
+    height: 36px;
+    padding: 0 22px;
+  }
+}
+
+// TABITEM common styles
+._TAB_ITEM_ {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  font-size: $font-size-small;
+  line-height: 1em;
+  box-sizing: border-box;
+  color: $gray_6;
+  user-select: none;
+  text-align: center;
+  cursor: pointer;
+  transition: $button_hover_transition;
+
+  &.xs {
+    font-size: $font_size_x_small;
+  }
+
+  &.sm {
+    font-size: $font_size_small;
+  }
+
+  &.md {
+    font-size: $font_size_medium;
+  }
+
+  &:hover {
+    background-color: $gray_3;
+  }
+  &.disabled {
+    background-color: transparent;
+    cursor: not-allowed;
+    color: $gray_5;
+    box-shadow: none;
+  }
+}
