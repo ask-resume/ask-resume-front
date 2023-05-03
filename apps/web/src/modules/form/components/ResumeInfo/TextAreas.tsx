@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 
 import Text from 'shared-ui/src/components/Text';
 import Select, { Option } from 'shared-ui/src/components/Select';
-import TextArea from 'shared-ui/src/components/TextArea';
+import Textarea from 'shared-ui/src/components/Textarea';
 import Tooltip from 'shared-ui/src/components/Tooltip';
 
 import { FormTranslateNamespaces } from 'modules/form/constants';
@@ -68,7 +68,7 @@ const ResumeTextAreas = ({
         {resumeTextArea.map(
           (textareaEl, idx) =>
             select === idx && (
-              <TextArea
+              <Textarea
                 key={uid(idx)}
                 className={styles.textarea}
                 text={textareaEl ?? ''}
