@@ -1,6 +1,10 @@
 @import '../Select/index.scss';
 
 ._INPUT_ {
+  input {
+    cursor: text;
+  }
+
   &::placeholder {
     color: $gray_5;
   }

@@ -38,7 +38,7 @@ export const useResumeSelectState = (tabCnt: number) => {
 
   React.useEffect(() => {
     setResumeSelect(() => [...Array(tabCnt)].map(() => resumeSelectOptions[0]));
-  }, [resumeSelectOptions]);
+  }, []);
 
   /**
    * Updates the resumeSelect state based on the input event and index.
