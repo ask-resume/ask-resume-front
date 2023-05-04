@@ -43,6 +43,14 @@
 }
 
 ._FOOTER_ {
-  width: 100%;
-  margin: 2rem;
+  display: flex;
+  padding: 1rem 2rem;
+  border-top: 1px solid $gray_3;
+  justify-content: end;
+
+  ._item {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
 }

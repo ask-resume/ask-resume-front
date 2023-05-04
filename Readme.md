@@ -2,12 +2,17 @@
 
 This service is an LLM service to generate resume interview questions and answers.
 
-We used the GPT-3.5-Turbo model for this service. GPT-3.5-Turbo is OpenAI's language model which powers the popular ChatGPT. <br />
-Enter your resume information and check out the Q&A that will come up in the interview! <br />
+We used the GPT-3.5-Turbo model for this service. GPT-3.5-Turbo is OpenAI's language model which powers the popular ChatGPT.
+
+Enter your resume information and check out the Q&A that will come up in the interview!
 
 > Frontend repository: https://github.com/dev-redo/ask-resume-front
 
 > Backend repository: https://github.com/132262B/ask-resume-backend
+
+<br />
+
+# How to use?
 
 <br />
 
@@ -20,7 +25,7 @@ If you enter your resume and generate results, a server error (HTTP status 500) 
 Sorry bro, This error occurs because the GPT server blocks requests when a large number of requests come in. <br />
 Therefore, it has been implemented so that a re-request can be made when the issue occurs.
 
-We will try to resolve the issue as soon as possible. Apologize for any inconvenience caused.
+We will try to resolve the issue as soon as possible. We are sorry for the inconvenience.
 
 <br />
 
