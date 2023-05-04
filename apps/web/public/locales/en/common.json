@@ -1,7 +1,7 @@
 {
   "page_title": "AskResume: Resume Interview Question and Answer Generator",
   "description": "Resume-based expected interview question and answer providing service using OpenAI.",
-  "keywords": "resume, interview, question, job search, employment, preparation, OpenAI, LLM",
+  "keywords": "OpenAI, LLM, gpt-3.5-turbo, chat-gpt, resume, interview, question, job search, employment, preparation",
 
   "form_user_info_title": "Editing ... - AskResume"
 }
