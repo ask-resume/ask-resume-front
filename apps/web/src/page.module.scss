@@ -2,6 +2,7 @@
 
 @mixin responsive-web {
   width: 400px;
+  flex: 1;
   @media screen and (min-width: $breakpoint-xlarge) {
     width: 700px;
   }

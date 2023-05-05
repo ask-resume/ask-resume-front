@@ -29,6 +29,11 @@
   height: auto;
 
   .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
     padding-bottom: 3rem;
   }
 

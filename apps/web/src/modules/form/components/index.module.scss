@@ -22,8 +22,10 @@
 ._CONTAINER_ {
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 2rem;
   width: 100%;
+  justify-content: center;
   align-items: center;
   padding-bottom: 10vh;
 
@@ -31,19 +33,12 @@
     padding-top: 10vh;
   }
 
-  .loading {
+  .loading,
+  .error_fallback {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: min(60vh, 300px);
-    max-height: max(60vh, 300px);
-    flex-direction: column;
-    gap: 3rem;
-  }
-
-  .error_fallback {
-    min-height: min(60vh, 300px);
-    max-height: max(60vh, 300px);
+    flex: 1;
   }
 
   ._button_wrapper {

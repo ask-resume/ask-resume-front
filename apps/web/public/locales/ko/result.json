@@ -5,6 +5,7 @@
   },
   "result": {
     "title": "생성된 Q&A",
+    "subtitle": "생성된 결과는 수집하지 않습니다.",
     "question": "[질문 {{index}}] {{question}}",
     "answer": "[모범 답안 {{index}}] {{answer}}",
     "button": "Q&A를 텍스트 파일로 다운로드"

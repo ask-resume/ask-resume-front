@@ -11,6 +11,7 @@ import Icon from 'shared-ui/src/components/Icon';
 import { PredictionResponse } from 'modules/result/api/result';
 import { ResultTranslateNamespaces } from 'modules/form/constants';
 import { getNewline, exportAsTextFile } from 'shared-lib/utils/file/text';
+import { ColorMap } from 'shared-ui/src/config/colorMap';
 
 interface ResultProps {
   resumeData: PredictionResponse[];
@@ -37,9 +38,14 @@ const Result = ({ resumeData }: ResultProps) => {
 
   return (
     <div className={styles._result}>
-      <Text weight="bold" classNames={styles.title} variant="h1" size="xx_large">
-        {t('result.title')}
-      </Text>
+      <div className={styles.title}>
+        <Text weight="bold" variant="h1" size="xx_large">
+          {t('result.title')}
+        </Text>
+        <Text color={ColorMap.gray_5} variant="h2" size="xx_small">
+          {`* ${t('result.subtitle')}`}
+        </Text>
+      </div>
 
       {/* Generated Result */}
       <Accordion>

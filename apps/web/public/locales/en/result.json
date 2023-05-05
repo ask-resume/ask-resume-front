@@ -3,8 +3,10 @@
     "title": "Loading...",
     "description": "Creating a question. It may take about 30 seconds."
   },
+
   "result": {
     "title": "Generated Q&A",
+    "subtitle": "We do not collect generated results.",
     "question": "[Question {{index}}] {{question}}",
     "answer": "[Best Answer {{index}}] {{answer}}",
     "button": "Download Q&A as a text file"
