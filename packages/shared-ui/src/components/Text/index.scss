@@ -3,7 +3,9 @@
 ._TEXT_ {
   font-size: $font-size-medium;
   word-wrap: break-word;
+  white-space: pre-wrap;
   line-height: 1em;
+
   &.block {
     display: block;
   }

@@ -32,7 +32,7 @@ const Result = ({ resumeData }: ResultProps) => {
         })}${getNewline()}${getNewline()}`;
       })
       .join('');
-    exportAsTextFile({ fileName: 'generated-qa', data: parsedResumeDataToDownload });
+    exportAsTextFile({ fileName: 'generated-qa', text: parsedResumeDataToDownload });
   };
 
   return (

@@ -3,17 +3,20 @@ export const getNewline = (): string => {
   return window.navigator.platform.startsWith('Win') ? '\r\n' : '\n';
 };
 
-interface ExportAsTextFileProps<T> {
+interface ExportAsTextFileProps {
   fileName: string;
-  data: T;
+  text: string;
 }
 
-export function exportAsTextFile<T>({ fileName, data }: ExportAsTextFileProps<T>) {
-  const fileData = typeof data === 'object' ? JSON.stringify(data) : String(data);
-  const blob = new Blob([fileData], { type: 'text/plain' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.download = `${fileName}.txt`;
-  link.href = url;
-  link.click();
+export function exportAsTextFile({ fileName, text }: ExportAsTextFileProps) {
+  const element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', fileName);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
 }
