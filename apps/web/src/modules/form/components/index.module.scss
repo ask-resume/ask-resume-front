@@ -1,5 +1,6 @@
 @import 'shared-ui/src/index.scss';
 @import '../../../page.module.scss';
+
 // Form page's container responsive width
 @mixin responsive-web {
   width: 400px;
@@ -24,6 +25,7 @@
   gap: 2rem;
   width: 100%;
   align-items: center;
+  padding-bottom: 10vh;
 
   @media screen and (max-width: $breakpoint-small) {
     padding-top: 10vh;
