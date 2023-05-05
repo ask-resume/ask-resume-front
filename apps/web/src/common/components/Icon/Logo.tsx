@@ -13,7 +13,7 @@ export const Logo = ({ width = 28, height = 28 }: LogoProps) => {
       width={width}
       height={height}
       viewBox="0 0 128 128"
-      enable-background="new 0 0 128 128"
+      enableBackground="new 0 0 128 128"
     >
       <image
         id="image0"
