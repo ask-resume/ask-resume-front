@@ -40,7 +40,6 @@ interface ConfirmationProps {
 const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => {
   const { t } = useTranslation(FormTranslateNamespaces);
   const { locale } = useRouter().query as { locale: string };
-  console.log('resumeInfo', resumeInfo);
 
   const { changeQueryParams, passQueryParams } = useQueryParams();
   const handlePrevPageClick = () => {
