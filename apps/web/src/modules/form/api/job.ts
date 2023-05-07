@@ -4,16 +4,16 @@ import { Option } from 'shared-ui/src/components/Select';
 import { LANGUAGE_HEADER } from 'common/config/locale';
 
 export const getJobs = async (locale: string) => {
-  return axiosInstance.get('/v1/jobs', {
+  const response = await axiosInstance.get('/v1/jobs', {
     headers: {
       'Accept-Language': LANGUAGE_HEADER[locale],
     },
   });
+  return response.data as Option[];
 };
 
 export const useJobs = (locale: string) => {
-  return useQuery(['jobs'], () => getJobs(locale), {
+  return useQuery(['jobs', locale], () => getJobs(locale), {
     cacheTime: Infinity,
-    select: (res: { data: Option[] }) => res.data,
   });
 };

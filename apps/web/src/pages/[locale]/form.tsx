@@ -24,6 +24,8 @@ const UserInfo = dynamic(() => import('modules/form/components/UserInfo'), { ssr
 const ResumeInfo = dynamic(() => import('modules/form/components/ResumeInfo'), { ssr: false });
 const Confirmation = dynamic(() => import('modules/form/components/Confirmation'), { ssr: false });
 
+// After receiving jobs data for all languages, modify it so that you can select related option values
+// (ex. Enter web development after selecting English language -> web develop is displayed)
 export default function FormPage() {
   const { t } = useTranslation(FormTranslateNamespaces);
   const router = useRouter();
