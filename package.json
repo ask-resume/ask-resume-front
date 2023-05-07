@@ -1,7 +1,7 @@
 {
   "name": "ask-resume-front",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ask Resume Front-end Project",
   "main": "index.js",
   "scripts": {
     "dev:env": "cross-env NODE_ENV=development",
@@ -10,10 +10,11 @@
     "build": "pnpm run build:env && turbo run build",
     "deploy": "pnpm run build:env && turbo run build --scope=app --includeDependencies --no-deps",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky install",
-    "test": "turbo run jest",
+    "analyze": "cross-env ANALYZE=true && pnpm run build",
     "storybook": "pnpm -r run storybook",
-    "build-storybook": "pnpm -r run build-storybook"
+    "build-storybook": "pnpm -r run build-storybook",
+    "prod:start": "turbo run start --scope=app --includeDependencies --no-deps",
+    "prepare": "husky install"
   },
   "turboConfig": "./turbo.json",
   "workspace": [

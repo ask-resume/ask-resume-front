@@ -25,11 +25,11 @@ export const Variant = () => {
       <header style={{ color: '#1C7ED6', paddingBottom: 8 }}>
         <Text variant="h4">Title</Text>
       </header>
-      <Text variant="h1">h1 Title 48px</Text>
-      <Text variant="h2">h2 Title 36px</Text>
-      <Text variant="h3">h3 Title 24px</Text>
-      <Text variant="h4">h4 Title 21px</Text>
-      <Text variant="h5">h5 Title 18px</Text>
+      <Text variant="h1">h1 Title</Text>
+      <Text variant="h2">h2 Title</Text>
+      <Text variant="h3">h3 Title</Text>
+      <Text variant="h4">h4 Title</Text>
+      <Text variant="h5">h5 Title</Text>
 
       <header style={{ color: '#1C7ED6', paddingTop: 48, paddingBottom: 8 }}>
         <Text variant="h4">Font Size</Text>

@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next';
 import { useIsMobile } from 'shared-lib/hooks/media-query';
 import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
 
-import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
+import { getI18nProps } from 'modules/i18n/lib/getStatic';
 import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
 import { FormTranslateNamespaces } from 'modules/form/constants';
 import {

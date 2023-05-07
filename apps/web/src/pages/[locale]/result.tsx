@@ -1,10 +1,10 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
-import { GetStaticPropsContext } from 'next';
+import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
 
 import styles from '../../page.module.scss';
 import { useGenerateResume } from 'modules/result/api/result';
-import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
+import { getI18nProps } from 'modules/i18n/lib/getStatic';
 import LoadingFallback from 'modules/result/components/LoadingFallback';
 import { ResultTranslateNamespaces } from 'modules/form/constants';
 import Result from 'modules/result/components/Result';
@@ -34,12 +34,10 @@ export default function ResultPage() {
 // FIX: To use i18n in CSR in next.js, you need to additionally use i18next-http-backend.
 // However, when CSR is performed using the library, only the default language is received.
 // If the issue is resolved, it will be changed to CSR
-export async function getStaticProps(ctx: GetStaticPropsContext) {
+export const getServerSideProps = withGetServerSideProps(async ctx => {
   return {
     props: {
       ...(await getI18nProps(ctx, ResultTranslateNamespaces)),
     },
   };
-}
-
-export { getStaticPaths };
+});

@@ -1,13 +1,9 @@
 import React from 'react';
 import styles from './index.module.scss';
-import { useIsMobile } from 'shared-lib/hooks/media-query';
 import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
 
 const Footer = () => {
-  const isMobile = useIsMobile();
-  if (isMobile) return <></>;
-
   return (
     <footer className={styles._FOOTER_}>
       <div className={styles._item}>

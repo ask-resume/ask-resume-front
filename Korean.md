@@ -23,6 +23,13 @@
 
 <br />
 
+## 사용 예시
+
+https://user-images.githubusercontent.com/69149030/236444086-5c8c71a7-3ef7-4418-b938-885a29be8d62.mp4
+
+
+<br />
+
 # 주의사항
 
 ## 1. 왜 결과를 생성하는데 문제가 발생하나요?
