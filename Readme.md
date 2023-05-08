@@ -43,3 +43,9 @@ We will try to resolve the issue as soon as possible. Really sorry for the incon
 # Credit
 
 This service is inspired by [DevPort](https://github.com/custardcream98/DevPort) and [gpt4-pdf-chatbot-langchain](https://github.com/mayooear/gpt4-pdf-chatbot-langchain)
+
+<br />
+
+# Contact
+
+If you find an error while using it or have a desired function, Please contact me by [Discord](https://discord.gg/aTzGNZ3y) or write Issue!
