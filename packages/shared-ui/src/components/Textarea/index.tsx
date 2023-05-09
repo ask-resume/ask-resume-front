@@ -49,6 +49,12 @@ const Textarea = ({
   const [isFocused, setIsFocused] = React.useState(false);
   const isError = !isFocused && isNotBlank(text) && error.regex && error.regex.test(text);
 
+  const handleOnChangeText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const value = event.target.value;
+    if (value.length > maxLength) return;
+    onChangeText(event);
+  };
+
   return (
     <div className={cn('_TEXTAREA_', className)}>
       {label.labelText && (
@@ -64,7 +70,7 @@ const Textarea = ({
           </Text>
         </div>
       )}
-      {/* In Textarea, maxLength is incorrectly applied because Unicode has a longer length than ASCII code. */}
+
       <div className="_wrapper">
         <textarea
           style={{
@@ -72,10 +78,9 @@ const Textarea = ({
             fontSize: getFontSize(text),
           }}
           className={cn({ error: isError })}
-          maxLength={maxLength}
           placeholder={placeholder}
-          value={text.slice(0, maxLength)}
-          onChange={onChangeText}
+          value={text}
+          onChange={handleOnChangeText}
           id={uid}
           name={uid}
           onFocus={() => setIsFocused(true)}
