@@ -42,18 +42,9 @@
       max-height: 200px;
       width: 100%;
       li {
-        max-width: 350px;
-        @media screen and (min-width: $breakpoint-xlarge) {
-          max-width: 650px;
-        }
-        @media screen and (min-width: $breakpoint-large) {
-          max-width: 550px;
-        }
-        @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
-          max-width: 450px;
-        }
+        width: 100%;
         @media screen and (max-width: $breakpoint-xsmall) {
-          max-width: 75vw;
+          max-width: 70vw;
         }
       }
     }
