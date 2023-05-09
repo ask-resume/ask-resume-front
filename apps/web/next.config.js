@@ -8,6 +8,14 @@ const nextConfig = withBundleAnalyzer({
   swcMinify: true,
   transpilePackages: ['shared-ui', 'shared-lib'],
   trailingSlash: true,
+  async rewrites() {
+    return [
+      {
+        source: '/v1/:path*',
+        destination: 'https://api.ask-resume.com/api/v1/:path*',
+      },
+    ];
+  },
 });
 
 module.exports = nextConfig;

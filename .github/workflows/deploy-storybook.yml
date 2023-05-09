@@ -36,7 +36,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build Storybook
-        run: pnpm run build-storybook
+        run: pnpm run build:storybook
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
