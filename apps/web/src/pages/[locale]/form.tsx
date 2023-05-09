@@ -17,16 +17,17 @@ import { TAB_CNT } from 'modules/form/constants';
 import { useFormRouter } from 'modules/form/hooks/useFormRouter';
 import { validateUserInfoForm, validateResumeInfoForm } from 'modules/form/lib';
 import { FormRouterType } from 'modules/form/types';
+import { getJobs } from 'modules/form/api/job';
 
 import styles from '../../page.module.scss';
-const Router = dynamic(() => import('modules/form/components/Router'), { ssr: false });
+import Router from 'modules/form/components/Router';
 const UserInfo = dynamic(() => import('modules/form/components/UserInfo'), { ssr: false });
 const ResumeInfo = dynamic(() => import('modules/form/components/ResumeInfo'), { ssr: false });
 const Confirmation = dynamic(() => import('modules/form/components/Confirmation'), { ssr: false });
 
 // After receiving jobs data for all languages, modify it so that you can select related option values
 // (ex. Enter web development after selecting English language -> web develop is displayed)
-export default function FormPage() {
+export default function FormPage({ jobs }) {
   const { t } = useTranslation(FormTranslateNamespaces);
   const router = useRouter();
   const isMobile = useIsMobile();
@@ -43,6 +44,7 @@ export default function FormPage() {
 
   // userInfo: user information entered by the user
   const { userInfo, userInfoSetter } = useUserInfoState(t);
+  const currentLocaleJob = jobs[locale];
 
   const { resumeTextArea, resumeTextAreaSetter } = useResumeTextAreaState(TAB_CNT);
   const { resumeSelect, resumeSelectSetter } = useResumeSelectState(TAB_CNT);
@@ -75,7 +77,12 @@ export default function FormPage() {
 
         {type === 'user-info' && (
           <main className={styles.user_info_content}>
-            <UserInfo isMobile={isMobile} userInfo={userInfo} onChangeUserInfo={userInfoSetter} />
+            <UserInfo
+              isMobile={isMobile}
+              jobs={currentLocaleJob}
+              userInfo={userInfo}
+              onChangeUserInfo={userInfoSetter}
+            />
           </main>
         )}
 
@@ -102,8 +109,10 @@ export default function FormPage() {
 }
 
 export const getServerSideProps = withGetServerSideProps(async ctx => {
+  const jobs = await getJobs();
   return {
     props: {
+      jobs,
       ...(await getI18nProps(ctx, FormTranslateNamespaces)),
     },
   };

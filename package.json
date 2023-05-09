@@ -13,7 +13,6 @@
     "analyze": "cross-env ANALYZE=true && pnpm run build",
     "storybook": "pnpm -r run storybook",
     "build-storybook": "pnpm -r run build-storybook",
-    "prod:start": "turbo run start --scope=app --includeDependencies --no-deps",
     "prepare": "husky install"
   },
   "turboConfig": "./turbo.json",
@@ -38,5 +37,6 @@
       "eslint --fix",
       "prettier --parser=typescript --write"
     ]
-  }
+  },
+  "packageManager": "pnpm@8.3.0"
 }
