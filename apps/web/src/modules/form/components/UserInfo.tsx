@@ -19,7 +19,6 @@ import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import styles from './index.module.scss';
 import errorPageStyles from '../../../page.module.scss';
 import { FormTranslateNamespaces } from '../constants';
-import { useJobs } from '../api/job';
 import { useRouter } from 'next/router';
 
 export interface UserInfoState {
@@ -32,10 +31,11 @@ export interface UserInfoState {
 interface UserInfoProps {
   isMobile: boolean;
   userInfo: UserInfoState;
+  jobs: Option[];
   onChangeUserInfo: (stateName: StateName, changedValue: ChangedValue) => void;
 }
 
-const UserInfo = ({ isMobile, userInfo, onChangeUserInfo }: UserInfoProps) => {
+const UserInfo = ({ isMobile, jobs, userInfo, onChangeUserInfo }: UserInfoProps) => {
   const { t } = useTranslation(FormTranslateNamespaces);
   const { locale } = useRouter().query as { locale: string };
 
@@ -55,112 +55,101 @@ const UserInfo = ({ isMobile, userInfo, onChangeUserInfo }: UserInfoProps) => {
   const pathname = `/${locale}/form`;
   const { changeQueryParams } = useQueryParams();
 
-  const { data: jobs, isLoading: isJobsLoading, isError, refetch } = useJobs(locale);
   const isNavigationEnabled = !validateUserInfoForm(userInfo);
-  const isDataLoaded = !isJobsLoading && !isError;
-
   return (
     <div className={styles._CONTAINER_}>
-      {isJobsLoading && <LoadingSpinner />}
-      {isError && <ErrorFallback onRefetch={refetch} />}
-      {isDataLoaded && (
-        <>
-          <div className={styles._USER_CONTENT_}>
-            {/* Job InputSelect */}
-            <InputSelect
-              className={styles._select}
-              selectedOption={userInfo.selectedJob}
-              onChangeSelectedOption={changed => onChangeUserInfo('selectedJob', changed)}
-              options={jobs!}
-              label={{
-                labelText: t('user_info.label.job') ?? '',
-                labelWeight: LABEL_WEIGHT,
-                labelSize: LABEL_SIZE,
-              }}
-              placeholder={t('user_info.placeholder.job') ?? ''}
-              locale={locale}
-              height={isMobile ? 'md' : 'lg'}
-            />
+      <div className={styles._USER_CONTENT_}>
+        {/* Job InputSelect */}
+        <InputSelect
+          className={styles._select}
+          selectedOption={userInfo.selectedJob}
+          onChangeSelectedOption={changed => onChangeUserInfo('selectedJob', changed)}
+          options={jobs}
+          label={{
+            labelText: t('user_info.label.job') ?? '',
+            labelWeight: LABEL_WEIGHT,
+            labelSize: LABEL_SIZE,
+          }}
+          placeholder={t('user_info.placeholder.job') ?? ''}
+          locale={locale}
+          height={isMobile ? 'md' : 'lg'}
+        />
 
-            {/* Nation InputSelect */}
-            <Select
-              className={styles._select}
-              selectedOption={userInfo.selectedLanguage}
-              onChangeSelectedOption={changed => onChangeUserInfo('selectedLanguage', changed)}
-              options={NATION_OPTION}
-              label={{
-                labelText: t('user_info.label.nation') ?? '',
-                labelWeight: LABEL_WEIGHT,
-                labelSize: LABEL_SIZE,
-              }}
-              placeholder={t('user_info.placeholder.nation') ?? ''}
-              height={isMobile ? 'md' : 'lg'}
-            />
+        {/* Nation InputSelect */}
+        <Select
+          className={styles._select}
+          selectedOption={userInfo.selectedLanguage}
+          onChangeSelectedOption={changed => onChangeUserInfo('selectedLanguage', changed)}
+          options={NATION_OPTION}
+          label={{
+            labelText: t('user_info.label.nation') ?? '',
+            labelWeight: LABEL_WEIGHT,
+            labelSize: LABEL_SIZE,
+          }}
+          placeholder={t('user_info.placeholder.nation') ?? ''}
+          height={isMobile ? 'md' : 'lg'}
+        />
 
-            {/* Interview Difficulty InputSelect */}
-            <Select
-              className={styles._select}
-              selectedOption={userInfo.selectedDifficulty}
-              onChangeSelectedOption={changed => onChangeUserInfo('selectedDifficulty', changed)}
-              options={DIFFICULTY_OPTION}
-              label={{
-                labelText: t('user_info.label.difficulty') ?? '',
-                labelWeight: LABEL_WEIGHT,
-                labelSize: LABEL_SIZE,
-              }}
-              placeholder={t('user_info.placeholder.difficulty') ?? ''}
-              height={isMobile ? 'md' : 'lg'}
-            />
+        {/* Interview Difficulty InputSelect */}
+        <Select
+          className={styles._select}
+          selectedOption={userInfo.selectedDifficulty}
+          onChangeSelectedOption={changed => onChangeUserInfo('selectedDifficulty', changed)}
+          options={DIFFICULTY_OPTION}
+          label={{
+            labelText: t('user_info.label.difficulty') ?? '',
+            labelWeight: LABEL_WEIGHT,
+            labelSize: LABEL_SIZE,
+          }}
+          placeholder={t('user_info.placeholder.difficulty') ?? ''}
+          height={isMobile ? 'md' : 'lg'}
+        />
 
-            {/* Years of Experience Slider */}
-            <div style={{ width: '100%' }}>
-              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <Text className="_label" size={LABEL_SIZE} weight={LABEL_WEIGHT}>
-                  {t('user_info.label.years-of-experience')}
-                </Text>
-                <Divider variant="vertical" color={ColorMap.gray_5} width={2} />
-                <Text variant="block" size={LABEL_SIZE} weight="medium" textColor={ColorMap.blue_5}>
-                  {formatYearsOfCareer({
-                    t,
-                    locale,
-                    selectedYearsOfCareer: userInfo.selectedYearsOfCareer,
-                  })}
-                </Text>
-              </div>
-
-              <Slider
-                size={isMobile ? 'medium' : 'large'}
-                min={0}
-                max={10}
-                step={1}
-                inputValue={userInfo.selectedYearsOfCareer}
-                onChangeSelectedOption={changed =>
-                  onChangeUserInfo('selectedYearsOfCareer', changed)
-                }
-              />
-            </div>
+        {/* Years of Experience Slider */}
+        <div style={{ width: '100%' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Text className="_label" size={LABEL_SIZE} weight={LABEL_WEIGHT}>
+              {t('user_info.label.years-of-experience')}
+            </Text>
+            <Divider variant="vertical" color={ColorMap.gray_5} width={2} />
+            <Text variant="block" size={LABEL_SIZE} weight="medium" textColor={ColorMap.blue_5}>
+              {formatYearsOfCareer({
+                t,
+                locale,
+                selectedYearsOfCareer: userInfo.selectedYearsOfCareer,
+              })}
+            </Text>
           </div>
 
-          <div
-            className={styles._button_wrapper}
-            onClick={() => {
-              if (isNavigationEnabled) return;
-              const query = { type: 'resume' };
-              changeQueryParams({ pathname, query });
-            }}
-          >
-            <Button
-              size={isMobile ? 'sm' : 'lg'}
-              buttonColor="blue"
-              disabled={isNavigationEnabled}
-              label={{
-                labelText: t('button.next-page') ?? '',
-                labelTailingIcon: <Icon.Arrow flip />,
-              }}
-            />
-          </div>
-        </>
-      )}
+          <Slider
+            size={isMobile ? 'medium' : 'large'}
+            min={0}
+            max={10}
+            step={1}
+            inputValue={userInfo.selectedYearsOfCareer}
+            onChangeSelectedOption={changed => onChangeUserInfo('selectedYearsOfCareer', changed)}
+          />
+        </div>
+      </div>
+
+      <div
+        className={styles._button_wrapper}
+        onClick={() => {
+          if (isNavigationEnabled) return;
+          const query = { type: 'resume' };
+          changeQueryParams({ pathname, query });
+        }}
+      >
+        <Button
+          size={isMobile ? 'sm' : 'lg'}
+          buttonColor="blue"
+          disabled={isNavigationEnabled}
+          label={{
+            labelText: t('button.next-page') ?? '',
+            labelTailingIcon: <Icon.Arrow flip />,
+          }}
+        />
+      </div>
     </div>
   );
 };

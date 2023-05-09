@@ -64,7 +64,7 @@ const Textarea = ({
           </Text>
         </div>
       )}
-
+      {/* In Textarea, maxLength is incorrectly applied because Unicode has a longer length than ASCII code. */}
       <div className="_wrapper">
         <textarea
           style={{
@@ -74,8 +74,8 @@ const Textarea = ({
           className={cn({ error: isError })}
           maxLength={maxLength}
           placeholder={placeholder}
-          value={text}
-          onChange={event => onChangeText(event)}
+          value={text.slice(0, maxLength)}
+          onChange={onChangeText}
           id={uid}
           name={uid}
           onFocus={() => setIsFocused(true)}
