@@ -6,14 +6,15 @@
   "scripts": {
     "dev:env": "cross-env NODE_ENV=development",
     "build:env": "cross-env NODE_ENV=production",
-    "dev": "pnpm run dev:env && dotenv -- turbo run dev",
-    "build": "pnpm run build:env && turbo run build",
-    "deploy": "pnpm run build:env && turbo run build --scope=app --includeDependencies --no-deps",
+    "dev": "pnpm run dev:env && dotenv -- turbo run dev --filter=./apps/*",
+    "build:web": "pnpm run build:env && dotenv -- turbo run build --filter=./apps/web",
+    "deploy:web": "pnpm run build:env && dotenv -- turbo run build --filter=./apps/web'",
+    "test:web": "pnpm run build:web && dotenv -- turbo run start --filter=./apps/web",
+    "build:storybook": "turbo run build --filter=./apps/docs",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "analyze": "cross-env ANALYZE=true && pnpm run build",
-    "storybook": "pnpm -r run storybook",
-    "build-storybook": "pnpm -r run build-storybook",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "clean": "turbo run clean && rm -rf node_modules"
   },
   "turboConfig": "./turbo.json",
   "workspace": [
