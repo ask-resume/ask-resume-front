@@ -18,6 +18,7 @@ import { useFormRouter } from 'modules/form/hooks/useFormRouter';
 import { validateUserInfoForm, validateResumeInfoForm } from 'modules/form/lib';
 import { FormRouterType } from 'modules/form/types';
 import { getJobs } from 'modules/form/api/job';
+import axiosInstance from 'modules/auth/axiosInstance';
 
 import styles from '../../page.module.scss';
 import Router from 'modules/form/components/Router';
@@ -108,6 +109,7 @@ export default function FormPage({ jobs }) {
   );
 }
 
+// FIX: not apply
 export const getServerSideProps = withGetServerSideProps(async ctx => {
   const jobs = await getJobs();
   return {
@@ -117,3 +119,11 @@ export const getServerSideProps = withGetServerSideProps(async ctx => {
     },
   };
 });
+
+// export const getServerSideProps = withGetServerSideProps(async ctx => {
+//   return {
+//     props: {
+//       ...(await getI18nProps(ctx, FormTranslateNamespaces)),
+//     },
+//   };
+// });
