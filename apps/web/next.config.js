@@ -11,8 +11,8 @@ const nextConfig = withBundleAnalyzer({
   async rewrites() {
     return [
       {
-        source: '/v1/:path*',
-        destination: 'https://api.ask-resume.com/api/v1/:path*',
+        source: '/_next/data/:hash/:locale/:namespace.json',
+        destination: '/api/v1/:namespace',
       },
     ];
   },

@@ -15,7 +15,7 @@ const GoToFormButton = ({ t, isMobile }: GoToFormButtonProps) => {
   const labelTailingIcon = isMobile ? <></> : <Icon.AirPlane color={ColorMap.blue_5} />;
 
   return (
-    <Link href={{ pathname: '/form', query: { type: 'user-info' } }} prefetch>
+    <Link href={{ pathname: '/form', query: { type: 'user-info' } }}>
       <Button
         className={styles._button}
         size={isMobile ? 'xxs' : 'lg'}
