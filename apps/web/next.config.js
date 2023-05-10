@@ -8,14 +8,6 @@ const nextConfig = withBundleAnalyzer({
   swcMinify: true,
   transpilePackages: ['shared-ui', 'shared-lib'],
   trailingSlash: true,
-  async rewrites() {
-    return [
-      {
-        source: '/_next/data/:hash/:locale/:namespace.json',
-        destination: '/api/v1/:namespace',
-      },
-    ];
-  },
 });
 
 module.exports = nextConfig;
