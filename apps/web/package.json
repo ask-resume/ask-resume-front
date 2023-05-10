@@ -1,7 +1,7 @@
 {
   "name": "ask-resume-web",
   "description": "AskResume: Interview questions and answers generator for your resume",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "private": true,
   "keywords": [
     "OpenAI",

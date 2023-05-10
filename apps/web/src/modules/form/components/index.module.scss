@@ -40,12 +40,9 @@
     @include responsive-web;
     ul {
       max-height: 200px;
-      width: 100%;
+      @include responsive-web;
       li {
-        width: 100%;
-        @media screen and (max-width: $breakpoint-xsmall) {
-          max-width: 70vw;
-        }
+        @include responsive-web;
       }
     }
   }
