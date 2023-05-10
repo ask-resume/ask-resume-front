@@ -17,8 +17,6 @@ import { TAB_CNT } from 'modules/form/constants';
 import { useFormRouter } from 'modules/form/hooks/useFormRouter';
 import { validateUserInfoForm, validateResumeInfoForm } from 'modules/form/lib';
 import { FormRouterType } from 'modules/form/types';
-import { getJobs } from 'modules/form/api/job';
-import axiosInstance from 'modules/auth/axiosInstance';
 
 import styles from '../../page.module.scss';
 import Router from 'modules/form/components/Router';
@@ -28,7 +26,7 @@ const Confirmation = dynamic(() => import('modules/form/components/Confirmation'
 
 // After receiving jobs data for all languages, modify it so that you can select related option values
 // (ex. Enter web development after selecting English language -> web develop is displayed)
-export default function FormPage({ jobs }) {
+export default function FormPage() {
   const { t } = useTranslation(FormTranslateNamespaces);
   const router = useRouter();
   const isMobile = useIsMobile();
@@ -45,10 +43,9 @@ export default function FormPage({ jobs }) {
 
   // userInfo: user information entered by the user
   const { userInfo, userInfoSetter } = useUserInfoState(t);
-  const currentLocaleJob = jobs[locale];
-
   const { resumeTextArea, resumeTextAreaSetter } = useResumeTextAreaState(TAB_CNT);
   const { resumeSelect, resumeSelectSetter } = useResumeSelectState(TAB_CNT);
+
   // resumeInfo = resume information entered by the user
   const resumeInfo = React.useMemo(
     () =>
@@ -78,12 +75,7 @@ export default function FormPage({ jobs }) {
 
         {type === 'user-info' && (
           <main className={styles.user_info_content}>
-            <UserInfo
-              isMobile={isMobile}
-              jobs={currentLocaleJob}
-              userInfo={userInfo}
-              onChangeUserInfo={userInfoSetter}
-            />
+            <UserInfo isMobile={isMobile} userInfo={userInfo} onChangeUserInfo={userInfoSetter} />
           </main>
         )}
 
@@ -109,20 +101,20 @@ export default function FormPage({ jobs }) {
   );
 }
 
-// FIX: not apply
 export const getServerSideProps = withGetServerSideProps(async ctx => {
-  const jobs = await getJobs();
   return {
     props: {
-      jobs,
       ...(await getI18nProps(ctx, FormTranslateNamespaces)),
     },
   };
 });
 
+// FIX: not apply by SSR
 // export const getServerSideProps = withGetServerSideProps(async ctx => {
+//   const jobs = await getJobs();
 //   return {
 //     props: {
+//       jobs,
 //       ...(await getI18nProps(ctx, FormTranslateNamespaces)),
 //     },
 //   };

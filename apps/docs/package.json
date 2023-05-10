@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "storybook build --quiet",
+    "build-storybook": "storybook build --quiet",
     "chromatic": "pnpx chromatic --project-token=%CHROMATIC_PROJECT_TOKEN%",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx",
     "clean": "rm -rf .turbo && rm -rf node_modules"
