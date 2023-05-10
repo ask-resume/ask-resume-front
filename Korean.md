@@ -25,8 +25,7 @@
 
 ## 사용 예시
 
-https://user-images.githubusercontent.com/69149030/236444086-5c8c71a7-3ef7-4418-b938-885a29be8d62.mp4
-
+https://github.com/dev-redo/ask-resume-front/assets/69149030/49128374-77d7-4e2b-ba5a-0abc6701d5aa
 
 <br />
 
@@ -46,3 +45,9 @@ https://user-images.githubusercontent.com/69149030/236444086-5c8c71a7-3ef7-4418-
 # 영감을 받은 리포지토리
 
 이 서비스는 [DevPort](https://github.com/custardcream98/DevPort)와 [gpt4-pdf-chatbot-langchain](https://github.com/mayooear/gpt4-pdf-chatbot-langchain)에서 영감을 받아 제작하였습니다.
+
+<br />
+
+# 연락
+
+사용 중 오류를 발견하거나 원하는 기능이 있는 경우 [Discord](https://discord.gg/aTzGNZ3y)로 문의하거나 Issue를 작성해주세요!
