@@ -31,6 +31,9 @@ export default function ResultPage() {
   );
 }
 
+// FIX: To use i18n in CSR in next.js, you need to additionally use i18next-http-backend.
+// However, when CSR is performed using the library, only the default language is received.
+// If the issue is resolved, it will be changed to CSR
 export const getServerSideProps = withGetServerSideProps(async ctx => {
   return {
     props: {
