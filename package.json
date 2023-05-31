@@ -20,7 +20,7 @@
     "apps/*",
     "packages/*"
   ],
-  "author": "dev-redo",
+  "author": "ask-resume",
   "license": "ISC",
   "devDependencies": {
     "cross-env": "^7.0.3",
