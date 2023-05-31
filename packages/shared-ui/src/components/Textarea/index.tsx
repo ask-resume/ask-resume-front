@@ -49,12 +49,6 @@ const Textarea = ({
   const [isFocused, setIsFocused] = React.useState(false);
   const isError = !isFocused && isNotBlank(text) && error.regex && error.regex.test(text);
 
-  const handleOnChangeText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const value = event.target.value;
-    if (value.length > maxLength) return;
-    onChangeText(event);
-  };
-
   return (
     <div className={cn('_TEXTAREA_', className)}>
       {label.labelText && (
@@ -80,7 +74,8 @@ const Textarea = ({
           className={cn({ error: isError })}
           placeholder={placeholder}
           value={text}
-          onChange={handleOnChangeText}
+          onChange={onChangeText}
+          maxLength={maxLength}
           id={uid}
           name={uid}
           onFocus={() => setIsFocused(true)}
