@@ -146,6 +146,9 @@ importers:
       style-loader:
         specifier: ^3.3.2
         version: 3.3.2(webpack@5.81.0)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig-custom
       tsconfig-paths-webpack-plugin:
         specifier: ^4.0.1
         version: 4.0.1
