@@ -2,11 +2,11 @@ name: Deploy Chromatic
 
 on:
   push:
-    branches:
-      - main
-      - develop
-    paths:
-      - 'apps/docs/**'
+    # branches:
+    #   - main
+    #   - develop
+    # paths:
+    #   - 'apps/docs/**'
 
 jobs:
   deploy_to_chromatic:
