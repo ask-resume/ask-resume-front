@@ -1,13 +1,12 @@
-import Link from 'next/link';
-import { GetStaticPropsContext } from 'next';
 import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
+import { GetStaticPropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
-
-import styles from '../../page.module.scss';
-import Text from 'shared-ui/src/components/Text';
-import Divider from 'shared-ui/src/components/Divider';
+import Link from 'next/link';
 import Button from 'shared-ui/src/components/Button';
+import Divider from 'shared-ui/src/components/Divider';
+import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
+import styles from '../../page.module.scss';
 
 const Custom404 = () => {
   const { t } = useTranslation('error-page');
@@ -57,6 +56,6 @@ const getStaticProps = async (ctx: GetStaticPropsContext) => {
   };
 };
 
-export { getStaticProps, getStaticPaths };
+export { getStaticPaths, getStaticProps };
 
 export default Custom404;

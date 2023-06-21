@@ -1,31 +1,30 @@
-import React from 'react';
+import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
+import { GetStaticPropsContext } from 'next';
+import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import React from 'react';
 import { useIsMobile } from 'shared-lib/hooks/media-query';
-import { GetStaticPropsContext } from 'next';
-import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
 
-import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
-import { FormTranslateNamespaces } from 'modules/form/constants';
-import {
-  useResumeTextAreaState,
-  useResumeSelectState,
-} from 'modules/form/hooks/useResumeInfoState';
-import { TAB_CNT } from 'modules/form/constants';
-import { useFormRouter } from 'modules/form/hooks/useFormRouter';
-import { validateUserInfoForm, validateResumeInfoForm } from 'modules/form/lib';
-import { FormRouterType } from 'modules/form/types';
 import { getJobs } from 'modules/form/api/job';
+import { FormTranslateNamespaces, TAB_CNT } from 'modules/form/constants';
+import { useFormRouter } from 'modules/form/hooks/useFormRouter';
+import {
+  useResumeSelectState,
+  useResumeTextAreaState,
+} from 'modules/form/hooks/useResumeInfoState';
+import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
+import { validateResumeInfoForm, validateUserInfoForm } from 'modules/form/lib';
+import { FormRouterType } from 'modules/form/types';
 
-import styles from '../../page.module.scss';
+import { Confirmation, ResumeInfo, UserInfo } from 'modules/form/components';
 import Router from 'modules/form/components/Router';
-import { UserInfo, ResumeInfo, Confirmation } from 'modules/form/components';
+import styles from '../../page.module.scss';
 
 // After receiving jobs data for all languages, modify it so that you can select related option values
 // (ex. Enter web development after selecting English language -> web develop is displayed)
 export default function FormPage({ jobs }) {
-  const { t } = useTranslation(FormTranslateNamespaces);
+  const { t } = useTranslation('common');
   const router = useRouter();
   const isMobile = useIsMobile();
   const { locale, type } = React.useMemo(
@@ -59,9 +58,9 @@ export default function FormPage({ jobs }) {
   return (
     <>
       <Head>
-        <title>{t('common:form_user_info_title')}</title>
-        <meta name="description" content={t('common:description') ?? ''} />
-        <meta name="keyword" content={t('common:keywords') ?? ''} />
+        <title>{t('form_user_info_title')}</title>
+        <meta name="description" content={t('description') ?? ''} />
+        <meta name="keyword" content={t('keywords') ?? ''} />
       </Head>
 
       <div className={styles._FORM_}>
