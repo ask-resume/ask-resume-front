@@ -1,0 +1,24 @@
+@import '../../index.scss';
+
+$table_border-color: $gray_4;
+
+._TABLE_ {
+  width: 100%;
+
+  // Padding
+  padding: 12px;
+
+  th,
+  td {
+    padding: 12px;
+  }
+
+  // Border
+  border: 1px solid $table_border-color;
+  border-radius: 6px;
+  border-spacing: 0;
+
+  td {
+    border-top: 1px solid $table_border-color;
+  }
+}

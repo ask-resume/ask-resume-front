@@ -1,0 +1,8 @@
+@import '../index.scss';
+
+$table_td_font-color: $gray_8;
+
+._Td_ {
+  color: $table_td_font-color;
+  font-weight: $font_weight_regular;
+}
