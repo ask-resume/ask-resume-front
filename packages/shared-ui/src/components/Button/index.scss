@@ -19,6 +19,9 @@
   flex-shrink: 0;
   @include button-color();
 
+  border-width: 1px;
+  border-style: solid;
+
   &:active {
     transition: none;
   }
@@ -128,10 +131,7 @@
     padding: 0 16px;
     border-radius: 10px;
     font-size: $font-size-medium;
-    &.ghost,
-    &.ghost.gray {
-      border-width: 2px;
-    }
+    border-width: 2px;
     &.rounded {
       border-radius: calc(44px / 2);
       padding: 0 18px;
@@ -162,10 +162,7 @@
     padding: 0 32px;
     border-radius: 14px;
     font-size: $font-size-large;
-    &.ghost,
-    &.ghost.gray {
-      border-width: 2px;
-    }
+    border-width: 2px;
     &.rounded {
       border-radius: calc(56px / 2);
       padding: 0 36px;
@@ -276,10 +273,6 @@
         }
       }
     }
-    &.ghost.lg,
-    &.ghost.xl {
-      border-width: 2px;
-    }
     &.ghost.loading,
     &.quiet.loading {
       background-color: $blue_5;
@@ -309,10 +302,6 @@
           transition: 0.1s ease-out;
         }
       }
-    }
-    &.ghost.lg,
-    &.ghost.xl {
-      border-width: 2px;
     }
     &.ghost.loading,
     &.quiet.loading {
@@ -466,6 +455,7 @@
     }
     &.solid {
       background-color: $gray_1;
+      border-color: $gray_1;
       svg {
         #icon__stroke {
           stroke: $gray_8;
@@ -476,6 +466,7 @@
       }
       &:hover {
         background-color: $gray_1;
+        border-color: $gray_1;
       }
     }
     &.minimal {
