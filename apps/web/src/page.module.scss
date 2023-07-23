@@ -78,3 +78,40 @@
     }
   }
 }
+
+// My Page
+._MY_PAGE_ {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+
+  & .title_wrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  & .table_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3.2rem;
+
+    @media screen and (min-width: $breakpoint-xlarge) {
+      width: 900px;
+    }
+    @media screen and (min-width: $breakpoint-large) {
+      width: 800px;
+    }
+    @media screen and (min-width: #{$breakpoint-medium}) and (max-width: #{$breakpoint-large - 1}) {
+      width: 600px;
+    }
+    @media screen and (max-width: $breakpoint-xsmall) {
+      width: 94vw;
+    }
+  }
+}

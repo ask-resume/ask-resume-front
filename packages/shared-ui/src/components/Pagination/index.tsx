@@ -7,7 +7,7 @@ import usePagination, { UsePaginationProps } from './usePagination';
 
 export interface PaginationProps extends UsePaginationProps {
   className?: string;
-  onChange?: (nextPage: number) => void;
+  onClickPageButton?: (nextPage: number) => void;
 }
 
 const Pagination = React.memo(
@@ -17,7 +17,7 @@ const Pagination = React.memo(
     totalRows,
     rowsPerPage,
     numOfPageButtons,
-    onChange,
+    onClickPageButton,
   }: PaginationProps) => {
     const { start, end, range, totalPages } = usePagination({
       currentPage,
@@ -34,7 +34,7 @@ const Pagination = React.memo(
           label={{
             labelLeadingIcon: <Icon.Arrow />,
           }}
-          onChange={() => onChange && onChange(Math.max(1, start - 1))}
+          onClick={() => onClickPageButton && onClickPageButton(Math.max(1, start - 1))}
         />
         <ul>
           {range.map(page => {
@@ -48,6 +48,7 @@ const Pagination = React.memo(
                   label={{
                     labelText: page,
                   }}
+                  onClick={() => onClickPageButton && onClickPageButton(page)}
                 />
               </li>
             );
@@ -59,7 +60,7 @@ const Pagination = React.memo(
           label={{
             labelLeadingIcon: <Icon.Arrow rotate={180} />,
           }}
-          onChange={() => onChange && onChange(Math.min(totalPages, end + 1))}
+          onClick={() => onClickPageButton && onClickPageButton(Math.min(totalPages, end + 1))}
         />
       </div>
     );

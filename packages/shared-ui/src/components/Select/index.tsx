@@ -17,9 +17,10 @@ export const HeightOption = {
   lg: 24,
 } as const;
 
-export type ObjectOption = { name: string; id?: string | number; value?: string };
+export type ObjectOption = { name: string; id?: string | number; value?: string | number };
 export type StringOption = string;
-export type Option = ObjectOption | StringOption;
+export type NumberOption = number;
+export type Option = ObjectOption | StringOption | NumberOption;
 
 export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
   selectedOption: Option | null;
@@ -34,6 +35,7 @@ export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
   };
   locale?: string;
   border?: boolean;
+  style?: React.CSSProperties;
 }
 
 export const isObjectOption = (option: Option): option is ObjectOption =>
@@ -56,6 +58,7 @@ const Select = ({
   },
   locale = 'en',
   border = true,
+  style,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -74,7 +77,7 @@ const Select = ({
 
   return (
     <CloseBoxOnOutside onClose={handleOptionListClose}>
-      <div className={cn('_SELECT_', className)}>
+      <div className={cn('_SELECT_', className)} style={style}>
         {label.labelText && (
           <div>
             <Text

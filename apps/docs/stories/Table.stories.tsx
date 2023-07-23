@@ -19,7 +19,7 @@ export const Default = () => {
           </Tr>
         </Thead>
         <Tbody>
-          <Tr>
+          {/* <Tr>
             <Td>₩</Td>
             <Td>KRW</Td>
             <Td>한국 원화</Td>
@@ -28,7 +28,7 @@ export const Default = () => {
             <Td>$</Td>
             <Td>USD</Td>
             <Td>미국 달러화</Td>
-          </Tr>
+          </Tr> */}
         </Tbody>
       </Table>
     </div>
