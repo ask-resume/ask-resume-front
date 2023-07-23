@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
-import { useIsMobile } from 'shared-lib/hooks/media-query';
 
 import { getI18nProps } from 'modules/i18n/lib/getStatic';
 import styles from '../../page.module.scss';
@@ -14,32 +13,12 @@ import MySubmitTableFooter from 'modules/myPage/components/MySubmitTableFooter';
 import MySubmitTableHeader from 'modules/myPage/components/MySubmitTableHeader';
 import MyPageTitle from 'modules/myPage/components/MyPageTitle';
 
-const mySubmits = [
-  {
-    id: 1,
-    title: '프론트엔드 이력서',
-    service: 'INTERVIEW_MAKER',
-    status: 'WAITING',
-    createdAt: '2023-06-01T21:43:27+09:00',
-    updatedAt: '2023-06-06T21:43:27+09:00',
-  },
-  {
-    id: 2,
-    title: '프론트엔드 이력서',
-    service: 'INTERVIEW_MAKER',
-    status: 'WAITING',
-    createdAt: '2023-06-02T21:43:27+09:00',
-    updatedAt: '2023-06-06T21:43:27+09:00',
-  },
-];
-
 interface MyPage {
   mySubmitsPage?: Page<SubmitListItemResponse>;
 }
 
 export default function MyPage({ mySubmitsPage }) {
   const { t } = useTranslation(MyPageTranslateNamespaces);
-  const isMobile = useIsMobile();
 
   return (
     <>
@@ -55,7 +34,7 @@ export default function MyPage({ mySubmitsPage }) {
         <div className={styles.table_wrapper}>
           <MySubmitTableHeader />
           <MySubmitTable
-            mySubmits={mySubmitsPage?.content}
+            mySubmits={mySubmitsPage?.list}
             totalElements={mySubmitsPage?.totalElements}
             currentPage={mySubmitsPage?.page}
             pageSize={mySubmitsPage?.pageSize}

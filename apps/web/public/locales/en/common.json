@@ -3,6 +3,12 @@
   "description": "Resume-based expected interview question and answer providing service using OpenAI.",
   "keywords": "OpenAI, LLM, gpt-3.5-turbo, chat-gpt, resume, interview, question, job search, employment, preparation",
 
+  "login_title": "Login - AskResume",
   "form_user_info_title": "Editing ... - AskResume",
-  "my_page_title": "My Page - AskResume"
+  "my_page_title": "My Page - AskResume",
+
+  "social_login": {
+    "google": "Continue with Google",
+    "linked_in": "Continue with LinkedIn"
+  }
 }

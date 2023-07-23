@@ -19,7 +19,7 @@ const Pagination = React.memo(
     numOfPageButtons,
     onClickPageButton,
   }: PaginationProps) => {
-    const { start, end, range, totalPages } = usePagination({
+    const { start, end, range, totalPages, isFirst, isLast } = usePagination({
       currentPage,
       totalRows,
       rowsPerPage,
@@ -34,6 +34,7 @@ const Pagination = React.memo(
           label={{
             labelLeadingIcon: <Icon.Arrow />,
           }}
+          disabled={isFirst}
           onClick={() => onClickPageButton && onClickPageButton(Math.max(1, start - 1))}
         />
         <ul>
@@ -60,6 +61,7 @@ const Pagination = React.memo(
           label={{
             labelLeadingIcon: <Icon.Arrow rotate={180} />,
           }}
+          disabled={isLast}
           onClick={() => onClickPageButton && onClickPageButton(Math.min(totalPages, end + 1))}
         />
       </div>

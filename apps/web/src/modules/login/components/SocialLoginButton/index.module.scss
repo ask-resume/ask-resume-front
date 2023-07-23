@@ -1,0 +1,28 @@
+@import 'shared-ui/src/index.scss';
+
+._SOCIAL_LOGIN_BUTTON {
+  max-width: 240px;
+  width: 80vw;
+  padding: 8px 24px;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: $gray_4;
+  border-radius: 4px;
+
+  font-size: 15px;
+
+  transition: background-color $button_hover_transition;
+
+  img {
+    border-radius: 4px;
+  }
+
+  &:hover {
+    background-color: $gray_1;
+  }
+}

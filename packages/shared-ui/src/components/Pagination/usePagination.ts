@@ -22,13 +22,18 @@ const usePagination = (props: UsePaginationProps = {}) => {
 
   const range = getPageRange(start, end);
 
+  // Page conditions
+  const isNoData = totalPages === 0;
+  const isFirst = currentPage <= 1 || isNoData;
+  const isLast = currentPage === totalPages || isNoData;
+
   return {
     start,
     end,
     range,
     totalPages,
-    isFirst: true,
-    isLast: false,
+    isFirst,
+    isLast,
   };
 };
 

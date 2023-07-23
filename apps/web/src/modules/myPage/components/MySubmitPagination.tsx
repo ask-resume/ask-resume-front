@@ -4,7 +4,7 @@ import Pagination from 'shared-ui/src/components/Pagination';
 import { Page } from '../api/my-submit';
 
 interface MySubmitPaginationProps {
-  pageData: Omit<Page<any>, 'content'>;
+  pageData: Omit<Page<any>, 'lists'>;
 }
 
 const MySubmitPagination = ({ pageData }: MySubmitPaginationProps) => {

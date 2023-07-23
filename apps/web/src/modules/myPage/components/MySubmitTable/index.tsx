@@ -25,18 +25,19 @@ const MySubmitTable = ({ mySubmits, totalElements, currentPage, pageSize }: MySu
         </Tr>
       </Thead>
       <Tbody>
-        {mySubmits.map(({ id, title, status, createdAt }, index) => {
-          const number = totalElements - (currentPage - 1) * pageSize - index;
+        {mySubmits.length > 0 &&
+          mySubmits.map(({ id, title, status, createdAt }, index) => {
+            const number = totalElements - (currentPage - 1) * pageSize - index;
 
-          return (
-            <Tr key={id}>
-              <Td>{number}</Td>
-              <Td>{title}</Td>
-              <Td>{status}</Td>
-              <Td>{dayjs(createdAt).format('YYYY-MM-DD')}</Td>
-            </Tr>
-          );
-        })}
+            return (
+              <Tr key={id}>
+                <Td>{number}</Td>
+                <Td>{title}</Td>
+                <Td>{status}</Td>
+                <Td>{dayjs(createdAt).format('YYYY-MM-DD')}</Td>
+              </Tr>
+            );
+          })}
       </Tbody>
     </Table>
   );

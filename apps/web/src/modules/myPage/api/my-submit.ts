@@ -6,7 +6,7 @@ export interface Page<T> {
   page: number;
   pageSize: number;
   totalElements: number;
-  content: T[];
+  list: T[];
 }
 
 export interface SubmitListItemResponse {
