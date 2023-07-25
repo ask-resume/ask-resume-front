@@ -17,11 +17,11 @@ export const SocialLoginButton = ({ provider }: SocialLoginButtonProps) => {
   const providerInfo = {
     google: {
       icon: '/images/icons/google-icon.png',
-      label: t('common:social_login.google'),
+      label: t('social_login.google'),
     },
     'linked-in': {
       icon: '/images/icons/linked-in-icon.jpeg',
-      label: t('common:social_login.linked_in'),
+      label: t('social_login.linked_in'),
     },
   };
 

@@ -7,8 +7,7 @@
   "form_user_info_title": "Editing ... - AskResume",
   "my_page_title": "My Page - AskResume",
 
-  "social_login": {
-    "google": "Continue with Google",
-    "linked_in": "Continue with LinkedIn"
+  "user_menu": {
+    "login": "Log In"
   }
 }

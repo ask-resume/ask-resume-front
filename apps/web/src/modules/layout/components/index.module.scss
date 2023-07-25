@@ -35,6 +35,12 @@
         display: none;
       }
     }
+
+    ._menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
   }
 
   ._select_width {

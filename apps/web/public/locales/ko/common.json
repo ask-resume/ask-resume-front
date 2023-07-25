@@ -7,8 +7,7 @@
   "form_user_info_title": "수정 중... - AskResume",
   "my_page_title": "마이 페이지 - AskResume",
 
-  "social_login": {
-    "google": "Google 계정으로 로그인",
-    "linked_in": "LinkedIn 계정으로 로그인"
+  "user_menu": {
+    "login": "로그인"
   }
 }
