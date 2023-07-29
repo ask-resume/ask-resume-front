@@ -10,6 +10,7 @@ export interface DropdownProps {
 export interface DropdownMenuItemProps {
   icon?: React.ReactNode;
   label: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLLIElement>;
 }
 
 const Dropdown = ({ button, menu }: DropdownProps) => {
@@ -101,7 +102,7 @@ const DropdownMenu = ({
     if (!triggerRef.current) return;
     if (!dropdownMenuRef.current) return;
 
-    const BUTTON_MENU_GAP = 12;
+    const BUTTON_MENU_GAP = 4;
 
     const trigger = triggerRef.current.getBoundingClientRect();
     const dropdownMenuRect = dropdownMenuRef.current.getBoundingClientRect();
@@ -148,21 +149,31 @@ const DropdownMenu = ({
   return (
     <ul ref={dropdownMenuRef} className="_DROPDOWN_MENU_">
       {menu.map((item, index) => (
-        <DropdownMenuItem key={index} {...item} />
+        <MenuItem key={index} {...item} onClose={onClose} />
       ))}
     </ul>
   );
 };
 
-const DropdownMenuItem = ({ icon, label }: DropdownMenuItemProps) => {
+const MenuItem = ({
+  icon,
+  label,
+  onClick,
+  onClose,
+}: DropdownMenuItemProps & {
+  onClose: () => void;
+}) => {
+  const handleClick: React.MouseEventHandler<HTMLLIElement> = event => {
+    if (onClick) onClick(event);
+    onClose();
+  };
+
   return (
-    <li className="_DROPDOWN_MENU_ITEM_">
+    <li className="_DROPDOWN_MENU_ITEM_" onClick={handleClick}>
       <span>{icon}</span>
       <span>{label}</span>
     </li>
   );
 };
-
-export { DropdownMenuItem };
 
 export default Dropdown;
