@@ -8,6 +8,8 @@
   "my_page_title": "My Page - AskResume",
 
   "user_menu": {
-    "login": "Log In"
+    "login": "Log In",
+    "my_page": "My Page",
+    "logout": "Log Out"
   }
 }

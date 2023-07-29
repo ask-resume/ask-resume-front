@@ -8,6 +8,8 @@
   "my_page_title": "마이 페이지 - AskResume",
 
   "user_menu": {
-    "login": "로그인"
+    "login": "로그인",
+    "my_page": "마이 페이지",
+    "logout": "로그아웃"
   }
 }

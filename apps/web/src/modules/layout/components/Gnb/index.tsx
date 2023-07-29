@@ -22,7 +22,7 @@ const Gnb = React.memo(() => {
         <HomeRouter />
         <div className={styles._menu}>
           <LanguageSwitcher />
-          <UserMenu loginLabel={t('user_menu.login')} />
+          <UserMenu />
         </div>
       </div>
     </header>
