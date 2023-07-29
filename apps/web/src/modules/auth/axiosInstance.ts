@@ -4,7 +4,7 @@ import { NotFoundError, ForbiddenError, AuthError, InternalServerError } from '.
 export const baseURL =
   process.env.NODE_ENV === 'production'
     ? process.env.NEXT_PUBLIC_PRODUCTION_API_URL
-    : process.env.NEXT_PUBLIC_DEV_API_URL;
+    : process.env.NEXT_PUBLIC_API_URL;
 
 // TODO: implement Google OAuth
 const axiosConfig = {
