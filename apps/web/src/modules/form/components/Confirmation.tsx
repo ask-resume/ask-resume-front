@@ -41,7 +41,7 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
   const { t } = useTranslation(FormTranslateNamespaces);
   const { locale } = useRouter().query as { locale: string };
 
-  const { changeQueryParams, passQueryParams } = useQueryParams();
+  const { changeQueryParams } = useQueryParams();
   const handlePrevPageClick = () => {
     const pathname = `/${locale}/form`;
     const query = { type: 'resume' };

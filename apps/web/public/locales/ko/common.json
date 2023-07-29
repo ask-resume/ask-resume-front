@@ -3,5 +3,13 @@
   "description": "OpenAI를 이용한 이력서 기반 예상 면접 질문 및 답변 제공 서비스",
   "keywords": "OpenAI, LLM, gpt-3.5-turbo, chat-gpt, 챗지피티, 이력서, 면접, 질문, 취준, 취업 준비, OpenAI, LLM",
 
-  "form_user_info_title": "수정 중... - AskResume"
+  "login_title": "로그인 - AskResume",
+  "form_user_info_title": "수정 중... - AskResume",
+  "my_page_title": "마이 페이지 - AskResume",
+
+  "user_menu": {
+    "login": "로그인",
+    "my_page": "마이 페이지",
+    "logout": "로그아웃"
+  }
 }

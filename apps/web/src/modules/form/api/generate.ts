@@ -1,4 +1,3 @@
-import { useQuery } from 'react-query';
 import axiosInstance from '../../auth/axiosInstance';
 import { LANGUAGE_HEADER } from 'common/config/locale';
 

@@ -1,0 +1,9 @@
+@import '../index.scss';
+
+$table_th_font-color: $gray_6;
+
+._Th_ {
+  color: $table_th_font-color;
+  font-size: $font_size_small;
+  font-weight: $font_weight_bold;
+}

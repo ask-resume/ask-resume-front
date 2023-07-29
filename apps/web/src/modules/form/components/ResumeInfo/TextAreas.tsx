@@ -5,7 +5,6 @@ import { useTranslation } from 'next-i18next';
 import Text from 'shared-ui/src/components/Text';
 import Select, { Option } from 'shared-ui/src/components/Select';
 import Textarea from 'shared-ui/src/components/Textarea';
-import Tooltip from 'shared-ui/src/components/Tooltip';
 
 import { FormTranslateNamespaces } from 'modules/form/constants';
 import { getResumeSelectObj } from 'modules/form/lib';
@@ -34,12 +33,15 @@ const ResumeTextAreas = ({
     (event: React.ChangeEvent<HTMLTextAreaElement>, idx: number) => {
       onChangeResumeTextArea(event, idx);
     },
-    [],
+    [onChangeResumeTextArea],
   );
 
-  const handleSelectChange = React.useCallback((newSelectedOption: Option, idx: number) => {
-    onChangeResumeSelect(newSelectedOption, idx);
-  }, []);
+  const handleSelectChange = React.useCallback(
+    (newSelectedOption: Option, idx: number) => {
+      onChangeResumeSelect(newSelectedOption, idx);
+    },
+    [onChangeResumeSelect],
+  );
 
   return (
     <>

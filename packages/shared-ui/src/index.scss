@@ -111,6 +111,7 @@ $button_hover_transition: ease-out 0.1s;
 // * $dis-fc: disabled font-color
 @mixin button-color($bgc: $gray_7, $fc: white) {
   background: $bgc;
+  border-color: $bgc;
   color: $fc;
   &:hover {
     @if $bgc == $gray_1 {
@@ -123,6 +124,7 @@ $button_hover_transition: ease-out 0.1s;
       background: $red_8;
     } @else {
       background: darken($bgc, 10%);
+      border-color: darken($bgc, 10%);
     }
   }
   &:active {
@@ -178,6 +180,7 @@ $button_hover_transition: ease-out 0.1s;
 
   &.quiet {
     background: transparent;
+    border-color: transparent;
     @if $bgc == $gray_1 {
       color: $gray_8;
     } @else if $bgc == $gray_7 {
@@ -208,6 +211,7 @@ $button_hover_transition: ease-out 0.1s;
 
   &.minimal {
     background: transparent;
+    border-color: transparent;
     @if $bgc == $gray_1 {
       color: $gray_8;
     } @else if $bgc == $gray_7 {
@@ -221,6 +225,7 @@ $button_hover_transition: ease-out 0.1s;
   }
   &.minimal2 {
     background: transparent;
+    border-color: transparent;
     @if $bgc == $gray_1 {
       color: $gray_6;
     } @else if $bgc == $gray_7 {

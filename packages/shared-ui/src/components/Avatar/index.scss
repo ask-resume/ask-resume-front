@@ -1,0 +1,106 @@
+@import '../../index.scss';
+
+._AVATAR_CONTAINER_ {
+  display: inline-block;
+  vertical-align: middle;
+  transition: $button_hover_transition;
+  user-select: none;
+
+  ._AVATAR_ {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 50%;
+    box-sizing: border-box;
+    .image {
+      height: 100%;
+      &::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 50%;
+        border: 1px solid rgba($color: #000000, $alpha: 0.3);
+      }
+      img {
+        display: inline-block;
+        width: 100%;
+        min-width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .default-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 100%;
+      height: 100%;
+      padding: 0;
+      color: #fff;
+      font-weight: $font-weight-medium;
+      line-height: 1em;
+    }
+  }
+
+  &.xs {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    font-size: $font-size-xx-small;
+    &.workspace ._AVATAR_ {
+      border-radius: 6px;
+      .image::after {
+        border-radius: 6px;
+      }
+    }
+  }
+  &.sm {
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    font-size: $font-size-small;
+  }
+  &.md {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    font-size: $font-size-large;
+  }
+  &.lg {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    font-size: $font-size-x-large;
+  }
+  &.xl {
+    width: 60px;
+    min-width: 60px;
+    height: 60px;
+    font-size: $font-size-xx-large;
+  }
+  &.lg,
+  &.xl {
+    ._AVATAR_ {
+      .image::after {
+        border-width: 2px;
+      }
+    }
+  }
+  &.xxl {
+    width: 150px;
+    min-width: 150px;
+    height: 150px;
+    font-size: $font-size-xxxx-large;
+    cursor: default;
+    ._AVATAR_ {
+      .image::after {
+        border-width: 3px;
+      }
+    }
+  }
+}

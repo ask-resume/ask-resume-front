@@ -4,8 +4,9 @@ import { ShadowMap } from 'shared-ui/src/config/colorMap';
 
 import LanguageSwitcher from 'modules/i18n/components/LanguageSwitcher';
 import HomeRouter from './HomeRouter';
+import UserMenu from './UserMenu';
 
-const Gnb = () => {
+const Gnb = React.memo(() => {
   const boxShadow = ShadowMap['two'];
 
   return (
@@ -17,10 +18,15 @@ const Gnb = () => {
     >
       <div className={styles._wrapper}>
         <HomeRouter />
-        <LanguageSwitcher />
+        <div className={styles._menu}>
+          <LanguageSwitcher />
+          <UserMenu />
+        </div>
       </div>
     </header>
   );
-};
+});
+
+Gnb.displayName = 'Gnb';
 
 export default Gnb;

@@ -34,6 +34,7 @@ export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
   };
   locale?: string;
   border?: boolean;
+  style?: React.CSSProperties;
 }
 
 export const isObjectOption = (option: Option): option is ObjectOption =>
@@ -56,6 +57,7 @@ const Select = ({
   },
   locale = 'en',
   border = true,
+  style,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -74,7 +76,7 @@ const Select = ({
 
   return (
     <CloseBoxOnOutside onClose={handleOptionListClose}>
-      <div className={cn('_SELECT_', className)}>
+      <div className={cn('_SELECT_', className)} style={style}>
         {label.labelText && (
           <div>
             <Text
