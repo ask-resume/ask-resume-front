@@ -10,10 +10,10 @@ const MySubmitTableHeader = () => {
   const router = useRouter();
 
   const PAGE_SIZE_OPTION: ObjectOption[] = [
-    { name: t('my_submit_table.header.pageSize.10'), value: 10 },
-    { name: t('my_submit_table.header.pageSize.20'), value: 20 },
-    { name: t('my_submit_table.header.pageSize.30'), value: 30 },
-    { name: t('my_submit_table.header.pageSize.50'), value: 50 },
+    { name: t('my_submit_table.header.pageSize.10'), value: '10' },
+    { name: t('my_submit_table.header.pageSize.20'), value: '20' },
+    { name: t('my_submit_table.header.pageSize.30'), value: '30' },
+    { name: t('my_submit_table.header.pageSize.50'), value: '50' },
   ];
 
   const selectedPageSize =

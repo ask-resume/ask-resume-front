@@ -50,16 +50,24 @@ export const useUserInfoState = (
     initialValue: INIT_STATE.career,
   });
 
-  const onChangeUserInfo = React.useCallback((stateName: StateName, changedValue: ChangedValue) => {
-    const callback = {
-      selectedJob: onChangeSelectedJob,
-      selectedLanguage: onChangeSelectedLanguage,
-      selectedDifficulty: onChangeSelectedDifficulty,
-      selectedYearsOfCareer: onChangeSelectedYearsOfCareer,
-    };
+  const onChangeUserInfo = React.useCallback(
+    (stateName: StateName, changedValue: ChangedValue) => {
+      const callback = {
+        selectedJob: onChangeSelectedJob,
+        selectedLanguage: onChangeSelectedLanguage,
+        selectedDifficulty: onChangeSelectedDifficulty,
+        selectedYearsOfCareer: onChangeSelectedYearsOfCareer,
+      };
 
-    callback[stateName](changedValue as never);
-  }, []);
+      callback[stateName](changedValue as never);
+    },
+    [
+      onChangeSelectedJob,
+      onChangeSelectedLanguage,
+      onChangeSelectedDifficulty,
+      onChangeSelectedYearsOfCareer,
+    ],
+  );
 
   return {
     userInfo: {

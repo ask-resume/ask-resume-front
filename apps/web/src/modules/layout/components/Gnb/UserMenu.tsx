@@ -44,4 +44,6 @@ const UserMenu = React.memo(() => {
   );
 });
 
+UserMenu.displayName = 'UserMenu';
+
 export default UserMenu;

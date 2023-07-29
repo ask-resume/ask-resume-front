@@ -1,5 +1,4 @@
 import { useQuery } from 'react-query';
-import { LANGUAGE_HEADER } from 'common/config/locale';
 import { ApiResult } from 'common/types/api/responseType';
 import axiosInstance from '../../auth/axiosInstance';
 import { currentMemberKeys } from '../constants';

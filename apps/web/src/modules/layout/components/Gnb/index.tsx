@@ -5,11 +5,9 @@ import { ShadowMap } from 'shared-ui/src/config/colorMap';
 import LanguageSwitcher from 'modules/i18n/components/LanguageSwitcher';
 import HomeRouter from './HomeRouter';
 import UserMenu from './UserMenu';
-import { useTranslation } from 'next-i18next';
 
 const Gnb = React.memo(() => {
   const boxShadow = ShadowMap['two'];
-  const { t } = useTranslation(['common']);
 
   return (
     <header
@@ -28,5 +26,7 @@ const Gnb = React.memo(() => {
     </header>
   );
 });
+
+Gnb.displayName = 'Gnb';
 
 export default Gnb;

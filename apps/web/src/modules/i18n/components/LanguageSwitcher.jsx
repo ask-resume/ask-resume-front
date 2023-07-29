@@ -10,7 +10,6 @@ import { HeightOption } from 'shared-ui/src/components/Select';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
 import styles from './index.module.scss';
 import { generateUrl } from 'shared-lib/utils/location';
-import { useQueryParams } from 'common/hooks/router/useQueryParams';
 
 const height = 'lg';
 const languageOptions = {

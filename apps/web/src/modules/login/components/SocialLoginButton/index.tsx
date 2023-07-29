@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './index.module.scss';
-import { TFunction, useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next';
 import { LoginPageTranslateNamespaces } from 'modules/login/constants';
 
 export type SocialLoginProvider = 'google' | 'linked-in';

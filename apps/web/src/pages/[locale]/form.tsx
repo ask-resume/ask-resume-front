@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { useIsMobile } from 'shared-lib/hooks/media-query';
 import { GetStaticPropsContext } from 'next';
-import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
+import { getI18nProps } from 'modules/i18n/lib/getStatic';
 
 import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
 import { FormTranslateNamespaces } from 'modules/form/constants';
@@ -37,7 +37,7 @@ export default function FormPage({ jobs }) {
   const { changeFormRouter } = useFormRouter();
   React.useEffect(() => {
     changeFormRouter('user-info');
-  }, []);
+  }, [changeFormRouter]);
 
   // userInfo: user information entered by the user
   const { userInfo, userInfoSetter } = useUserInfoState(t);
@@ -104,7 +104,7 @@ export default function FormPage({ jobs }) {
   );
 }
 
-export async function getStaticProps(ctx: GetStaticPropsContext) {
+export async function getServerSideProps(ctx: GetStaticPropsContext) {
   const jobs = await getJobs();
   return {
     props: {
@@ -114,5 +114,3 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
     revalidate: 86400, // 1 day
   };
 }
-
-export { getStaticPaths };

@@ -4,5 +4,5 @@ export const currentMemberKeys = {
   all: ['currentMember'],
 
   details: () => [...currentMemberKeys.all, 'detail'],
-  detail: (props: any = {}) => [...currentMemberKeys.details(), props],
+  detail: () => [...currentMemberKeys.details()],
 };
