@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styles from './index.module.scss';
 import { useTranslation } from 'next-i18next';
 import { LoginPageTranslateNamespaces } from 'modules/login/constants';
+import { baseURL } from 'modules/auth/axiosInstance';
 
 export type SocialLoginProvider = 'google' | 'linked-in';
 
@@ -12,7 +13,7 @@ interface SocialLoginButtonProps {
 export const SocialLoginButton = ({ provider }: SocialLoginButtonProps) => {
   const { t } = useTranslation(LoginPageTranslateNamespaces);
 
-  const href = `http://localhost:8080/api/oauth/${provider}/login`;
+  const href = `${baseURL}/oauth/${provider}/login`;
 
   const providerInfo = {
     google: {
