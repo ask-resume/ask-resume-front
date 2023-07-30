@@ -3,6 +3,8 @@ import { MyPageTranslateNamespaces } from 'modules/myPage/constants';
 import styles from './index.module.scss';
 import Select, { ObjectOption } from 'shared-ui/src/components/Select';
 import { useRouter } from 'next/router';
+import Button from 'shared-ui/src/components/Button';
+import Icon from 'shared-ui/src/components/Icon';
 
 const MySubmitTableHeader = () => {
   const { t } = useTranslation(MyPageTranslateNamespaces);
@@ -20,15 +22,30 @@ const MySubmitTableHeader = () => {
     PAGE_SIZE_OPTION.find(option => option.value == router.query['pageSize']) ??
     PAGE_SIZE_OPTION[0];
 
+  const onClickReload = () => {
+    router.reload();
+  };
+
   return (
     <div className={styles._MY_SUBMIT_TABLE_HEADER_}>
+      <Button
+        variant="ghost"
+        buttonColor="gray"
+        size="sm"
+        label={{
+          labelLeadingIcon: <Icon.Refresh />,
+          labelText: t('my_submit_table.footer.refresh_button'),
+        }}
+        onClick={onClickReload}
+      />
+
       <Select
         selectedOption={selectedPageSize}
         options={PAGE_SIZE_OPTION}
         onChangeSelectedOption={(changed: ObjectOption) =>
           router.push({
-            pathname: '/my-page',
             query: {
+              ...router.query,
               pageSize: changed.value.toString(),
             },
           })

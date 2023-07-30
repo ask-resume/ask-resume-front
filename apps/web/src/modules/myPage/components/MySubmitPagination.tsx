@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Pagination from 'shared-ui/src/components/Pagination';
 
-import { Page } from '../api/my-submit';
+import { Page } from '../api/mySubmit';
 
 interface MySubmitPaginationProps {
   pageData: Omit<Page<any>, 'lists'>;
@@ -12,8 +12,8 @@ const MySubmitPagination = ({ pageData }: MySubmitPaginationProps) => {
 
   const onChange = (page: number) => {
     router.push({
-      pathname: '/my-page',
       query: {
+        ...router.query,
         page,
       },
     });

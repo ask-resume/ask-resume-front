@@ -1,8 +1,8 @@
-export const MyPageTranslateNamespaces = ['my-page', 'common'];
+export const MyPageTranslateNamespaces = ['my-submit', 'common'];
 
-export const currentMemberKeys = {
-  all: ['currentMember'],
+export const mySubmitKeys = {
+  all: ['mySubmit'],
 
-  details: () => [...currentMemberKeys.all, 'detail'],
-  detail: () => [...currentMemberKeys.details()],
+  details: () => [...mySubmitKeys.all, 'detail'],
+  detail: (submitId: number) => [...mySubmitKeys.details(), submitId],
 };

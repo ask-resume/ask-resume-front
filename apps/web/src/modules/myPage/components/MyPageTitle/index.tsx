@@ -4,16 +4,21 @@ import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
 import styles from './index.module.scss';
 
-const MyPageTitle = () => {
+interface MyPageTitleProps {
+  titleKey: string;
+  subTitleKey: string;
+}
+
+const MyPageTitle = ({ titleKey, subTitleKey }: MyPageTitleProps) => {
   const { t } = useTranslation(MyPageTranslateNamespaces);
 
   return (
     <div className={styles._MY_PAGE_TITLE_}>
       <Text weight="bold" variant="h1" size="xx_large">
-        {t('title')}
+        {t(titleKey)}
       </Text>
       <Text color={ColorMap.gray_5} variant="h2" size="xx_small">
-        {t('sub_title')}
+        {t(subTitleKey)}
       </Text>
     </div>
   );

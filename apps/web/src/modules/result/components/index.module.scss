@@ -21,21 +21,12 @@
 
 // Result list
 ._result {
-  @include responsive-web;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  width: 100%;
   height: auto;
-
-  .title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    padding-bottom: 3rem;
-  }
 
   .button {
     margin-top: 3rem;
