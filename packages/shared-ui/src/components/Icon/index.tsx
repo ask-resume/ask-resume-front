@@ -3,6 +3,7 @@ import { Arrow } from './Arrow';
 import { Check } from './Check';
 import { Edit } from './Edit';
 import { LogOut } from './LogOut';
+import { Refresh } from './Refresh';
 import { Setting } from './Setting';
 import { User } from './User';
 import { Wanning } from './Wanning';
@@ -13,6 +14,7 @@ export default {
   Check,
   Edit,
   LogOut,
+  Refresh,
   Setting,
   User,
   Wanning,
