@@ -1,14 +1,15 @@
+import { useTranslation } from 'next-i18next';
 import styles from './index.module.scss';
 import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
-import { TFunction } from 'next-i18next';
 
 interface TitleProps {
-  t: TFunction;
   isMobile: boolean;
 }
 
-const Title = ({ t, isMobile }: TitleProps) => {
+const Title = ({ isMobile }: TitleProps) => {
+  const { t } = useTranslation(['landing']);
+
   return (
     <div className={styles._wrapper}>
       <div className={styles._title}>

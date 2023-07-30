@@ -22,7 +22,7 @@ export default function Home() {
 
       <main className={styles._LOGIN_}>
         <div className={styles.title}>
-          <Title t={t} isMobile={true} />
+          <Title isMobile={true} />
         </div>
 
         <div className={styles.social_login_button}>
@@ -37,7 +37,7 @@ export default function Home() {
 export async function getStaticProps(ctx: GetStaticPropsContext) {
   return {
     props: {
-      ...(await getI18nProps(ctx, LoginPageTranslateNamespaces)),
+      ...(await getI18nProps(ctx, ['landing', ...LoginPageTranslateNamespaces])),
     },
   };
 }
