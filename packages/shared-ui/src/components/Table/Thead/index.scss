@@ -1,0 +1,11 @@
+@import '../index.scss';
+
+$table_th_font-color: $gray_6;
+
+._Thead_ {
+  &.center {
+    th {
+      text-align: center;
+    }
+  }
+}
