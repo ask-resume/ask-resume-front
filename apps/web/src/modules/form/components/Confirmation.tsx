@@ -45,7 +45,7 @@ interface ConfirmationProps {
 const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => {
   const { t } = useTranslation(FormTranslateNamespaces);
   const { locale } = useRouter().query as { locale: LanguageType };
-  const { mutate, isLoading, isError } = useGenerateInterviewQuestions();
+  const { mutate } = useGenerateInterviewQuestions();
 
   const { changeQueryParams } = useQueryParams();
   const handlePrevPageClick = () => {
@@ -66,7 +66,7 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
         });
       },
       onError: () => {
-        alert('서버에 일시적인 문제가 생겼습니다.');
+        alert(t('error-page:500.content'));
       },
     });
   };
