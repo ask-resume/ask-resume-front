@@ -59,14 +59,16 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
     const calculatedFormContents = calculateFormContents({ locale, userInfo, resumeInfo });
 
     // Call API : Generate Interview Questions
-    generateInterviewQuestions(calculatedFormContents);
-    // , {
-    //   onSuccess: () => {
-    //     changeQueryParams({
-    //       pathname,
-    //     });
-    //   },
-    // });
+    mutate(calculatedFormContents, {
+      onSuccess: () => {
+        changeQueryParams({
+          pathname,
+        });
+      },
+      onError: () => {
+        alert('서버에 일시적인 문제가 생겼습니다.');
+      },
+    });
   };
 
   return (

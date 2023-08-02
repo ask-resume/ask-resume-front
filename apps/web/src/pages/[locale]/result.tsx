@@ -18,7 +18,7 @@ export default function ResultPage() {
           {t('result.title')}
         </Text>
         <Text color={ColorMap.gray_5} variant="h2" size="xx_small">
-          {`* ${t('result.subtitle')}`}
+          {t('result.subtitle')}
         </Text>
       </div>
     </div>
