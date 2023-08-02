@@ -16,10 +16,7 @@ import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { UserInfoState } from './UserInfo';
 import { FormTranslateNamespaces } from 'modules/form/constants';
 import { calculateFormContents } from '../lib/confirmation';
-import {
-  generateInterviewQuestions,
-  useGenerateInterviewQuestions,
-} from 'modules/interviewQuestion/api/interviewQuestions';
+import { useGenerateInterviewQuestions } from 'modules/interviewQuestion/api/interviewQuestions';
 import { LanguageType } from 'common/types/api/languageType';
 
 export type ResumeInfoState = {

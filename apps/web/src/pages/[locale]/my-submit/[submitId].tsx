@@ -84,12 +84,12 @@ export default function MySubmitDetailPage({ mySubmitsPage }: MySubmitPage) {
   );
 }
 
-const SubmitDetail = ({ submitData }: { submitData: MySubmitResponse<{}> }) => {
+const SubmitDetail = ({ submitData }: { submitData: MySubmitResponse<any> }) => {
   switch (submitData?.serviceType) {
-    case 'INTERVIEW_MAKER':
-      const interviewMakerList = (submitData as MySubmitResponse<InterviewMakerResponse>)
-        .interviewMakerList;
+    case 'INTERVIEW_MAKER': {
+      const interviewMakerList = submitData.interviewMakerList;
       return <Result resumeData={interviewMakerList} />;
+    }
     default:
       return null;
   }

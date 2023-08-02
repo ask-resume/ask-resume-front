@@ -51,7 +51,7 @@ export interface InterviewMakerResponse {
 }
 
 const getMySubmit = async ({ locale, submitId }: GetMySubmitProps) => {
-  return axiosInstance.get<MySubmitResponse<{}>>(`/submits/${submitId}`, {
+  return axiosInstance.get<MySubmitResponse<any>>(`/submits/${submitId}`, {
     headers: {
       'Accept-Language': LANGUAGE_HEADER[locale],
     },
@@ -60,7 +60,7 @@ const getMySubmit = async ({ locale, submitId }: GetMySubmitProps) => {
 
 export const useMySubmit = (props: GetMySubmitProps) => {
   return useQuery(mySubmitKeys.detail(props.submitId), () => getMySubmit(props), {
-    select: (res: { data: MySubmitResponse<{}> }) => res.data,
+    select: (res: { data: MySubmitResponse<any> }) => res.data,
     cacheTime: 0,
     staleTime: 0,
     refetchOnWindowFocus: false,
