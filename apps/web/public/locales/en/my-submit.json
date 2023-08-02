@@ -2,6 +2,13 @@
   "title": "My Submit List",
   "sub_title": "Our AI is generating responses for you. I will let you know when responses have arrived.",
 
+  "service_type": {
+    "interview_maker": {
+      "title": "Interview Maker AI",
+      "sub_title": "AI service that crafts Interview Questions just for you."
+    }
+  },
+
   "my_submit_table": {
     "number": "#",
     "title": "Title",

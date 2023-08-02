@@ -5,8 +5,8 @@
   },
 
   "result": {
-    "title": "Generated Q&A",
-    "subtitle": "We do not collect generated results.",
+    "title": "Interview question generation request completed.",
+    "subtitle": "You can check the status of requests and the questions generated on My page",
     "question": "[Question {{index}}] {{question}}",
     "answer": "[Best Answer {{index}}] {{answer}}",
     "button": "Download Q&A as a text file"

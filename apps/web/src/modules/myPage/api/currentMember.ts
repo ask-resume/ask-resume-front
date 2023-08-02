@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import { ApiResult } from 'common/types/api/responseType';
 import axiosInstance from '../../auth/axiosInstance';
-import { currentMemberKeys } from '../constants';
+import { currentMemberKeys } from 'common/constants/currentMemberKeys';
 
 export interface CurrentMemberResponse {
   memberId: number;

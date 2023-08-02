@@ -7,7 +7,7 @@ export const baseURL =
     : process.env.NEXT_PUBLIC_API_URL;
 
 // TODO: implement Google OAuth
-const axiosConfig = {
+export const axiosConfig = {
   baseURL,
   withCredentials: true,
   headers: {

@@ -45,6 +45,15 @@
   align-items: center;
   width: 50vw;
   padding: 10vh 0;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+    padding-bottom: 3rem;
+  }
 }
 
 // Error Page
@@ -83,9 +92,8 @@
 ._MY_PAGE_ {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 4rem;
+  gap: 6.4rem;
   padding: 60px 0;
 
   @media screen and (min-width: $breakpoint-medium) {
@@ -98,11 +106,11 @@
     width: 94vw;
   }
 
-  & .title_wrapper {
+  .title_wrapper {
+    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   & .table_wrapper {
