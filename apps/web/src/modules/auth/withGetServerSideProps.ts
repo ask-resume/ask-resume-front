@@ -6,7 +6,7 @@ export function withGetServerSideProps(getServerSideProps: GetServerSideProps): 
   return async (context: GetServerSidePropsContext) => {
     try {
       axiosInstance.defaults.headers.cookie = context.req.headers.cookie;
-      return getServerSideProps(context);
+      return await getServerSideProps(context);
     } catch (error) {
       if (isInstanceOfAPIError(error)) {
         const { redirectUrl, notFound } = error;

@@ -59,7 +59,6 @@ export const getServerSideProps = withGetServerSideProps(async ctx => {
     page = '1',
     pageSize = '10',
   } = ctx.query as { locale: string; page: string; pageSize: string };
-
   const mySubmitsPage = await getMySubmits(locale, parseInt(page), parseInt(pageSize));
 
   return {
