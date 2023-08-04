@@ -4,9 +4,7 @@ import Router from 'next/router';
 import { isInstanceOfAPIError } from 'modules/auth/CustomError';
 import Page404 from 'pages/404';
 
-type ErrorBoundaryProps = React.PropsWithChildren<{
-  fallback: React.ReactNode;
-}>;
+type ErrorBoundaryProps = React.PropsWithChildren<{}>;
 
 interface ErrorBoundaryState {
   error: Error | null;
@@ -62,8 +60,8 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
   }
 
   render() {
+    console.log('여기요');
     const { error } = this.state;
-    const { fallback } = this.props;
     if (isInstanceOfAPIError(error)) {
       const { redirectUrl, notFound } = error;
 
@@ -77,6 +75,6 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
       }
     }
 
-    return fallback;
+    return this.props.children;
   }
 }
