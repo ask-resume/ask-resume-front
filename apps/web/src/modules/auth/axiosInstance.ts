@@ -33,6 +33,7 @@ axiosInstance.interceptors.response.use(
         } catch (e) {
           throw new AuthError();
         }
+        break;
       case 403:
         throw new ForbiddenError();
       case 404:

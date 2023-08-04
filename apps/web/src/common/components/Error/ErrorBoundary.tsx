@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { isInstanceOfAPIError } from 'modules/auth/CustomError';
 import Page404 from 'pages/404';
 
-type ErrorBoundaryProps = React.PropsWithChildren<{}>;
+type ErrorBoundaryProps = React.PropsWithChildren;
 
 interface ErrorBoundaryState {
   error: Error | null;
