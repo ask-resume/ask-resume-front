@@ -61,11 +61,14 @@ const execFunc = (func: any, props: any) => {
 };
 
 const IconList: Record<string, string[]> = {
-  Arrow: ['arrow', 'chevron', 'chevron-alt', 'solid'],
-  Edit: ['default', 'box'],
-  Setting: [''],
   AirPlane: [''],
+  Arrow: ['arrow', 'chevron', 'chevron-alt', 'solid'],
   Check: ['single', 'double', 'alt', 'circle', 'circle-ghost'],
+  Edit: ['default', 'box'],
+  LogOut: [''],
+  Refresh: [''],
+  Setting: [''],
+  User: [''],
   Wanning: ['circle', 'circle-ghost'],
 };
 

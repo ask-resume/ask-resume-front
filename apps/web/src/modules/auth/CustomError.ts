@@ -36,3 +36,11 @@ export class AuthError extends ApiError {
     this.message = 'You are an unauthenticated user. Please Login.';
   }
 }
+
+export class InternalServerError extends ApiError {
+  constructor() {
+    super('/error');
+    this.name = 'InternalServerError';
+    this.message = 'AskResume server is temporarily unavailable.';
+  }
+}

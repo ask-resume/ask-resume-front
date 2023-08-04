@@ -1,7 +1,7 @@
 import React from 'react';
+import cn from 'classnames';
 import { ColorMap } from '../../config/colorMap';
 import './index.scss';
-import cn from 'classnames';
 
 export interface AirplaneProps {
   color?: ColorMap;

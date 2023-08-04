@@ -1,0 +1,31 @@
+{
+  "title": "My Submit List",
+  "sub_title": "Our AI is generating responses for you. I will let you know when responses have arrived.",
+
+  "service_type": {
+    "interview_maker": {
+      "title": "Interview Maker AI",
+      "sub_title": "AI service that crafts Interview Questions just for you."
+    }
+  },
+
+  "my_submit_table": {
+    "number": "#",
+    "title": "Title",
+    "status": "Status",
+    "submitted_at": "Submit Date",
+
+    "header": {
+      "pageSize": {
+        "10": "10 Rows",
+        "20": "20 Rows",
+        "30": "30 Rows",
+        "50": "50 Rows"
+      }
+    },
+
+    "footer": {
+      "refresh_button": "Refresh"
+    }
+  }
+}

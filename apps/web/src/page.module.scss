@@ -45,6 +45,15 @@
   align-items: center;
   width: 50vw;
   padding: 10vh 0;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+    padding-bottom: 3rem;
+  }
 }
 
 // Error Page
@@ -76,5 +85,65 @@
       font-size: 14px;
       font-weight: 500;
     }
+  }
+}
+
+// My Page
+._MY_PAGE_ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6.4rem;
+  padding: 60px 0;
+
+  @media screen and (min-width: $breakpoint-medium) {
+    width: 800px;
+  }
+  @media screen and (min-width: $breakpoint-xsmall) and (max-width: #{$breakpoint-medium - 1}) {
+    width: 88vw;
+  }
+  @media screen and (max-width: #{$breakpoint-xsmall - 1}) {
+    width: 94vw;
+  }
+
+  .title_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  & .table_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3.2rem;
+  }
+}
+
+// Login
+._LOGIN_ {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .social_login_button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
   }
 }

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { useIsMobile } from 'shared-lib/hooks/media-query';
 import { GetStaticPropsContext } from 'next';
-import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
+import { getI18nProps } from 'modules/i18n/lib/getStatic';
 
 import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
 import { FormTranslateNamespaces } from 'modules/form/constants';
@@ -13,7 +13,6 @@ import {
   useResumeSelectState,
 } from 'modules/form/hooks/useResumeInfoState';
 import { TAB_CNT } from 'modules/form/constants';
-import { useFormRouter } from 'modules/form/hooks/useFormRouter';
 import { validateUserInfoForm, validateResumeInfoForm } from 'modules/form/lib';
 import { FormRouterType } from 'modules/form/types';
 import { getJobs } from 'modules/form/api/job';
@@ -21,6 +20,7 @@ import { getJobs } from 'modules/form/api/job';
 import styles from '../../page.module.scss';
 import Router from 'modules/form/components/Router';
 import { UserInfo, ResumeInfo, Confirmation } from 'modules/form/components';
+import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
 
 // After receiving jobs data for all languages, modify it so that you can select related option values
 // (ex. Enter web development after selecting English language -> web develop is displayed)
@@ -34,10 +34,10 @@ export default function FormPage({ jobs }) {
   );
 
   // Initialize the query string with user-info when page refresh.
-  const { changeFormRouter } = useFormRouter();
-  React.useEffect(() => {
-    changeFormRouter('user-info');
-  }, []);
+  // const { changeFormRouter } = useFormRouter();
+  // React.useEffect(() => {
+  //   changeFormRouter('user-info');
+  // }, [changeFormRouter]);
 
   // userInfo: user information entered by the user
   const { userInfo, userInfoSetter } = useUserInfoState(t);
@@ -104,15 +104,12 @@ export default function FormPage({ jobs }) {
   );
 }
 
-export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const jobs = await getJobs();
+export const getServerSideProps = withGetServerSideProps(async ctx => {
+  const jobs = await getJobs({ headers: { Cookie: ctx.req.headers.cookie } });
   return {
     props: {
-      jobs,
       ...(await getI18nProps(ctx, FormTranslateNamespaces)),
+      jobs,
     },
-    revalidate: 86400, // 1 day
   };
-}
-
-export { getStaticPaths };
+});

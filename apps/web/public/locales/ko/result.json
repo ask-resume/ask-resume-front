@@ -1,11 +1,7 @@
 {
-  "loading_fallback": {
-    "title": "로딩중입니다.",
-    "description": "질문을 생성하고 있습니다. 약 30초 정도 소요됩니다."
-  },
   "result": {
-    "title": "생성된 Q&A",
-    "subtitle": "생성된 결과는 수집하지 않습니다.",
+    "title": "면접 질문 생성 요청 완료",
+    "subtitle": "마이 페이지에서 생성된 질문을 확인할 수 있습니다.",
     "question": "[질문 {{index}}] {{question}}",
     "answer": "[모범 답안 {{index}}] {{answer}}",
     "button": "Q&A를 텍스트 파일로 다운로드"

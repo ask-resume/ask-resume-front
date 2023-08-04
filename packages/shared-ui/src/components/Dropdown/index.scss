@@ -1,0 +1,46 @@
+@import '../../index.scss';
+
+$dropdown_color_border: $gray_3;
+$dropdown_color_background: $white;
+$dropdown_shadow: $shadow-4;
+$dropdown-item_color_background_hover: $gray_1;
+
+$dropdown_min-width: 160px;
+$dropdown_border-radius: 6px;
+
+._DROPDOWN_TRIGGER_ {
+  display: inline-block;
+  cursor: pointer;
+
+  & > * {
+    margin: 0;
+  }
+}
+
+._DROPDOWN_MENU_ {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: $dropdown_min-width;
+  border-radius: $dropdown_border-radius;
+  overflow: hidden;
+  padding: 4px;
+
+  background: $dropdown_color_background;
+  border: 1px solid $dropdown_color_border;
+  box-shadow: $dropdown_shadow;
+}
+
+._DROPDOWN_MENU_ITEM_ {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  &:hover {
+    background: $dropdown-item_color_background_hover;
+  }
+}

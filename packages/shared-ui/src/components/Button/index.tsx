@@ -14,7 +14,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   label?: {
     labelLeadingIcon?: React.ReactElement;
     labelTailingIcon?: React.ReactElement;
-    labelText?: string;
+    labelText?: string | number;
   };
 }
 

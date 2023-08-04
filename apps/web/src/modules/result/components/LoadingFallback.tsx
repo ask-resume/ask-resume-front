@@ -22,7 +22,7 @@ const LoadingFallback = () => {
 
       <div className={styles.content}>
         <Text size={size.title} weight="bold" textColor={ColorMap.gray_7}>
-          {t('loading_fallback.title')}
+          {t('common:loading_fallback.title')}
         </Text>
 
         <Text
@@ -32,7 +32,7 @@ const LoadingFallback = () => {
           align="center"
           textColor={ColorMap.gray_6}
         >
-          {t('loading_fallback.description')}
+          {t('common:loading_fallback.description')}
         </Text>
       </div>
     </div>

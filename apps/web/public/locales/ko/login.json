@@ -1,0 +1,8 @@
+{
+  "title": "로그인",
+
+  "social_login": {
+    "google": "Google 계정으로 로그인",
+    "linked_in": "LinkedIn 계정으로 로그인"
+  }
+}

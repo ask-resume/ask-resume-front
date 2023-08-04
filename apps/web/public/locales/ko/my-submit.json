@@ -1,0 +1,31 @@
+{
+  "title": "내 제출 목록",
+  "sub_title": "인공지능이 열심히 답변을 작성하고 있어요. 답변이 도착하면 \"결과\"란을 통해 알려드릴게요.",
+
+  "service_type": {
+    "interview_maker": {
+      "title": "Interview Maker AI",
+      "sub_title": "나를 위한 맞춤형 면접 질문 생성 인공지능 서비스입니다."
+    }
+  },
+
+  "my_submit_table": {
+    "number": "번호",
+    "title": "제목",
+    "status": "결과",
+    "submitted_at": "제출일",
+
+    "header": {
+      "pageSize": {
+        "10": "10개씩 보기",
+        "20": "20개씩 보기",
+        "30": "30개씩 보기",
+        "50": "50개씩 보기"
+      }
+    },
+
+    "footer": {
+      "refresh_button": "새로고침"
+    }
+  }
+}

@@ -28,7 +28,7 @@ export default function Home() {
       </Head>
 
       <main className={styles._LANDING_}>
-        <Title t={t} isMobile={isMobile} />
+        <Title isMobile={isMobile} />
         <GoToFormButton t={t} isMobile={isMobile} />
       </main>
     </>

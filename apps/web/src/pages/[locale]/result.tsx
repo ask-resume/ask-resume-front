@@ -1,32 +1,26 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
 
 import styles from '../../page.module.scss';
-import { useGenerateResume } from 'modules/result/api/result';
 import { getI18nProps } from 'modules/i18n/lib/getStatic';
-import LoadingFallback from 'modules/result/components/LoadingFallback';
 import { ResultTranslateNamespaces } from 'modules/form/constants';
-import Result from 'modules/result/components/Result';
-import DefaultErrorFallback from 'common/components/Error/DefaultErrorFallback';
+import { useTranslation } from 'next-i18next';
+import Text from 'shared-ui/src/components/Text';
+import { ColorMap } from 'shared-ui/src/config/colorMap';
 
 export default function ResultPage() {
-  const router = useRouter();
-  const { locale, formInfo } = router.query as { locale: string; formInfo: string };
-  const {
-    data: resumeData,
-    isLoading,
-    isError,
-    error,
-    refetch,
-  } = useGenerateResume({ formInfo, locale });
-  const isDataLoaded = !isLoading && !isError;
+  const { t } = useTranslation(ResultTranslateNamespaces);
 
   return (
     <div className={styles._RESULT_}>
-      {isLoading && <LoadingFallback />}
-      {isError && <DefaultErrorFallback error={error} refetch={refetch} />}
-      {isDataLoaded && <Result resumeData={resumeData} />}
+      <div className={styles.title}>
+        <Text weight="bold" variant="h1" size="xx_large">
+          {t('result.title')}
+        </Text>
+        <Text color={ColorMap.gray_5} variant="h2" size="xx_small">
+          {t('result.subtitle')}
+        </Text>
+      </div>
     </div>
   );
 }

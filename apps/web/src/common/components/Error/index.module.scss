@@ -2,12 +2,11 @@
 @import '../../../page.module.scss';
 
 ._error_fallback {
-  @include responsive-web;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
   gap: 3rem;
+  width: 100%;
 
   .content {
     display: flex;

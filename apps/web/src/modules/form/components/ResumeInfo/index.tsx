@@ -28,7 +28,7 @@ const ResumeInfo = ({
   onChangeResumeSelect,
 }: ResumeInfoProps) => {
   const { t } = useTranslation(FormTranslateNamespaces);
-  const { type, changeFormRouter } = useFormRouter();
+  const { changeFormRouter } = useFormRouter();
 
   const [selectedIdx, setSelectedIdx] = React.useState(INIT_SELECT_IDX);
   const handleSelectedIdxChange = React.useCallback(

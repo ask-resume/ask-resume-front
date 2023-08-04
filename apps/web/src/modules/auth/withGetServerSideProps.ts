@@ -4,7 +4,7 @@ import { isInstanceOfAPIError } from './CustomError';
 export function withGetServerSideProps(getServerSideProps: GetServerSideProps): GetServerSideProps {
   return async (context: GetServerSidePropsContext) => {
     try {
-      return await getServerSideProps(context);
+      return getServerSideProps(context);
     } catch (error) {
       if (isInstanceOfAPIError(error)) {
         const { redirectUrl, notFound } = error;

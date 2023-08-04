@@ -1,19 +1,35 @@
-import axios from 'axios';
-import { NotFoundError, ForbiddenError, AuthError } from './CustomError';
+import axios, { AxiosRequestConfig } from 'axios';
+import { NotFoundError, ForbiddenError, AuthError, InternalServerError } from './CustomError';
 
 export const baseURL =
   process.env.NODE_ENV === 'production'
     ? process.env.NEXT_PUBLIC_PRODUCTION_API_URL
-    : process.env.NEXT_PUBLIC_DEV_API_URL;
+    : process.env.NEXT_PUBLIC_API_URL;
 
 // TODO: implement Google OAuth
-const axiosInstance = axios.create({
+export const axiosConfig = {
   baseURL,
-  // withCredentials: true,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
-});
+};
+
+const axiosInstance = axios.create(axiosConfig);
+
+// Axios interceptor for JWT refresh
+interface AxiosRetryConfig extends AxiosRequestConfig {
+  _retry?: number;
+}
+
+const canRetry = (originalRequest: AxiosRetryConfig) => {
+  return !originalRequest._retry;
+};
+
+const refreshToken = async (originalRequest: AxiosRetryConfig) => {
+  originalRequest._retry = 1;
+  await axiosInstance.get('/refresh', originalRequest);
+};
 
 axiosInstance.interceptors.response.use(
   res => res.data,
@@ -22,11 +38,18 @@ axiosInstance.interceptors.response.use(
 
     switch (errorStatus) {
       case 401:
-        throw new AuthError();
+        if (canRetry(error.config)) {
+          await refreshToken(error);
+          return axiosInstance(error.config);
+        } else {
+          throw new AuthError();
+        }
       case 403:
         throw new ForbiddenError();
       case 404:
         throw new NotFoundError();
+      case 500:
+        throw new InternalServerError();
       default:
         break;
     }

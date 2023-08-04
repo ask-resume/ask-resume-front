@@ -1,0 +1,8 @@
+{
+  "title": "Login",
+
+  "social_login": {
+    "google": "Continue with Google",
+    "linked_in": "Continue with LinkedIn"
+  }
+}

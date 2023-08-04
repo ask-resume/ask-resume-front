@@ -8,8 +8,7 @@
     },
     "dev": {
       "cache": false,
-      "persistent": true,
-      "env": ["NEXT_PUBLIC_DEV_API_URL"]
+      "persistent": true
     },
     "clean": {
       "cache": false
@@ -18,6 +17,6 @@
       "dependsOn": ["build", "lint"]
     }
   },
-  "globalEnv": ["GITHUB_TOKEN", "NODE_ENV", "ANALYZE"],
+  "globalEnv": ["GITHUB_TOKEN", "NODE_ENV", "ANALYZE", "NEXT_PUBLIC_API_URL"],
   "globalDependencies": [".env"]
 }

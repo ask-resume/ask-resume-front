@@ -16,6 +16,8 @@ import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { UserInfoState } from './UserInfo';
 import { FormTranslateNamespaces } from 'modules/form/constants';
 import { calculateFormContents } from '../lib/confirmation';
+import { useGenerateInterviewQuestions } from 'modules/interviewQuestion/api/interviewQuestions';
+import { LanguageType } from 'common/types/api/languageType';
 
 export type ResumeInfoState = {
   select: Option;
@@ -39,9 +41,10 @@ interface ConfirmationProps {
 
 const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => {
   const { t } = useTranslation(FormTranslateNamespaces);
-  const { locale } = useRouter().query as { locale: string };
+  const { locale } = useRouter().query as { locale: LanguageType };
+  const { mutate } = useGenerateInterviewQuestions();
 
-  const { changeQueryParams, passQueryParams } = useQueryParams();
+  const { changeQueryParams } = useQueryParams();
   const handlePrevPageClick = () => {
     const pathname = `/${locale}/form`;
     const query = { type: 'resume' };
@@ -52,9 +55,16 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
     const pathname = `/${locale}/result`;
     const calculatedFormContents = calculateFormContents({ locale, userInfo, resumeInfo });
 
-    changeQueryParams({
-      pathname,
-      query: { formInfo: JSON.stringify(calculatedFormContents) },
+    // Call API : Generate Interview Questions
+    mutate(calculatedFormContents, {
+      onSuccess: () => {
+        changeQueryParams({
+          pathname,
+        });
+      },
+      onError: () => {
+        alert(t('error-page:500.content'));
+      },
     });
   };
 
