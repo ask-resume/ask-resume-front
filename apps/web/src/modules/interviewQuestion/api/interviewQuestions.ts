@@ -1,6 +1,8 @@
-import axiosInstance from '../../auth/axiosInstance';
-import { LanguageType } from 'common/types/api/languageType';
 import { useMutation } from 'react-query';
+import { LanguageType } from 'common/types/api/languageType';
+
+import axiosInstance from '../../auth/axiosInstance';
+import { LANGUAGE_HEADER } from 'common/config/locale';
 
 export interface PredictionResponse {
   bestAnswer: string;
@@ -30,8 +32,16 @@ export interface InterviewQuestionCreationForm {
   language: LanguageType;
 }
 
-export const generateInterviewQuestions = async (form: InterviewQuestionCreationForm) => {
-  return axiosInstance.post('/generative/interview-maker', form);
+export const generateInterviewQuestions = async ({
+  form,
+  language,
+}: {
+  form: InterviewQuestionCreationForm;
+  language: LanguageType;
+}) => {
+  return axiosInstance.post('/generative/interview-maker', form, {
+    headers: { 'Accept-Language': LANGUAGE_HEADER[language] },
+  });
 };
 
 // When implementing i18next, change useErrorboundary and suspense to true to handle client errors.

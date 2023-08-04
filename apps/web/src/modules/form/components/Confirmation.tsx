@@ -56,16 +56,19 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
     const calculatedFormContents = calculateFormContents({ locale, userInfo, resumeInfo });
 
     // Call API : Generate Interview Questions
-    mutate(calculatedFormContents, {
-      onSuccess: () => {
-        changeQueryParams({
-          pathname,
-        });
+    mutate(
+      { form: calculatedFormContents, language: locale },
+      {
+        onSuccess: () => {
+          changeQueryParams({
+            pathname,
+          });
+        },
+        onError: () => {
+          alert(t('error-page:500.content'));
+        },
       },
-      onError: () => {
-        alert(t('error-page:500.content'));
-      },
-    });
+    );
   };
 
   return (
