@@ -60,7 +60,6 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
   }
 
   render() {
-    console.log('여기요');
     const { error } = this.state;
     if (isInstanceOfAPIError(error)) {
       const { redirectUrl, notFound } = error;
