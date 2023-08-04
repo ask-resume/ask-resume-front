@@ -12,6 +12,7 @@ import MySubmitPagination from 'modules/myPage/components/MySubmitPagination';
 import MySubmitTableHeader from 'modules/myPage/components/MySubmitTableHeader';
 import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
+import axiosInstance from 'modules/auth/axiosInstance';
 
 interface MySubmitPageProps {
   mySubmitsPage?: Page<SubmitListItemResponse>;
@@ -60,7 +61,11 @@ export const getServerSideProps = withGetServerSideProps(async ctx => {
     pageSize = '10',
   } = ctx.query as { locale: string; page: string; pageSize: string };
 
-  const mySubmitsPage = await getMySubmits(locale, parseInt(page), parseInt(pageSize));
+  axiosInstance.defaults.headers.Cookie = ctx.req.cookies as any;
+  console.log('토큰', ctx.req.cookies);
+  const mySubmitsPage = await getMySubmits(locale, parseInt(page), parseInt(pageSize), {
+    headers: { Cookie: ctx.req.headers.cookie },
+  });
 
   return {
     props: {

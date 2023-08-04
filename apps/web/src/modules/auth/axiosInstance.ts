@@ -23,7 +23,10 @@ interface AxiosRetryConfig extends AxiosRequestConfig {
 }
 
 const canRetry = (originalRequest: AxiosRetryConfig) => {
-  return !originalRequest._retry;
+  const retry = !originalRequest._retry;
+  originalRequest._retry++;
+
+  return retry;
 };
 
 const refreshToken = async (originalRequest: AxiosRetryConfig) => {
@@ -39,8 +42,12 @@ axiosInstance.interceptors.response.use(
     switch (errorStatus) {
       case 401:
         if (canRetry(error.config)) {
-          await refreshToken(error);
-          return axiosInstance(error.config);
+          try {
+            await refreshToken(error);
+            return axiosInstance(error.config);
+          } catch (e) {
+            throw new AuthError();
+          }
         } else {
           throw new AuthError();
         }
