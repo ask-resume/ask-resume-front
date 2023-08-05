@@ -7,11 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ubuntu
+    container: pandoc/latex
     steps:
       - uses: actions/checkout@v2
-      - name: filters output_temp/ to output/ using rsync
-        run: apk add rsync && rsync -arv --include="/.prettierrc" --include="/.gitignore" --include="/.npmrc" output_temp/ output/
       - name: Install mustache (to update the date)
         run: apk add ruby && gem install mustache
       - name: creates output
