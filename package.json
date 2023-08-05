@@ -1,6 +1,6 @@
 {
   "name": "ask-resume-front",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Ask Resume Front-end Project",
   "main": "index.js",
   "scripts": {
