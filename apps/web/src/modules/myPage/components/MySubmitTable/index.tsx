@@ -32,14 +32,22 @@ const MySubmitTable = ({ mySubmits, totalElements, currentPage, pageSize }: MySu
           mySubmits.map(({ submitId, title, submitStatus, createdAt }, index) => {
             const number = totalElements - (currentPage - 1) * pageSize - index;
 
+            const isAccessable = submitStatus === 'COMPLETED';
+
             let status = submitStatus.replaceAll('_', '');
             status = status[0]?.toUpperCase() + status.substring(1).toLowerCase();
+
+            const onClickRow = () => {
+              if (isAccessable) {
+                router.push(`/my-submit/${submitId}`);
+              }
+            };
 
             return (
               <Tr
                 key={submitId}
-                style={{ cursor: 'pointer' }}
-                onClick={() => router.push(`/my-submit/${submitId}`)}
+                style={{ cursor: isAccessable ? 'pointer' : '' }}
+                onClick={onClickRow}
               >
                 <Td>{number}</Td>
                 <Td>{title}</Td>
