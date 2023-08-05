@@ -10,15 +10,14 @@ jobs:
     container: pandoc/latex
     steps:
       - uses: actions/checkout@v2
-      - name: creates output
-        run: sh ./build.sh
+      - name: Install mustache (to update the date)
+        run: apk add ruby && gem install mustache
       - name: Pushes to another repository
-        id: push_directory
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: 'output'
+          source-directory: .
           destination-github-username: '132262B'
           destination-repository-name: 'ask-resume-front'
           user-email: ${{ secrets.OFFICIAL_ACCOUNT_EMAIL }}
