@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: pandoc/latex
+    container: ubuntu
     steps:
       - uses: actions/checkout@v2
       - name: filters output_temp/ to output/ using rsync
