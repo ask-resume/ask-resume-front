@@ -1,8 +1,7 @@
 {
   "button": {
     "prev-page": "이전 페이지",
-    "next-page": "다음 페이지",
-    "submit": "Q&A 생성"
+    "next-page": "다음 페이지"
   },
 
   "user_info": {

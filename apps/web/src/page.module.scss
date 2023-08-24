@@ -94,7 +94,7 @@
   flex-direction: column;
   align-items: center;
   gap: 6.4rem;
-  padding: 60px 0;
+  padding: 6rem 0;
 
   @media screen and (min-width: $breakpoint-medium) {
     width: 800px;
@@ -146,4 +146,10 @@
     align-items: center;
     gap: 1.6rem;
   }
+}
+
+// PDF
+._PDF_ {
+  display: flex;
+  padding: 6rem 0;
 }

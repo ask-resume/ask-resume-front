@@ -1,0 +1,32 @@
+@import 'shared-ui/src/index.scss';
+
+.PDFUploader {
+  /* Layout */
+  min-width: 60rem;
+  padding: 2.4rem;
+  gap: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  /* Style */
+  border-radius: 1rem;
+  box-shadow: $shadow_2;
+
+  footer {
+    /* Layout */
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.2rem;
+    padding: 1.2rem 0;
+
+    /* Style */
+    background: $white;
+    position: sticky;
+    bottom: 0;
+  }
+}
+
+.content {
+  flex: 1;
+}

@@ -1,0 +1,102 @@
+@import 'shared-ui/src/index.scss';
+
+$pdf_viewer_padding: 1.6rem;
+
+.PDFViewer {
+  width: 90vw;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Document Section */
+
+.documentSection {
+  /* Layout */
+  height: 100%;
+  padding: $pdf_viewer_padding;
+}
+
+.document {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: unset !important;
+
+  canvas {
+    max-width: 100% !important;
+    height: auto !important;
+
+    /* Style */
+    box-shadow: $shadow_1;
+  }
+}
+
+/* Button Section */
+
+$button_section_height: 4rem;
+$button_text_color: $blue_6;
+
+.buttonSection {
+  /* Layout */
+  height: $button_section_height;
+  padding: $pdf_viewer_padding;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.6rem;
+  position: sticky;
+  top: 0;
+
+  /* Style */
+  background-color: $white;
+  color: $button_text_color;
+
+  ul {
+    /* Layout */
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+
+    /* Style */
+    list-style: none;
+  }
+
+  button {
+    width: $button_section_height;
+    height: $button_section_height;
+  }
+
+  span {
+    line-height: $button_section_height;
+  }
+
+  svg path {
+    fill: $button_text_color;
+  }
+
+  .rightButtonGroup {
+    justify-content: flex-end;
+
+    svg {
+      path {
+        fill: $gray_5;
+      }
+
+      &:hover {
+        path {
+          fill: $button_text_color;
+        }
+      }
+    }
+  }
+}

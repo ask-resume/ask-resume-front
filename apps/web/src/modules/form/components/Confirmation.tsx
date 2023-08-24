@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'next-i18next';
+import { i18n, useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
 import { uid } from 'react-uid';
@@ -41,18 +41,19 @@ interface ConfirmationProps {
 
 const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => {
   const { t } = useTranslation(FormTranslateNamespaces);
-  const { locale } = useRouter().query as { locale: LanguageType };
+  const locale = i18n.language as LanguageType;
   const { mutate } = useGenerateInterviewQuestions();
 
   const { changeQueryParams } = useQueryParams();
   const handlePrevPageClick = () => {
-    const pathname = `/${locale}/form`;
+    const pathname = `/form`;
     const query = { type: 'resume' };
     changeQueryParams({ pathname, query });
   };
 
   const handleSubmitClick = () => {
-    const pathname = `/${locale}/result`;
+    alert('hi');
+    const pathname = `/result`;
     const calculatedFormContents = calculateFormContents({ locale, userInfo, resumeInfo });
 
     // Call API : Generate Interview Questions
@@ -92,7 +93,7 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
           size={isMobile ? 'sm' : 'lg'}
           buttonColor="blue"
           label={{
-            labelText: t('button.submit') ?? '',
+            labelText: t('common:button.submit') ?? '',
             labelTailingIcon: <Icon.AirPlane />,
           }}
           onClick={handleSubmitClick}

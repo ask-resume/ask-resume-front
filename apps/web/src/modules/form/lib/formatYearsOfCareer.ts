@@ -29,8 +29,11 @@ export const formatYearsOfCareer = ({
     },
   };
 
-  if (labels[locale][selectedYearsOfCareer]) {
-    return labels[locale][selectedYearsOfCareer];
+  const localeLabels = labels[locale];
+  const selectedYearLabel = localeLabels && localeLabels[selectedYearsOfCareer];
+
+  if (selectedYearLabel) {
+    return selectedYearLabel;
   }
 
   return `${selectedYearsOfCareer} ${t('user_info.career.years')}`;

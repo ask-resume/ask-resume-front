@@ -5,12 +5,9 @@ import { FormRouterType } from '../types';
 
 const useFormRouter = () => {
   const router = useRouter();
-  const { locale, type } = React.useMemo(
-    () => router.query as { locale: string; type: FormRouterType },
-    [router.query],
-  );
+  const { type } = React.useMemo(() => router.query as { type: FormRouterType }, [router.query]);
 
-  const pathname = `/${locale}/form`;
+  const pathname = `/form`;
   const { changeQueryParams } = useQueryParams();
 
   const changeFormRouter = (type: 'user-info' | 'resume' | 'confirmation') => {
