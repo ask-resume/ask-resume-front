@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import { i18n, useTranslation } from 'next-i18next';
 
 import Text from 'shared-ui/src/components/Text';
 import { ColorMap } from 'shared-ui/src/config/colorMap';
@@ -34,7 +34,7 @@ interface UserInfoProps {
 
 const UserInfo = ({ isMobile, jobs, userInfo, onChangeUserInfo }: UserInfoProps) => {
   const { t } = useTranslation(FormTranslateNamespaces);
-  const { locale } = useRouter().query as { locale: string };
+  const locale = i18n.language;
 
   const LABEL_SIZE = isMobile ? 'medium' : 'large';
   const LABEL_WEIGHT = 'medium';

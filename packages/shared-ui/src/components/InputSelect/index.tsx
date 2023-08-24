@@ -77,7 +77,7 @@ const InputSelect = ({
     setIsOpen(isOpen => !isOpen);
   };
 
-  const filteredOptions = options.filter(option => {
+  const filteredOptions = options?.filter(option => {
     return getOptionName(option).toLowerCase().includes(inputValue.toLowerCase());
   });
 
