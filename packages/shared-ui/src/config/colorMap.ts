@@ -1,4 +1,6 @@
 export const ColorMap = {
+  currentColor: 'currentColor',
+
   // Primary Blue
   blue_0: '#F3F9FF',
   blue_1: '#E6F2FF',

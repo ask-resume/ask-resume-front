@@ -1,8 +1,7 @@
 {
   "button": {
     "prev-page": "Prev Page",
-    "next-page": "Next Page",
-    "submit": "Create Q&A"
+    "next-page": "Next Page"
   },
 
   "user_info": {

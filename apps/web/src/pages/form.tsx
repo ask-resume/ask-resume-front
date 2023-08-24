@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import { i18n, useTranslation } from 'next-i18next';
 import { useIsMobile } from 'shared-lib/hooks/media-query';
 import { GetStaticPropsContext } from 'next';
 import { getI18nProps } from 'modules/i18n/lib/getStatic';
@@ -28,10 +28,8 @@ export default function FormPage({ jobs }) {
   const { t } = useTranslation(FormTranslateNamespaces);
   const router = useRouter();
   const isMobile = useIsMobile();
-  const { locale, type } = React.useMemo(
-    () => router.query as { locale: string; type: FormRouterType },
-    [router.query],
-  );
+  const locale = i18n.language;
+  const { type } = React.useMemo(() => router.query as { type: FormRouterType }, [router.query]);
 
   // Initialize the query string with user-info when page refresh.
   // const { changeFormRouter } = useFormRouter();

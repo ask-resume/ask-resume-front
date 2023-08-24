@@ -16,5 +16,9 @@
   "loading_fallback": {
     "title": "Loading...",
     "description": "Creating a question."
+  },
+
+  "button": {
+    "submit": "Create Q&A"
   }
 }

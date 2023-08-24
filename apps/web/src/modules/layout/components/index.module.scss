@@ -49,9 +49,11 @@
 }
 
 ._FOOTER_ {
+  height: 6.4rem;
   display: flex;
   padding: 1rem 2rem;
   border-top: 1px solid $gray_3;
+  box-sizing: border-box;
   justify-content: flex-end;
 
   ._item {

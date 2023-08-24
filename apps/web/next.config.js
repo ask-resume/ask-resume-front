@@ -13,6 +13,11 @@ const nextConfig = withBundleAnalyzer({
   webpack5: true,
   webpack: config => {
     config.resolve.fallback = { fs: false };
+    config.module.rules.push({
+      // react-pdf 설정
+      test: /\.node/,
+      use: 'raw-loader',
+    });
 
     return config;
   },

@@ -1,0 +1,30 @@
+@import 'shared-ui/src/index.scss';
+
+.DropZone {
+  /* Layout */
+  width: 100%;
+  height: 100%;
+  padding: 4rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  /* Styles */
+  border: 2px dashed $blue_5;
+  border-radius: 1.5rem;
+  cursor: pointer;
+
+  /* Typography */
+  text-align: center;
+
+  & .hintText {
+    color: $gray_6;
+  }
+
+  &:hover {
+    background: $gray_2;
+  }
+}
