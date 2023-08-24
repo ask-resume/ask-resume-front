@@ -37,7 +37,7 @@ const OptionList = ({
     };
   }, [onChangeOption, listRef]);
 
-  if (!options.length) {
+  if (!options?.length) {
     return <NoResultPhrases locale={locale} />;
   }
 
