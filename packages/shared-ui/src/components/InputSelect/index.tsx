@@ -108,6 +108,7 @@ const InputSelect = ({
             placeholder={placeholder}
             className={cn('_INPUT_', 'select')}
             id="dropdown-input"
+            autoComplete="false"
           />
           <button className={cn('_icon', height, { open: isOpen })} onClick={handleIconClick}>
             <Icon.Arrow
