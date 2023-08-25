@@ -87,9 +87,10 @@ export default function MySubmitDetailPage({ mySubmitsPage }: MySubmitPage) {
 const SubmitDetail = ({ submitData }: { submitData: MySubmitResponse<any> }) => {
   switch (submitData?.serviceType) {
     case 'INTERVIEW_MAKER':
-    case 'INTERVIEW_MAKER_PDF':
+    case 'INTERVIEW_MAKER_PDF': {
       const interviewMakerList = submitData.interviewMakerList;
       return <Result resumeData={interviewMakerList} />;
+    }
     default:
       return null;
   }
