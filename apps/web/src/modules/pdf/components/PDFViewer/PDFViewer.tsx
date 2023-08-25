@@ -1,22 +1,22 @@
 import { useTranslation } from 'next-i18next';
-import styles from './PDFViewer.module.scss';
+import styles from './PdfViewer.module.scss';
 
 import { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { File } from 'react-pdf/dist/cjs/shared/types';
-import { PDFPageTranslateNamespaces } from 'modules/pdf/constants';
+import { PdfPageTranslateNamespaces } from 'modules/pdf/constants';
 import Spinner from 'shared-ui/src/components/Spinner';
 import Icon from 'shared-ui/src/components/Icon';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-interface PDFViewerProps {
+interface PdfViewerProps {
   file: File;
 }
 
 const SCALING_FACTOR = 1.3;
 
-const PDFViewer = ({ file }: PDFViewerProps) => {
+const PdfViewer = ({ file }: PdfViewerProps) => {
   const [totalPages, setTotalPages] = useState(null);
   const [page, setPage] = useState(1);
   const [scale, setScale] = useState(2);
@@ -36,10 +36,10 @@ const PDFViewer = ({ file }: PDFViewerProps) => {
   }
 
   // 다국어 번역
-  const { t } = useTranslation(PDFPageTranslateNamespaces);
+  const { t } = useTranslation(PdfPageTranslateNamespaces);
 
   return (
-    <div className={styles.PDFViewer}>
+    <div className={styles.PdfViewer}>
       <section className={styles.buttonSection}>
         <ul></ul>
 
@@ -96,4 +96,4 @@ const PDFViewer = ({ file }: PDFViewerProps) => {
   );
 };
 
-export default PDFViewer;
+export default PdfViewer;
