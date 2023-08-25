@@ -1,4 +1,4 @@
-import styles from './PDFForm.module.scss';
+import styles from './PdfForm.module.scss';
 
 import PDFUploader from 'modules/pdf/components/PDFUploader';
 import { UserInfoState } from 'modules/form/components/UserInfo';
