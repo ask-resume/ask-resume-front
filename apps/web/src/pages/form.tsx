@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { i18n, useTranslation } from 'next-i18next';
 import { useIsMobile } from 'shared-lib/hooks/media-query';
-import { GetStaticPropsContext } from 'next';
 import { getI18nProps } from 'modules/i18n/lib/getStatic';
 
 import { useUserInfoState } from 'modules/form/hooks/useUserInfoState';
@@ -21,7 +20,7 @@ import styles from '../page.module.scss';
 import Router from 'modules/form/components/Router';
 import { UserInfo, ResumeInfo, Confirmation } from 'modules/form/components';
 import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
-import { PDFForm } from 'modules/pdf/components/PDFForm';
+import { PDFForm } from 'modules/pdf/components/PdfForm';
 import { useCheckLogin } from 'modules/myPage/hooks/useCheckLogin';
 
 // After receiving jobs data for all languages, modify it so that you can select related option values
