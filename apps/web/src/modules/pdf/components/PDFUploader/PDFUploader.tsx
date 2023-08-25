@@ -1,7 +1,7 @@
 import styles from './PDFUploader.module.scss';
 
 import React, { useState } from 'react';
-import DropZone from '../DropZone';
+import DropZone from 'shared-ui/src/components/DropZone';
 import Button from 'shared-ui/src/components/Button';
 import { useTranslation } from 'next-i18next';
 import Icon from 'shared-ui/src/components/Icon';
