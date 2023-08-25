@@ -1,6 +1,6 @@
 import styles from './PdfForm.module.scss';
 
-import PDFUploader from 'modules/pdf/components/PDFUploader';
+import PdfUploader from 'modules/pdf/components/PdfUploader';
 import { UserInfoState } from 'modules/form/components/UserInfo';
 import { useSubmitPdfResume } from 'modules/pdf/api/submitPdf';
 import { getUserInfoForm } from 'modules/pdf/hooks';
@@ -39,7 +39,7 @@ export function PdfForm({ userInfo }: PdfFormProps) {
 
   return (
     <main className={styles._PDF_}>
-      <PDFUploader onSubmit={onSubmit} />
+      <PdfUploader onSubmit={onSubmit} />
     </main>
   );
 }
