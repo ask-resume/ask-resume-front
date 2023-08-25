@@ -34,7 +34,7 @@ interface UserInfoProps {
 
 const UserInfo = ({ isMobile, jobs, userInfo, onChangeUserInfo }: UserInfoProps) => {
   const { t } = useTranslation(FormTranslateNamespaces);
-  const locale = i18n.language;
+  const language = i18n.language;
 
   const LABEL_SIZE = isMobile ? 'medium' : 'large';
   const LABEL_WEIGHT = 'medium';
@@ -49,7 +49,7 @@ const UserInfo = ({ isMobile, jobs, userInfo, onChangeUserInfo }: UserInfoProps)
     { name: t('user_info.difficulty.hard'), value: 'hard' },
   ];
 
-  const pathname = `/${locale}/form`;
+  const pathname = `/${language}/form`;
   const { changeQueryParams } = useQueryParams();
   const isNavigationEnabled = !validateUserInfoForm(userInfo);
 
@@ -68,7 +68,7 @@ const UserInfo = ({ isMobile, jobs, userInfo, onChangeUserInfo }: UserInfoProps)
             labelSize: LABEL_SIZE,
           }}
           placeholder={t('user_info.placeholder.job') ?? ''}
-          locale={locale}
+          locale={language}
           height={isMobile ? 'md' : 'lg'}
         />
 
@@ -112,7 +112,7 @@ const UserInfo = ({ isMobile, jobs, userInfo, onChangeUserInfo }: UserInfoProps)
             <Text variant="block" size={LABEL_SIZE} weight="medium" textColor={ColorMap.blue_5}>
               {formatYearsOfCareer({
                 t,
-                locale,
+                locale: language,
                 selectedYearsOfCareer: userInfo.selectedYearsOfCareer,
               })}
             </Text>
