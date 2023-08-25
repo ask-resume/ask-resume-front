@@ -1,28 +1,28 @@
-import styles from './PdfForm.module.scss';
+import styles from './PDFForm.module.scss';
 
-import PdfUploader from 'modules/pdf/components/PdfUploader';
+import PDFUploader from 'modules/pdf/components/PDFUploader';
 import { UserInfoState } from 'modules/form/components/UserInfo';
-import { useSubmitPdfResume } from 'modules/pdf/api/submitPdf';
+import { useSubmitPDFResume } from 'modules/pdf/api/submitPDF';
 import { getUserInfoForm } from 'modules/pdf/hooks';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { useTranslation } from 'next-i18next';
 import { FormTranslateNamespaces } from 'modules/form/constants';
 
-interface PdfFormProps {
+interface PDFFormProps {
   isMobile: boolean;
   userInfo: UserInfoState;
 }
 
-export function PdfForm({ userInfo }: PdfFormProps) {
+export function PDFForm({ userInfo }: PDFFormProps) {
   const { t } = useTranslation(FormTranslateNamespaces);
-  const { mutate: submitPdfResume } = useSubmitPdfResume();
+  const { mutate: submitPDFResume } = useSubmitPDFResume();
 
   const { changeQueryParams } = useQueryParams();
   const onSubmit = (pdfFile: File) => {
     const userInfoForm = getUserInfoForm({ userInfo });
     const pathname = `/result`;
 
-    submitPdfResume(
+    submitPDFResume(
       { form: userInfoForm, pdfFile },
       {
         onSuccess: () => {
@@ -39,7 +39,7 @@ export function PdfForm({ userInfo }: PdfFormProps) {
 
   return (
     <main className={styles._PDF_}>
-      <PdfUploader onSubmit={onSubmit} />
+      <PDFUploader onSubmit={onSubmit} />
     </main>
   );
 }

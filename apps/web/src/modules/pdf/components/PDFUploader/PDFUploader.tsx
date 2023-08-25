@@ -1,4 +1,4 @@
-import styles from './PdfUploader.module.scss';
+import styles from './PDFUploader.module.scss';
 
 import React, { useState } from 'react';
 import DropZone from '../DropZone';
@@ -10,21 +10,21 @@ import { useFormRouter } from 'modules/form/hooks/useFormRouter';
 import { FormTranslateNamespaces } from 'modules/form/constants';
 import dynamic from 'next/dynamic';
 
-const PdfViewer = dynamic(() => import('../PdfViewer'), {
+const PDFViewer = dynamic(() => import('../PDFViewer'), {
   ssr: false,
 });
 
-interface PdfUploaderProps {
+interface PDFUploaderProps {
   onSubmit: (pdfFile: File) => void;
 }
 
-const PdfUploader = ({ onSubmit }: PdfUploaderProps) => {
+const PDFUploader = ({ onSubmit }: PDFUploaderProps) => {
   const isMobile = useIsMobile();
   const { changeFormRouter } = useFormRouter();
 
-  const [pdfFile, setPdfFile] = useState(null);
+  const [pdfFile, setPDFFile] = useState(null);
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = event => {
-    setPdfFile(event.target.files[0]);
+    setPDFFile(event.target.files[0]);
   };
 
   // 이벤트 핸들러 : PDF 업로드 폼 제출
@@ -34,19 +34,19 @@ const PdfUploader = ({ onSubmit }: PdfUploaderProps) => {
   };
 
   // 이벤트 핸들러 : PDF 제거
-  const handleClickRemovePdf = () => {
-    setPdfFile(null);
+  const handleClickRemovePDF = () => {
+    setPDFFile(null);
   };
 
   // 다국어 번역
   const { t } = useTranslation(FormTranslateNamespaces);
 
   return (
-    <article className={styles.PdfUploader}>
+    <article className={styles.PDFUploader}>
       <form onSubmit={event => handleSubmit(event, pdfFile)}>
         <div className={styles.content}>
           {pdfFile ? (
-            <PdfViewer file={pdfFile} />
+            <PDFViewer file={pdfFile} />
           ) : (
             <DropZone
               accept=".pdf"
@@ -72,7 +72,7 @@ const PdfUploader = ({ onSubmit }: PdfUploaderProps) => {
               <Button
                 size={isMobile ? 'sm' : 'lg'}
                 buttonColor="red"
-                onClick={handleClickRemovePdf}
+                onClick={handleClickRemovePDF}
                 label={{
                   labelText: t('pdf:button.remove_pdf') ?? '',
                   labelTailingIcon: <Icon.Trash color="currentColor" />,
@@ -96,4 +96,4 @@ const PdfUploader = ({ onSubmit }: PdfUploaderProps) => {
   );
 };
 
-export default PdfUploader;
+export default PDFUploader;
