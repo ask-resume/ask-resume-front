@@ -1,1 +1,1 @@
-export const PDFPageTranslateNamespaces = ['pdf', 'form', 'common'];
+export const PdfPageTranslateNamespaces = ['pdf', 'form', 'common'];
