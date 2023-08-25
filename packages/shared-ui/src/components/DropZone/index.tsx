@@ -1,8 +1,9 @@
-import styles from './DropZone.module.scss';
+import React from 'react';
+import './index.scss';
 
 import { useRef } from 'react';
 
-import Icon from 'shared-ui/src/components/Icon';
+import Icon from '../Icon';
 
 interface DropZoneProps {
   accept?: string;
@@ -12,7 +13,7 @@ interface DropZoneProps {
 }
 
 const DropZone = ({ accept, hintText = 'Drag & Drop a file', onChange, onDrop }: DropZoneProps) => {
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleClick: React.MouseEventHandler = () => {
     fileInputRef.current?.click();
@@ -25,14 +26,14 @@ const DropZone = ({ accept, hintText = 'Drag & Drop a file', onChange, onDrop }:
 
   return (
     <div
-      className={styles.DropZone}
+      className="DropZone"
       onClick={handleClick}
       onDrop={handleDrop}
       onDragOver={event => event.preventDefault()}
     >
       <input ref={fileInputRef} type="file" hidden accept={accept} onChange={onChange} />
       <Icon.AirPlane />
-      <p className={styles.hintText}>{hintText}</p>
+      <p className="hint-text">{hintText}</p>
     </div>
   );
 };

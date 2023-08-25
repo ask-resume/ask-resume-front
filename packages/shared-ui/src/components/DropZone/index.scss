@@ -1,4 +1,4 @@
-@import 'shared-ui/src/index.scss';
+@import '../../index.scss';
 
 .DropZone {
   /* Layout */
@@ -21,7 +21,7 @@
   /* Typography */
   text-align: center;
 
-  & .hintText {
+  & .hint-text {
     color: $gray_6;
   }
 
