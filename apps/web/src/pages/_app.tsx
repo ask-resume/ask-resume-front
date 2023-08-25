@@ -1,7 +1,6 @@
 import React from 'react';
 import type { AppProps } from 'next/app';
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
+import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RecoilRoot } from 'recoil';
 import { appWithTranslation } from 'next-i18next';
 
@@ -32,9 +31,9 @@ const App = ({ Component, pageProps }: AppProps) => {
           </ErrorBoundary>
         </RecoilRoot>
       </Hydrate>
-      {typeof window !== 'undefined' && window.location.hostname === 'localhost' && (
+      {/* {typeof window !== 'undefined' && window.location.hostname === 'localhost' && (
         <ReactQueryDevtools initialIsOpen={false} />
-      )}
+      )} */}
     </QueryClientProvider>
   );
 };

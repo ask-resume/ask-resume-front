@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { ApiResult } from 'common/types/api/responseType';
 import axiosInstance from '../../auth/axiosInstance';
 import { currentMemberKeys } from 'common/constants/currentMemberKeys';

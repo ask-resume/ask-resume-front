@@ -1,8 +1,9 @@
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 import { LanguageType } from 'common/types/api/languageType';
 
 import axiosInstance from '../../auth/axiosInstance';
 import { LANGUAGE_HEADER } from 'common/config/locale';
+import { mapToUpperCase } from 'shared-lib/utils/object/mapToUpperCase';
 
 export interface PredictionResponse {
   bestAnswer: string;
@@ -17,7 +18,12 @@ interface ResumeRequest {
 }
 
 export interface InterviewQuestionCreationForm {
-  careerYear: number;
+  information: {
+    jobId: number;
+    difficulty: InterviewDifficulty;
+    careerYear: number;
+    language: LanguageType;
+  };
   contents: {
     introduction?: ResumeRequest[];
     career?: ResumeRequest[];
@@ -27,21 +33,24 @@ export interface InterviewQuestionCreationForm {
     outsideActivities?: ResumeRequest[];
     aac?: ResumeRequest[];
   };
-  difficulty: InterviewDifficulty;
-  jobId: number;
-  language: LanguageType;
 }
 
 export const generateInterviewQuestions = async ({
   form,
-  language,
 }: {
   form: InterviewQuestionCreationForm;
-  language: LanguageType;
 }) => {
-  return axiosInstance.post('/generative/interview-maker', form, {
-    headers: { 'Accept-Language': LANGUAGE_HEADER[language] },
-  });
+  const upperCaseKeyList = ['language' as const, 'difficulty' as const];
+
+  const upperCaseInformation = mapToUpperCase({ keyList: upperCaseKeyList, obj: form.information });
+
+  return axiosInstance.post(
+    '/generative/interview-maker/manual',
+    { ...form, information: { ...form.information, ...upperCaseInformation } },
+    {
+      headers: { 'Accept-Language': LANGUAGE_HEADER[form.information.language] },
+    },
+  );
 };
 
 // When implementing i18next, change useErrorboundary and suspense to true to handle client errors.

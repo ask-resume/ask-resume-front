@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
 
 import { getI18nProps } from 'modules/i18n/lib/getStatic';
-import styles from '../../../page.module.scss';
+import styles from '../../page.module.scss';
 import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
 import { useRouter } from 'next/router';
 import Result from 'modules/result/components/Result';
@@ -86,10 +86,10 @@ export default function MySubmitDetailPage({ mySubmitsPage }: MySubmitPage) {
 
 const SubmitDetail = ({ submitData }: { submitData: MySubmitResponse<any> }) => {
   switch (submitData?.serviceType) {
-    case 'INTERVIEW_MAKER': {
+    case 'INTERVIEW_MAKER':
+    case 'INTERVIEW_MAKER_PDF':
       const interviewMakerList = submitData.interviewMakerList;
       return <Result resumeData={interviewMakerList} />;
-    }
     default:
       return null;
   }

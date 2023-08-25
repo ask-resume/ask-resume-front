@@ -1,7 +1,9 @@
 {
   "button": {
     "prev-page": "Prev Page",
-    "next-page": "Next Page"
+    "next-page": "Next Page",
+    "go_to_form": "Fill out the form",
+    "go_to_pdf": "Upload PDF"
   },
 
   "user_info": {

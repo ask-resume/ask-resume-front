@@ -17,7 +17,6 @@ import { UserInfoState } from './UserInfo';
 import { FormTranslateNamespaces } from 'modules/form/constants';
 import { calculateFormContents } from '../lib/confirmation';
 import { useGenerateInterviewQuestions } from 'modules/interviewQuestion/api/interviewQuestions';
-import { LanguageType } from 'common/types/api/languageType';
 
 export type ResumeInfoState = {
   select: Option;
@@ -41,7 +40,6 @@ interface ConfirmationProps {
 
 const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => {
   const { t } = useTranslation(FormTranslateNamespaces);
-  const locale = i18n.language as LanguageType;
   const { mutate } = useGenerateInterviewQuestions();
 
   const { changeQueryParams } = useQueryParams();
@@ -52,13 +50,12 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
   };
 
   const handleSubmitClick = () => {
-    alert('hi');
     const pathname = `/result`;
-    const calculatedFormContents = calculateFormContents({ locale, userInfo, resumeInfo });
+    const calculatedFormContents = calculateFormContents({ userInfo, resumeInfo });
 
     // Call API : Generate Interview Questions
     mutate(
-      { form: calculatedFormContents, language: locale },
+      { form: calculatedFormContents },
       {
         onSuccess: () => {
           changeQueryParams({

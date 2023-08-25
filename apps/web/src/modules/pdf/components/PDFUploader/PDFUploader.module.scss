@@ -13,17 +13,31 @@
   border-radius: 1rem;
   box-shadow: $shadow_2;
 
+  // Footer
   footer {
     /* Layout */
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 1.2rem;
-    padding: 1.2rem 0;
+    padding: 1.6rem 0;
+    margin-top: 1.6rem;
 
     /* Style */
     background: $white;
     position: sticky;
     bottom: 0;
+
+    section {
+      display: flex;
+      gap: 1.2rem;
+
+      &:first-child {
+        justify-content: flex-start;
+      }
+      &:last-child {
+        justify-content: flex-end;
+      }
+    }
   }
 }
 
