@@ -1,2 +1,2 @@
-import PDFUploader from './PDFUploader';
-export default PDFUploader;
+import PdfUploader from './PdfUploader';
+export default PdfUploader;

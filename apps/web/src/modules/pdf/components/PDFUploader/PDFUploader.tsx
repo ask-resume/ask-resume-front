@@ -1,7 +1,6 @@
 import styles from './PDFUploader.module.scss';
 
 import React, { useState } from 'react';
-import PDFViewer from '../PDFViewer';
 import DropZone from '../DropZone';
 import Button from 'shared-ui/src/components/Button';
 import { useTranslation } from 'next-i18next';
@@ -9,6 +8,11 @@ import Icon from 'shared-ui/src/components/Icon';
 import { useIsMobile } from 'shared-lib/hooks/media-query';
 import { useFormRouter } from 'modules/form/hooks/useFormRouter';
 import { FormTranslateNamespaces } from 'modules/form/constants';
+import dynamic from 'next/dynamic';
+
+const PdfViewer = dynamic(() => import('../PdfViewer'), {
+  ssr: false,
+});
 
 interface PDFUploaderProps {
   onSubmit: (pdfFile: File) => void;
@@ -42,7 +46,7 @@ const PDFUploader = ({ onSubmit }: PDFUploaderProps) => {
       <form onSubmit={event => handleSubmit(event, pdfFile)}>
         <div className={styles.content}>
           {pdfFile ? (
-            <PDFViewer file={pdfFile} />
+            <PdfViewer file={pdfFile} />
           ) : (
             <DropZone
               accept=".pdf"
