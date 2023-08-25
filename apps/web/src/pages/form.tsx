@@ -22,7 +22,6 @@ import Router from 'modules/form/components/Router';
 import { UserInfo, ResumeInfo, Confirmation } from 'modules/form/components';
 import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
 import { PdfForm } from 'modules/pdf/components/PdfForm';
-import { useCurrentMember } from 'modules/myPage/api/currentMember';
 import { useCheckLogin } from 'modules/myPage/hooks/useCheckLogin';
 
 // After receiving jobs data for all languages, modify it so that you can select related option values

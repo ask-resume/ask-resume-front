@@ -3,7 +3,7 @@ import React from 'react';
 import { useInputSelectedState } from 'shared-ui/src/components/InputSelect';
 import { useSelectState } from 'shared-ui/src/components/Select';
 import { useSliderState } from 'shared-ui/src/components/Slider';
-import { TFunction } from 'next-i18next';
+import { TFunction, i18n } from 'next-i18next';
 import { Option } from 'shared-ui/src/components/Select';
 import { UserInfoState } from '../components/UserInfo';
 
@@ -14,18 +14,18 @@ export type StateName =
   | 'selectedYearsOfCareer';
 export type ChangedValue = Option | null | number;
 
-const INIT_STATE = {
-  language: 'en',
-  difficulty: 'medium',
-  career: 0,
-};
-
 export const useUserInfoState = (
   t: TFunction,
 ): {
   userInfo: UserInfoState;
   userInfoSetter: (stateName: StateName, changedValue: ChangedValue) => void;
 } => {
+  const INIT_STATE = {
+    language: i18n.language,
+    difficulty: 'medium',
+    career: 0,
+  };
+
   const NATION_OPTION: Option[] = [
     { name: t('user_info.nation.english'), value: 'en' },
     { name: t('user_info.nation.korea'), value: 'ko' },
