@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { LANGUAGE_HEADER } from 'common/config/locale';
 import axiosInstance from '../../auth/axiosInstance';
 import { PredictionResponse } from 'modules/interviewQuestion/api/interviewQuestions';

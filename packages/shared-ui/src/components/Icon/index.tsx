@@ -8,6 +8,7 @@ import { Setting } from './Setting';
 import { Trash } from './Trash';
 import { User } from './User';
 import { Wanning } from './Wanning';
+import { Write } from './Write';
 import { ZoomIn } from './ZoomIn';
 import { ZoomOut } from './ZoomOut';
 
@@ -22,6 +23,7 @@ export default {
   Trash,
   User,
   Wanning,
+  Write,
   ZoomIn,
   ZoomOut,
 };

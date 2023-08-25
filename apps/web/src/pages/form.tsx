@@ -21,6 +21,7 @@ import styles from '../page.module.scss';
 import Router from 'modules/form/components/Router';
 import { UserInfo, ResumeInfo, Confirmation } from 'modules/form/components';
 import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
+import { PdfForm } from 'modules/pdf/components/PdfForm';
 
 // After receiving jobs data for all languages, modify it so that you can select related option values
 // (ex. Enter web development after selecting English language -> web develop is displayed)
@@ -77,6 +78,12 @@ export default function FormPage({ jobs }) {
               userInfo={userInfo}
               onChangeUserInfo={userInfoSetter}
             />
+          </main>
+        )}
+
+        {type === 'pdf' && (
+          <main>
+            <PdfForm isMobile={isMobile} userInfo={userInfo} />
           </main>
         )}
 

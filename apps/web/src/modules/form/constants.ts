@@ -12,7 +12,7 @@ export const initResumeInfo: {
   technical: [],
 };
 
-export const FormTranslateNamespaces = ['form', 'error-page', 'common'];
+export const FormTranslateNamespaces = ['form', 'pdf', 'error-page', 'common'];
 export const TAB_CNT = 4;
 export const TEXTAREA_REGEX = /^.{0,99}$|^.{1001,}$/;
 

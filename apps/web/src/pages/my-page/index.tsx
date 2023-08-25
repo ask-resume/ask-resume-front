@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
 
 import { getI18nProps } from 'modules/i18n/lib/getStatic';
-import styles from '../../../page.module.scss';
+import styles from '../../page.module.scss';
 import MySubmitTable from 'modules/myPage/components/MySubmitTable';
 import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
 import { Page, SubmitListItemResponse, getMySubmits } from 'modules/myPage/api/mySubmit';

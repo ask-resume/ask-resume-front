@@ -18,10 +18,12 @@ interface RouterProps {
 const Router = ({ type, userInfoChecked, resumeInfoChecked }: RouterProps) => {
   const { t } = useTranslation(FormTranslateNamespaces);
 
-  const getTextProps = (routeType: FormRouterType) => {
+  const getTextProps = (routeType: FormRouterType | FormRouterType[]) => {
+    const isActive = type === routeType || routeType?.includes(type);
+
     return {
-      textColor: type === routeType ? ColorMap.gray_7 : ColorMap.gray_4,
-      weight: type === routeType ? ('bold' as TextWeight) : ('medium' as TextWeight),
+      textColor: isActive ? ColorMap.gray_7 : ColorMap.gray_4,
+      weight: isActive ? ('bold' as TextWeight) : ('medium' as TextWeight),
       size: 'medium' as FontSize,
     };
   };
@@ -37,7 +39,7 @@ const Router = ({ type, userInfoChecked, resumeInfoChecked }: RouterProps) => {
 
       <div className={styles._router_item}>
         <RouterIcon order={2} checked={resumeInfoChecked} />
-        <Text {...getTextProps('resume')}>{t('user_info.router.resume')}</Text>
+        <Text {...getTextProps(['resume', 'pdf'])}>{t('user_info.router.resume')}</Text>
       </div>
 
       <Divider variant="vertical" width={20} height={2} />

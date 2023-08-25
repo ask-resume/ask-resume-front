@@ -39,7 +39,7 @@ const MySubmitTable = ({ mySubmits, totalElements, currentPage, pageSize }: MySu
 
             const onClickRow = () => {
               if (isAccessable) {
-                router.push(`/my-submit/${submitId}`);
+                router.push(`/my-page/${submitId}`);
               }
             };
 

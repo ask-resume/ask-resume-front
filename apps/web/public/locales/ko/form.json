@@ -1,7 +1,9 @@
 {
   "button": {
     "prev-page": "이전 페이지",
-    "next-page": "다음 페이지"
+    "next-page": "다음 페이지",
+    "go_to_form": "이력서 직접 작성",
+    "go_to_pdf": "PDF 이력서 제출"
   },
 
   "user_info": {
