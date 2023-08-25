@@ -1,9 +1,10 @@
 import { SubmitListItemResponse } from 'modules/myPage/api/mySubmit';
 import Table, { Tbody, Td, Th, Thead, Tr } from 'shared-ui/src/components/Table';
 import dayjs from 'dayjs';
-import { useTranslation } from 'next-i18next';
+import { i18n, useTranslation } from 'next-i18next';
 import { MyPageTranslateNamespaces } from 'modules/myPage/constants';
 import { useRouter } from 'next/router';
+import { LANGUAGE_HEADER } from 'common/config/locale';
 
 interface MySubmitTableProps {
   mySubmits: SubmitListItemResponse[];
@@ -14,6 +15,7 @@ interface MySubmitTableProps {
 
 const MySubmitTable = ({ mySubmits, totalElements, currentPage, pageSize }: MySubmitTableProps) => {
   const { t } = useTranslation(MyPageTranslateNamespaces);
+  const locale = LANGUAGE_HEADER[i18n.language];
 
   const router = useRouter();
 
@@ -52,7 +54,7 @@ const MySubmitTable = ({ mySubmits, totalElements, currentPage, pageSize }: MySu
                 <Td>{number}</Td>
                 <Td>{title}</Td>
                 <Td align="center">{status}</Td>
-                <Td align="center">{dayjs(createdAt).format('YYYY-MM-DD')}</Td>
+                <Td align="center">{dayjs(createdAt).locale(locale).format('YYYY-MM-DD')}</Td>
               </Tr>
             );
           })}
