@@ -27,6 +27,12 @@ const PDFUploader = ({ onSubmit }: PDFUploaderProps) => {
     setPDFFile(event.target.files[0]);
   };
 
+  // 이벤트 핸들러 : 드랍다운
+  const handleDrop: React.DragEventHandler = event => {
+    const { files } = event.dataTransfer;
+    setPDFFile(files[0]);
+  };
+
   // 이벤트 핸들러 : PDF 업로드 폼 제출
   const handleSubmit = (event: React.FormEvent, pdfFile: File) => {
     event.preventDefault();
@@ -52,6 +58,7 @@ const PDFUploader = ({ onSubmit }: PDFUploaderProps) => {
               accept=".pdf"
               hintText={t('pdf:drag_and_drop.hint_text')}
               onChange={handleChange}
+              onDrop={handleDrop}
             />
           )}
         </div>
