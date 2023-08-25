@@ -11,12 +11,12 @@ export interface UserInfoForm {
   language: LanguageType;
 }
 
-export interface SubmitPdfResumeRequest {
+export interface SubmitPDFResumeRequest {
   form: UserInfoForm;
   pdfFile: File;
 }
 
-const submitPdfResume = async ({ form, pdfFile }: SubmitPdfResumeRequest): Promise<void> => {
+const submitPDFResume = async ({ form, pdfFile }: SubmitPDFResumeRequest): Promise<void> => {
   const formData = new FormData();
   formData.append('resume', pdfFile);
 
@@ -35,6 +35,6 @@ const submitPdfResume = async ({ form, pdfFile }: SubmitPdfResumeRequest): Promi
   });
 };
 
-export const useSubmitPdfResume = () => {
-  return useMutation(submitPdfResume);
+export const useSubmitPDFResume = () => {
+  return useMutation(submitPDFResume);
 };
