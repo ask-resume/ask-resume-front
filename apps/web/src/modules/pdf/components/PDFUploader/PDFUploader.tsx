@@ -43,7 +43,7 @@ const PDFUploader = ({ onSubmit }: PDFUploaderProps) => {
 
   return (
     <article className={styles.PDFUploader}>
-      <form onSubmit={event => handleSubmit(event, pdfFile)}>
+      <form>
         <div className={styles.content}>
           {pdfFile ? (
             <PDFViewer file={pdfFile} />
@@ -88,6 +88,7 @@ const PDFUploader = ({ onSubmit }: PDFUploaderProps) => {
                 labelText: t('common:button.submit') ?? '',
                 labelTailingIcon: <Icon.AirPlane />,
               }}
+              onClick={event => handleSubmit(event, pdfFile)}
             />
           </section>
         </footer>

@@ -38,6 +38,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     return (
       <button
+        type="button"
         className={cn('_BUTTON_', className, size, variant, buttonColor, {
           loading,
           rounded,

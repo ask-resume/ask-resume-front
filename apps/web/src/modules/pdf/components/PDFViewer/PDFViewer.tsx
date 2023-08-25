@@ -45,7 +45,7 @@ const PDFViewer = ({ file }: PDFViewerProps) => {
 
         <ul>
           <li>
-            <button onClick={() => handleClickPageButton(-1)}>
+            <button type="button" onClick={() => handleClickPageButton(-1)}>
               <Icon.Arrow />
             </button>
           </li>
@@ -55,7 +55,7 @@ const PDFViewer = ({ file }: PDFViewerProps) => {
             </span>
           </li>
           <li>
-            <button onClick={() => handleClickPageButton(1)}>
+            <button type="button" onClick={() => handleClickPageButton(1)}>
               <Icon.Arrow flip />
             </button>
           </li>
@@ -63,12 +63,12 @@ const PDFViewer = ({ file }: PDFViewerProps) => {
 
         <ul className={styles.rightButtonGroup}>
           <li>
-            <button onClick={() => setScale(scale / SCALING_FACTOR)}>
+            <button type="button" onClick={() => setScale(scale / SCALING_FACTOR)}>
               <Icon.ZoomOut />
             </button>
           </li>
           <li>
-            <button onClick={() => setScale(scale * SCALING_FACTOR)}>
+            <button type="button" onClick={() => setScale(scale * SCALING_FACTOR)}>
               <Icon.ZoomIn />
             </button>
           </li>
