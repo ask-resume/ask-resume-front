@@ -2,7 +2,7 @@ import styles from './PDFForm.module.scss';
 
 import PDFUploader from 'modules/pdf/components/PDFUploader';
 import { UserInfoState } from 'modules/form/components/UserInfo';
-import { useSubmitPDFResume } from 'modules/pdf/api/submitPDF';
+import { useSubmitPDFResume } from 'modules/pdf/api/submitPdf';
 import { getUserInfoForm } from 'modules/pdf/hooks';
 import { useQueryParams } from 'common/hooks/router/useQueryParams';
 import { useTranslation } from 'next-i18next';
@@ -15,14 +15,14 @@ interface PDFFormProps {
 
 export function PDFForm({ userInfo }: PDFFormProps) {
   const { t } = useTranslation(FormTranslateNamespaces);
-  const { mutate: submitPDFResume } = useSubmitPDFResume();
+  const { mutate: submitPdfResume } = useSubmitPDFResume();
 
   const { changeQueryParams } = useQueryParams();
   const onSubmit = (pdfFile: File) => {
     const userInfoForm = getUserInfoForm({ userInfo });
     const pathname = `/result`;
 
-    submitPDFResume(
+    submitPdfResume(
       { form: userInfoForm, pdfFile },
       {
         onSuccess: () => {
