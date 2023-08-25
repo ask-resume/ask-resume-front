@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { GetStaticPropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
 
-import { getI18nProps, getStaticPaths } from 'modules/i18n/lib/getStatic';
+import { getI18nProps } from 'modules/i18n/lib/getStatic';
 import styles from '../page.module.scss';
 import { SocialLoginButton } from 'modules/login/components/SocialLoginButton';
 import { LoginPageTranslateNamespaces } from 'modules/login/constants';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { i18n, useTranslation } from 'next-i18next';
@@ -22,6 +22,8 @@ import Router from 'modules/form/components/Router';
 import { UserInfo, ResumeInfo, Confirmation } from 'modules/form/components';
 import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
 import { PdfForm } from 'modules/pdf/components/PdfForm';
+import { useCurrentMember } from 'modules/myPage/api/currentMember';
+import { useCheckLogin } from 'modules/myPage/hooks/useCheckLogin';
 
 // After receiving jobs data for all languages, modify it so that you can select related option values
 // (ex. Enter web development after selecting English language -> web develop is displayed)
@@ -54,6 +56,10 @@ export default function FormPage({ jobs }) {
         }),
     [resumeSelect, resumeTextArea],
   );
+
+  const { isLoggedIn } = useCheckLogin();
+
+  if (!isLoggedIn) return;
 
   return (
     <>
