@@ -16,13 +16,11 @@ export interface SubmitPDFResumeRequest {
   pdfFile: File;
 }
 
-const submitPDFResume = async ({ form, pdfFile }: SubmitPDFResumeRequest): Promise<void> => {
+const submitPdfResume = async ({ form, pdfFile }: SubmitPDFResumeRequest): Promise<void> => {
   const formData = new FormData();
   formData.append('resume', pdfFile);
 
   const upperCaseProps = mapToUpperCase({ keyList: ['language', 'difficulty'], obj: form });
-
-  console.log(upperCaseProps);
 
   const upperCaseForm = { ...form, ...upperCaseProps };
 
@@ -36,5 +34,5 @@ const submitPDFResume = async ({ form, pdfFile }: SubmitPDFResumeRequest): Promi
 };
 
 export const useSubmitPDFResume = () => {
-  return useMutation(submitPDFResume);
+  return useMutation(submitPdfResume);
 };
