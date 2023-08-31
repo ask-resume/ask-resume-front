@@ -5,5 +5,10 @@
   "drag_and_drop": {
     "hint_text": "Click or Drop here to Upload PDF file."
   },
-  "error": "Fail to load PDF file."
+  "error": "Fail to load PDF file.",
+
+  "restriction": {
+    "hint_text": "The PDF file can be up to {{fileSize}} in size and support {{content.minLength}} to {{content.maxLength}} characters.",
+    "file_size": "The PDF file can be up to {{fileSize}}"
+  }
 }

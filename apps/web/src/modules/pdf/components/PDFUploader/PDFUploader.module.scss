@@ -2,7 +2,6 @@
 
 .PDFUploader {
   /* Layout */
-  min-width: 60rem;
   padding: 2.4rem;
   gap: 2rem;
   position: relative;
@@ -38,9 +37,27 @@
         justify-content: flex-end;
       }
     }
+
+    @media screen and (max-width: #{$breakpoint-xsmall}) {
+      section:first-child > * {
+        display: none;
+      }
+    }
   }
 }
 
 .content {
   flex: 1;
+}
+
+.hintText {
+  /* Layout */
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+
+  /* Typography */
+  color: $gray_6;
 }

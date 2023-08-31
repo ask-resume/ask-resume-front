@@ -4,6 +4,8 @@ import { LanguageType } from 'common/types/api/languageType';
 import axiosInstance from '../../auth/axiosInstance';
 import { LANGUAGE_HEADER } from 'common/config/locale';
 import { mapToUpperCase } from 'shared-lib/utils/object/mapToUpperCase';
+import { toast } from 'react-hot-toast';
+import { AxiosError } from 'axios';
 
 export interface PredictionResponse {
   bestAnswer: string;
@@ -55,5 +57,9 @@ export const generateInterviewQuestions = async ({
 
 // When implementing i18next, change useErrorboundary and suspense to true to handle client errors.
 export const useGenerateInterviewQuestions = () => {
-  return useMutation(generateInterviewQuestions);
+  return useMutation(generateInterviewQuestions, {
+    onError: (error: AxiosError<any>) => {
+      toast.error(error.response?.data.errorMessage);
+    },
+  });
 };

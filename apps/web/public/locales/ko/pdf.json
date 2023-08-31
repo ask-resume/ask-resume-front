@@ -5,5 +5,10 @@
   "drag_and_drop": {
     "hint_text": "클릭 또는 Drag & Drop으로 PDF 파일을 업로드해 주세요."
   },
-  "error": "PDF 파일을 불러올 수 없습니다."
+  "error": "PDF 파일을 불러올 수 없습니다.",
+
+  "restriction": {
+    "hint_text": "PDF 파일의 크기는 최대 {{fileSize}}까지, 글자 수는 {{content.minLength}}자에서 {{content.maxLength}}자까지 지원됩니다.",
+    "file_size": "PDF 파일의 크기는 최대 {{fileSize}}까지 지원됩니다."
+  }
 }

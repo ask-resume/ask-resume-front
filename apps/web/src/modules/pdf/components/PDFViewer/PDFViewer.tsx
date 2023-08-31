@@ -43,7 +43,7 @@ const PDFViewer = ({ file }: PDFViewerProps) => {
       <section className={styles.buttonSection}>
         <ul></ul>
 
-        <ul>
+        <ul className={styles.pageButton}>
           <li>
             <button type="button" onClick={() => handleClickPageButton(-1)}>
               <Icon.Arrow />

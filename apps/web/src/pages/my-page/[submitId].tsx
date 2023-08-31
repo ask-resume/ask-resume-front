@@ -8,7 +8,6 @@ import { withGetServerSideProps } from 'modules/auth/withGetServerSideProps';
 import { useRouter } from 'next/router';
 import Result from 'modules/result/components/Result';
 import {
-  InterviewMakerResponse,
   MySubmitResponse,
   Page,
   SubmitListItemResponse,
