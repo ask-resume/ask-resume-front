@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RecoilRoot } from 'recoil';
 import { appWithTranslation } from 'next-i18next';
+import { Toaster } from 'react-hot-toast';
 
 import Layout from 'modules/layout/components';
 import 'shared-ui/src/index.scss';
@@ -28,6 +29,8 @@ const App = ({ Component, pageProps }: AppProps) => {
             <Layout>
               <Component {...pageProps} />
             </Layout>
+
+            <Toaster />
           </ErrorBoundary>
         </RecoilRoot>
       </Hydrate>

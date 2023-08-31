@@ -20,13 +20,7 @@ export const Trash = ({ color = ColorMap.gray_8, className, size = 16, rotate }:
         transform: `rotate(${rotate}deg)`,
       }}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
         <path
           id="icon__fill"
           fillRule="evenodd"

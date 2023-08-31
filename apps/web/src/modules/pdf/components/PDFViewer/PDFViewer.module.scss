@@ -84,6 +84,10 @@ $button_text_color: $blue_6;
     fill: $button_text_color;
   }
 
+  .pageButton {
+    white-space: nowrap;
+  }
+
   .rightButtonGroup {
     justify-content: flex-end;
 
@@ -97,6 +101,16 @@ $button_text_color: $blue_6;
           fill: $button_text_color;
         }
       }
+    }
+  }
+
+  @media (max-width: #{$breakpoint-medium}) {
+    grid-template-columns: 2fr 1fr;
+
+    font-size: 14px;
+
+    ul:first-child {
+      display: none;
     }
   }
 }
