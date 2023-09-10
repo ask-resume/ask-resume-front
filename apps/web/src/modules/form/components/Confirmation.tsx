@@ -62,8 +62,8 @@ const Confirmation = ({ isMobile, userInfo, resumeInfo }: ConfirmationProps) => 
             pathname,
           });
         },
-        onError: () => {
-          alert(t('error-page:500.content'));
+        onError: (error: any) => {
+          alert(error.response?.data.errorMessage);
         },
       },
     );
